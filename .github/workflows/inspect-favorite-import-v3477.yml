@@ -1,0 +1,30 @@
+name: Inspect favorite item import V34.7.7
+on:
+  push:
+    branches:
+      - fix-blabla-skill-signature-favorite-v3477
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Print relevant importer source slices
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          s=Path('index.html').read_text(encoding='utf-8')
+          terms=['function importExternalRoster','importExternalRoster','favoriteItemPhase','favoriteItemTid','favorite_item_tid','stateEffects','state_effects','skill1Lv','skill1_lv','nameCode']
+          for term in terms:
+              print('\n===== TERM',term,'=====')
+              start=0; seen=0
+              while True:
+                  i=s.find(term,start)
+                  if i<0: break
+                  seen+=1
+                  print(f'--- occurrence {seen} @ {i} ---')
+                  print(s[max(0,i-1800):min(len(s),i+3500)])
+                  start=i+len(term)
+                  if seen>=8: break
+          PY
