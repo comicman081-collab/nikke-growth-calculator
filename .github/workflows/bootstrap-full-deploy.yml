@@ -22,7 +22,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          curl --fail --location --retry 2 --connect-timeout 20 'https://uc0a683a7bcb592f371f6c7f1e7b.dl.dropboxusercontent.com/cd/0/get/DG7RjM8GHRg4Oklgc4g8-10UQI8EiG8ShppOBF_rIm2poZ5Nzjsk7OUJpRo4LsDr8osYuIg1WG61TqMewzhfSUhYCATHCe7zx7Gwgx71kcI2auz3_sB2pjbm61sPUOxBH0JoTTP_Ns13ZWDCxPm7S4JttT8tYp1wD1gIs7fc3983UA/file?c_luid=67d0560b' --output /tmp/nikke-deploy.zip
+          curl --fail --location --retry 2 --connect-timeout 20 'https://uc797a906c115b8a914a5c5adbff.dl.dropboxusercontent.com/cd/0/get/DG7LObSC7sZXnyz4l4sACgxSkFHr19uDoljAlWHfDsH9gKskokJzHEQzyJt52SkGPnSepl4bXAMF-RsXXi12QkjDr-hYtWdfwgfvGiiStQOQfscplseOp8YYHqSE9Aec7jqBf1G5nSJ-gOefYCrMpmk4tbq_9jlK-XQb-6UxOseAqA/file?c_luid=67d0560b' --output /tmp/nikke-deploy.zip
           echo '8ac17efb155d9fe3661b2d816fe882b3553d1ef22442730c6eddd40e0bd06308  /tmp/nikke-deploy.zip' | sha256sum --check --strict
           unzip -t /tmp/nikke-deploy.zip
 
@@ -30,10 +30,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          find . -mindepth 1 -maxdepth 1 ! -name .git ! -name .github -exec rm -rf {} +
-          find .github -mindepth 1 -maxdepth 1 -exec rm -rf {} + || true
-          unzip -o /tmp/nikke-deploy.zip -d .
-          rm -f .github/workflows/bootstrap-full-deploy.yml
+          rm -rf /tmp/nikke-package
+          mkdir -p /tmp/nikke-package
+          unzip -q /tmp/nikke-deploy.zip -d /tmp/nikke-package
+          rsync -a --delete --exclude='.git/' --exclude='.github/' /tmp/nikke-package/ ./
           test -f index.html
           test -f functions/api/blabla/sync.js
           test -f public/index.html
