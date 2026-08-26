@@ -4,7 +4,13 @@ const html = fs.readFileSync('index.html', 'utf8');
 const canon = v => String(v ?? '').toLowerCase().normalize('NFKC').replace(/[^a-z0-9가-힣]+/g, '');
 
 function evalLiteral(text, label) {
-  try { return Function(`"use strict"; return (${text});`)(); }
+  try {
+    if (label === 'catalog') {
+      const identity = x => x;
+      return Function('identity', `"use strict"; return (${text});`)(identity);
+    }
+    return Function(`"use strict"; return (${text});`)();
+  }
   catch (e) { throw new Error(`${label} eval failed: ${e.message}`); }
 }
 
@@ -107,7 +113,7 @@ const treasureIds = new Set(Object.values(explicit).filter(id=>/Treasure$/i.test
 for (const row of Array.isArray(catalog)?catalog:[]) if (/Treasure$/i.test(String(row?.id||''))) treasureIds.add(String(row.id));
 const treasureApp = [...treasureIds].sort().map(id=>{
   const aliases=[];
-  for (const [k,items] of aliasSources) for (const x of items) if (x.id===id) aliases.push({name:x.name,source:x.source});
+  for (const [,items] of aliasSources) for (const x of items) if (x.id===id) aliases.push({name:x.name,source:x.source});
   const explicitNames=Object.entries(explicit).filter(([,v])=>v===id).map(([k])=>k);
   const masters=characters.filter(r=>explicitNames.some(n=>canon(n)===canon(r.name_localkey)));
   return {appId:id, explicitNames, aliases, matchedNameCodes:masters.map(r=>Number(r.name_code))};
@@ -115,7 +121,7 @@ const treasureApp = [...treasureIds].sort().map(id=>{
 
 function levenshtein(a,b){a=canon(a);b=canon(b);const m=Array.from({length:b.length+1},(_,i)=>i);for(let i=1;i<=a.length;i++){let prev=m[0];m[0]=i;for(let j=1;j<=b.length;j++){const tmp=m[j];m[j]=Math.min(m[j]+1,m[j-1]+1,prev+(a[i-1]===b[j-1]?0:1));prev=tmp;}}return m[b.length];}
 const candidateNames=[];
-for (const [k,items] of aliasSources) for (const x of items) candidateNames.push(x);
+for (const [,items] of aliasSources) for (const x of items) candidateNames.push(x);
 const fuzzy = unmapped.map(u=>{
   const ranked = candidateNames.map(x=>({id:x.id,name:x.name,source:x.source,d:levenshtein(u.name,x.name)})).sort((a,b)=>a.d-b.d).slice(0,3);
   return {...u, suggestions:ranked};
@@ -150,6 +156,6 @@ console.log(`Unmapped by existing naming: ${report.unmappedCount}`);
 console.log(`Favorite/Treasure master rows: ${report.favoriteCount}, mapped ${report.favoriteMapped}, unmapped ${report.favoriteUnmapped.length}`);
 console.log('--- FAVORITE / TREASURE ---');
 for (const x of favoriteRows) console.log(`${x.mapped?'PASS':'FAIL'} nameCode=${x.nameCode} game="${x.gameName}" -> ${x.appId||'-'} | item="${x.favoriteItemName}"`);
-console.log('--- UNMAPPED FIRST 80 ---');
-for (const x of fuzzy.slice(0,80)) console.log(`nameCode=${x.nameCode} game="${x.name}" suggestions=${x.suggestions.map(s=>`${s.name}->${s.id}(d${s.d})`).join(' | ')}`);
+console.log('--- UNMAPPED FIRST 120 ---');
+for (const x of fuzzy.slice(0,120)) console.log(`nameCode=${x.nameCode} game="${x.name}" suggestions=${x.suggestions.map(s=>`${s.name}->${s.id}(d${s.d})`).join(' | ')}`);
 console.log(`Alias collisions: ${collisions.length}`);
