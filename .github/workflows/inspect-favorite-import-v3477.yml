@@ -1,54 +1,58 @@
 name: Inspect favorite item import V34.7.7
+
 on:
+  workflow_dispatch:
   push:
     branches:
       - fix-blabla-skill-signature-favorite-v3477
+    paths:
+      - .github/workflows/inspect-favorite-import-v3477.yml
+      - scripts/audit_favorite_v3477.py
+      - scripts/extract_enikk_favorite_master_v3477.mjs
+
 permissions:
-  contents: read
+  contents: write
+
 jobs:
   inspect:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Inspect ENIKK favorite master and app phase consumers
+
+      - name: Extract live ENIKK favorite master and app consumers
+        run: node scripts/extract_enikk_favorite_master_v3477.mjs
+
+      - name: Download and inspect ENIKK APK payloads
         run: |
-          node --input-type=module <<'NODE'
-          const home=await (await fetch('https://enikk.app/soloraid/40')).text();
-          const src=[...home.matchAll(/src="([^"]*webpack-[^"]+\.js)"/g)][0]?.[1];
-          if(!src)throw new Error('webpack runtime not found');
-          const runtime=await (await fetch(new URL(src,'https://enikk.app').href)).text();
-          const hash=runtime.match(/1741:"([^"]+)"/)?.[1];
-          if(!hash)throw new Error('chunk 1741 hash not found');
-          const url=`https://enikk.app/_next/static/chunks/1741.${hash}.js`;
-          const code=await (await fetch(url)).text();
-          const raw=code.match(/JSON\.parse\('([\s\S]*?)'\)/)?.[1];
-          if(!raw)throw new Error('favorite JSON not found');
-          const jsonText=Function(`"use strict";return '${raw}'`)();
-          const data=JSON.parse(jsonText);
-          console.log('FAVORITE_CHUNK_URL='+url);
-          console.log('FAVORITE_ROOT_TYPE='+(Array.isArray(data)?'array':typeof data));
-          console.log('FAVORITE_ROOT_KEYS='+JSON.stringify(Array.isArray(data)?[]:Object.keys(data).slice(0,30)));
-          const entries=Array.isArray(data)?data:Object.entries(data).map(([key,value])=>({__key:key,...(value&&typeof value==='object'?value:{value})}));
-          console.log('FAVORITE_COUNT='+entries.length);
-          console.log('FAVORITE_SAMPLE='+JSON.stringify(entries.slice(0,20)));
-          console.log('FAVORITE_SSR='+JSON.stringify(entries.filter(x=>String(x?.rare||x?.rarity||'').toUpperCase()==='SSR').slice(0,80)));
-          console.log('FAVORITE_FIELDS='+JSON.stringify([...new Set(entries.flatMap(x=>Object.keys(x||{})))].sort()));
-          NODE
-          python3 - <<'PY'
-          from pathlib import Path
-          s=Path('index.html').read_text(encoding='utf-8')
-          for term in ['favoriteItemPhase>=','favoriteItemPhase >','favoriteItemPhase===','favoriteItemPhase ==','favoriteItemPhase','sugarTreasure','poliTreasure','laplaceTreasure']:
-              print('\n===== APP TERM',term,'=====')
-              start=0; seen=0
-              while True:
-                  i=s.find(term,start)
-                  if i<0: break
-                  seen+=1
-                  print(f'--- occurrence {seen} @ {i} ---')
-                  print(s[max(0,i-1800):min(len(s),i+3600)])
-                  start=i+len(term)
-                  if seen>=12: break
-          PY
+          set -euo pipefail
+          curl -L --fail --retry 3 -o enikk.apk https://api.enikk.app/apks/ENIKK_v1.0.6.apk
+          rm -rf enikk_unpacked
+          unzip -q -o enikk.apk -d enikk_unpacked
+          python3 scripts/audit_favorite_v3477.py enikk_unpacked
+
+      - name: Commit reproducible audit evidence
+        run: |
+          set -euo pipefail
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add audit/enikk-favorite-*
+          if git diff --cached --quiet; then
+            echo "Audit evidence unchanged"
+          else
+            git commit -m "Record ENIKK favorite-item audit evidence"
+            git push origin HEAD:${{ github.ref_name }}
+          fi
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: enikk-favorite-audit-v3477
+          path: audit/enikk-favorite-*
+          if-no-files-found: error
