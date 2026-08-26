@@ -1,0 +1,69 @@
+name: Apply V34.7.5 verified sync patch
+on:
+  push:
+    branches: [v3475-real-sync]
+permissions:
+  contents: write
+jobs:
+  apply:
+    if: ${{ !contains(github.event.head_commit.message, 'Apply V34.7.5 verified sync patch') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Apply V34.7.5 propagation and supplemental roster patches
+        run: |
+          python scripts/apply-v3475-base.py
+          python scripts/apply-v3475-supplemental.py
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('package.json')
+          s=p.read_text('utf-8').replace('"version": "34.7.4"','"version": "34.7.5"')
+          p.write_text(s,'utf-8')
+          f=Path('functions/api/blabla/sync.js')
+          x=f.read_text('utf-8').replace("const VERSION = '34.7.4';","const VERSION = '34.7.5';")
+          f.write_text(x,'utf-8')
+          t=Path('tests/verify-deploy-autosync.mjs')
+          y=t.read_text('utf-8').replace('V34.7.4 deploy autosync static/function verification: PASS','V34.7.5 deploy autosync static/function verification: PASS')
+          t.write_text(y,'utf-8')
+          PY
+      - name: Verify source and deployment build
+        run: |
+          npm run check
+          cmp --silent index.html public/index.html
+          python - <<'PY'
+          from pathlib import Path
+          import re, subprocess, sys
+          s=Path('index.html').read_text('utf-8')
+          scripts=re.findall(r'<script([^>]*)>([\s\S]*?)</script>',s,re.I)
+          count=0
+          for i,(attrs,body) in enumerate(scripts):
+              typ=re.search(r'type=["\']([^"\']+)',attrs,re.I)
+              if typ and typ.group(1).lower() not in ('text/javascript','application/javascript','module'): continue
+              if 'src=' in attrs.lower() or not body.strip(): continue
+              count+=1; p=Path(f'/tmp/inline_{i}.js'); p.write_text(body,'utf-8')
+              r=subprocess.run(['node','--check',str(p)],capture_output=True,text=True)
+              if r.returncode:
+                  print(r.stderr); sys.exit(1)
+          print('inline-js-pass',count)
+          PY
+          node scripts/build-cloudflare.mjs
+          test $(find dist-cloudflare -type f -printf '%s\n' | sort -nr | head -1) -le 5242880
+          test $(find dist-cloudflare/assets -type f | wc -l) -ge 3
+          grep -q 'V34.7.5' index.html
+          grep -q 'registerSupplementalCatalog' index.html
+          grep -q 'equipmentAttack' index.html
+      - name: Update integrity hashes
+        run: |
+          sha256sum index.html public/index.html functions/api/blabla/sync.js package.json README.md GITHUB_DEPLOY_STATUS.md > SHA256SUMS.txt
+      - name: Commit generated release
+        run: |
+          git config user.name 'comicman081-collab'
+          git config user.email 'comicman081@gmail.com'
+          git add index.html public/index.html package.json functions/api/blabla/sync.js tests/verify-deploy-autosync.mjs SHA256SUMS.txt
+          git commit -m 'Apply V34.7.5 verified sync patch'
+          git push
