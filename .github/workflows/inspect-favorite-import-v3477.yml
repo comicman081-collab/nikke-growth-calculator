@@ -12,6 +12,7 @@ on:
       - scripts/extract_app_favorite_consumer_v3477.mjs
       - scripts/crawl_enikk_favorite_phase_v3477.mjs
       - scripts/scrape_enikk_favorite_characters_v3477.mjs
+      - scripts/enrich_enikk_favorite_pages_v3477.mjs
 
 concurrency:
   group: favorite-audit-${{ github.ref }}
@@ -42,6 +43,9 @@ jobs:
 
       - name: Resolve complete ENIKK favorite-character roster
         run: node scripts/scrape_enikk_favorite_characters_v3477.mjs
+
+      - name: Parse every ENIKK Phase 1-3 skill card
+        run: node scripts/enrich_enikk_favorite_pages_v3477.mjs
 
       - name: Extract compact app favorite-item consumer evidence
         run: node scripts/extract_app_favorite_consumer_v3477.mjs
