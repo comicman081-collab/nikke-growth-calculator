@@ -22,8 +22,18 @@ jobs:
         with:
           name: nikke-v3478-apk-source
           path: |
+            .github
+            audit
+            docs
+            functions
+            public
+            scripts
+            tests
             index.html
-            public/index.html
             package.json
-            functions/api/blabla/sync.js
+            package-lock.json
+            worker-entry.js
+            wrangler.worker.jsonc
+            GITHUB_DEPLOY_STATUS.md
+            SHA256SUMS.txt
           if-no-files-found: error
