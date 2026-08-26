@@ -1,0 +1,16 @@
+# Cloudflare Pages / Workers local development example
+# Production auto-sync uses the same-origin /api/blabla/sync route.
+# Add the 29080 session as Cloudflare encrypted secrets.
+BLABLA_29080_GAME_TOKEN=
+BLABLA_29080_GAME_OPENID=
+BLABLA_29080_GAME_CHANNELID=131
+
+# 29157: HK / MC / TW (optional; separate BlaBla session required)
+BLABLA_29157_GAME_TOKEN=
+BLABLA_29157_GAME_OPENID=
+BLABLA_29157_GAME_CHANNELID=131
+
+# Optional only for cross-origin/local development.
+# Leave both empty for the production same-origin auto-link mode.
+BLABLA_ALLOWED_ORIGINS=
+BLABLA_SYNC_KEY=
