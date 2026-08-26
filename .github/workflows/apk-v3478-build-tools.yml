@@ -1,0 +1,36 @@
+name: Export Android build tools 35.0.1
+
+on:
+  push:
+    branches:
+      - apk-v3478-source-snapshot
+    paths:
+      - .github/workflows/apk-v3478-build-tools.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download pinned Android build tools
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 3 -o build-tools.zip https://dl.google.com/android/repository/build-tools_r35.0.1_linux.zip
+          echo '5993499f3229a021b89f87088c57242aeefaa62316bf3d69da7de40bfd5350f1  build-tools.zip' | sha256sum -c -
+          mkdir -p android-build-tools
+          unzip -q build-tools.zip -d extracted
+          root=$(find extracted -type f -name apksigner | head -1 | xargs dirname)
+          cp "$root/apksigner" android-build-tools/
+          cp "$root/zipalign" android-build-tools/
+          cp -R "$root/lib" android-build-tools/
+          chmod +x android-build-tools/apksigner android-build-tools/zipalign
+          ./android-build-tools/apksigner version
+          ./android-build-tools/zipalign -h >/dev/null 2>&1 || true
+      - uses: actions/upload-artifact@v4
+        with:
+          name: android-build-tools-35.0.1-signing
+          path: android-build-tools
+          if-no-files-found: error
