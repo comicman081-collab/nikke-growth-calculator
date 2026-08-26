@@ -1,0 +1,29 @@
+name: Export V34.7.8 APK source snapshot
+
+on:
+  push:
+    branches:
+      - apk-v3478-source-snapshot
+    paths:
+      - .github/workflows/apk-v3478-source-snapshot.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nikke-v3478-apk-source
+          path: |
+            index.html
+            public/index.html
+            package.json
+            functions/api/blabla/sync.js
+          if-no-files-found: error
