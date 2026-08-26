@@ -73,3 +73,20 @@ jobs:
           name: enikk-favorite-audit-v3477
           path: audit/enikk-favorite-*
           if-no-files-found: error
+
+      - name: Export checked source snapshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nikke-v3477-source-snapshot
+          path: |
+            index.html
+            public/index.html
+            package.json
+            package-lock.json
+            functions
+            scripts
+            tests
+            SHA256SUMS.txt
+            GITHUB_DEPLOY_STATUS.md
+          if-no-files-found: warn
