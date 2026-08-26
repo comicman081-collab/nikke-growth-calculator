@@ -1,0 +1,48 @@
+name: Verify EVA variant elements V34.7.6
+on:
+  push:
+    branches:
+      - verify-eva-elements-v3476
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install browser runtime dependency
+        run: npm install --no-save --ignore-scripts puppeteer-core@24.17.0
+      - name: Read actual app runtime catalog
+        env:
+          CHROME_BIN: /usr/bin/google-chrome
+        run: |
+          node --input-type=module <<'NODE'
+          import path from 'node:path';
+          import {pathToFileURL} from 'node:url';
+          import puppeteer from 'puppeteer-core';
+          const browser=await puppeteer.launch({executablePath:process.env.CHROME_BIN,headless:true,args:['--no-sandbox','--disable-dev-shm-usage','--allow-file-access-from-files']});
+          const page=await browser.newPage();
+          page.on('pageerror',e=>console.error('PAGEERROR',e.message));
+          await page.goto(pathToFileURL(path.resolve('index.html')).href,{waitUntil:'domcontentloaded',timeout:30000});
+          await page.waitForFunction(()=>Array.isArray(window.NIKKE_V26_7_CHARACTER_CATALOG)&&window.NIKKE_V26_7_CHARACTER_CATALOG.length>=100,{timeout:30000});
+          await new Promise(r=>setTimeout(r,1500));
+          const result=await page.evaluate(()=>{
+            const ids=['reiAyanami','reiAyanamiTentative','asukaShikinamiLangley','asukaWille'];
+            const cat=window.NIKKE_V26_7_CHARACTER_CATALOG||[];
+            return Object.fromEntries(ids.map(id=>{const x=cat.find(y=>y&&y.id===id);return [id,x?{name:x.name,element:x.element,skillElement:x.skillProfile?.element||'',aliases:x.aliases||[],burstStages:x.burstStages||[]}:null];}));
+          });
+          await browser.close();
+          console.log('EVA_RUNTIME='+JSON.stringify(result));
+          const norm=v=>String(v||'').toLowerCase();
+          const isFire=v=>['fire','작열'].some(k=>norm(v).includes(k));
+          const isWind=v=>['wind','풍압'].some(k=>norm(v).includes(k));
+          for(const id of Object.keys(result)) if(!result[id]) throw new Error(`missing runtime catalog entry ${id}`);
+          if(!isFire(result.reiAyanami.element)&&!isFire(result.reiAyanami.skillElement))throw new Error(`reiAyanami expected fire: ${JSON.stringify(result.reiAyanami)}`);
+          if(!isWind(result.reiAyanamiTentative.element)&&!isWind(result.reiAyanamiTentative.skillElement))throw new Error(`reiAyanamiTentative expected wind: ${JSON.stringify(result.reiAyanamiTentative)}`);
+          if(!isFire(result.asukaShikinamiLangley.element)&&!isFire(result.asukaShikinamiLangley.skillElement))throw new Error(`asukaShikinamiLangley expected fire: ${JSON.stringify(result.asukaShikinamiLangley)}`);
+          if(!isWind(result.asukaWille.element)&&!isWind(result.asukaWille.skillElement))throw new Error(`asukaWille expected wind: ${JSON.stringify(result.asukaWille)}`);
+          console.log('EVA element authority verification PASS');
+          NODE
