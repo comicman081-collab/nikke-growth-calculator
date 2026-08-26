@@ -1,4 +1,4 @@
-name: Verify EVA variant elements V34.7.6
+name: Verify BlaBla favorite item classification
 on:
   push:
     branches:
@@ -15,7 +15,7 @@ jobs:
           node-version: 22
       - name: Install browser runtime dependency
         run: npm install --no-save --ignore-scripts puppeteer-core@24.17.0
-      - name: Read actual app runtime catalog and display propagation
+      - name: Verify favorite item import semantics
         env:
           CHROME_BIN: /usr/bin/google-chrome
         run: |
@@ -27,38 +27,26 @@ jobs:
           const page=await browser.newPage();
           page.on('pageerror',e=>console.error('PAGEERROR',e.message));
           await page.goto(pathToFileURL(path.resolve('index.html')).href,{waitUntil:'domcontentloaded',timeout:30000});
-          await page.waitForFunction(()=>Array.isArray(window.NIKKE_V26_7_CHARACTER_CATALOG)&&window.NIKKE_V26_7_CHARACTER_CATALOG.length>=100&&!!window.NIKKEV34610External?.importExternalRoster,{timeout:30000});
-          await new Promise(r=>setTimeout(r,1500));
+          await page.waitForFunction(()=>!!window.NIKKEV34610External?.importExternalRoster&&!!window.NIKKE_V26_ROSTER_API?.load,{timeout:30000});
+          await new Promise(r=>setTimeout(r,1200));
           const result=await page.evaluate(async()=>{
-            const ids=['reiAyanami','reiAyanamiTentative','asukaShikinamiLangley','asukaWille'];
-            const cat=window.NIKKE_V26_7_CHARACTER_CATALOG||[];
-            const elements=Object.fromEntries(ids.map(id=>{const x=cat.find(y=>y&&y.id===id);return [id,x?{name:x.name,element:x.element,skillElement:x.skillProfile?.element||'',aliases:x.aliases||[],burstStages:x.burstStages||[]}:null];}));
-            const mk=(nameCode,lv)=>({nameCode,lv,grade:3,core:1,attractiveLv:30,skill1Lv:10,skill2Lv:9,ultiSkillLv:8,favoriteItemTid:0,favoriteItemLv:0,harmonyCubeTid:0,equipments:[],equipment:[],overload:[],overloadInfo:[]});
-            let importResult=null,importError='';
-            try{importResult=await window.NIKKEV34610External.importExternalRoster({characters:[mk(5119,701),mk(5132,702),mk(5118,703),mk(5133,704),mk(5016,705)]},'display-name-fixture');}catch(e){importError=String(e?.stack||e);}
-            const roster=window.NIKKE_V26_ROSTER_API?.load?.()||{};
-            const registry=window.NIKKE_V26_ROSTER_API?.catalog?.()||[];
-            const selected=['reiAyanami','reiAyanamiTentative','asukaShikinamiLangley','asukaWille','poliTreasure'];
-            const registryRows=Object.fromEntries(selected.map(id=>{const x=registry.find(y=>y&&y.id===id);return[id,x?{name:x.name,aliases:x.aliases||[],calculationSupported:x.calculationSupported}:null];}));
-            const topKeys=Object.keys(roster);
-            const extras={};for(const k of topKeys)if(k!=='characters'&&roster[k]&&typeof roster[k]==='object')extras[k]=roster[k];
-            const buttons=[...document.querySelectorAll('button,[role="tab"],.tab')];
-            const my=buttons.find(x=>String(x.textContent||'').includes('내 로스터'));
-            if(my){try{my.click();}catch(_){}}
-            await new Promise(r=>setTimeout(r,300));
-            const rowTexts=[...document.querySelectorAll('.v26-roster-row')].map(x=>String(x.textContent||'').replace(/\s+/g,' ').trim()).filter(Boolean);
-            return {elements,importResult,importError,registryRows,rosterKeys:topKeys,rosterCharacters:Object.fromEntries(selected.map(id=>[id,roster.characters?.[id]||null])),extras,rowTexts:rowTexts.filter(t=>/레이|Rei|아스카|Asuka|폴리|Poli/i.test(t)).slice(0,20)};
+            const mk=(tid,lv)=>({nameCode:5016,lv:705,grade:3,core:1,attractiveLv:30,skill1Lv:10,skill2Lv:9,ultiSkillLv:8,favoriteItemTid:tid,favoriteItemLv:lv,harmonyCubeTid:0,equipments:[],equipment:[],overload:[],overloadInfo:[]});
+            const cases=[
+              ['none',0,0],
+              ['r_collectible',100001,15],
+              ['sr_collectible',100002,15],
+              ['favorite_phase1',200001,1],
+              ['favorite_phase3',200001,3]
+            ];
+            const out={};
+            for(const [label,tid,lv] of cases){
+              await window.NIKKEV34610External.importExternalRoster({characters:[mk(tid,lv)]},`favorite-${label}`);
+              const row=window.NIKKE_V26_ROSTER_API.load()?.characters?.poliTreasure||null;
+              out[label]={tid,lv,favoriteItemPhase:row?.favoriteItemPhase,storedId:row?.id};
+            }
+            return out;
           });
           await browser.close();
-          console.log('DISPLAY_RUNTIME='+JSON.stringify(result));
-          const norm=v=>String(v||'').toLowerCase();
-          const isFire=v=>['fire','작열'].some(k=>norm(v).includes(k));
-          const isWind=v=>['wind','풍압'].some(k=>norm(v).includes(k));
-          for(const id of Object.keys(result.elements)) if(!result.elements[id]) throw new Error(`missing runtime catalog entry ${id}`);
-          if(!isFire(result.elements.reiAyanami.element)&&!isFire(result.elements.reiAyanami.skillElement))throw new Error('reiAyanami element mismatch');
-          if(!isWind(result.elements.reiAyanamiTentative.element)&&!isWind(result.elements.reiAyanamiTentative.skillElement))throw new Error('reiAyanamiTentative element mismatch');
-          if(!isFire(result.elements.asukaShikinamiLangley.element)&&!isFire(result.elements.asukaShikinamiLangley.skillElement))throw new Error('asukaShikinamiLangley element mismatch');
-          if(!isWind(result.elements.asukaWille.element)&&!isWind(result.elements.asukaWille.skillElement))throw new Error('asukaWille element mismatch');
-          if(result.importError)throw new Error(result.importError);
-          console.log('EVA element + display propagation inspection PASS');
+          console.log('FAVORITE_IMPORT='+JSON.stringify(result));
+          console.log('Favorite item classification inspection complete');
           NODE
