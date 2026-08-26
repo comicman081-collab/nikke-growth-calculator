@@ -33,10 +33,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: npm
 
-      - name: Install pinned build dependencies
-        run: npm ci
+      - name: Install pinned build dependencies and create lockfile
+        run: npm install --ignore-scripts --no-audit --no-fund
 
       - name: Apply audited 21-character favorite patch
         run: |
