@@ -10,21 +10,45 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Inspect favorite master and state effect parser
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Inspect ENIKK favorite master and app phase consumers
         run: |
+          node --input-type=module <<'NODE'
+          const home=await (await fetch('https://enikk.app/soloraid/40')).text();
+          const src=[...home.matchAll(/src="([^"]*webpack-[^"]+\.js)"/g)][0]?.[1];
+          if(!src)throw new Error('webpack runtime not found');
+          const runtime=await (await fetch(new URL(src,'https://enikk.app').href)).text();
+          const hash=runtime.match(/1741:"([^"]+)"/)?.[1];
+          if(!hash)throw new Error('chunk 1741 hash not found');
+          const url=`https://enikk.app/_next/static/chunks/1741.${hash}.js`;
+          const code=await (await fetch(url)).text();
+          const raw=code.match(/JSON\.parse\('([\s\S]*?)'\)/)?.[1];
+          if(!raw)throw new Error('favorite JSON not found');
+          const jsonText=Function(`"use strict";return '${raw}'`)();
+          const data=JSON.parse(jsonText);
+          console.log('FAVORITE_CHUNK_URL='+url);
+          console.log('FAVORITE_ROOT_TYPE='+(Array.isArray(data)?'array':typeof data));
+          console.log('FAVORITE_ROOT_KEYS='+JSON.stringify(Array.isArray(data)?[]:Object.keys(data).slice(0,30)));
+          const entries=Array.isArray(data)?data:Object.entries(data).map(([key,value])=>({__key:key,...(value&&typeof value==='object'?value:{value})}));
+          console.log('FAVORITE_COUNT='+entries.length);
+          console.log('FAVORITE_SAMPLE='+JSON.stringify(entries.slice(0,20)));
+          console.log('FAVORITE_SSR='+JSON.stringify(entries.filter(x=>String(x?.rare||x?.rarity||'').toUpperCase()==='SSR').slice(0,80)));
+          console.log('FAVORITE_FIELDS='+JSON.stringify([...new Set(entries.flatMap(x=>Object.keys(x||{})))].sort()));
+          NODE
           python3 - <<'PY'
           from pathlib import Path
           s=Path('index.html').read_text(encoding='utf-8')
-          terms=['function staticTables','async function staticTables','function optionMapFromEffects','optionMapFromEffects=','favorites?.[','FAVORITE','favorite_item_tid','favorite_item_lv']
-          for term in terms:
-              print('\n===== TERM',term,'=====')
+          for term in ['favoriteItemPhase>=','favoriteItemPhase >','favoriteItemPhase===','favoriteItemPhase ==','favoriteItemPhase','sugarTreasure','poliTreasure','laplaceTreasure']:
+              print('\n===== APP TERM',term,'=====')
               start=0; seen=0
               while True:
                   i=s.find(term,start)
                   if i<0: break
                   seen+=1
                   print(f'--- occurrence {seen} @ {i} ---')
-                  print(s[max(0,i-3500):min(len(s),i+8000)])
+                  print(s[max(0,i-1800):min(len(s),i+3600)])
                   start=i+len(term)
-                  if seen>=10: break
+                  if seen>=12: break
           PY
