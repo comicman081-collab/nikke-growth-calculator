@@ -115,17 +115,8 @@ jobs:
             tests/verify-blabla-propagation-v3478.mjs tests/verify-blabla-propagation-browser-v3478.mjs \
             tests/verify-cloudflare-production-v3478.mjs \
             scripts/apply-v3478-blabla-propagation.mjs \
-            .github/workflows/verify.yml .github/workflows/verify-cloudflare-production-v3478.yml \
             docs/V34.7.8_BLABLA_PROPAGATION.md \
             GITHUB_DEPLOY_STATUS.md SHA256SUMS.txt V3478_PROPAGATION_RESULTS.txt
-          git rm -f --ignore-unmatch \
-            .github/workflows/apply-blabla-propagation-v3478.yml \
-            .github/workflows/source-snapshot-v3478.yml \
-            scripts/v3478-patch-bundle.b64.part00 \
-            scripts/v3478-patch-bundle.b64.part01 \
-            scripts/v3478-patch-bundle.b64.part02 \
-            scripts/v3478-patch-bundle.b64.part03 \
-            scripts/v3478-patch-bundle.b64.part04
           if git diff --cached --quiet; then
             echo 'Canonical V34.7.8 output is unchanged'
           else
