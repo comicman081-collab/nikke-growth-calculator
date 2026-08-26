@@ -1,7 +1,7 @@
 {
   "auditVersion": 3,
   "evidenceRule": "No TID, phase, skill variant, or level rule is inferred. Values below are literal ENIKK/app source observations.",
-  "fetchedAtUtc": "2026-08-26T11:47:32.183Z",
+  "fetchedAtUtc": "2026-08-26T11:56:47.926Z",
   "source": {
     "homeUrl": "https://enikk.app/soloraid/40",
     "runtimeUrl": "https://enikk.app/_next/static/chunks/webpack-263e609f96ed74cc.js",
