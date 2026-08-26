@@ -23,10 +23,35 @@ jobs:
           cmp --silent index.html public/index.html
           grep -q 'data:audio' public/index.html
           grep -Eq 'data:image/(png|webp|jpeg)' public/index.html
-      - name: Deploy full app to temporary Cloudflare account
+      - name: Build Cloudflare asset split
         shell: bash
         run: |
-          set -o pipefail
-          npx --yes wrangler@latest deploy --temporary --config wrangler.worker.jsonc 2>&1 | tee /tmp/cloudflare-deploy.log
-          echo '--- CLOUDFLARE DEPLOY OUTPUT ---'
-          cat /tmp/cloudflare-deploy.log
+          set -euo pipefail
+          node scripts/build-cloudflare.mjs
+          test -s dist-cloudflare/index.html
+          find dist-cloudflare -type f -printf '%s %p\n' | sort -nr
+          max=$(find dist-cloudflare -type f -printf '%s\n' | sort -nr | head -1)
+          test "$max" -le 5242880
+          count=$(find dist-cloudflare/assets -type f | wc -l)
+          test "$count" -ge 3
+          grep -q '/assets/embedded-' dist-cloudflare/index.html
+          test -z "$(grep -Eo 'data:(image|audio)/[^;]+;base64,' dist-cloudflare/index.html || true)"
+      - name: Deploy full app to temporary Cloudflare account
+        id: cloudflare
+        shell: bash
+        run: |
+          set +e
+          npx --yes wrangler@latest deploy --temporary --config wrangler.worker.jsonc > /tmp/cloudflare-deploy.log 2>&1
+          status=$?
+          set -e
+          sed -E 's#(claimToken=)[A-Za-z0-9_-]+#\1[REDACTED]#g' /tmp/cloudflare-deploy.log
+          cp /tmp/cloudflare-deploy.log cloudflare-deploy-private.log
+          exit "$status"
+      - name: Preserve private Cloudflare deployment result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cloudflare-deploy-private-result
+          path: cloudflare-deploy-private.log
+          retention-days: 1
+          if-no-files-found: error
