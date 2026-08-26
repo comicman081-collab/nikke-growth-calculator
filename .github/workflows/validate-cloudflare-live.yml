@@ -1,0 +1,51 @@
+name: Validate live Cloudflare deployment
+
+on:
+  push:
+    branches:
+      - cloudflare-live-validate
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      LIVE_URL: https://nikke-growth-calculator.breezy-mum.workers.dev
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Rebuild expected Cloudflare output
+        run: node scripts/build-cloudflare.mjs
+      - name: Validate live HTML and all extracted media byte-for-byte
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --location "$LIVE_URL/" -o /tmp/live-index.html
+          cmp --silent dist-cloudflare/index.html /tmp/live-index.html
+          grep -q '34.7.4' /tmp/live-index.html
+          for local_file in dist-cloudflare/assets/*; do
+            name=$(basename "$local_file")
+            curl --fail --silent --show-error --location "$LIVE_URL/assets/$name" -o "/tmp/$name"
+            cmp --silent "$local_file" "/tmp/$name"
+          done
+          echo "live index bytes: $(wc -c < /tmp/live-index.html)"
+          echo "live media files verified: $(find dist-cloudflare/assets -type f | wc -l)"
+      - name: Validate live BlaBla bridge health route
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --location "$LIVE_URL/api/blabla/sync" -o /tmp/blabla-health.json
+          cat /tmp/blabla-health.json
+          node - <<'NODE'
+          const fs = require('fs');
+          const data = JSON.parse(fs.readFileSync('/tmp/blabla-health.json', 'utf8'));
+          if (data.ok !== true) throw new Error('bridge health not ok');
+          if (data.version !== '34.7.4') throw new Error(`unexpected bridge version: ${data.version}`);
+          if (typeof data.configured !== 'boolean') throw new Error('configured flag missing');
+          console.log(`BlaBla bridge health PASS: configured=${data.configured}, games=${JSON.stringify(data.games || [])}`);
+          NODE
