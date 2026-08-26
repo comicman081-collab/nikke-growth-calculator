@@ -1,0 +1,32 @@
+name: Cloudflare temporary deploy
+
+on:
+  push:
+    branches:
+      - cloudflare-preview-deploy
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify deployment source
+        run: |
+          npm run check
+          cmp --silent index.html public/index.html
+          grep -q 'data:audio' public/index.html
+          grep -Eq 'data:image/(png|webp|jpeg)' public/index.html
+      - name: Deploy full app to temporary Cloudflare account
+        shell: bash
+        run: |
+          set -o pipefail
+          npx --yes wrangler@latest deploy --temporary --config wrangler.worker.jsonc 2>&1 | tee /tmp/cloudflare-deploy.log
+          echo '--- CLOUDFLARE DEPLOY OUTPUT ---'
+          cat /tmp/cloudflare-deploy.log
