@@ -1,0 +1,112 @@
+name: Apply V34.7.7 all favorite phases
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - fix-blabla-skill-signature-favorite-v3477
+    paths:
+      - .github/workflows/apply-favorite-v3477.yml
+      - scripts/generate-v3477-favorite-registry.mjs
+      - scripts/v3477-favorite-phase-runtime.js
+      - scripts/apply-v3477-favorite-phase.mjs
+      - tests/verify-favorite-phase-v3477.mjs
+      - docs/V34.7.7_FAVORITE_AUDIT.md
+
+concurrency:
+  group: apply-v3477-favorite-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  apply-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install pinned build dependencies and create lockfile
+        run: npm install --ignore-scripts --no-audit --no-fund
+
+      - name: Apply audited 21-character favorite patch
+        run: |
+          set -euo pipefail
+          : > V3477_APPLY_RESULTS.txt
+          node scripts/apply-v3477-favorite-phase.mjs | tee -a V3477_APPLY_RESULTS.txt
+
+      - name: Run complete regression suite
+        run: |
+          set -euo pipefail
+          npm run check | tee -a V3477_APPLY_RESULTS.txt
+
+      - name: Build Cloudflare deployment output
+        run: |
+          set -euo pipefail
+          npm run build | tee -a V3477_APPLY_RESULTS.txt
+
+      - name: Parse every executable inline script
+        run: |
+          set -euo pipefail
+          node --input-type=module <<'NODE' | tee -a V3477_APPLY_RESULTS.txt
+          import fs from 'node:fs';
+          import os from 'node:os';
+          import path from 'node:path';
+          import { execFileSync } from 'node:child_process';
+          const html=fs.readFileSync('index.html','utf8');
+          const scripts=[...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)];
+          let checked=0;
+          for(let index=0;index<scripts.length;index+=1){
+            const attrs=scripts[index][1]||'';
+            const body=scripts[index][2]||'';
+            if(/\bsrc\s*=/.test(attrs)||!body.trim())continue;
+            const type=attrs.match(/\btype=["']([^"']+)["']/i)?.[1]?.toLowerCase()||'';
+            if(type&&!['module','text/javascript','application/javascript'].includes(type))continue;
+            const file=path.join(os.tmpdir(),`v3477-inline-${index}.${type==='module'?'mjs':'js'}`);
+            fs.writeFileSync(file,body);
+            execFileSync(process.execPath,['--check',file],{stdio:'pipe'});
+            checked+=1;
+          }
+          console.log(`V34.7.7 inline executable scripts checked: ${checked}; failures: 0`);
+          NODE
+
+      - name: Commit canonical V34.7.7 source
+        run: |
+          set -euo pipefail
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add \
+            index.html public/index.html package.json package-lock.json \
+            functions/api/blabla/sync.js \
+            tests/verify-deploy-autosync.mjs tests/verify-favorite-phase-v3477.mjs \
+            scripts/v3477-favorite-registry.generated.js \
+            docs/V34.7.7_FAVORITE_AUDIT.md \
+            GITHUB_DEPLOY_STATUS.md SHA256SUMS.txt V3477_APPLY_RESULTS.txt
+          if git diff --cached --quiet; then
+            echo 'Canonical V34.7.7 output is unchanged'
+          else
+            git commit -m 'V34.7.7: implement all 21 ENIKK favorite phases'
+            git push origin HEAD:${{ github.ref_name }}
+          fi
+
+      - name: Upload verified V34.7.7 result
+        uses: actions/upload-artifact@v4
+        with:
+          name: nikke-v3477-all-favorites-verified
+          path: |
+            index.html
+            public/index.html
+            scripts/v3477-favorite-registry.generated.js
+            tests/verify-favorite-phase-v3477.mjs
+            docs/V34.7.7_FAVORITE_AUDIT.md
+            V3477_APPLY_RESULTS.txt
+            SHA256SUMS.txt
+          if-no-files-found: error

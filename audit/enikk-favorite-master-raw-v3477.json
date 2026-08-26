@@ -1,0 +1,266 @@
+{
+  "100101": {
+    "name": "Cooking Commander Doll",
+    "rare": "R",
+    "type": "Collection",
+    "weaponType": "AR",
+    "nameCode": 0,
+    "icon": "si_favoriteitem_ar_00"
+  },
+  "100102": {
+    "name": "Cooking Commander Doll Ltd.",
+    "rare": "SR",
+    "type": "Collection",
+    "weaponType": "AR",
+    "nameCode": 0,
+    "icon": "si_favoriteitem_ar_00"
+  },
+  "100201": {
+    "name": "Shopping Commander Doll",
+    "rare": "R",
+    "type": "Collection",
+    "weaponType": "MG",
+    "nameCode": 0,
+    "icon": "si_favoriteitem_mg_00"
+  },
+  "100202": {
+    "name": "Shopping Commander Doll Ltd.",
+    "rare": "SR",
+    "type": "Collection",
+    "weaponType": "MG",
+    "nameCode": 0,
+    "icon": "si_favoriteitem_mg_00"
+  },
+  "100301": {
+    "name": "Exercising Commander Doll",
+    "rare": "R",
+    "type": "Collection",
+    "weaponType": "RL",
+    "nameCode": 0,
+    "icon": "si_favoriteitem_rl_00"
+  },
+  "100302": {
+    "name": "Exercising Commander Doll Ltd.",
+    "rare": "SR",
+    "type": "Collection",
+    "weaponType": "RL",
+    "nameCode": 0,
+    "icon": "si_favoriteitem_rl_00"
+  },
+  "100401": {
+    "name": "Battling Commander Doll",
+    "rare": "R",
+    "type": "Collection",
+    "weaponType": "SG",
+    "nameCode": 0,
+    "icon": "si_favoriteitem_sg_00"
+  },
+  "100402": {
+    "name": "Battling Commander Doll Ltd.",
+    "rare": "SR",
+    "type": "Collection",
+    "weaponType": "SG",
+    "nameCode": 0,
+    "icon": "si_favoriteitem_sg_00"
+  },
+  "100501": {
+    "name": "Coffee Commander Doll",
+    "rare": "R",
+    "type": "Collection",
+    "weaponType": "SMG",
+    "nameCode": 0,
+    "icon": "si_favoriteitem_smg_00"
+  },
+  "100502": {
+    "name": "Coffee Commander Doll Ltd.",
+    "rare": "SR",
+    "type": "Collection",
+    "weaponType": "SMG",
+    "nameCode": 0,
+    "icon": "si_favoriteitem_smg_00"
+  },
+  "100601": {
+    "name": "Napping Commander Doll",
+    "rare": "R",
+    "type": "Collection",
+    "weaponType": "SR",
+    "nameCode": 0,
+    "icon": "si_favoriteitem_sr_00"
+  },
+  "100602": {
+    "name": "Napping Commander Doll Ltd.",
+    "rare": "SR",
+    "type": "Collection",
+    "weaponType": "SR",
+    "nameCode": 0,
+    "icon": "si_favoriteitem_sr_00"
+  },
+  "200101": {
+    "name": "Toy Train Set",
+    "rare": "SSR",
+    "type": "Favorite",
+    "weaponType": "MG",
+    "nameCode": 5020,
+    "icon": "si_favoriteitem_c072_00"
+  },
+  "200201": {
+    "name": "Gamekid Evolution",
+    "rare": "SSR",
+    "type": "Favorite",
+    "weaponType": "SR",
+    "nameCode": 5003,
+    "icon": "si_favoriteitem_c210_00"
+  },
+  "200301": {
+    "name": "Beloved Pillow",
+    "rare": "SSR",
+    "type": "Favorite",
+    "weaponType": "SR",
+    "nameCode": 5010,
+    "icon": "si_favoriteitem_c142_00"
+  },
+  "200401": {
+    "name": "Hero Trilogy BD",
+    "rare": "SSR",
+    "type": "Favorite",
+    "weaponType": "RL",
+    "nameCode": 1010,
+    "icon": "si_favoriteitem_c100_00"
+  },
+  "200501": {
+    "name": "First Phone and Phone Book",
+    "rare": "SSR",
+    "type": "Favorite",
+    "weaponType": "SG",
+    "nameCode": 1022,
+    "icon": "si_favoriteitem_c112_00"
+  },
+  "200601": {
+    "name": "Sheet of Paper",
+    "rare": "SSR",
+    "type": "Favorite",
+    "weaponType": "SMG",
+    "nameCode": 5017,
+    "icon": "si_favoriteitem_c032_00"
+  },
+  "200701": {
+    "name": "Antique Compass",
+    "rare": "SSR",
+    "type": "Favorite",
+    "weaponType": "SR",
+    "nameCode": 5066,
+    "icon": "si_favoriteitem_c352_00"
+  },
+  "200801": {
+    "name": "Villain Figurine",
+    "rare": "SSR",
+    "type": "Favorite",
+    "weaponType": "SG",
+    "nameCode": 5024,
+    "icon": "si_favoriteitem_c101_00"
+  },
+  "200901": {
+    "name": "Lover Mug",
+    "rare": "SSR",
+    "type": "Favorite",
+    "weaponType": "SR",
+    "nameCode": 5028,
+    "icon": "si_favoriteitem_c141_00"
+  },
+  "201001": {
+    "name": "Police Notebook",
+    "rare": "SSR",
+    "type": "Favorite",
+    "weaponType": "SG",
+    "nameCode": 5016,
+    "icon": "si_favoriteitem_c030_00"
+  },
+  "201101": {
+    "name": "Fire Starter",
+    "rare": "SSR",
+    "type": "Favorite",
+    "weaponType": "AR",
+    "nameCode": 5081,
+    "icon": "si_favoriteitem_c192_00"
+  },
+  "201201": {
+    "name": "Music Notebook",
+    "rare": "SSR",
+    "type": "Favorite",
+    "weaponType": "AR",
+    "nameCode": 5014,
+    "icon": "si_favoriteitem_c150_00"
+  },
+  "201301": {
+    "name": "Practice Shoes",
+    "rare": "SSR",
+    "type": "Favorite",
+    "weaponType": "RL",
+    "nameCode": 5111,
+    "icon": "si_favoriteitem_c550_00"
+  },
+  "201401": {
+    "name": "Central Government Special Medal",
+    "rare": "SSR",
+    "type": "Favorite",
+    "weaponType": "AR",
+    "nameCode": 5007,
+    "icon": "si_favoriteitem_c170_00"
+  },
+  "201501": {
+    "name": "Four-Leaf Clover Bookmark",
+    "rare": "SSR",
+    "type": "Favorite",
+    "weaponType": "SG",
+    "nameCode": 5088,
+    "icon": "si_favoriteitem_c390_00"
+  },
+  "201601": {
+    "name": "Metal Pendant",
+    "rare": "SSR",
+    "type": "Favorite",
+    "weaponType": "RL",
+    "nameCode": 5021,
+    "icon": "si_favoriteitem_c080_00"
+  },
+  "201701": {
+    "name": "Peony Hairpin",
+    "rare": "SSR",
+    "type": "Favorite",
+    "weaponType": "AR",
+    "nameCode": 1021,
+    "icon": "si_favoriteitem_c281_00"
+  },
+  "201801": {
+    "name": "Precious Masks",
+    "rare": "SSR",
+    "type": "Favorite",
+    "weaponType": "AR",
+    "nameCode": 5122,
+    "icon": "si_favoriteitem_c580_00"
+  },
+  "201901": {
+    "name": "Planter We Made Together",
+    "rare": "SSR",
+    "type": "Favorite",
+    "weaponType": "MG",
+    "nameCode": 5126,
+    "icon": "si_favoriteitem_c411_00"
+  },
+  "202001": {
+    "name": "Signet Ring",
+    "rare": "SSR",
+    "type": "Favorite",
+    "weaponType": "MG",
+    "nameCode": 5045,
+    "icon": "si_favoriteitem_c280_00"
+  },
+  "202101": {
+    "name": "Commemorative Keychain",
+    "rare": "SSR",
+    "type": "Favorite",
+    "weaponType": "SG",
+    "nameCode": 5002,
+    "icon": "si_favoriteitem_c140_00"
+  }
+}

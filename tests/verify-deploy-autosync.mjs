@@ -14,7 +14,7 @@ assert.match(html, /sessionStorage/);
 assert.match(html, /NIKKEV3474DeployAutoSyncVerification/);
 // BlaBla/ENIKK nameCode is the character identity authority. Display names may collide.
 assert.match(html, /NIKKEV3476NameCodeMapping/);
-assert.match(html, /id=idForNameCode\(row\.nameCode\)\|\|supplementalId\(row\.nameCode\)/);
+assert.match(html, /favoriteAppId\|\|idForNameCode\(row\.nameCode\)\|\|supplementalId\(row\.nameCode\)/);
 assert.match(html, /"5118":"asukaShikinamiLangley"/);
 assert.match(html, /"5119":"reiAyanami"/);
 assert.match(html, /"5132":"reiAyanamiTentative"/);
@@ -49,4 +49,4 @@ assert.equal(synced.ok,true);
 assert.equal(synced.areas.length,1);
 assert.equal(synced.areas[0].area,84);
 assert.equal(synced.areas[0].details[0].skill1_lv,10);
-console.log('V34.7.6 deploy autosync + nameCode authority verification: PASS');
+console.log('V34.7.7 deploy autosync + TID/nameCode authority verification: PASS');
