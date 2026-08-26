@@ -14,6 +14,7 @@ jobs:
     timeout-minutes: 10
     env:
       LIVE_URL: https://nikke-growth-calculator.breezy-mum.workers.dev
+      BROWSER_UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -21,16 +22,26 @@ jobs:
           node-version: '22'
       - name: Rebuild expected Cloudflare output
         run: node scripts/build-cloudflare.mjs
+      - name: Probe live endpoint with browser headers
+        shell: bash
+        run: |
+          set -euo pipefail
+          status=$(curl --silent --show-error --location -A "$BROWSER_UA" -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8' -D /tmp/root.headers -o /tmp/live-index.html -w '%{http_code}' "$LIVE_URL/")
+          echo "root HTTP $status"
+          cat /tmp/root.headers
+          if [ "$status" != "200" ]; then
+            head -c 2000 /tmp/live-index.html || true
+            exit 1
+          fi
       - name: Validate live HTML and all extracted media byte-for-byte
         shell: bash
         run: |
           set -euo pipefail
-          curl --fail --silent --show-error --location "$LIVE_URL/" -o /tmp/live-index.html
           cmp --silent dist-cloudflare/index.html /tmp/live-index.html
           grep -q '34.7.4' /tmp/live-index.html
           for local_file in dist-cloudflare/assets/*; do
             name=$(basename "$local_file")
-            curl --fail --silent --show-error --location "$LIVE_URL/assets/$name" -o "/tmp/$name"
+            curl --fail --silent --show-error --location -A "$BROWSER_UA" "$LIVE_URL/assets/$name" -o "/tmp/$name"
             cmp --silent "$local_file" "/tmp/$name"
           done
           echo "live index bytes: $(wc -c < /tmp/live-index.html)"
@@ -39,7 +50,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          curl --fail --silent --show-error --location "$LIVE_URL/api/blabla/sync" -o /tmp/blabla-health.json
+          curl --fail --silent --show-error --location -A "$BROWSER_UA" -H "Origin: $LIVE_URL" "$LIVE_URL/api/blabla/sync" -o /tmp/blabla-health.json
           cat /tmp/blabla-health.json
           node - <<'NODE'
           const fs = require('fs');
