@@ -2,9 +2,14 @@
   "name": "nikke-growth-calculator",
   "private": true,
   "version": "34.7.5",
-  "description": "NIKKE Growth Calculator web deployment with BlaBlaLink Cloudflare Pages bridge",
+  "description": "NIKKE Growth Calculator web deployment with BlaBlaLink Cloudflare Worker bridge",
   "scripts": {
-    "check": "node --check functions/api/blabla/sync.js && node tests/verify-deploy-autosync.mjs"
+    "check": "node --check functions/api/blabla/sync.js && node tests/verify-deploy-autosync.mjs",
+    "build": "npm run check && node scripts/build-cloudflare.mjs",
+    "deploy": "npx wrangler deploy --config wrangler.worker.jsonc"
+  },
+  "devDependencies": {
+    "wrangler": "4.126.0"
   },
   "type": "module"
 }

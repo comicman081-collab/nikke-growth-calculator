@@ -3,6 +3,7 @@
   "name": "nikke-growth-calculator",
   "main": "./worker-entry.js",
   "compatibility_date": "2026-08-26",
+  "keep_vars": true,
   "secrets": {
     "required": [
       "BLABLA_29080_GAME_TOKEN",
