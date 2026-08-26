@@ -1,14 +1,14 @@
 {
   "auditVersion": 3,
   "evidenceRule": "No TID, phase, skill variant, or level rule is inferred. Values below are literal ENIKK/app source observations.",
-  "fetchedAtUtc": "2026-08-26T12:11:50.008Z",
+  "fetchedAtUtc": "2026-08-26T19:09:33.366Z",
   "source": {
     "homeUrl": "https://enikk.app/soloraid/40",
     "runtimeUrl": "https://enikk.app/_next/static/chunks/webpack-263e609f96ed74cc.js",
     "chunkId": "1741",
     "chunkHash": "3e09fc33232d9a00",
     "chunkUrl": "https://enikk.app/_next/static/chunks/1741.3e09fc33232d9a00.js",
-    "homeSha256": "971d96a3e4e3707a15a08bdfb20782b687ae1abf190928ac23e8a8ac296f53bd",
+    "homeSha256": "fe9413b0676d8fc8dcc0c3610d63a3d911c5b83ce600003e3c6bfec1d29c72ef",
     "runtimeSha256": "f57147f64943703acb7904e72fe6896d821a44dfcc90d8aab589900a3b85a04c",
     "chunkSha256": "152e22b9a126b0ebdf6eef218929d3a9ccd26fea77382b0cdb00cd6df7a047e7",
     "chunkBytes": 4645

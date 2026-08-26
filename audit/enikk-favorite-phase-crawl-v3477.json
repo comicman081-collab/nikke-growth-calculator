@@ -1,11 +1,11 @@
 {
   "auditVersion": 1,
   "evidenceRule": "All excerpts are literal bytes fetched from the deployed ENIKK Next.js application. No phase or skill rule is inferred here.",
-  "fetchedAtUtc": "2026-08-26T12:11:50.835Z",
+  "fetchedAtUtc": "2026-08-26T19:09:34.231Z",
   "entry": {
     "url": "https://enikk.app/soloraid/40",
-    "bytes": 418994,
-    "sha256": "971d96a3e4e3707a15a08bdfb20782b687ae1abf190928ac23e8a8ac296f53bd"
+    "bytes": 413462,
+    "sha256": "fe9413b0676d8fc8dcc0c3610d63a3d911c5b83ce600003e3c6bfec1d29c72ef"
   },
   "runtime": {
     "url": "https://enikk.app/_next/static/chunks/webpack-263e609f96ed74cc.js",
