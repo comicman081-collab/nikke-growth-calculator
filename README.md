@@ -1,2 +1,3 @@
 # nikke-growth-calculator
-nikker growth calucation
+
+V34.7.4 AutoSync deployment bootstrap in progress.
