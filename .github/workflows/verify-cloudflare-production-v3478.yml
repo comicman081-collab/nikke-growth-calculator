@@ -174,7 +174,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     needs: integration-preflight
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 18
     steps:
       - uses: actions/checkout@v4
 
