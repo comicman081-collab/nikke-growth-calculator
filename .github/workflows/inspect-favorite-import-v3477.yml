@@ -10,6 +10,7 @@ on:
       - scripts/audit_favorite_v3477.py
       - scripts/extract_enikk_favorite_master_v3477.mjs
       - scripts/extract_app_favorite_consumer_v3477.mjs
+      - scripts/crawl_enikk_favorite_phase_v3477.mjs
 
 concurrency:
   group: favorite-audit-${{ github.ref }}
@@ -34,6 +35,9 @@ jobs:
 
       - name: Extract live ENIKK favorite master
         run: node scripts/extract_enikk_favorite_master_v3477.mjs
+
+      - name: Crawl deployed ENIKK phase and skill evidence
+        run: node scripts/crawl_enikk_favorite_phase_v3477.mjs
 
       - name: Extract compact app favorite-item consumer evidence
         run: node scripts/extract_app_favorite_consumer_v3477.mjs
