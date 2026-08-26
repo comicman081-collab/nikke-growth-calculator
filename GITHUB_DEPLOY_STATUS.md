@@ -1,6 +1,6 @@
 # GitHub / Cloudflare deploy status
 
-Current production build: **V34.7.7 ENIKK Favorite Phase Skill Resolution**
+Current production build: **V34.7.8 BlaBla four-surface calculation propagation**
 
 ## Ready
 
@@ -19,6 +19,10 @@ Current production build: **V34.7.7 ENIKK Favorite Phase Skill Resolution**
 - 21-character ENIKK favorite-item registry is TID-authoritative; Phase 0 uses base skills and Phases 1-3 replace only the audited slot.
 - Viper TID 200501 and Sugar TID 202101 are permanently regression-tested.
 - Imported skill levels are preserved independently of favorite-item phase.
+
+- BlaBla four-surface propagation is verified from one central roster into Precision, My Roster, Simulation, and 5-deck calculation contexts.
+- The 5-deck optimizer now preserves favorite phase and observed equipment ATK/HP/DEF instead of overwriting the rich central context.
+- Live Cloudflare verification checks the deployed HTML and same-origin /api/blabla/sync bridge.
 
 ## Automatic deployment
 

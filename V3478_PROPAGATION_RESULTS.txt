@@ -1,0 +1,71 @@
+{
+  "version": "34.7.8",
+  "indexBytes": 9366402,
+  "indexSha256": "fd4a1b70de192833f9a312569d5b847e8ef9859a2a4452e7784e1455016b3958"
+}
+
+> nikke-growth-calculator@34.7.8 check
+> node --check functions/api/blabla/sync.js && node tests/verify-deploy-autosync.mjs && node tests/verify-favorite-phase-v3477.mjs && node tests/verify-blabla-propagation-v3478.mjs
+
+V34.7.8 deploy autosync + TID/nameCode authority verification: PASS
+V34.7.8 ENIKK 21 favorite characters / 21 TIDs / 63 phase cards / base skills / level preservation / calculation regression: PASS
+V34.7.8 BlaBla bridge + four-surface propagation static verification: PASS
+
+> nikke-growth-calculator@34.7.8 build
+> npm run check && node scripts/build-cloudflare.mjs
+
+
+> nikke-growth-calculator@34.7.8 check
+> node --check functions/api/blabla/sync.js && node tests/verify-deploy-autosync.mjs && node tests/verify-favorite-phase-v3477.mjs && node tests/verify-blabla-propagation-v3478.mjs
+
+V34.7.8 deploy autosync + TID/nameCode authority verification: PASS
+V34.7.8 ENIKK 21 favorite characters / 21 TIDs / 63 phase cards / base skills / level preservation / calculation regression: PASS
+V34.7.8 BlaBla bridge + four-surface propagation static verification: PASS
+image/webp -> /assets/embedded-d06f53a6a32f681c.webp (298672 bytes)
+image/png -> /assets/embedded-09c0b4e4111442bc.png (485638 bytes)
+audio/mp4 -> /assets/embedded-1589970c503504f5.m4a (2639405 bytes)
+Cloudflare build ready: index=4005053 bytes, extracted assets=3
+
+> nikke-growth-calculator@34.7.8 check:browser
+> node tests/verify-blabla-propagation-browser-v3478.mjs
+
+{
+  "version": "34.7.8",
+  "bridge": {
+    "imported": 107,
+    "area": 84
+  },
+  "roster": {
+    "id": "sugarTreasure",
+    "level": 450,
+    "skills": {
+      "skill1": 2,
+      "skill2": 7,
+      "burst": 9
+    },
+    "phase": 3,
+    "cube": "diffusion",
+    "equipmentAttack": 8818,
+    "equipmentHp": 198316,
+    "equipmentDefense": 1318,
+    "slots": 4
+  },
+  "precision": {
+    "total": 339226.3757679811,
+    "pass": true
+  },
+  "simulation": {
+    "phase0": 1160323297.1090527,
+    "phase3": 1488118761.903383,
+    "gearAttack": 8818
+  },
+  "fiveDeck": {
+    "candidates": 351,
+    "teams": 5,
+    "unique": 25,
+    "totalScore": 29473004.027075995,
+    "capturedPhase": 3
+  }
+}
+V34.7.8 BlaBla -> My Roster -> Precision -> Simulation -> 5-deck browser verification: PASS
+V34.7.8 inline executable scripts checked: 99; failures: 0
