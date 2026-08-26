@@ -9,7 +9,7 @@ fs.mkdirSync(OUT, { recursive: true });
 
 const strongTerms = [
   'favoriteItemLv', 'favoriteItemTid', 'favoriteItemPhase', 'favorite_item',
-  'skill1Lv', 'skill2Lv', 'ultiSkillLv',
+  'skill1Lv', 'skill2Lv', 'ultiSkillLv', 'hasFavoriteItem', 'name_localkey',
   '200401', '200501', '201001', 'si_favoriteitem_c100_00',
   'si_favoriteitem_c112_00', 'si_favoriteitem_c030_00',
   'Laplace', 'Sugar', 'Poli', '라플라스', '슈가', '폴리',
@@ -59,7 +59,6 @@ const runtime = await fetchText(runtimeUrl);
 for (const match of runtime.matchAll(/(?:^|[,{}])\s*(\d+)\s*:\s*["']([A-Za-z0-9_-]{4,})["']/g)) {
   urls.add(`${ORIGIN}/_next/static/chunks/${match[1]}.${match[2]}.js`);
 }
-// Capture any literal Next chunk path present in the page/runtime as well.
 for (const source of [html, runtime]) {
   for (const match of source.matchAll(/(?:https?:\/\/[^"'\\\s]+)?\/_next\/static\/chunks\/[^"'\\\s]+\.js/g)) {
     urls.add(new URL(match[0], ORIGIN).href);
@@ -68,6 +67,7 @@ for (const source of [html, runtime]) {
 
 const queue = [...urls].sort();
 const results = [];
+const allChunkInventory = [];
 const failures = [];
 let cursor = 0;
 async function worker() {
@@ -77,8 +77,10 @@ async function worker() {
     const url = queue[index];
     try {
       const text = url === runtimeUrl ? runtime : await fetchText(url);
-      const strong = strongTerms.filter(term => text.toLocaleLowerCase('en-US').includes(term.toLocaleLowerCase('en-US')));
-      if (!strong.length) continue;
+      const digest = sha256(text);
+      const observed = strongTerms.filter(term => text.toLocaleLowerCase('en-US').includes(term.toLocaleLowerCase('en-US')));
+      allChunkInventory.push({ url, bytes: Buffer.byteLength(text), sha256: digest, observedTerms: observed });
+      if (!observed.length) continue;
       const hits = [];
       for (const term of [...strongTerms, ...structureTerms]) {
         if (text.toLocaleLowerCase('en-US').includes(term.toLocaleLowerCase('en-US'))) hits.push(...contexts(text, term));
@@ -90,8 +92,8 @@ async function worker() {
       results.push({
         url,
         bytes: Buffer.byteLength(text),
-        sha256: sha256(text),
-        strongTerms: strong,
+        sha256: digest,
+        strongTerms: observed,
         hits: hits.slice(0, 1000),
         endpoints,
       });
@@ -102,6 +104,7 @@ async function worker() {
 }
 await Promise.all(Array.from({ length: Math.min(16, queue.length || 1) }, worker));
 results.sort((a, b) => a.url.localeCompare(b.url));
+allChunkInventory.sort((a, b) => a.url.localeCompare(b.url));
 failures.sort((a, b) => a.url.localeCompare(b.url));
 
 const cross = {};
@@ -109,12 +112,14 @@ for (const term of strongTerms) {
   cross[term] = results.filter(result => result.strongTerms.some(value => value.toLocaleLowerCase('en-US') === term.toLocaleLowerCase('en-US'))).map(result => result.url);
 }
 const report = {
-  auditVersion: 1,
+  auditVersion: 2,
   evidenceRule: 'All excerpts are literal bytes fetched from the deployed ENIKK Next.js application. No phase or skill rule is inferred here.',
   fetchedAtUtc: new Date().toISOString(),
   entry: { url: ENTRY, bytes: Buffer.byteLength(html), sha256: sha256(html) },
   runtime: { url: runtimeUrl, bytes: Buffer.byteLength(runtime), sha256: sha256(runtime) },
   discoveredChunkCount: queue.length,
+  discoveredChunkUrls: queue,
+  allChunkInventory,
   relevantChunkCount: results.length,
   failureCount: failures.length,
   crossReference: cross,
@@ -143,7 +148,7 @@ const lines = [
   '## Relevant chunks',
   ...results.map(result => `- \`${result.url}\` — ${result.strongTerms.join(', ')} — SHA-256 \`${result.sha256}\``),
   '',
-  '## Full excerpts',
+  '## Full excerpts and all-chunk inventory',
   '- `audit/enikk-favorite-phase-crawl-v3477.json`',
 ];
 fs.writeFileSync(`${OUT}/enikk-favorite-phase-crawl-v3477.md`, lines.join('\n') + '\n');
@@ -151,5 +156,6 @@ console.log(JSON.stringify({
   discoveredChunkCount: queue.length,
   relevantChunkCount: results.length,
   failureCount: failures.length,
+  characterMasterCandidates: allChunkInventory.filter(entry => entry.observedTerms.includes('name_localkey') || entry.observedTerms.includes('hasFavoriteItem')).map(entry => entry.url),
   crossReference: cross,
 }, null, 2));
