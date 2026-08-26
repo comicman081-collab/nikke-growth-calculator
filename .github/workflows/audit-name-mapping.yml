@@ -14,11 +14,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Audit ENIKK names against app aliases
-        run: node scripts/audit-name-mapping.mjs
+      - name: Install runtime audit dependency only
+        run: npm install --no-save --ignore-scripts puppeteer-core@24.17.0
+      - name: Audit actual app runtime mapping in Chrome
+        env:
+          CHROME_BIN: /usr/bin/google-chrome
+        run: node scripts/audit-runtime-name-mapping.mjs
       - name: Upload audit report
         uses: actions/upload-artifact@v4
         with:
-          name: name-mapping-audit
+          name: runtime-name-mapping-audit
           path: audit-output/
           if-no-files-found: error
