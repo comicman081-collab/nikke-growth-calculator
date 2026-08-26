@@ -1,7 +1,7 @@
 {
-  "auditVersion": 3,
+  "auditVersion": 4,
   "evidenceRule": "The 21-character roster is driven by the 21 literal SSR Favorite master TIDs. Each item is joined to the deployed character master by the c### resource ID encoded in its icon; nameCode is only a recorded fallback. Phase order and skill excerpts come from each deployed ENIKK character page.",
-  "fetchedAtUtc": "2026-08-26T19:17:18.193Z",
+  "fetchedAtUtc": "2026-08-26T19:25:11.736Z",
   "counts": {
     "discoveredChunks": 49,
     "fetchedChunkFailures": 0,
@@ -10,7 +10,8 @@
     "resolvedFavoriteTids": 21,
     "favoriteCharacters": 21,
     "completePhaseOrders": 21,
-    "completeFavoriteSkillCards": 21
+    "completeFavoriteSkillCards": 21,
+    "completeBaseDetails": 21
   },
   "chunkEvidence": [
     {
@@ -444,7 +445,79 @@
         ],
         "favoriteSkillCardsComplete": true,
         "favoritePanelText": "",
-        "lineCount": 149
+        "lineCount": 149,
+        "baseDetail": {
+          "source": "ENIKK deployed RSC detail object",
+          "htmlSha256": "f2e3c31a1282b2d1f7e01dbdeaff519247a5821369b7fe21066ff4288ac7ff1b",
+          "shot": {
+            "weaponType": "MG",
+            "name": "Machine Gun",
+            "maxAmmo": 300,
+            "reloadSeconds": 2.16,
+            "fireType": "Instant",
+            "description": "■ Affects target(s).\nDeals 5.38% of ATK as damage.\nDeals 200% damage when attacking core."
+          },
+          "skills": [
+            {
+              "slot": "skill1",
+              "name": "Strawberry Fields",
+              "icon": "icn_skill_defup_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates when entering Full Burst. Affects self.\nDEF ▲ 15.12% for 10 sec.\n■ Activates when attacked during Full Burst. Affects self.\nRestores HP equal to 7.56% of the skill user's final max HP.",
+                "■ Activates when entering Full Burst. Affects self.\nDEF ▲ 16.32% for 10 sec.\n■ Activates when attacked during Full Burst. Affects self.\nRestores HP equal to 8.16% of the skill user's final max HP.",
+                "■ Activates when entering Full Burst. Affects self.\nDEF ▲ 17.52% for 10 sec.\n■ Activates when attacked during Full Burst. Affects self.\nRestores HP equal to 8.76% of the skill user's final max HP.",
+                "■ Activates when entering Full Burst. Affects self.\nDEF ▲ 18.72% for 10 sec.\n■ Activates when attacked during Full Burst. Affects self.\nRestores HP equal to 9.36% of the skill user's final max HP.",
+                "■ Activates when entering Full Burst. Affects self.\nDEF ▲ 19.92% for 10 sec.\n■ Activates when attacked during Full Burst. Affects self.\nRestores HP equal to 9.96% of the skill user's final max HP.",
+                "■ Activates when entering Full Burst. Affects self.\nDEF ▲ 21.12% for 10 sec.\n■ Activates when attacked during Full Burst. Affects self.\nRestores HP equal to 10.56% of the skill user's final max HP.",
+                "■ Activates when entering Full Burst. Affects self.\nDEF ▲ 22.32% for 10 sec.\n■ Activates when attacked during Full Burst. Affects self.\nRestores HP equal to 11.16% of the skill user's final max HP.",
+                "■ Activates when entering Full Burst. Affects self.\nDEF ▲ 23.52% for 10 sec.\n■ Activates when attacked during Full Burst. Affects self.\nRestores HP equal to 11.76% of the skill user's final max HP.",
+                "■ Activates when entering Full Burst. Affects self.\nDEF ▲ 24.72% for 10 sec.\n■ Activates when attacked during Full Burst. Affects self.\nRestores HP equal to 12.36% of the skill user's final max HP.",
+                "■ Activates when entering Full Burst. Affects self.\nDEF ▲ 25.92% for 10 sec.\n■ Activates when attacked during Full Burst. Affects self.\nRestores HP equal to 12.96% of the skill user's final max HP."
+              ],
+              "level10": "■ Activates when entering Full Burst. Affects self.\nDEF ▲ 25.92% for 10 sec.\n■ Activates when attacked during Full Burst. Affects self.\nRestores HP equal to 12.96% of the skill user's final max HP."
+            },
+            {
+              "slot": "skill2",
+              "name": "Sweet Strawberry Goodness",
+              "icon": "icn_skill_statammo_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates after landing 100 normal attacks. Affects self.\nStrawberry Candy: Max Ammunition Capacity ▲ 28.35%. Stacks up to 10 times and lasts for 10 sec.\n■ Activates when Strawberry Candy is at max stacks. Removes all stacks and affects all allies.\nReloads 43.31% of the magazine.",
+                "■ Activates after landing 100 normal attacks. Affects self.\nStrawberry Candy: Max Ammunition Capacity ▲ 31.5%. Stacks up to 10 times and lasts for 10 sec.\n■ Activates when Strawberry Candy is at max stacks. Removes all stacks and affects all allies.\nReloads 48.12% of the magazine.",
+                "■ Activates after landing 100 normal attacks. Affects self.\nStrawberry Candy: Max Ammunition Capacity ▲ 34.65%. Stacks up to 10 times and lasts for 10 sec.\n■ Activates when Strawberry Candy is at max stacks. Removes all stacks and affects all allies.\nReloads 52.93% of the magazine.",
+                "■ Activates after landing 100 normal attacks. Affects self.\nStrawberry Candy: Max Ammunition Capacity ▲ 37.8%. Stacks up to 10 times and lasts for 10 sec.\n■ Activates when Strawberry Candy is at max stacks. Removes all stacks and affects all allies.\nReloads 57.75% of the magazine.",
+                "■ Activates after landing 100 normal attacks. Affects self.\nStrawberry Candy: Max Ammunition Capacity ▲ 40.95%. Stacks up to 10 times and lasts for 10 sec.\n■ Activates when Strawberry Candy is at max stacks. Removes all stacks and affects all allies.\nReloads 62.56% of the magazine.",
+                "■ Activates after landing 100 normal attacks. Affects self.\nStrawberry Candy: Max Ammunition Capacity ▲ 44.1%. Stacks up to 10 times and lasts for 10 sec.\n■ Activates when Strawberry Candy is at max stacks. Removes all stacks and affects all allies.\nReloads 67.37% of the magazine.",
+                "■ Activates after landing 100 normal attacks. Affects self.\nStrawberry Candy: Max Ammunition Capacity ▲ 47.25%. Stacks up to 10 times and lasts for 10 sec.\n■ Activates when Strawberry Candy is at max stacks. Removes all stacks and affects all allies.\nReloads 72.18% of the magazine.",
+                "■ Activates after landing 100 normal attacks. Affects self.\nStrawberry Candy: Max Ammunition Capacity ▲ 50.4%. Stacks up to 10 times and lasts for 10 sec.\n■ Activates when Strawberry Candy is at max stacks. Removes all stacks and affects all allies.\nReloads 77% of the magazine.",
+                "■ Activates after landing 100 normal attacks. Affects self.\nStrawberry Candy: Max Ammunition Capacity ▲ 53.55%. Stacks up to 10 times and lasts for 10 sec.\n■ Activates when Strawberry Candy is at max stacks. Removes all stacks and affects all allies.\nReloads 81.81% of the magazine.",
+                "■ Activates after landing 100 normal attacks. Affects self.\nStrawberry Candy: Max Ammunition Capacity ▲ 56.7%. Stacks up to 10 times and lasts for 10 sec.\n■ Activates when Strawberry Candy is at max stacks. Removes all stacks and affects all allies.\nReloads 86.62% of the magazine."
+              ],
+              "level10": "■ Activates after landing 100 normal attacks. Affects self.\nStrawberry Candy: Max Ammunition Capacity ▲ 56.7%. Stacks up to 10 times and lasts for 10 sec.\n■ Activates when Strawberry Candy is at max stacks. Removes all stacks and affects all allies.\nReloads 86.62% of the magazine."
+            },
+            {
+              "slot": "burst",
+              "name": "Strawberry Shock",
+              "icon": "icn_skill_c072_ult",
+              "cooldownSeconds": 20,
+              "levels": [
+                "■ Affects 5 enemy unit(s) with the highest final ATK.\nDeals 154.19% of final ATK as damage.\nTaunt for 2.53 sec.",
+                "■ Affects 5 enemy unit(s) with the highest final ATK.\nDeals 170.36% of final ATK as damage.\nTaunt for 2.81 sec.",
+                "■ Affects 5 enemy unit(s) with the highest final ATK.\nDeals 186.52% of final ATK as damage.\nTaunt for 3.09 sec.",
+                "■ Affects 5 enemy unit(s) with the highest final ATK.\nDeals 202.68% of final ATK as damage.\nTaunt for 3.37 sec.",
+                "■ Affects 5 enemy unit(s) with the highest final ATK.\nDeals 218.85% of final ATK as damage.\nTaunt for 3.65 sec.",
+                "■ Affects 5 enemy unit(s) with the highest final ATK.\nDeals 235.01% of final ATK as damage.\nTaunt for 3.93 sec.",
+                "■ Affects 5 enemy unit(s) with the highest final ATK.\nDeals 251.17% of final ATK as damage.\nTaunt for 4.21 sec.",
+                "■ Affects 5 enemy unit(s) with the highest final ATK.\nDeals 267.34% of final ATK as damage.\nTaunt for 4.5 sec.",
+                "■ Affects 5 enemy unit(s) with the highest final ATK.\nDeals 283.5% of final ATK as damage.\nTaunt for 4.78 sec.",
+                "■ Affects 5 enemy unit(s) with the highest final ATK.\nDeals 299.66% of final ATK as damage.\nTaunt for 5.06 sec."
+              ],
+              "level10": "■ Affects 5 enemy unit(s) with the highest final ATK.\nDeals 299.66% of final ATK as damage.\nTaunt for 5.06 sec."
+            }
+          ],
+          "complete": true
+        }
       }
     },
     {
@@ -781,7 +854,79 @@
         ],
         "favoriteSkillCardsComplete": true,
         "favoritePanelText": "",
-        "lineCount": 140
+        "lineCount": 140,
+        "baseDetail": {
+          "source": "ENIKK deployed RSC detail object",
+          "htmlSha256": "49f2bfbc30a87360c245a75da9b98eee27dad2fad7c2fb6e417e36ecca57ca95",
+          "shot": {
+            "weaponType": "SR",
+            "name": "Sniper Rifle",
+            "maxAmmo": 6,
+            "reloadSeconds": 2,
+            "fireType": "Instant",
+            "description": "■ Affects target(s).\nDeals 69.04% of ATK as damage.\nCharge Time: 1 sec.\nFull Charge Damage: 250% of damage.\nDeals 200% damage when attacking core."
+          },
+          "skills": [
+            {
+              "slot": "skill1",
+              "name": "Invasion",
+              "icon": "icn_skill_atkdown_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates when the last round of ammunition hits while the skill user is in the Collect Hacking Code state. Affects the target.\nATK ▼ 7.57% for 5 sec.\nDEF ▼ 7.57% for 5 sec.",
+                "■ Activates when the last round of ammunition hits while the skill user is in the Collect Hacking Code state. Affects the target.\nATK ▼ 8.26% for 5 sec.\nDEF ▼ 8.26% for 5 sec.",
+                "■ Activates when the last round of ammunition hits while the skill user is in the Collect Hacking Code state. Affects the target.\nATK ▼ 8.95% for 5 sec.\nDEF ▼ 8.95% for 5 sec.",
+                "■ Activates when the last round of ammunition hits while the skill user is in the Collect Hacking Code state. Affects the target.\nATK ▼ 9.63% for 5 sec.\nDEF ▼ 9.63% for 5 sec.",
+                "■ Activates when the last round of ammunition hits while the skill user is in the Collect Hacking Code state. Affects the target.\nATK ▼ 10.32% for 5 sec.\nDEF ▼ 10.32% for 5 sec.",
+                "■ Activates when the last round of ammunition hits while the skill user is in the Collect Hacking Code state. Affects the target.\nATK ▼ 11.01% for 5 sec.\nDEF ▼ 11.01% for 5 sec.",
+                "■ Activates when the last round of ammunition hits while the skill user is in the Collect Hacking Code state. Affects the target.\nATK ▼ 11.7% for 5 sec.\nDEF ▼ 11.7% for 5 sec.",
+                "■ Activates when the last round of ammunition hits while the skill user is in the Collect Hacking Code state. Affects the target.\nATK ▼ 12.39% for 5 sec.\nDEF ▼ 12.39% for 5 sec.",
+                "■ Activates when the last round of ammunition hits while the skill user is in the Collect Hacking Code state. Affects the target.\nATK ▼ 13.08% for 5 sec.\nDEF ▼ 13.08% for 5 sec.",
+                "■ Activates when the last round of ammunition hits while the skill user is in the Collect Hacking Code state. Affects the target.\nATK ▼ 13.77% for 5 sec.\nDEF ▼ 13.77% for 5 sec."
+              ],
+              "level10": "■ Activates when the last round of ammunition hits while the skill user is in the Collect Hacking Code state. Affects the target.\nATK ▼ 13.77% for 5 sec.\nDEF ▼ 13.77% for 5 sec."
+            },
+            {
+              "slot": "skill2",
+              "name": "Secret Code",
+              "icon": "icn_skill_atkup_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates when the last round of ammunition hits. Affects self.\nCollect Hacking Code: ATK ▲ 9.24%. Stacks up to 5 times and lasts for 15 sec.",
+                "■ Activates when the last round of ammunition hits. Affects self.\nCollect Hacking Code: ATK ▲ 10.08%. Stacks up to 5 times and lasts for 15 sec.",
+                "■ Activates when the last round of ammunition hits. Affects self.\nCollect Hacking Code: ATK ▲ 10.92%. Stacks up to 5 times and lasts for 15 sec.",
+                "■ Activates when the last round of ammunition hits. Affects self.\nCollect Hacking Code: ATK ▲ 11.76%. Stacks up to 5 times and lasts for 15 sec.",
+                "■ Activates when the last round of ammunition hits. Affects self.\nCollect Hacking Code: ATK ▲ 12.6%. Stacks up to 5 times and lasts for 15 sec.",
+                "■ Activates when the last round of ammunition hits. Affects self.\nCollect Hacking Code: ATK ▲ 13.44%. Stacks up to 5 times and lasts for 15 sec.",
+                "■ Activates when the last round of ammunition hits. Affects self.\nCollect Hacking Code: ATK ▲ 14.28%. Stacks up to 5 times and lasts for 15 sec.",
+                "■ Activates when the last round of ammunition hits. Affects self.\nCollect Hacking Code: ATK ▲ 15.12%. Stacks up to 5 times and lasts for 15 sec.",
+                "■ Activates when the last round of ammunition hits. Affects self.\nCollect Hacking Code: ATK ▲ 15.96%. Stacks up to 5 times and lasts for 15 sec.",
+                "■ Activates when the last round of ammunition hits. Affects self.\nCollect Hacking Code: ATK ▲ 16.8%. Stacks up to 5 times and lasts for 15 sec."
+              ],
+              "level10": "■ Activates when the last round of ammunition hits. Affects self.\nCollect Hacking Code: ATK ▲ 16.8%. Stacks up to 5 times and lasts for 15 sec."
+            },
+            {
+              "slot": "burst",
+              "name": "Partisan Protocol",
+              "icon": "icn_skill_c210_ult",
+              "cooldownSeconds": 20,
+              "levels": [
+                "■ Affects the 10 enemy unit(s) with the highest final DEF.\nDeals 67.27% of final ATK as damage.\nDEF ▼ 1.49% for 5 sec.\n■ Activates when Collect Hacking Code is at max stacks. Affects the same target(s).\nDeals 67.27% of final ATK as additional damage.",
+                "■ Affects the 10 enemy unit(s) with the highest final DEF.\nDeals 73.39% of final ATK as damage.\nDEF ▼ 1.63% for 5 sec.\n■ Activates when Collect Hacking Code is at max stacks. Affects the same target(s).\nDeals 73.39% of final ATK as additional damage.",
+                "■ Affects the 10 enemy unit(s) with the highest final DEF.\nDeals 79.51% of final ATK as damage.\nDEF ▼ 1.76% for 5 sec.\n■ Activates when Collect Hacking Code is at max stacks. Affects the same target(s).\nDeals 79.51% of final ATK as additional damage.",
+                "■ Affects the 10 enemy unit(s) with the highest final DEF.\nDeals 85.62% of final ATK as damage.\nDEF ▼ 1.9% for 5 sec.\n■ Activates when Collect Hacking Code is at max stacks. Affects the same target(s).\nDeals 85.62% of final ATK as additional damage.",
+                "■ Affects the 10 enemy unit(s) with the highest final DEF.\nDeals 91.74% of final ATK as damage.\nDEF ▼ 2.03% for 5 sec.\n■ Activates when Collect Hacking Code is at max stacks. Affects the same target(s).\nDeals 91.74% of final ATK as additional damage.",
+                "■ Affects the 10 enemy unit(s) with the highest final DEF.\nDeals 97.86% of final ATK as damage.\nDEF ▼ 2.17% for 5 sec.\n■ Activates when Collect Hacking Code is at max stacks. Affects the same target(s).\nDeals 97.86% of final ATK as additional damage.",
+                "■ Affects the 10 enemy unit(s) with the highest final DEF.\nDeals 103.97% of final ATK as damage.\nDEF ▼ 2.31% for 5 sec.\n■ Activates when Collect Hacking Code is at max stacks. Affects the same target(s).\nDeals 103.97% of final ATK as additional damage.",
+                "■ Affects the 10 enemy unit(s) with the highest final DEF.\nDeals 110.09% of final ATK as damage.\nDEF ▼ 2.44% for 5 sec.\n■ Activates when Collect Hacking Code is at max stacks. Affects the same target(s).\nDeals 110.09% of final ATK as additional damage.",
+                "■ Affects the 10 enemy unit(s) with the highest final DEF.\nDeals 116.21% of final ATK as damage.\nDEF ▼ 2.58% for 5 sec.\n■ Activates when Collect Hacking Code is at max stacks. Affects the same target(s).\nDeals 116.21% of final ATK as additional damage.",
+                "■ Affects the 10 enemy unit(s) with the highest final DEF.\nDeals 122.32% of final ATK as damage.\nDEF ▼ 2.71% for 5 sec.\n■ Activates when Collect Hacking Code is at max stacks. Affects the same target(s).\nDeals 122.32% of final ATK as additional damage."
+              ],
+              "level10": "■ Affects the 10 enemy unit(s) with the highest final DEF.\nDeals 122.32% of final ATK as damage.\nDEF ▼ 2.71% for 5 sec.\n■ Activates when Collect Hacking Code is at max stacks. Affects the same target(s).\nDeals 122.32% of final ATK as additional damage."
+            }
+          ],
+          "complete": true
+        }
       }
     },
     {
@@ -1158,7 +1303,79 @@
         ],
         "favoriteSkillCardsComplete": true,
         "favoritePanelText": "",
-        "lineCount": 142
+        "lineCount": 142,
+        "baseDetail": {
+          "source": "ENIKK deployed RSC detail object",
+          "htmlSha256": "b53f67af95f6bb13cada14b9c5c4e7e02fbb1cd20278cea34a8a396112778778",
+          "shot": {
+            "weaponType": "SR",
+            "name": "Sniper Rifle",
+            "maxAmmo": 6,
+            "reloadSeconds": 1.5,
+            "fireType": "Instant",
+            "description": "■ Affects target(s).\nDeals 65.95% of ATK as damage.\nCharge Time: 1 sec.\nFull Charge Damage: 250% of damage.\nDeals 200% damage when attacking core."
+          },
+          "skills": [
+            {
+              "slot": "skill1",
+              "name": "... I Want to Sleep",
+              "icon": "icn_skill_defdown_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates after landing 4 normal attacks. Affects the target(s).\nDEF ▼ 9.35% for 10 sec.",
+                "■ Activates after landing 4 normal attacks. Affects the target(s).\nDEF ▼ 10.08% for 10 sec.",
+                "■ Activates after landing 4 normal attacks. Affects the target(s).\nDEF ▼ 10.8% for 10 sec.",
+                "■ Activates after landing 4 normal attacks. Affects the target(s).\nDEF ▼ 11.52% for 10 sec.",
+                "■ Activates after landing 4 normal attacks. Affects the target(s).\nDEF ▼ 12.24% for 10 sec.",
+                "■ Activates after landing 4 normal attacks. Affects the target(s).\nDEF ▼ 12.96% for 10 sec.",
+                "■ Activates after landing 4 normal attacks. Affects the target(s).\nDEF ▼ 13.68% for 10 sec.",
+                "■ Activates after landing 4 normal attacks. Affects the target(s).\nDEF ▼ 14.4% for 10 sec.",
+                "■ Activates after landing 4 normal attacks. Affects the target(s).\nDEF ▼ 15.12% for 10 sec.",
+                "■ Activates after landing 4 normal attacks. Affects the target(s).\nDEF ▼ 15.84% for 10 sec."
+              ],
+              "level10": "■ Activates after landing 4 normal attacks. Affects the target(s).\nDEF ▼ 15.84% for 10 sec."
+            },
+            {
+              "slot": "skill2",
+              "name": "... Ah",
+              "icon": "icn_skill_stathp_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates when performing a Full Charge attack. Affects all allies.\nMax HP ▲ 3.6% for 4 sec.",
+                "■ Activates when performing a Full Charge attack. Affects all allies.\nMax HP ▲ 3.88% for 4 sec.",
+                "■ Activates when performing a Full Charge attack. Affects all allies.\nMax HP ▲ 4.15% for 4 sec.",
+                "■ Activates when performing a Full Charge attack. Affects all allies.\nMax HP ▲ 4.43% for 4 sec.",
+                "■ Activates when performing a Full Charge attack. Affects all allies.\nMax HP ▲ 4.71% for 4 sec.",
+                "■ Activates when performing a Full Charge attack. Affects all allies.\nMax HP ▲ 4.98% for 4 sec.",
+                "■ Activates when performing a Full Charge attack. Affects all allies.\nMax HP ▲ 5.26% for 4 sec.",
+                "■ Activates when performing a Full Charge attack. Affects all allies.\nMax HP ▲ 5.54% for 4 sec.",
+                "■ Activates when performing a Full Charge attack. Affects all allies.\nMax HP ▲ 5.82% for 4 sec.",
+                "■ Activates when performing a Full Charge attack. Affects all allies.\nMax HP ▲ 6.09% for 4 sec."
+              ],
+              "level10": "■ Activates when performing a Full Charge attack. Affects all allies.\nMax HP ▲ 6.09% for 4 sec."
+            },
+            {
+              "slot": "burst",
+              "name": "... Annoying",
+              "icon": "icn_skill_c142_ult",
+              "cooldownSeconds": 20,
+              "levels": [
+                "■ Affects 10 enemy unit(s) with the highest final DEF.\nDeals 60.07% of final ATK as damage.\nDEF ▼ 5.83% for 10 sec.\n■ Affects all allies.\nMax HP ▲ 17.88% for 4 sec.",
+                "■ Affects 10 enemy unit(s) with the highest final DEF.\nDeals 64.69% of final ATK as damage.\nDEF ▼ 6.27% for 10 sec.\n■ Affects all allies.\nMax HP ▲ 19.25% for 4 sec.",
+                "■ Affects 10 enemy unit(s) with the highest final DEF.\nDeals 69.31% of final ATK as damage.\nDEF ▼ 6.72% for 10 sec.\n■ Affects all allies.\nMax HP ▲ 20.63% for 4 sec.",
+                "■ Affects 10 enemy unit(s) with the highest final DEF.\nDeals 73.93% of final ATK as damage.\nDEF ▼ 7.17% for 10 sec.\n■ Affects all allies.\nMax HP ▲ 22% for 4 sec.",
+                "■ Affects 10 enemy unit(s) with the highest final DEF.\nDeals 78.56% of final ATK as damage.\nDEF ▼ 7.62% for 10 sec.\n■ Affects all allies.\nMax HP ▲ 23.38% for 4 sec.",
+                "■ Affects 10 enemy unit(s) with the highest final DEF.\nDeals 83.18% of final ATK as damage.\nDEF ▼ 8.07% for 10 sec.\n■ Affects all allies.\nMax HP ▲ 24.76% for 4 sec.",
+                "■ Affects 10 enemy unit(s) with the highest final DEF.\nDeals 87.8% of final ATK as damage.\nDEF ▼ 8.52% for 10 sec.\n■ Affects all allies.\nMax HP ▲ 26.13% for 4 sec.",
+                "■ Affects 10 enemy unit(s) with the highest final DEF.\nDeals 92.42% of final ATK as damage.\nDEF ▼ 8.97% for 10 sec.\n■ Affects all allies.\nMax HP ▲ 27.51% for 4 sec.",
+                "■ Affects 10 enemy unit(s) with the highest final DEF.\nDeals 97.04% of final ATK as damage.\nDEF ▼ 9.41% for 10 sec.\n■ Affects all allies.\nMax HP ▲ 28.88% for 4 sec.",
+                "■ Affects 10 enemy unit(s) with the highest final DEF.\nDeals 101.66% of final ATK as damage.\nDEF ▼ 9.86% for 10 sec.\n■ Affects all allies.\nMax HP ▲ 30.26% for 4 sec."
+              ],
+              "level10": "■ Affects 10 enemy unit(s) with the highest final DEF.\nDeals 101.66% of final ATK as damage.\nDEF ▼ 9.86% for 10 sec.\n■ Affects all allies.\nMax HP ▲ 30.26% for 4 sec."
+            }
+          ],
+          "complete": true
+        }
       }
     },
     {
@@ -1557,7 +1774,79 @@
         ],
         "favoriteSkillCardsComplete": true,
         "favoritePanelText": "",
-        "lineCount": 150
+        "lineCount": 150,
+        "baseDetail": {
+          "source": "ENIKK deployed RSC detail object",
+          "htmlSha256": "9793a2ed9db94394f86c27624e2e017eb562f28d6fde2d4903f3130f150b3677",
+          "shot": {
+            "weaponType": "RL",
+            "name": "Rocket Launcher",
+            "maxAmmo": 6,
+            "reloadSeconds": 2.33,
+            "fireType": "ProjectileDirect",
+            "description": "■ Affects target(s).\nDeals 63.11% of ATK as damage.\nCharge Time: 1 sec.\nFull Charge Damage: 250% of damage.\nDeals 200% damage when attacking core."
+          },
+          "skills": [
+            {
+              "slot": "skill1",
+              "name": "Hero Vision",
+              "icon": "icn_skill_statexplosion_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates when attacking with Full Charge. Affects self.\nHero Vision: Explosion Radius ▲ 2.11%, stacks up to 5 time(s) and lasts for 5 sec.",
+                "■ Activates when attacking with Full Charge. Affects self.\nHero Vision: Explosion Radius ▲ 2.27%, stacks up to 5 time(s) and lasts for 5 sec.",
+                "■ Activates when attacking with Full Charge. Affects self.\nHero Vision: Explosion Radius ▲ 2.43%, stacks up to 5 time(s) and lasts for 5 sec.",
+                "■ Activates when attacking with Full Charge. Affects self.\nHero Vision: Explosion Radius ▲ 2.6%, stacks up to 5 time(s) and lasts for 5 sec.",
+                "■ Activates when attacking with Full Charge. Affects self.\nHero Vision: Explosion Radius ▲ 2.76%, stacks up to 5 time(s) and lasts for 5 sec.",
+                "■ Activates when attacking with Full Charge. Affects self.\nHero Vision: Explosion Radius ▲ 2.92%, stacks up to 5 time(s) and lasts for 5 sec.",
+                "■ Activates when attacking with Full Charge. Affects self.\nHero Vision: Explosion Radius ▲ 3.08%, stacks up to 5 time(s) and lasts for 5 sec.",
+                "■ Activates when attacking with Full Charge. Affects self.\nHero Vision: Explosion Radius ▲ 3.25%, stacks up to 5 time(s) and lasts for 5 sec.",
+                "■ Activates when attacking with Full Charge. Affects self.\nHero Vision: Explosion Radius ▲ 3.41%, stacks up to 5 time(s) and lasts for 5 sec.",
+                "■ Activates when attacking with Full Charge. Affects self.\nHero Vision: Explosion Radius ▲ 3.57%, stacks up to 5 time(s) and lasts for 5 sec."
+              ],
+              "level10": "■ Activates when attacking with Full Charge. Affects self.\nHero Vision: Explosion Radius ▲ 3.57%, stacks up to 5 time(s) and lasts for 5 sec."
+            },
+            {
+              "slot": "skill2",
+              "name": "Hero Bomber",
+              "icon": "icn_skill_atkup_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates when the last bullet hits the target. Affects the target.\nDeals 48.25% of final ATK as additional damage.\n■ Activates when hitting the target's Parts. Affects the target.\nDeals 8.73% of final ATK as additional damage.",
+                "■ Activates when the last bullet hits the target. Affects the target.\nDeals 51.96% of final ATK as additional damage.\n■ Activates when hitting the target's Parts. Affects the target.\nDeals 9.4% of final ATK as additional damage.",
+                "■ Activates when the last bullet hits the target. Affects the target.\nDeals 55.68% of final ATK as additional damage.\n■ Activates when hitting the target's Parts. Affects the target.\nDeals 10.08% of final ATK as additional damage.",
+                "■ Activates when the last bullet hits the target. Affects the target.\nDeals 59.39% of final ATK as additional damage.\n■ Activates when hitting the target's Parts. Affects the target.\nDeals 10.75% of final ATK as additional damage.",
+                "■ Activates when the last bullet hits the target. Affects the target.\nDeals 63.1% of final ATK as additional damage.\n■ Activates when hitting the target's Parts. Affects the target.\nDeals 11.42% of final ATK as additional damage.",
+                "■ Activates when the last bullet hits the target. Affects the target.\nDeals 66.81% of final ATK as additional damage.\n■ Activates when hitting the target's Parts. Affects the target.\nDeals 12.09% of final ATK as additional damage.",
+                "■ Activates when the last bullet hits the target. Affects the target.\nDeals 70.52% of final ATK as additional damage.\n■ Activates when hitting the target's Parts. Affects the target.\nDeals 12.76% of final ATK as additional damage.",
+                "■ Activates when the last bullet hits the target. Affects the target.\nDeals 74.24% of final ATK as additional damage.\n■ Activates when hitting the target's Parts. Affects the target.\nDeals 13.44% of final ATK as additional damage.",
+                "■ Activates when the last bullet hits the target. Affects the target.\nDeals 77.95% of final ATK as additional damage.\n■ Activates when hitting the target's Parts. Affects the target.\nDeals 14.11% of final ATK as additional damage.",
+                "■ Activates when the last bullet hits the target. Affects the target.\nDeals 81.66% of final ATK as additional damage.\n■ Activates when hitting the target's Parts. Affects the target.\nDeals 14.78% of final ATK as additional damage."
+              ],
+              "level10": "■ Activates when the last bullet hits the target. Affects the target.\nDeals 81.66% of final ATK as additional damage.\n■ Activates when hitting the target's Parts. Affects the target.\nDeals 14.78% of final ATK as additional damage."
+            },
+            {
+              "slot": "burst",
+              "name": "Laplace Buster",
+              "icon": "icn_skill_c100_ult",
+              "cooldownSeconds": 40,
+              "levels": [
+                "■ Affects self.\nChanges the weapon in use:\nFirst Damage: 530.4% of final ATK\nNormal Damage: 8.58% of final ATK\nDuration: 5 sec\nAdditional Effect: Gains Pierce.\nNote: Unable to take cover while using Burst Skill.\n■ Activates when Hero Vision is at max stacks. Affects the same enemy unit(s).\nDeals 7.03% of final ATK as true damage.",
+                "■ Affects self.\nChanges the weapon in use:\nFirst Damage: 571.2% of final ATK\nNormal Damage: 9.24% of final ATK\nDuration: 5 sec\nAdditional Effect: Gains Pierce.\nNote: Unable to take cover while using Burst Skill.\n■ Activates when Hero Vision is at max stacks. Affects the same enemy unit(s).\nDeals 7.57% of final ATK as true damage.",
+                "■ Affects self.\nChanges the weapon in use:\nFirst Damage: 612% of final ATK\nNormal Damage: 9.9% of final ATK\nDuration: 5 sec\nAdditional Effect: Gains Pierce.\nNote: Unable to take cover while using Burst Skill.\n■ Activates when Hero Vision is at max stacks. Affects the same enemy unit(s).\nDeals 8.11% of final ATK as true damage.",
+                "■ Affects self.\nChanges the weapon in use:\nFirst Damage: 652.8% of final ATK\nNormal Damage: 10.56% of final ATK\nDuration: 5 sec\nAdditional Effect: Gains Pierce.\nNote: Unable to take cover while using Burst Skill.\n■ Activates when Hero Vision is at max stacks. Affects the same enemy unit(s).\nDeals 8.65% of final ATK as true damage.",
+                "■ Affects self.\nChanges the weapon in use:\nFirst Damage: 693.6% of final ATK\nNormal Damage: 11.22% of final ATK\nDuration: 5 sec\nAdditional Effect: Gains Pierce.\nNote: Unable to take cover while using Burst Skill.\n■ Activates when Hero Vision is at max stacks. Affects the same enemy unit(s).\nDeals 9.19% of final ATK as true damage.",
+                "■ Affects self.\nChanges the weapon in use:\nFirst Damage: 734.4% of final ATK\nNormal Damage: 11.88% of final ATK\nDuration: 5 sec\nAdditional Effect: Gains Pierce.\nNote: Unable to take cover while using Burst Skill.\n■ Activates when Hero Vision is at max stacks. Affects the same enemy unit(s).\nDeals 9.73% of final ATK as true damage.",
+                "■ Affects self.\nChanges the weapon in use:\nFirst Damage: 775.2% of final ATK\nNormal Damage: 12.54% of final ATK\nDuration: 5 sec\nAdditional Effect: Gains Pierce.\nNote: Unable to take cover while using Burst Skill.\n■ Activates when Hero Vision is at max stacks. Affects the same enemy unit(s).\nDeals 10.27% of final ATK as true damage.",
+                "■ Affects self.\nChanges the weapon in use:\nFirst Damage: 816% of final ATK\nNormal Damage: 13.2% of final ATK\nDuration: 5 sec\nAdditional Effect: Gains Pierce.\nNote: Unable to take cover while using Burst Skill.\n■ Activates when Hero Vision is at max stacks. Affects the same enemy unit(s).\nDeals 10.81% of final ATK as true damage.",
+                "■ Affects self.\nChanges the weapon in use:\nFirst Damage: 856.8% of final ATK\nNormal Damage: 13.86% of final ATK\nDuration: 5 sec\nAdditional Effect: Gains Pierce.\nNote: Unable to take cover while using Burst Skill.\n■ Activates when Hero Vision is at max stacks. Affects the same enemy unit(s).\nDeals 11.36% of final ATK as true damage.",
+                "■ Affects self.\nChanges the weapon in use:\nFirst Damage: 897.6% of final ATK\nNormal Damage: 14.52% of final ATK\nDuration: 5 sec\nAdditional Effect: Gains Pierce.\nNote: Unable to take cover while using Burst Skill.\n■ Activates when Hero Vision is at max stacks. Affects the same enemy unit(s).\nDeals 11.9% of final ATK as true damage."
+              ],
+              "level10": "■ Affects self.\nChanges the weapon in use:\nFirst Damage: 897.6% of final ATK\nNormal Damage: 14.52% of final ATK\nDuration: 5 sec\nAdditional Effect: Gains Pierce.\nNote: Unable to take cover while using Burst Skill.\n■ Activates when Hero Vision is at max stacks. Affects the same enemy unit(s).\nDeals 11.9% of final ATK as true damage."
+            }
+          ],
+          "complete": true
+        }
       }
     },
     {
@@ -1942,7 +2231,79 @@
         ],
         "favoriteSkillCardsComplete": true,
         "favoritePanelText": "",
-        "lineCount": 151
+        "lineCount": 151,
+        "baseDetail": {
+          "source": "ENIKK deployed RSC detail object",
+          "htmlSha256": "8fa4b983ae4c2696fdcff44796ad28a9cd6e413243cd9fb25a5050fd45759035",
+          "shot": {
+            "weaponType": "SG",
+            "name": "Shotgun",
+            "maxAmmo": 9,
+            "reloadSeconds": 0.56,
+            "fireType": "Instant",
+            "description": "■ Affects target(s).\nDeals 220.4% of ATK as damage.\nDeals 200% damage when attacking core."
+          },
+          "skills": [
+            {
+              "slot": "skill1",
+              "name": "Snake Sense",
+              "icon": "icn_skill_atkup_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates when the stage target appears. Affects all allies.\nATK ▲ 12.99% for 10 sec.\nHit Rate ▲ 5.56% for 10 sec.",
+                "■ Activates when the stage target appears. Affects all allies.\nATK ▲ 14.43% for 10 sec.\nHit Rate ▲ 6.18% for 10 sec.",
+                "■ Activates when the stage target appears. Affects all allies.\nATK ▲ 15.88% for 10 sec.\nHit Rate ▲ 6.8% for 10 sec.",
+                "■ Activates when the stage target appears. Affects all allies.\nATK ▲ 17.32% for 10 sec.\nHit Rate ▲ 7.42% for 10 sec.",
+                "■ Activates when the stage target appears. Affects all allies.\nATK ▲ 18.76% for 10 sec.\nHit Rate ▲ 8.04% for 10 sec.",
+                "■ Activates when the stage target appears. Affects all allies.\nATK ▲ 20.21% for 10 sec.\nHit Rate ▲ 8.66% for 10 sec.",
+                "■ Activates when the stage target appears. Affects all allies.\nATK ▲ 21.65% for 10 sec.\nHit Rate ▲ 9.28% for 10 sec.",
+                "■ Activates when the stage target appears. Affects all allies.\nATK ▲ 23.1% for 10 sec.\nHit Rate ▲ 9.9% for 10 sec.",
+                "■ Activates when the stage target appears. Affects all allies.\nATK ▲ 24.54% for 10 sec.\nHit Rate ▲ 10.51% for 10 sec.",
+                "■ Activates when the stage target appears. Affects all allies.\nATK ▲ 25.98% for 10 sec.\nHit Rate ▲ 11.13% for 10 sec."
+              ],
+              "level10": "■ Activates when the stage target appears. Affects all allies.\nATK ▲ 25.98% for 10 sec.\nHit Rate ▲ 11.13% for 10 sec."
+            },
+            {
+              "slot": "skill2",
+              "name": "Snake Scale",
+              "icon": "icn_skill_stataccuracycircle_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Affects self.\nHit Rate ▲ 1.71% continuously.\n■ Activates when entering Full Burst. Affects self.\nVamp: Prevents being targeted by single-target attacks for 10 sec. This effect is removed upon taking a direct hit.\nInvulnerable for 1 sec.",
+                "■ Affects self.\nHit Rate ▲ 1.9% continuously.\n■ Activates when entering Full Burst. Affects self.\nVamp: Prevents being targeted by single-target attacks for 10 sec. This effect is removed upon taking a direct hit.\nInvulnerable for 1 sec.",
+                "■ Affects self.\nHit Rate ▲ 2.1% continuously.\n■ Activates when entering Full Burst. Affects self.\nVamp: Prevents being targeted by single-target attacks for 10 sec. This effect is removed upon taking a direct hit.\nInvulnerable for 1 sec.",
+                "■ Affects self.\nHit Rate ▲ 2.29% continuously.\n■ Activates when entering Full Burst. Affects self.\nVamp: Prevents being targeted by single-target attacks for 10 sec. This effect is removed upon taking a direct hit.\nInvulnerable for 1 sec.",
+                "■ Affects self.\nHit Rate ▲ 2.48% continuously.\n■ Activates when entering Full Burst. Affects self.\nVamp: Prevents being targeted by single-target attacks for 10 sec. This effect is removed upon taking a direct hit.\nInvulnerable for 1 sec.",
+                "■ Affects self.\nHit Rate ▲ 2.67% continuously.\n■ Activates when entering Full Burst. Affects self.\nVamp: Prevents being targeted by single-target attacks for 10 sec. This effect is removed upon taking a direct hit.\nInvulnerable for 1 sec.",
+                "■ Affects self.\nHit Rate ▲ 2.86% continuously.\n■ Activates when entering Full Burst. Affects self.\nVamp: Prevents being targeted by single-target attacks for 10 sec. This effect is removed upon taking a direct hit.\nInvulnerable for 1 sec.",
+                "■ Affects self.\nHit Rate ▲ 3.05% continuously.\n■ Activates when entering Full Burst. Affects self.\nVamp: Prevents being targeted by single-target attacks for 10 sec. This effect is removed upon taking a direct hit.\nInvulnerable for 1 sec.",
+                "■ Affects self.\nHit Rate ▲ 3.24% continuously.\n■ Activates when entering Full Burst. Affects self.\nVamp: Prevents being targeted by single-target attacks for 10 sec. This effect is removed upon taking a direct hit.\nInvulnerable for 1 sec.",
+                "■ Affects self.\nHit Rate ▲ 3.43% continuously.\n■ Activates when entering Full Burst. Affects self.\nVamp: Prevents being targeted by single-target attacks for 10 sec. This effect is removed upon taking a direct hit.\nInvulnerable for 1 sec."
+              ],
+              "level10": "■ Affects self.\nHit Rate ▲ 3.43% continuously.\n■ Activates when entering Full Burst. Affects self.\nVamp: Prevents being targeted by single-target attacks for 10 sec. This effect is removed upon taking a direct hit.\nInvulnerable for 1 sec."
+            },
+            {
+              "slot": "burst",
+              "name": "Snake Bite",
+              "icon": "icn_skill_c112_ult",
+              "cooldownSeconds": 20,
+              "levels": [
+                "■ Affects 1 designated enemy unit(s).\nDeals 231.42% of final ATK as damage.\n■ Affects the enemy if the enemy is the stage target.\nDEF ▼ 9.91% for 10 sec.",
+                "■ Affects 1 designated enemy unit(s).\nDeals 257.14% of final ATK as damage.\n■ Affects the enemy if the enemy is the stage target.\nDEF ▼ 11.02% for 10 sec.",
+                "■ Affects 1 designated enemy unit(s).\nDeals 282.85% of final ATK as damage.\n■ Affects the enemy if the enemy is the stage target.\nDEF ▼ 12.12% for 10 sec.",
+                "■ Affects 1 designated enemy unit(s).\nDeals 308.57% of final ATK as damage.\n■ Affects the enemy if the enemy is the stage target.\nDEF ▼ 13.22% for 10 sec.",
+                "■ Affects 1 designated enemy unit(s).\nDeals 334.28% of final ATK as damage.\n■ Affects the enemy if the enemy is the stage target.\nDEF ▼ 14.32% for 10 sec.",
+                "■ Affects 1 designated enemy unit(s).\nDeals 360% of final ATK as damage.\n■ Affects the enemy if the enemy is the stage target.\nDEF ▼ 15.42% for 10 sec.",
+                "■ Affects 1 designated enemy unit(s).\nDeals 385.71% of final ATK as damage.\n■ Affects the enemy if the enemy is the stage target.\nDEF ▼ 16.53% for 10 sec.",
+                "■ Affects 1 designated enemy unit(s).\nDeals 411.42% of final ATK as damage.\n■ Affects the enemy if the enemy is the stage target.\nDEF ▼ 17.63% for 10 sec.",
+                "■ Affects 1 designated enemy unit(s).\nDeals 437.14% of final ATK as damage.\n■ Affects the enemy if the enemy is the stage target.\nDEF ▼ 18.73% for 10 sec.",
+                "■ Affects 1 designated enemy unit(s).\nDeals 462.85% of final ATK as damage.\n■ Affects the enemy if the enemy is the stage target.\nDEF ▼ 19.83% for 10 sec."
+              ],
+              "level10": "■ Affects 1 designated enemy unit(s).\nDeals 462.85% of final ATK as damage.\n■ Affects the enemy if the enemy is the stage target.\nDEF ▼ 19.83% for 10 sec."
+            }
+          ],
+          "complete": true
+        }
       }
     },
     {
@@ -2301,7 +2662,79 @@
         ],
         "favoriteSkillCardsComplete": true,
         "favoritePanelText": "",
-        "lineCount": 140
+        "lineCount": 140,
+        "baseDetail": {
+          "source": "ENIKK deployed RSC detail object",
+          "htmlSha256": "c260cd35f2bec5d80c7df7bd998b5acedd8d4b57c9e393dfa49d4a2884289167",
+          "shot": {
+            "weaponType": "SMG",
+            "name": "Submachine Gun",
+            "maxAmmo": 120,
+            "reloadSeconds": 1.43,
+            "fireType": "Instant",
+            "description": "■ Affects target(s).\nDeals 10.8% of ATK as damage.\nDeals 250% damage when attacking core."
+          },
+          "skills": [
+            {
+              "slot": "skill1",
+              "name": "Health Up!",
+              "icon": "icn_skill_stataccuracycircle_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates after landing 30 normal attacks. Affects all allies.\nHit Rate ▲ 3.31% for 5 sec.\n■ Activates after landing 30 normal attacks. Affects all allies with a Submachine Gun.\nHit Rate ▲ 2.09% for 5 sec.",
+                "■ Activates after landing 30 normal attacks. Affects all allies.\nHit Rate ▲ 3.55% for 5 sec.\n■ Activates after landing 30 normal attacks. Affects all allies with a Submachine Gun.\nHit Rate ▲ 2.28% for 5 sec.",
+                "■ Activates after landing 30 normal attacks. Affects all allies.\nHit Rate ▲ 3.78% for 5 sec.\n■ Activates after landing 30 normal attacks. Affects all allies with a Submachine Gun.\nHit Rate ▲ 2.47% for 5 sec.",
+                "■ Activates after landing 30 normal attacks. Affects all allies.\nHit Rate ▲ 4.02% for 5 sec.\n■ Activates after landing 30 normal attacks. Affects all allies with a Submachine Gun.\nHit Rate ▲ 2.66% for 5 sec.",
+                "■ Activates after landing 30 normal attacks. Affects all allies.\nHit Rate ▲ 4.26% for 5 sec.\n■ Activates after landing 30 normal attacks. Affects all allies with a Submachine Gun.\nHit Rate ▲ 2.85% for 5 sec.",
+                "■ Activates after landing 30 normal attacks. Affects all allies.\nHit Rate ▲ 4.49% for 5 sec.\n■ Activates after landing 30 normal attacks. Affects all allies with a Submachine Gun.\nHit Rate ▲ 3.03% for 5 sec.",
+                "■ Activates after landing 30 normal attacks. Affects all allies.\nHit Rate ▲ 4.73% for 5 sec.\n■ Activates after landing 30 normal attacks. Affects all allies with a Submachine Gun.\nHit Rate ▲ 3.22% for 5 sec.",
+                "■ Activates after landing 30 normal attacks. Affects all allies.\nHit Rate ▲ 4.97% for 5 sec.\n■ Activates after landing 30 normal attacks. Affects all allies with a Submachine Gun.\nHit Rate ▲ 3.41% for 5 sec.",
+                "■ Activates after landing 30 normal attacks. Affects all allies.\nHit Rate ▲ 5.2% for 5 sec.\n■ Activates after landing 30 normal attacks. Affects all allies with a Submachine Gun.\nHit Rate ▲ 3.6% for 5 sec.",
+                "■ Activates after landing 30 normal attacks. Affects all allies.\nHit Rate ▲ 5.44% for 5 sec.\n■ Activates after landing 30 normal attacks. Affects all allies with a Submachine Gun.\nHit Rate ▲ 3.79% for 5 sec."
+              ],
+              "level10": "■ Activates after landing 30 normal attacks. Affects all allies.\nHit Rate ▲ 5.44% for 5 sec.\n■ Activates after landing 30 normal attacks. Affects all allies with a Submachine Gun.\nHit Rate ▲ 3.79% for 5 sec."
+            },
+            {
+              "slot": "skill2",
+              "name": "Wake Up!",
+              "icon": "icn_skill_criticaldamage_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates at the beginning of Full Burst. Affects all allies. Critical Damage ▲ 19.49% for 10 sec.",
+                "■ Activates at the beginning of Full Burst. Affects all allies. Critical Damage ▲ 20.99% for 10 sec.",
+                "■ Activates at the beginning of Full Burst. Affects all allies. Critical Damage ▲ 22.49% for 10 sec.",
+                "■ Activates at the beginning of Full Burst. Affects all allies. Critical Damage ▲ 23.99% for 10 sec.",
+                "■ Activates at the beginning of Full Burst. Affects all allies. Critical Damage ▲ 25.49% for 10 sec.",
+                "■ Activates at the beginning of Full Burst. Affects all allies. Critical Damage ▲ 26.99% for 10 sec.",
+                "■ Activates at the beginning of Full Burst. Affects all allies. Critical Damage ▲ 28.49% for 10 sec.",
+                "■ Activates at the beginning of Full Burst. Affects all allies. Critical Damage ▲ 29.99% for 10 sec.",
+                "■ Activates at the beginning of Full Burst. Affects all allies. Critical Damage ▲ 31.49% for 10 sec.",
+                "■ Activates at the beginning of Full Burst. Affects all allies. Critical Damage ▲ 32.99% for 10 sec."
+              ],
+              "level10": "■ Activates at the beginning of Full Burst. Affects all allies. Critical Damage ▲ 32.99% for 10 sec."
+            },
+            {
+              "slot": "burst",
+              "name": "Powering Up!",
+              "icon": "icn_skill_c032_ult",
+              "cooldownSeconds": 20,
+              "levels": [
+                "■ Affects 1 ally unit(s) with the highest final ATK (includes the skill user if there are not enough allies).\nATK ▲ 23.87% for 10 sec.\nCritical Damage ▲ 33.22% for 10 sec.",
+                "■ Affects 1 ally unit(s) with the highest final ATK (includes the skill user if there are not enough allies).\nATK ▲ 25.71% for 10 sec.\nCritical Damage ▲ 35.78% for 10 sec.",
+                "■ Affects 1 ally unit(s) with the highest final ATK (includes the skill user if there are not enough allies).\nATK ▲ 27.55% for 10 sec.\nCritical Damage ▲ 38.34% for 10 sec.",
+                "■ Affects 1 ally unit(s) with the highest final ATK (includes the skill user if there are not enough allies).\nATK ▲ 29.38% for 10 sec.\nCritical Damage ▲ 40.89% for 10 sec.",
+                "■ Affects 1 ally unit(s) with the highest final ATK (includes the skill user if there are not enough allies).\nATK ▲ 31.22% for 10 sec.\nCritical Damage ▲ 43.45% for 10 sec.",
+                "■ Affects 1 ally unit(s) with the highest final ATK (includes the skill user if there are not enough allies).\nATK ▲ 33.06% for 10 sec.\nCritical Damage ▲ 46.01% for 10 sec.",
+                "■ Affects 1 ally unit(s) with the highest final ATK (includes the skill user if there are not enough allies).\nATK ▲ 34.89% for 10 sec.\nCritical Damage ▲ 48.56% for 10 sec.",
+                "■ Affects 1 ally unit(s) with the highest final ATK (includes the skill user if there are not enough allies).\nATK ▲ 36.73% for 10 sec.\nCritical Damage ▲ 51.12% for 10 sec.",
+                "■ Affects 1 ally unit(s) with the highest final ATK (includes the skill user if there are not enough allies).\nATK ▲ 38.57% for 10 sec.\nCritical Damage ▲ 53.67% for 10 sec.",
+                "■ Affects 1 ally unit(s) with the highest final ATK (includes the skill user if there are not enough allies).\nATK ▲ 40.4% for 10 sec.\nCritical Damage ▲ 56.23% for 10 sec."
+              ],
+              "level10": "■ Affects 1 ally unit(s) with the highest final ATK (includes the skill user if there are not enough allies).\nATK ▲ 40.4% for 10 sec.\nCritical Damage ▲ 56.23% for 10 sec."
+            }
+          ],
+          "complete": true
+        }
       }
     },
     {
@@ -2727,7 +3160,79 @@
         ],
         "favoriteSkillCardsComplete": true,
         "favoritePanelText": "",
-        "lineCount": 158
+        "lineCount": 158,
+        "baseDetail": {
+          "source": "ENIKK deployed RSC detail object",
+          "htmlSha256": "1aff9bc08dc3f01606dec63ac7c3ef8fe7ef23515abdf2c2c619ec19ae567f55",
+          "shot": {
+            "weaponType": "SR",
+            "name": "Sniper Rifle",
+            "maxAmmo": 6,
+            "reloadSeconds": 2,
+            "fireType": "Instant",
+            "description": "■ Affects target(s).\nDeals 69.04% of ATK as damage.\nCharge Time: 1 sec.\nFull Charge Damage: 250% of damage.\nDeals 200% damage when attacking core."
+          },
+          "skills": [
+            {
+              "slot": "skill1",
+              "name": "Frontline Command",
+              "icon": "icn_skill_statcritical_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates when the last bullet hits the target. Affects all allies.\nCritical Rate of normal attack ▲ 8.65% for 5 sec.",
+                "■ Activates when the last bullet hits the target. Affects all allies.\nCritical Rate of normal attack ▲ 9.31% for 5 sec.",
+                "■ Activates when the last bullet hits the target. Affects all allies.\nCritical Rate of normal attack ▲ 9.98% for 5 sec.",
+                "■ Activates when the last bullet hits the target. Affects all allies.\nCritical Rate of normal attack ▲ 10.64% for 5 sec.",
+                "■ Activates when the last bullet hits the target. Affects all allies.\nCritical Rate of normal attack ▲ 11.31% for 5 sec.",
+                "■ Activates when the last bullet hits the target. Affects all allies.\nCritical Rate of normal attack ▲ 11.98% for 5 sec.",
+                "■ Activates when the last bullet hits the target. Affects all allies.\nCritical Rate of normal attack ▲ 12.64% for 5 sec.",
+                "■ Activates when the last bullet hits the target. Affects all allies.\nCritical Rate of normal attack ▲ 13.31% for 5 sec.",
+                "■ Activates when the last bullet hits the target. Affects all allies.\nCritical Rate of normal attack ▲ 13.97% for 5 sec.",
+                "■ Activates when the last bullet hits the target. Affects all allies.\nCritical Rate of normal attack ▲ 14.64% for 5 sec."
+              ],
+              "level10": "■ Activates when the last bullet hits the target. Affects all allies.\nCritical Rate of normal attack ▲ 14.64% for 5 sec."
+            },
+            {
+              "slot": "skill2",
+              "name": "Fire Away",
+              "icon": "icn_skill_atkup_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Affects all allies.\nDamage to Interruption Parts ▲1.82% permanently.\n■ Activates when entering Full Burst. Affects all allies.\nAttack damage ▲7% for 10 sec.",
+                "■ Affects all allies.\nDamage to Interruption Parts ▲1.96% permanently.\n■ Activates when entering Full Burst. Affects all allies.\nAttack damage ▲7.54% for 10 sec.",
+                "■ Affects all allies.\nDamage to Interruption Parts ▲2.1% permanently.\n■ Activates when entering Full Burst. Affects all allies.\nAttack damage ▲8.08% for 10 sec.",
+                "■ Affects all allies.\nDamage to Interruption Parts ▲2.24% permanently.\n■ Activates when entering Full Burst. Affects all allies.\nAttack damage ▲8.62% for 10 sec.",
+                "■ Affects all allies.\nDamage to Interruption Parts ▲2.38% permanently.\n■ Activates when entering Full Burst. Affects all allies.\nAttack damage ▲9.15% for 10 sec.",
+                "■ Affects all allies.\nDamage to Interruption Parts ▲2.52% permanently.\n■ Activates when entering Full Burst. Affects all allies.\nAttack damage ▲9.69% for 10 sec.",
+                "■ Affects all allies.\nDamage to Interruption Parts ▲2.66% permanently.\n■ Activates when entering Full Burst. Affects all allies.\nAttack damage ▲10.23% for 10 sec.",
+                "■ Affects all allies.\nDamage to Interruption Parts ▲2.8% permanently.\n■ Activates when entering Full Burst. Affects all allies.\nAttack damage ▲10.77% for 10 sec.",
+                "■ Affects all allies.\nDamage to Interruption Parts ▲2.94% permanently.\n■ Activates when entering Full Burst. Affects all allies.\nAttack damage ▲11.31% for 10 sec.",
+                "■ Affects all allies.\nDamage to Interruption Parts ▲3.08% permanently.\n■ Activates when entering Full Burst. Affects all allies.\nAttack damage ▲11.85% for 10 sec."
+              ],
+              "level10": "■ Affects all allies.\nDamage to Interruption Parts ▲3.08% permanently.\n■ Activates when entering Full Burst. Affects all allies.\nAttack damage ▲11.85% for 10 sec."
+            },
+            {
+              "slot": "burst",
+              "name": "Aegis Cannon",
+              "icon": "icn_skill_c352_ult",
+              "cooldownSeconds": 40,
+              "levels": [
+                "■ Affects the enemy with the highest final ATK.\nDeals 731.25% of final ATK as Burst Skill damage.\n■ Affects all allies.\nRestores HP equal to 32.17% of attack damage. Lasts for 10 sec.",
+                "■ Affects the enemy with the highest final ATK.\nDeals 787.5% of final ATK as Burst Skill damage.\n■ Affects all allies.\nRestores HP equal to 34.65% of attack damage. Lasts for 10 sec.",
+                "■ Affects the enemy with the highest final ATK.\nDeals 843.75% of final ATK as Burst Skill damage.\n■ Affects all allies.\nRestores HP equal to 37.12% of attack damage. Lasts for 10 sec.",
+                "■ Affects the enemy with the highest final ATK.\nDeals 900% of final ATK as Burst Skill damage.\n■ Affects all allies.\nRestores HP equal to 39.6% of attack damage. Lasts for 10 sec.",
+                "■ Affects the enemy with the highest final ATK.\nDeals 956.25% of final ATK as Burst Skill damage.\n■ Affects all allies.\nRestores HP equal to 42.07% of attack damage. Lasts for 10 sec.",
+                "■ Affects the enemy with the highest final ATK.\nDeals 1012.5% of final ATK as Burst Skill damage.\n■ Affects all allies.\nRestores HP equal to 44.55% of attack damage. Lasts for 10 sec.",
+                "■ Affects the enemy with the highest final ATK.\nDeals 1068.75% of final ATK as Burst Skill damage.\n■ Affects all allies.\nRestores HP equal to 47.02% of attack damage. Lasts for 10 sec.",
+                "■ Affects the enemy with the highest final ATK.\nDeals 1125% of final ATK as Burst Skill damage.\n■ Affects all allies.\nRestores HP equal to 49.5% of attack damage. Lasts for 10 sec.",
+                "■ Affects the enemy with the highest final ATK.\nDeals 1181.25% of final ATK as Burst Skill damage.\n■ Affects all allies.\nRestores HP equal to 51.97% of attack damage. Lasts for 10 sec.",
+                "■ Affects the enemy with the highest final ATK.\nDeals 1237.5% of final ATK as Burst Skill damage.\n■ Affects all allies.\nRestores HP equal to 54.45% of attack damage. Lasts for 10 sec."
+              ],
+              "level10": "■ Affects the enemy with the highest final ATK.\nDeals 1237.5% of final ATK as Burst Skill damage.\n■ Affects all allies.\nRestores HP equal to 54.45% of attack damage. Lasts for 10 sec."
+            }
+          ],
+          "complete": true
+        }
       }
     },
     {
@@ -3129,7 +3634,79 @@
         ],
         "favoriteSkillCardsComplete": true,
         "favoritePanelText": "",
-        "lineCount": 147
+        "lineCount": 147,
+        "baseDetail": {
+          "source": "ENIKK deployed RSC detail object",
+          "htmlSha256": "00ffc65559b4a2b3b743c6264b2ec44280fe9f2a523be87505f6fa6239c02919",
+          "shot": {
+            "weaponType": "SG",
+            "name": "Shotgun",
+            "maxAmmo": 9,
+            "reloadSeconds": 0.5,
+            "fireType": "Instant",
+            "description": "■ Affects target(s).\nDeals 214.3% of ATK as damage.\nDeals 200% damage when attacking core."
+          },
+          "skills": [
+            {
+              "slot": "skill1",
+              "name": "Overcharge",
+              "icon": "icn_skill_stataccuracycircle_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates at the beginning of Full Burst. Affects all allies.\nHit Rate ▲ 7% for 10 sec.\nATK ▲ 7% for 10 sec.",
+                "■ Activates at the beginning of Full Burst. Affects all allies.\nHit Rate ▲ 7.54% for 10 sec.\nATK ▲ 7.54% for 10 sec.",
+                "■ Activates at the beginning of Full Burst. Affects all allies.\nHit Rate ▲ 8.08% for 10 sec.\nATK ▲ 8.08% for 10 sec.",
+                "■ Activates at the beginning of Full Burst. Affects all allies.\nHit Rate ▲ 8.62% for 10 sec.\nATK ▲ 8.62% for 10 sec.",
+                "■ Activates at the beginning of Full Burst. Affects all allies.\nHit Rate ▲ 9.15% for 10 sec.\nATK ▲ 9.15% for 10 sec.",
+                "■ Activates at the beginning of Full Burst. Affects all allies.\nHit Rate ▲ 9.69% for 10 sec.\nATK ▲ 9.69% for 10 sec.",
+                "■ Activates at the beginning of Full Burst. Affects all allies.\nHit Rate ▲ 10.23% for 10 sec.\nATK ▲ 10.23% for 10 sec.",
+                "■ Activates at the beginning of Full Burst. Affects all allies.\nHit Rate ▲ 10.77% for 10 sec.\nATK ▲ 10.77% for 10 sec.",
+                "■ Activates at the beginning of Full Burst. Affects all allies.\nHit Rate ▲ 11.31% for 10 sec.\nATK ▲ 11.31% for 10 sec.",
+                "■ Activates at the beginning of Full Burst. Affects all allies.\nHit Rate ▲ 11.85% for 10 sec.\nATK ▲ 11.85% for 10 sec."
+              ],
+              "level10": "■ Activates at the beginning of Full Burst. Affects all allies.\nHit Rate ▲ 11.85% for 10 sec.\nATK ▲ 11.85% for 10 sec."
+            },
+            {
+              "slot": "skill2",
+              "name": "Thunderbolt",
+              "icon": "icn_skill_atkup_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates after performing 10 attacks. Affects the 3 enemy unit(s) with the lowest remaining HP.\nDeals 58.24% of final ATK as damage.",
+                "■ Activates after performing 10 attacks. Affects the 3 enemy unit(s) with the lowest remaining HP.\nDeals 62.72% of final ATK as damage.",
+                "■ Activates after performing 10 attacks. Affects the 3 enemy unit(s) with the lowest remaining HP.\nDeals 67.19% of final ATK as damage.",
+                "■ Activates after performing 10 attacks. Affects the 3 enemy unit(s) with the lowest remaining HP.\nDeals 71.68% of final ATK as damage.",
+                "■ Activates after performing 10 attacks. Affects the 3 enemy unit(s) with the lowest remaining HP.\nDeals 76.16% of final ATK as damage.",
+                "■ Activates after performing 10 attacks. Affects the 3 enemy unit(s) with the lowest remaining HP.\nDeals 80.64% of final ATK as damage.",
+                "■ Activates after performing 10 attacks. Affects the 3 enemy unit(s) with the lowest remaining HP.\nDeals 85.11% of final ATK as damage.",
+                "■ Activates after performing 10 attacks. Affects the 3 enemy unit(s) with the lowest remaining HP.\nDeals 89.6% of final ATK as damage.",
+                "■ Activates after performing 10 attacks. Affects the 3 enemy unit(s) with the lowest remaining HP.\nDeals 94.07% of final ATK as damage.",
+                "■ Activates after performing 10 attacks. Affects the 3 enemy unit(s) with the lowest remaining HP.\nDeals 98.55% of final ATK as damage."
+              ],
+              "level10": "■ Activates after performing 10 attacks. Affects the 3 enemy unit(s) with the lowest remaining HP.\nDeals 98.55% of final ATK as damage."
+            },
+            {
+              "slot": "burst",
+              "name": "Drake Special",
+              "icon": "icn_skill_c101_ult",
+              "cooldownSeconds": 40,
+              "levels": [
+                "■ Affects enemies within attack range.\nDeals 741% of final ATK as damage.\n■ Affects self.\nMax Ammunition Capacity ▲ 42.65% for 10 sec.",
+                "■ Affects enemies within attack range.\nDeals 798% of final ATK as damage.\n■ Affects self.\nMax Ammunition Capacity ▲ 45.93% for 10 sec.",
+                "■ Affects enemies within attack range.\nDeals 855% of final ATK as damage.\n■ Affects self.\nMax Ammunition Capacity ▲ 49.21% for 10 sec.",
+                "■ Affects enemies within attack range.\nDeals 912% of final ATK as damage.\n■ Affects self.\nMax Ammunition Capacity ▲ 52.5% for 10 sec.",
+                "■ Affects enemies within attack range.\nDeals 969% of final ATK as damage.\n■ Affects self.\nMax Ammunition Capacity ▲ 55.78% for 10 sec.",
+                "■ Affects enemies within attack range.\nDeals 1026% of final ATK as damage.\n■ Affects self.\nMax Ammunition Capacity ▲ 59.06% for 10 sec.",
+                "■ Affects enemies within attack range.\nDeals 1083% of final ATK as damage.\n■ Affects self.\nMax Ammunition Capacity ▲ 62.34% for 10 sec.",
+                "■ Affects enemies within attack range.\nDeals 1140% of final ATK as damage.\n■ Affects self.\nMax Ammunition Capacity ▲ 65.62% for 10 sec.",
+                "■ Affects enemies within attack range.\nDeals 1197% of final ATK as damage.\n■ Affects self.\nMax Ammunition Capacity ▲ 68.9% for 10 sec.",
+                "■ Affects enemies within attack range.\nDeals 1254% of final ATK as damage.\n■ Affects self.\nMax Ammunition Capacity ▲ 72.18% for 10 sec."
+              ],
+              "level10": "■ Affects enemies within attack range.\nDeals 1254% of final ATK as damage.\n■ Affects self.\nMax Ammunition Capacity ▲ 72.18% for 10 sec."
+            }
+          ],
+          "complete": true
+        }
       }
     },
     {
@@ -3506,7 +4083,79 @@
         ],
         "favoriteSkillCardsComplete": true,
         "favoritePanelText": "",
-        "lineCount": 143
+        "lineCount": 143,
+        "baseDetail": {
+          "source": "ENIKK deployed RSC detail object",
+          "htmlSha256": "cb93ad65fe2fbb60b29df63fde633662d0a24f1321395cfcac12ba692e24ec8c",
+          "shot": {
+            "weaponType": "SR",
+            "name": "Sniper Rifle",
+            "maxAmmo": 6,
+            "reloadSeconds": 2,
+            "fireType": "Instant",
+            "description": "■ Affects target(s).\nDeals 69.04% of ATK as damage.\nCharge Time: 1 sec.\nFull Charge Damage: 250% of damage.\nDeals 200% damage when attacking core."
+          },
+          "skills": [
+            {
+              "slot": "skill1",
+              "name": "In It to Win It",
+              "icon": "icn_skill_atkup_01",
+              "cooldownSeconds": 20,
+              "levels": [
+                "■ Affects the 2 allies with the highest final ATK.\nATK ▲ 17.51% for 10 sec.",
+                "■ Affects the 2 allies with the highest final ATK.\nATK ▲ 19.1% for 10 sec.",
+                "■ Affects the 2 allies with the highest final ATK.\nATK ▲ 20.69% for 10 sec.",
+                "■ Affects the 2 allies with the highest final ATK.\nATK ▲ 22.28% for 10 sec.",
+                "■ Affects the 2 allies with the highest final ATK.\nATK ▲ 23.87% for 10 sec.",
+                "■ Affects the 2 allies with the highest final ATK.\nATK ▲ 25.46% for 10 sec.",
+                "■ Affects the 2 allies with the highest final ATK.\nATK ▲ 27.06% for 10 sec.",
+                "■ Affects the 2 allies with the highest final ATK.\nATK ▲ 28.65% for 10 sec.",
+                "■ Affects the 2 allies with the highest final ATK.\nATK ▲ 30.24% for 10 sec.",
+                "■ Affects the 2 allies with the highest final ATK.\nATK ▲ 31.83% for 10 sec."
+              ],
+              "level10": "■ Affects the 2 allies with the highest final ATK.\nATK ▲ 31.83% for 10 sec."
+            },
+            {
+              "slot": "skill2",
+              "name": "Sugar Rush",
+              "icon": "icn_skill_criticaldamage_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates when above 80% HP. Affects all allies.\nCritical Damage ▲ 6.12% permanently.",
+                "■ Activates when above 80% HP. Affects all allies.\nCritical Damage ▲ 6.68% permanently.",
+                "■ Activates when above 80% HP. Affects all allies.\nCritical Damage ▲ 7.23% permanently.",
+                "■ Activates when above 80% HP. Affects all allies.\nCritical Damage ▲ 7.79% permanently.",
+                "■ Activates when above 80% HP. Affects all allies.\nCritical Damage ▲ 8.35% permanently.",
+                "■ Activates when above 80% HP. Affects all allies.\nCritical Damage ▲ 8.9% permanently.",
+                "■ Activates when above 80% HP. Affects all allies.\nCritical Damage ▲ 9.46% permanently.",
+                "■ Activates when above 80% HP. Affects all allies.\nCritical Damage ▲ 10.02% permanently.",
+                "■ Activates when above 80% HP. Affects all allies.\nCritical Damage ▲ 10.57% permanently.",
+                "■ Activates when above 80% HP. Affects all allies.\nCritical Damage ▲ 11.13% permanently."
+              ],
+              "level10": "■ Activates when above 80% HP. Affects all allies.\nCritical Damage ▲ 11.13% permanently."
+            },
+            {
+              "slot": "burst",
+              "name": "Victory is Mine",
+              "icon": "icn_skill_c141_ult",
+              "cooldownSeconds": 40,
+              "levels": [
+                "■ Affects the enemy with the highest final DEF.\nDeals 202.04% of final ATK as Burst Skill damage.\n■ Affects all allies.\nRestores HP equal to 8.88% of attack damage. Lasts for 10 sec.",
+                "■ Affects the enemy with the highest final DEF.\nDeals 220.4% of final ATK as Burst Skill damage.\n■ Affects all allies.\nRestores HP equal to 9.69% of attack damage. Lasts for 10 sec.",
+                "■ Affects the enemy with the highest final DEF.\nDeals 238.77% of final ATK as Burst Skill damage.\n■ Affects all allies.\nRestores HP equal to 10.5% of attack damage. Lasts for 10 sec.",
+                "■ Affects the enemy with the highest final DEF.\nDeals 257.14% of final ATK as Burst Skill damage.\n■ Affects all allies.\nRestores HP equal to 11.31% of attack damage. Lasts for 10 sec.",
+                "■ Affects the enemy with the highest final DEF.\nDeals 275.51% of final ATK as Burst Skill damage.\n■ Affects all allies.\nRestores HP equal to 12.12% of attack damage. Lasts for 10 sec.",
+                "■ Affects the enemy with the highest final DEF.\nDeals 293.87% of final ATK as Burst Skill damage.\n■ Affects all allies.\nRestores HP equal to 12.93% of attack damage. Lasts for 10 sec.",
+                "■ Affects the enemy with the highest final DEF.\nDeals 312.24% of final ATK as Burst Skill damage.\n■ Affects all allies.\nRestores HP equal to 13.73% of attack damage. Lasts for 10 sec.",
+                "■ Affects the enemy with the highest final DEF.\nDeals 330.61% of final ATK as Burst Skill damage.\n■ Affects all allies.\nRestores HP equal to 14.54% of attack damage. Lasts for 10 sec.",
+                "■ Affects the enemy with the highest final DEF.\nDeals 348.97% of final ATK as Burst Skill damage.\n■ Affects all allies.\nRestores HP equal to 15.35% of attack damage. Lasts for 10 sec.",
+                "■ Affects the enemy with the highest final DEF.\nDeals 367.34% of final ATK as Burst Skill damage.\n■ Affects all allies.\nRestores HP equal to 16.16% of attack damage. Lasts for 10 sec."
+              ],
+              "level10": "■ Affects the enemy with the highest final DEF.\nDeals 367.34% of final ATK as Burst Skill damage.\n■ Affects all allies.\nRestores HP equal to 16.16% of attack damage. Lasts for 10 sec."
+            }
+          ],
+          "complete": true
+        }
       }
     },
     {
@@ -3872,7 +4521,79 @@
         ],
         "favoriteSkillCardsComplete": true,
         "favoritePanelText": "",
-        "lineCount": 148
+        "lineCount": 148,
+        "baseDetail": {
+          "source": "ENIKK deployed RSC detail object",
+          "htmlSha256": "7a29a6727197abfd47d4d09a65cab453415b2ee91dd5273ac9e21f45b18275fd",
+          "shot": {
+            "weaponType": "SG",
+            "name": "Shotgun",
+            "maxAmmo": 9,
+            "reloadSeconds": 1.5,
+            "fireType": "Instant",
+            "description": "■ Affects target(s).\nDeals 201.5% of ATK as damage.\nDeals 200% damage when attacking core."
+          },
+          "skills": [
+            {
+              "slot": "skill1",
+              "name": "Brave Call",
+              "icon": "icn_skill_atkdown_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates after performing 5 normal attacks. Affects all allies. ATK ▲ 2.73% for 10 sec.",
+                "■ Activates after performing 5 normal attacks. Affects all allies. ATK ▲ 3.03% for 10 sec.",
+                "■ Activates after performing 5 normal attacks. Affects all allies. ATK ▲ 3.33% for 10 sec.",
+                "■ Activates after performing 5 normal attacks. Affects all allies. ATK ▲ 3.64% for 10 sec.",
+                "■ Activates after performing 5 normal attacks. Affects all allies. ATK ▲ 3.94% for 10 sec.",
+                "■ Activates after performing 5 normal attacks. Affects all allies. ATK ▲ 4.25% for 10 sec.",
+                "■ Activates after performing 5 normal attacks. Affects all allies. ATK ▲ 4.55% for 10 sec.",
+                "■ Activates after performing 5 normal attacks. Affects all allies. ATK ▲ 4.85% for 10 sec.",
+                "■ Activates after performing 5 normal attacks. Affects all allies. ATK ▲ 5.16% for 10 sec.",
+                "■ Activates after performing 5 normal attacks. Affects all allies. ATK ▲ 5.46% for 10 sec."
+              ],
+              "level10": "■ Activates after performing 5 normal attacks. Affects all allies. ATK ▲ 5.46% for 10 sec."
+            },
+            {
+              "slot": "skill2",
+              "name": "That's a Good Boy",
+              "icon": "icn_skill_defup_01",
+              "cooldownSeconds": 20,
+              "levels": [
+                "■ Affects self and 2 ally unit(s) with the lowest remaining HP (except the skill user).\nDEF ▲ 11.75% for 10 sec.\nEqually shares damage taken for 10 sec.",
+                "■ Affects self and 2 ally unit(s) with the lowest remaining HP (except the skill user).\nDEF ▲ 13.06% for 10 sec.\nEqually shares damage taken for 10 sec.",
+                "■ Affects self and 2 ally unit(s) with the lowest remaining HP (except the skill user).\nDEF ▲ 14.36% for 10 sec.\nEqually shares damage taken for 10 sec.",
+                "■ Affects self and 2 ally unit(s) with the lowest remaining HP (except the skill user).\nDEF ▲ 15.67% for 10 sec.\nEqually shares damage taken for 10 sec.",
+                "■ Affects self and 2 ally unit(s) with the lowest remaining HP (except the skill user).\nDEF ▲ 16.97% for 10 sec.\nEqually shares damage taken for 10 sec.",
+                "■ Affects self and 2 ally unit(s) with the lowest remaining HP (except the skill user).\nDEF ▲ 18.28% for 10 sec.\nEqually shares damage taken for 10 sec.",
+                "■ Affects self and 2 ally unit(s) with the lowest remaining HP (except the skill user).\nDEF ▲ 19.59% for 10 sec.\nEqually shares damage taken for 10 sec.",
+                "■ Affects self and 2 ally unit(s) with the lowest remaining HP (except the skill user).\nDEF ▲ 20.89% for 10 sec.\nEqually shares damage taken for 10 sec.",
+                "■ Affects self and 2 ally unit(s) with the lowest remaining HP (except the skill user).\nDEF ▲ 22.2% for 10 sec.\nEqually shares damage taken for 10 sec.",
+                "■ Affects self and 2 ally unit(s) with the lowest remaining HP (except the skill user).\nDEF ▲ 23.51% for 10 sec.\nEqually shares damage taken for 10 sec."
+              ],
+              "level10": "■ Affects self and 2 ally unit(s) with the lowest remaining HP (except the skill user).\nDEF ▲ 23.51% for 10 sec.\nEqually shares damage taken for 10 sec."
+            },
+            {
+              "slot": "burst",
+              "name": "Poli's Defense Line",
+              "icon": "icn_skill_c030_ult",
+              "cooldownSeconds": 40,
+              "levels": [
+                "■ Affects self.\nCreates a shared shield with HP equal to 11.13% of the skill user's final max HP that protects all allies from damage. Lasts for 10 sec.\n■ Affects all allies.\nATK ▲ 22.27% for 10 sec.",
+                "■ Affects self.\nCreates a shared shield with HP equal to 12.37% of the skill user's final max HP that protects all allies from damage. Lasts for 10 sec.\n■ Affects all allies.\nATK ▲ 24.75% for 10 sec.",
+                "■ Affects self.\nCreates a shared shield with HP equal to 13.61% of the skill user's final max HP that protects all allies from damage. Lasts for 10 sec.\n■ Affects all allies.\nATK ▲ 27.22% for 10 sec.",
+                "■ Affects self.\nCreates a shared shield with HP equal to 14.85% of the skill user's final max HP that protects all allies from damage. Lasts for 10 sec.\n■ Affects all allies.\nATK ▲ 29.7% for 10 sec.",
+                "■ Affects self.\nCreates a shared shield with HP equal to 16.08% of the skill user's final max HP that protects all allies from damage. Lasts for 10 sec.\n■ Affects all allies.\nATK ▲ 32.17% for 10 sec.",
+                "■ Affects self.\nCreates a shared shield with HP equal to 17.32% of the skill user's final max HP that protects all allies from damage. Lasts for 10 sec.\n■ Affects all allies.\nATK ▲ 34.65% for 10 sec.",
+                "■ Affects self.\nCreates a shared shield with HP equal to 18.56% of the skill user's final max HP that protects all allies from damage. Lasts for 10 sec.\n■ Affects all allies.\nATK ▲ 37.12% for 10 sec.",
+                "■ Affects self.\nCreates a shared shield with HP equal to 19.8% of the skill user's final max HP that protects all allies from damage. Lasts for 10 sec.\n■ Affects all allies.\nATK ▲ 39.6% for 10 sec.",
+                "■ Affects self.\nCreates a shared shield with HP equal to 21.03% of the skill user's final max HP that protects all allies from damage. Lasts for 10 sec.\n■ Affects all allies.\nATK ▲ 42.07% for 10 sec.",
+                "■ Affects self.\nCreates a shared shield with HP equal to 22.27% of the skill user's final max HP that protects all allies from damage. Lasts for 10 sec.\n■ Affects all allies.\nATK ▲ 44.55% for 10 sec."
+              ],
+              "level10": "■ Affects self.\nCreates a shared shield with HP equal to 22.27% of the skill user's final max HP that protects all allies from damage. Lasts for 10 sec.\n■ Affects all allies.\nATK ▲ 44.55% for 10 sec."
+            }
+          ],
+          "complete": true
+        }
       }
     },
     {
@@ -4282,7 +5003,79 @@
         ],
         "favoriteSkillCardsComplete": true,
         "favoritePanelText": "",
-        "lineCount": 141
+        "lineCount": 141,
+        "baseDetail": {
+          "source": "ENIKK deployed RSC detail object",
+          "htmlSha256": "e9711fcda9e731349d92a0190e10c772c9d3ab884e3f328ac959843504fe6f78",
+          "shot": {
+            "weaponType": "AR",
+            "name": "Assault Rifle",
+            "maxAmmo": 60,
+            "reloadSeconds": 1,
+            "fireType": "Instant",
+            "description": "■ Affects target(s).\nDeals 14.2% of ATK as damage.\nDeals 200% damage when attacking core."
+          },
+          "skills": [
+            {
+              "slot": "skill1",
+              "name": "Emergency-Crafted Bullets",
+              "icon": "icn_skill_statammo_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ There is a 2% chance of activating when attacking. Affects self.\nEmergency-Crafted Bullets: Reload 3.13% of the magazine(s).\n■ Activates during Emergency-Crafted Bullets. Affects all allies.\nTemporary Modification: Max Ammunition Capacity ▲ 1, stacks up to 3 time(s) and lasts for 5 sec.\nCritical Damage ▲ 2.96% for 5 sec.",
+                "■ There is a 2% chance of activating when attacking. Affects self.\nEmergency-Crafted Bullets: Reload 3.37% of the magazine(s).\n■ Activates during Emergency-Crafted Bullets. Affects all allies.\nTemporary Modification: Max Ammunition Capacity ▲ 1, stacks up to 3 time(s) and lasts for 5 sec.\nCritical Damage ▲ 3.21% for 5 sec.",
+                "■ There is a 3% chance of activating when attacking. Affects self.\nEmergency-Crafted Bullets: Reload 3.62% of the magazine(s).\n■ Activates during Emergency-Crafted Bullets. Affects all allies.\nTemporary Modification: Max Ammunition Capacity ▲ 1, stacks up to 3 time(s) and lasts for 5 sec.\nCritical Damage ▲ 3.47% for 5 sec.",
+                "■ There is a 3% chance of activating when attacking. Affects self.\nEmergency-Crafted Bullets: Reload 3.86% of the magazine(s).\n■ Activates during Emergency-Crafted Bullets. Affects all allies.\nTemporary Modification: Max Ammunition Capacity ▲ 1, stacks up to 3 time(s) and lasts for 5 sec.\nCritical Damage ▲ 3.72% for 5 sec.",
+                "■ There is a 3% chance of activating when attacking. Affects self.\nEmergency-Crafted Bullets: Reload 4.1% of the magazine(s).\n■ Activates during Emergency-Crafted Bullets. Affects all allies.\nTemporary Modification: Max Ammunition Capacity ▲ 1, stacks up to 3 time(s) and lasts for 5 sec.\nCritical Damage ▲ 3.97% for 5 sec.",
+                "■ There is a 4% chance of activating when attacking. Affects self.\nEmergency-Crafted Bullets: Reload 4.34% of the magazine(s).\n■ Activates during Emergency-Crafted Bullets. Affects all allies.\nTemporary Modification: Max Ammunition Capacity ▲ 2, stacks up to 3 time(s) and lasts for 5 sec.\nCritical Damage ▲ 4.23% for 5 sec.",
+                "■ There is a 4% chance of activating when attacking. Affects self.\nEmergency-Crafted Bullets: Reload 4.58% of the magazine(s).\n■ Activates during Emergency-Crafted Bullets. Affects all allies.\nTemporary Modification: Max Ammunition Capacity ▲ 2, stacks up to 3 time(s) and lasts for 5 sec.\nCritical Damage ▲ 4.48% for 5 sec.",
+                "■ There is a 4% chance of activating when attacking. Affects self.\nEmergency-Crafted Bullets: Reload 4.82% of the magazine(s).\n■ Activates during Emergency-Crafted Bullets. Affects all allies.\nTemporary Modification: Max Ammunition Capacity ▲ 2, stacks up to 3 time(s) and lasts for 5 sec.\nCritical Damage ▲ 4.73% for 5 sec.",
+                "■ There is a 5% chance of activating when attacking. Affects self.\nEmergency-Crafted Bullets: Reload 5.06% of the magazine(s).\n■ Activates during Emergency-Crafted Bullets. Affects all allies.\nTemporary Modification: Max Ammunition Capacity ▲ 2, stacks up to 3 time(s) and lasts for 5 sec.\nCritical Damage ▲ 4.99% for 5 sec.",
+                "■ There is a 5% chance of activating when attacking. Affects self.\nEmergency-Crafted Bullets: Reload 5.31% of the magazine(s).\n■ Activates during Emergency-Crafted Bullets. Affects all allies.\nTemporary Modification: Max Ammunition Capacity ▲ 2, stacks up to 3 time(s) and lasts for 5 sec.\nCritical Damage ▲ 5.24% for 5 sec."
+              ],
+              "level10": "■ There is a 5% chance of activating when attacking. Affects self.\nEmergency-Crafted Bullets: Reload 5.31% of the magazine(s).\n■ Activates during Emergency-Crafted Bullets. Affects all allies.\nTemporary Modification: Max Ammunition Capacity ▲ 2, stacks up to 3 time(s) and lasts for 5 sec.\nCritical Damage ▲ 5.24% for 5 sec."
+            },
+            {
+              "slot": "skill2",
+              "name": "Modification Successful",
+              "icon": "icn_skill_rateoffire_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Only activates when Temporary Modification is at max stacks. Affects all allies.\nCritical Rate ▲ 1.96% continuously.\n■ Only activates when Temporary Modification is at max stacks. Affects all allies with shotguns.\nAttack Speed ▲ 24.96% continuously.",
+                "■ Only activates when Temporary Modification is at max stacks. Affects all allies.\nCritical Rate ▲ 2.11% continuously.\n■ Only activates when Temporary Modification is at max stacks. Affects all allies with shotguns.\nAttack Speed ▲ 26.88% continuously.",
+                "■ Only activates when Temporary Modification is at max stacks. Affects all allies.\nCritical Rate ▲ 2.26% continuously.\n■ Only activates when Temporary Modification is at max stacks. Affects all allies with shotguns.\nAttack Speed ▲ 28.8% continuously.",
+                "■ Only activates when Temporary Modification is at max stacks. Affects all allies.\nCritical Rate ▲ 2.41% continuously.\n■ Only activates when Temporary Modification is at max stacks. Affects all allies with shotguns.\nAttack Speed ▲ 30.72% continuously.",
+                "■ Only activates when Temporary Modification is at max stacks. Affects all allies.\nCritical Rate ▲ 2.57% continuously.\n■ Only activates when Temporary Modification is at max stacks. Affects all allies with shotguns.\nAttack Speed ▲ 32.64% continuously.",
+                "■ Only activates when Temporary Modification is at max stacks. Affects all allies.\nCritical Rate ▲ 2.72% continuously.\n■ Only activates when Temporary Modification is at max stacks. Affects all allies with shotguns.\nAttack Speed ▲ 34.56% continuously.",
+                "■ Only activates when Temporary Modification is at max stacks. Affects all allies.\nCritical Rate ▲ 2.87% continuously.\n■ Only activates when Temporary Modification is at max stacks. Affects all allies with shotguns.\nAttack Speed ▲ 36.48% continuously.",
+                "■ Only activates when Temporary Modification is at max stacks. Affects all allies.\nCritical Rate ▲ 3.02% continuously.\n■ Only activates when Temporary Modification is at max stacks. Affects all allies with shotguns.\nAttack Speed ▲ 38.4% continuously.",
+                "■ Only activates when Temporary Modification is at max stacks. Affects all allies.\nCritical Rate ▲ 3.17% continuously.\n■ Only activates when Temporary Modification is at max stacks. Affects all allies with shotguns.\nAttack Speed ▲ 40.32% continuously.",
+                "■ Only activates when Temporary Modification is at max stacks. Affects all allies.\nCritical Rate ▲ 3.32% continuously.\n■ Only activates when Temporary Modification is at max stacks. Affects all allies with shotguns.\nAttack Speed ▲ 42.24% continuously."
+              ],
+              "level10": "■ Only activates when Temporary Modification is at max stacks. Affects all allies.\nCritical Rate ▲ 3.32% continuously.\n■ Only activates when Temporary Modification is at max stacks. Affects all allies with shotguns.\nAttack Speed ▲ 42.24% continuously."
+            },
+            {
+              "slot": "burst",
+              "name": "Miracle of Makeshifts",
+              "icon": "icn_skill_c192_ult",
+              "cooldownSeconds": 20,
+              "levels": [
+                "■ Affects all allies.\nMiracle of Makeshifts: ATK ▲ 1.37% of the skill user's ATK. Mirrors the stack count of Temporary Modification for 10 sec.\n■ Affects all allies with shotguns.\nMiracle of Makeshifts: ATK ▲ 14.31% of the skill user's ATK. Mirrors the stack count of Temporary Modification for 10 sec.",
+                "■ Affects all allies.\nMiracle of Makeshifts: ATK ▲ 1.47% of the skill user's ATK. Mirrors the stack count of Temporary Modification for 10 sec.\n■ Affects all allies with shotguns.\nMiracle of Makeshifts: ATK ▲ 15.41% of the skill user's ATK. Mirrors the stack count of Temporary Modification for 10 sec.",
+                "■ Affects all allies.\nMiracle of Makeshifts: ATK ▲ 1.58% of the skill user's ATK. Mirrors the stack count of Temporary Modification for 10 sec.\n■ Affects all allies with shotguns.\nMiracle of Makeshifts: ATK ▲ 16.51% of the skill user's ATK. Mirrors the stack count of Temporary Modification for 10 sec.",
+                "■ Affects all allies.\nMiracle of Makeshifts: ATK ▲ 1.68% of the skill user's ATK. Mirrors the stack count of Temporary Modification for 10 sec.\n■ Affects all allies with shotguns.\nMiracle of Makeshifts: ATK ▲ 17.61% of the skill user's ATK. Mirrors the stack count of Temporary Modification for 10 sec.",
+                "■ Affects all allies.\nMiracle of Makeshifts: ATK ▲ 1.79% of the skill user's ATK. Mirrors the stack count of Temporary Modification for 10 sec.\n■ Affects all allies with shotguns.\nMiracle of Makeshifts: ATK ▲ 18.71% of the skill user's ATK. Mirrors the stack count of Temporary Modification for 10 sec.",
+                "■ Affects all allies.\nMiracle of Makeshifts: ATK ▲ 1.9% of the skill user's ATK. Mirrors the stack count of Temporary Modification for 10 sec.\n■ Affects all allies with shotguns.\nMiracle of Makeshifts: ATK ▲ 19.81% of the skill user's ATK. Mirrors the stack count of Temporary Modification for 10 sec.",
+                "■ Affects all allies.\nMiracle of Makeshifts: ATK ▲ 2% of the skill user's ATK. Mirrors the stack count of Temporary Modification for 10 sec.\n■ Affects all allies with shotguns.\nMiracle of Makeshifts: ATK ▲ 20.91% of the skill user's ATK. Mirrors the stack count of Temporary Modification for 10 sec.",
+                "■ Affects all allies.\nMiracle of Makeshifts: ATK ▲ 2.11% of the skill user's ATK. Mirrors the stack count of Temporary Modification for 10 sec.\n■ Affects all allies with shotguns.\nMiracle of Makeshifts: ATK ▲ 22.01% of the skill user's ATK. Mirrors the stack count of Temporary Modification for 10 sec.",
+                "■ Affects all allies.\nMiracle of Makeshifts: ATK ▲ 2.21% of the skill user's ATK. Mirrors the stack count of Temporary Modification for 10 sec.\n■ Affects all allies with shotguns.\nMiracle of Makeshifts: ATK ▲ 23.11% of the skill user's ATK. Mirrors the stack count of Temporary Modification for 10 sec.",
+                "■ Affects all allies.\nMiracle of Makeshifts: ATK ▲ 2.32% of the skill user's ATK. Mirrors the stack count of Temporary Modification for 10 sec.\n■ Affects all allies with shotguns.\nMiracle of Makeshifts: ATK ▲ 24.21% of the skill user's ATK. Mirrors the stack count of Temporary Modification for 10 sec."
+              ],
+              "level10": "■ Affects all allies.\nMiracle of Makeshifts: ATK ▲ 2.32% of the skill user's ATK. Mirrors the stack count of Temporary Modification for 10 sec.\n■ Affects all allies with shotguns.\nMiracle of Makeshifts: ATK ▲ 24.21% of the skill user's ATK. Mirrors the stack count of Temporary Modification for 10 sec."
+            }
+          ],
+          "complete": true
+        }
       }
     },
     {
@@ -4605,7 +5398,79 @@
         ],
         "favoriteSkillCardsComplete": true,
         "favoritePanelText": "",
-        "lineCount": 140
+        "lineCount": 140,
+        "baseDetail": {
+          "source": "ENIKK deployed RSC detail object",
+          "htmlSha256": "717dc04dc702232d21b48b0ad0e4f9b5edfe0d209a1c906110708b1790e09440",
+          "shot": {
+            "weaponType": "AR",
+            "name": "Assault Rifle",
+            "maxAmmo": 60,
+            "reloadSeconds": 1.2,
+            "fireType": "Instant",
+            "description": "■ Affects target(s).\nDeals 14.07% of ATK as damage.\nDeals 200% damage when attacking core."
+          },
+          "skills": [
+            {
+              "slot": "skill1",
+              "name": "Decrescendo",
+              "icon": "icn_skill_statcritical_01",
+              "cooldownSeconds": 20,
+              "levels": [
+                "■ Affects self.\nCritical Rate▲ 15.38% for 10 sec.",
+                "■ Affects self.\nCritical Rate▲ 16.57% for 10 sec.",
+                "■ Affects self.\nCritical Rate▲ 17.75% for 10 sec.",
+                "■ Affects self.\nCritical Rate▲ 18.93% for 10 sec.",
+                "■ Affects self.\nCritical Rate▲ 20.12% for 10 sec.",
+                "■ Affects self.\nCritical Rate▲ 21.3% for 10 sec.",
+                "■ Affects self.\nCritical Rate▲ 22.48% for 10 sec.",
+                "■ Affects self.\nCritical Rate▲ 23.67% for 10 sec.",
+                "■ Affects self.\nCritical Rate▲ 24.85% for 10 sec.",
+                "■ Affects self.\nCritical Rate▲ 26.04% for 10 sec."
+              ],
+              "level10": "■ Affects self.\nCritical Rate▲ 26.04% for 10 sec."
+            },
+            {
+              "slot": "skill2",
+              "name": "Crescendo",
+              "icon": "icn_skill_criticaldamage_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates when the last bullet hits the target. Affects self.\nCrescendo: Critical Damage ▲ 14.65%. Stacks up to 5 times and lasts for 15 sec.",
+                "■ Activates when the last bullet hits the target. Affects self.\nCrescendo: Critical Damage ▲ 15.78%. Stacks up to 5 times and lasts for 15 sec.",
+                "■ Activates when the last bullet hits the target. Affects self.\nCrescendo: Critical Damage ▲ 16.9%. Stacks up to 5 times and lasts for 15 sec.",
+                "■ Activates when the last bullet hits the target. Affects self.\nCrescendo: Critical Damage ▲ 18.03%. Stacks up to 5 times and lasts for 15 sec.",
+                "■ Activates when the last bullet hits the target. Affects self.\nCrescendo: Critical Damage ▲ 19.16%. Stacks up to 5 times and lasts for 15 sec.",
+                "■ Activates when the last bullet hits the target. Affects self.\nCrescendo: Critical Damage ▲ 20.29%. Stacks up to 5 times and lasts for 15 sec.",
+                "■ Activates when the last bullet hits the target. Affects self.\nCrescendo: Critical Damage ▲ 21.41%. Stacks up to 5 times and lasts for 15 sec.",
+                "■ Activates when the last bullet hits the target. Affects self.\nCrescendo: Critical Damage ▲ 22.54%. Stacks up to 5 times and lasts for 15 sec.",
+                "■ Activates when the last bullet hits the target. Affects self.\nCrescendo: Critical Damage ▲ 23.67%. Stacks up to 5 times and lasts for 15 sec.",
+                "■ Activates when the last bullet hits the target. Affects self.\nCrescendo: Critical Damage ▲ 24.79%. Stacks up to 5 times and lasts for 15 sec."
+              ],
+              "level10": "■ Activates when the last bullet hits the target. Affects self.\nCrescendo: Critical Damage ▲ 24.79%. Stacks up to 5 times and lasts for 15 sec."
+            },
+            {
+              "slot": "burst",
+              "name": "Climax",
+              "icon": "icn_skill_c150_ult",
+              "cooldownSeconds": 40,
+              "levels": [
+                "■ Affects the 5 enemy unit(s) with the highest final DEF.\nDeals 321.75% of final ATK as damage.\n■ Activates when Crescendo is at max stacks. Affects the same target(s).\nDeals 321.75% of final ATK as additional damage.",
+                "■ Affects the 5 enemy unit(s) with the highest final DEF.\nDeals 346.5% of final ATK as damage.\n■ Activates when Crescendo is at max stacks. Affects the same target(s).\nDeals 346.5% of final ATK as additional damage.",
+                "■ Affects the 5 enemy unit(s) with the highest final DEF.\nDeals 371.25% of final ATK as damage.\n■ Activates when Crescendo is at max stacks. Affects the same target(s).\nDeals 371.25% of final ATK as additional damage.",
+                "■ Affects the 5 enemy unit(s) with the highest final DEF.\nDeals 396% of final ATK as damage.\n■ Activates when Crescendo is at max stacks. Affects the same target(s).\nDeals 396% of final ATK as additional damage.",
+                "■ Affects the 5 enemy unit(s) with the highest final DEF.\nDeals 420.75% of final ATK as damage.\n■ Activates when Crescendo is at max stacks. Affects the same target(s).\nDeals 420.75% of final ATK as additional damage.",
+                "■ Affects the 5 enemy unit(s) with the highest final DEF.\nDeals 445.5% of final ATK as damage.\n■ Activates when Crescendo is at max stacks. Affects the same target(s).\nDeals 445.5% of final ATK as additional damage.",
+                "■ Affects the 5 enemy unit(s) with the highest final DEF.\nDeals 470.25% of final ATK as damage.\n■ Activates when Crescendo is at max stacks. Affects the same target(s).\nDeals 470.25% of final ATK as additional damage.",
+                "■ Affects the 5 enemy unit(s) with the highest final DEF.\nDeals 495% of final ATK as damage.\n■ Activates when Crescendo is at max stacks. Affects the same target(s).\nDeals 495% of final ATK as additional damage.",
+                "■ Affects the 5 enemy unit(s) with the highest final DEF.\nDeals 519.75% of final ATK as damage.\n■ Activates when Crescendo is at max stacks. Affects the same target(s).\nDeals 519.75% of final ATK as additional damage.",
+                "■ Affects the 5 enemy unit(s) with the highest final DEF.\nDeals 544.5% of final ATK as damage.\n■ Activates when Crescendo is at max stacks. Affects the same target(s).\nDeals 544.5% of final ATK as additional damage."
+              ],
+              "level10": "■ Affects the 5 enemy unit(s) with the highest final DEF.\nDeals 544.5% of final ATK as damage.\n■ Activates when Crescendo is at max stacks. Affects the same target(s).\nDeals 544.5% of final ATK as additional damage."
+            }
+          ],
+          "complete": true
+        }
       }
     },
     {
@@ -4949,7 +5814,79 @@
         ],
         "favoriteSkillCardsComplete": true,
         "favoritePanelText": "",
-        "lineCount": 150
+        "lineCount": 150,
+        "baseDetail": {
+          "source": "ENIKK deployed RSC detail object",
+          "htmlSha256": "60f488901d2c499475800c960eba22c53df2a56851bc198b456c73880ba4c5e8",
+          "shot": {
+            "weaponType": "RL",
+            "name": "Rocket Launcher",
+            "maxAmmo": 6,
+            "reloadSeconds": 2,
+            "fireType": "HomingProjectile",
+            "description": "■ Affects target(s).\nDeals 61.3% of ATK as damage.\nCharge Time: 1 sec.\nFull Charge Damage: 250% of damage.\nDeals 200% damage when attacking core."
+          },
+          "skills": [
+            {
+              "slot": "skill1",
+              "name": "You Can Do It",
+              "icon": "icn_skill_damageshare_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates when using Burst Skill as long as this unit is still alive. Affects all allies.\nProportionally shares damage taken. This effect is continuous.\nDEF ▲ 5.57% of the skill user's DEF continuously.",
+                "■ Activates when using Burst Skill as long as this unit is still alive. Affects all allies.\nProportionally shares damage taken. This effect is continuous.\nDEF ▲ 6.08% of the skill user's DEF continuously.",
+                "■ Activates when using Burst Skill as long as this unit is still alive. Affects all allies.\nProportionally shares damage taken. This effect is continuous.\nDEF ▲ 6.58% of the skill user's DEF continuously.",
+                "■ Activates when using Burst Skill as long as this unit is still alive. Affects all allies.\nProportionally shares damage taken. This effect is continuous.\nDEF ▲ 7.09% of the skill user's DEF continuously.",
+                "■ Activates when using Burst Skill as long as this unit is still alive. Affects all allies.\nProportionally shares damage taken. This effect is continuous.\nDEF ▲ 7.6% of the skill user's DEF continuously.",
+                "■ Activates when using Burst Skill as long as this unit is still alive. Affects all allies.\nProportionally shares damage taken. This effect is continuous.\nDEF ▲ 8.11% of the skill user's DEF continuously.",
+                "■ Activates when using Burst Skill as long as this unit is still alive. Affects all allies.\nProportionally shares damage taken. This effect is continuous.\nDEF ▲ 8.61% of the skill user's DEF continuously.",
+                "■ Activates when using Burst Skill as long as this unit is still alive. Affects all allies.\nProportionally shares damage taken. This effect is continuous.\nDEF ▲ 9.12% of the skill user's DEF continuously.",
+                "■ Activates when using Burst Skill as long as this unit is still alive. Affects all allies.\nProportionally shares damage taken. This effect is continuous.\nDEF ▲ 9.63% of the skill user's DEF continuously.",
+                "■ Activates when using Burst Skill as long as this unit is still alive. Affects all allies.\nProportionally shares damage taken. This effect is continuous.\nDEF ▲ 10.13% of the skill user's DEF continuously."
+              ],
+              "level10": "■ Activates when using Burst Skill as long as this unit is still alive. Affects all allies.\nProportionally shares damage taken. This effect is continuous.\nDEF ▲ 10.13% of the skill user's DEF continuously."
+            },
+            {
+              "slot": "skill2",
+              "name": "Cheer Up Together",
+              "icon": "icn_skill_healcover_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates when using Burst Skill as long as this unit is still alive. Affects this unit's cover.\nProportionally shares damage taken. This effect is continuous.\n■ Activates when Full Burst ends. Affects self.\nContinuously restores cover HP equal to 1.58% of the skill user's final max HP every second for 5 sec.",
+                "■ Activates when using Burst Skill as long as this unit is still alive. Affects this unit's cover.\nProportionally shares damage taken. This effect is continuous.\n■ Activates when Full Burst ends. Affects self.\nContinuously restores cover HP equal to 1.72% of the skill user's final max HP every second for 5 sec.",
+                "■ Activates when using Burst Skill as long as this unit is still alive. Affects this unit's cover.\nProportionally shares damage taken. This effect is continuous.\n■ Activates when Full Burst ends. Affects self.\nContinuously restores cover HP equal to 1.87% of the skill user's final max HP every second for 5 sec.",
+                "■ Activates when using Burst Skill as long as this unit is still alive. Affects this unit's cover.\nProportionally shares damage taken. This effect is continuous.\n■ Activates when Full Burst ends. Affects self.\nContinuously restores cover HP equal to 2.01% of the skill user's final max HP every second for 5 sec.",
+                "■ Activates when using Burst Skill as long as this unit is still alive. Affects this unit's cover.\nProportionally shares damage taken. This effect is continuous.\n■ Activates when Full Burst ends. Affects self.\nContinuously restores cover HP equal to 2.16% of the skill user's final max HP every second for 5 sec.",
+                "■ Activates when using Burst Skill as long as this unit is still alive. Affects this unit's cover.\nProportionally shares damage taken. This effect is continuous.\n■ Activates when Full Burst ends. Affects self.\nContinuously restores cover HP equal to 2.3% of the skill user's final max HP every second for 5 sec.",
+                "■ Activates when using Burst Skill as long as this unit is still alive. Affects this unit's cover.\nProportionally shares damage taken. This effect is continuous.\n■ Activates when Full Burst ends. Affects self.\nContinuously restores cover HP equal to 2.44% of the skill user's final max HP every second for 5 sec.",
+                "■ Activates when using Burst Skill as long as this unit is still alive. Affects this unit's cover.\nProportionally shares damage taken. This effect is continuous.\n■ Activates when Full Burst ends. Affects self.\nContinuously restores cover HP equal to 2.59% of the skill user's final max HP every second for 5 sec.",
+                "■ Activates when using Burst Skill as long as this unit is still alive. Affects this unit's cover.\nProportionally shares damage taken. This effect is continuous.\n■ Activates when Full Burst ends. Affects self.\nContinuously restores cover HP equal to 2.73% of the skill user's final max HP every second for 5 sec.",
+                "■ Activates when using Burst Skill as long as this unit is still alive. Affects this unit's cover.\nProportionally shares damage taken. This effect is continuous.\n■ Activates when Full Burst ends. Affects self.\nContinuously restores cover HP equal to 2.88% of the skill user's final max HP every second for 5 sec."
+              ],
+              "level10": "■ Activates when using Burst Skill as long as this unit is still alive. Affects this unit's cover.\nProportionally shares damage taken. This effect is continuous.\n■ Activates when Full Burst ends. Affects self.\nContinuously restores cover HP equal to 2.88% of the skill user's final max HP every second for 5 sec."
+            },
+            {
+              "slot": "burst",
+              "name": "First Winner",
+              "icon": "icn_skill_c550_ult",
+              "cooldownSeconds": 40,
+              "levels": [
+                "■ Affects self.\nMax HP of cover ▲ 9.9% of the skill user's max HP for 20 sec.\n■ Affects all allies.\nDamage Taken ▼ 4.87% for 10 sec.",
+                "■ Affects self.\nMax HP of cover ▲ 10.8% of the skill user's max HP for 20 sec.\n■ Affects all allies.\nDamage Taken ▼ 5.32% for 10 sec.",
+                "■ Affects self.\nMax HP of cover ▲ 11.7% of the skill user's max HP for 20 sec.\n■ Affects all allies.\nDamage Taken ▼ 5.76% for 10 sec.",
+                "■ Affects self.\nMax HP of cover ▲ 12.6% of the skill user's max HP for 20 sec.\n■ Affects all allies.\nDamage Taken ▼ 6.2% for 10 sec.",
+                "■ Affects self.\nMax HP of cover ▲ 13.5% of the skill user's max HP for 20 sec.\n■ Affects all allies.\nDamage Taken ▼ 6.65% for 10 sec.",
+                "■ Affects self.\nMax HP of cover ▲ 14.4% of the skill user's max HP for 20 sec.\n■ Affects all allies.\nDamage Taken ▼ 7.09% for 10 sec.",
+                "■ Affects self.\nMax HP of cover ▲ 15.3% of the skill user's max HP for 20 sec.\n■ Affects all allies.\nDamage Taken ▼ 7.53% for 10 sec.",
+                "■ Affects self.\nMax HP of cover ▲ 16.2% of the skill user's max HP for 20 sec.\n■ Affects all allies.\nDamage Taken ▼ 7.98% for 10 sec.",
+                "■ Affects self.\nMax HP of cover ▲ 17.1% of the skill user's max HP for 20 sec.\n■ Affects all allies.\nDamage Taken ▼ 8.42% for 10 sec.",
+                "■ Affects self.\nMax HP of cover ▲ 18% of the skill user's max HP for 20 sec.\n■ Affects all allies.\nDamage Taken ▼ 8.87% for 10 sec."
+              ],
+              "level10": "■ Affects self.\nMax HP of cover ▲ 18% of the skill user's max HP for 20 sec.\n■ Affects all allies.\nDamage Taken ▼ 8.87% for 10 sec."
+            }
+          ],
+          "complete": true
+        }
       }
     },
     {
@@ -5308,7 +6245,79 @@
         ],
         "favoriteSkillCardsComplete": true,
         "favoritePanelText": "",
-        "lineCount": 139
+        "lineCount": 139,
+        "baseDetail": {
+          "source": "ENIKK deployed RSC detail object",
+          "htmlSha256": "687fc362189b404de56fb64de1d190b551ea85598f1942de5887afbbaa7e5b27",
+          "shot": {
+            "weaponType": "AR",
+            "name": "Assault Rifle",
+            "maxAmmo": 60,
+            "reloadSeconds": 1,
+            "fireType": "Instant",
+            "description": "■ Affects target(s).\nDeals 13.65% of ATK as damage.\nDeals 200% damage when attacking core."
+          },
+          "skills": [
+            {
+              "slot": "skill1",
+              "name": "EX Magazine",
+              "icon": "icn_skill_atkup_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates when entering Full Burst. Affects all allies.\nATK ▲ 18.77% for 10 sec.\nReload Speed ▲ 22.88% for 10 sec.\nMax Ammunition Capacity ▼ 50.66% for 10 sec.",
+                "■ Activates when entering Full Burst. Affects all allies.\nATK ▲ 19.3% for 10 sec.\nReload Speed ▲ 26.02% for 10 sec.\nMax Ammunition Capacity ▼ 50.66% for 10 sec.",
+                "■ Activates when entering Full Burst. Affects all allies.\nATK ▲ 19.84% for 10 sec.\nReload Speed ▲ 29.16% for 10 sec.\nMax Ammunition Capacity ▼ 50.66% for 10 sec.",
+                "■ Activates when entering Full Burst. Affects all allies.\nATK ▲ 20.38% for 10 sec.\nReload Speed ▲ 32.3% for 10 sec.\nMax Ammunition Capacity ▼ 50.66% for 10 sec.",
+                "■ Activates when entering Full Burst. Affects all allies.\nATK ▲ 20.92% for 10 sec.\nReload Speed ▲ 35.45% for 10 sec.\nMax Ammunition Capacity ▼ 50.66% for 10 sec.",
+                "■ Activates when entering Full Burst. Affects all allies.\nATK ▲ 21.46% for 10 sec.\nReload Speed ▲ 38.59% for 10 sec.\nMax Ammunition Capacity ▼ 50.66% for 10 sec.",
+                "■ Activates when entering Full Burst. Affects all allies.\nATK ▲ 22% for 10 sec.\nReload Speed ▲ 41.73% for 10 sec.\nMax Ammunition Capacity ▼ 50.66% for 10 sec.",
+                "■ Activates when entering Full Burst. Affects all allies.\nATK ▲ 22.54% for 10 sec.\nReload Speed ▲ 44.88% for 10 sec.\nMax Ammunition Capacity ▼ 50.66% for 10 sec.",
+                "■ Activates when entering Full Burst. Affects all allies.\nATK ▲ 23.08% for 10 sec.\nReload Speed ▲ 48.02% for 10 sec.\nMax Ammunition Capacity ▼ 50.66% for 10 sec.",
+                "■ Activates when entering Full Burst. Affects all allies.\nATK ▲ 23.61% for 10 sec.\nReload Speed ▲ 51.16% for 10 sec.\nMax Ammunition Capacity ▼ 50.66% for 10 sec."
+              ],
+              "level10": "■ Activates when entering Full Burst. Affects all allies.\nATK ▲ 23.61% for 10 sec.\nReload Speed ▲ 51.16% for 10 sec.\nMax Ammunition Capacity ▼ 50.66% for 10 sec."
+            },
+            {
+              "slot": "skill2",
+              "name": "LD Assault",
+              "icon": "icn_skill_atkup_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates when the last bullet hits the target. Affects the target.\nDeals 50.7% of final ATK as additional damage.\n■ Affects the enemy hit by the last round of ammunition if they are Stunned.\nDeals 643.5% of final ATK as additional damage.",
+                "■ Activates when the last bullet hits the target. Affects the target.\nDeals 54.6% of final ATK as additional damage.\n■ Affects the enemy hit by the last round of ammunition if they are Stunned.\nDeals 693% of final ATK as additional damage.",
+                "■ Activates when the last bullet hits the target. Affects the target.\nDeals 58.5% of final ATK as additional damage.\n■ Affects the enemy hit by the last round of ammunition if they are Stunned.\nDeals 742.5% of final ATK as additional damage.",
+                "■ Activates when the last bullet hits the target. Affects the target.\nDeals 62.4% of final ATK as additional damage.\n■ Affects the enemy hit by the last round of ammunition if they are Stunned.\nDeals 792% of final ATK as additional damage.",
+                "■ Activates when the last bullet hits the target. Affects the target.\nDeals 66.3% of final ATK as additional damage.\n■ Affects the enemy hit by the last round of ammunition if they are Stunned.\nDeals 841.5% of final ATK as additional damage.",
+                "■ Activates when the last bullet hits the target. Affects the target.\nDeals 70.2% of final ATK as additional damage.\n■ Affects the enemy hit by the last round of ammunition if they are Stunned.\nDeals 891% of final ATK as additional damage.",
+                "■ Activates when the last bullet hits the target. Affects the target.\nDeals 74.09% of final ATK as additional damage.\n■ Affects the enemy hit by the last round of ammunition if they are Stunned.\nDeals 940.5% of final ATK as additional damage.",
+                "■ Activates when the last bullet hits the target. Affects the target.\nDeals 77.99% of final ATK as additional damage.\n■ Affects the enemy hit by the last round of ammunition if they are Stunned.\nDeals 990% of final ATK as additional damage.",
+                "■ Activates when the last bullet hits the target. Affects the target.\nDeals 81.9% of final ATK as additional damage.\n■ Affects the enemy hit by the last round of ammunition if they are Stunned.\nDeals 1039.5% of final ATK as additional damage.",
+                "■ Activates when the last bullet hits the target. Affects the target.\nDeals 85.79% of final ATK as additional damage.\n■ Affects the enemy hit by the last round of ammunition if they are Stunned.\nDeals 1089% of final ATK as additional damage."
+              ],
+              "level10": "■ Activates when the last bullet hits the target. Affects the target.\nDeals 85.79% of final ATK as additional damage.\n■ Affects the enemy hit by the last round of ammunition if they are Stunned.\nDeals 1089% of final ATK as additional damage."
+            },
+            {
+              "slot": "burst",
+              "name": "AK Missile",
+              "icon": "icn_skill_c170_ult",
+              "cooldownSeconds": 40,
+              "levels": [
+                "■ Affects all enemies.\nDeals 270.56% of final ATK as Burst Skill damage.\nStuns for 3 sec.",
+                "■ Affects all enemies.\nDeals 291.37% of final ATK as Burst Skill damage.\nStuns for 3 sec.",
+                "■ Affects all enemies.\nDeals 312.18% of final ATK as Burst Skill damage.\nStuns for 3 sec.",
+                "■ Affects all enemies.\nDeals 333% of final ATK as Burst Skill damage.\nStuns for 3 sec.",
+                "■ Affects all enemies.\nDeals 353.81% of final ATK as Burst Skill damage.\nStuns for 3 sec.",
+                "■ Affects all enemies.\nDeals 374.62% of final ATK as Burst Skill damage.\nStuns for 3 sec.",
+                "■ Affects all enemies.\nDeals 395.43% of final ATK as Burst Skill damage.\nStuns for 3 sec.",
+                "■ Affects all enemies.\nDeals 416.25% of final ATK as Burst Skill damage.\nStuns for 3 sec.",
+                "■ Affects all enemies.\nDeals 437.06% of final ATK as Burst Skill damage.\nStuns for 3 sec.",
+                "■ Affects all enemies.\nDeals 457.87% of final ATK as Burst Skill damage.\nStuns for 3 sec."
+              ],
+              "level10": "■ Affects all enemies.\nDeals 457.87% of final ATK as Burst Skill damage.\nStuns for 3 sec."
+            }
+          ],
+          "complete": true
+        }
       }
     },
     {
@@ -5680,7 +6689,79 @@
         ],
         "favoriteSkillCardsComplete": true,
         "favoritePanelText": "",
-        "lineCount": 150
+        "lineCount": 150,
+        "baseDetail": {
+          "source": "ENIKK deployed RSC detail object",
+          "htmlSha256": "fd7d9ef718aba0d742a38633548cfc0f9c560adfac69ec5583b398afbf109431",
+          "shot": {
+            "weaponType": "SG",
+            "name": "Shotgun",
+            "maxAmmo": 9,
+            "reloadSeconds": 1.5,
+            "fireType": "Instant",
+            "description": "■ Affects target(s).\nDeals 100.75% of ATK as damage.\nDeals 200% damage when attacking core."
+          },
+          "skills": [
+            {
+              "slot": "skill1",
+              "name": "Pierce Equation",
+              "icon": "icn_skill_penetrationdamage_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates when entering Full Burst. Affects all allies.\nPierce Damage ▲ 11.89% for 1 round(s).\nPierce Damage ▲ 5.94% for 10 sec.",
+                "■ Activates when entering Full Burst. Affects all allies.\nPierce Damage ▲ 12.81% for 1 round(s).\nPierce Damage ▲ 6.4% for 10 sec.",
+                "■ Activates when entering Full Burst. Affects all allies.\nPierce Damage ▲ 13.72% for 1 round(s).\nPierce Damage ▲ 6.86% for 10 sec.",
+                "■ Activates when entering Full Burst. Affects all allies.\nPierce Damage ▲ 14.64% for 1 round(s).\nPierce Damage ▲ 7.32% for 10 sec.",
+                "■ Activates when entering Full Burst. Affects all allies.\nPierce Damage ▲ 15.55% for 1 round(s).\nPierce Damage ▲ 7.77% for 10 sec.",
+                "■ Activates when entering Full Burst. Affects all allies.\nPierce Damage ▲ 16.47% for 1 round(s).\nPierce Damage ▲ 8.23% for 10 sec.",
+                "■ Activates when entering Full Burst. Affects all allies.\nPierce Damage ▲ 17.38% for 1 round(s).\nPierce Damage ▲ 8.69% for 10 sec.",
+                "■ Activates when entering Full Burst. Affects all allies.\nPierce Damage ▲ 18.3% for 1 round(s).\nPierce Damage ▲ 9.15% for 10 sec.",
+                "■ Activates when entering Full Burst. Affects all allies.\nPierce Damage ▲ 19.21% for 1 round(s).\nPierce Damage ▲ 9.6% for 10 sec.",
+                "■ Activates when entering Full Burst. Affects all allies.\nPierce Damage ▲ 20.13% for 1 round(s).\nPierce Damage ▲ 10.06% for 10 sec."
+              ],
+              "level10": "■ Activates when entering Full Burst. Affects all allies.\nPierce Damage ▲ 20.13% for 1 round(s).\nPierce Damage ▲ 10.06% for 10 sec."
+            },
+            {
+              "slot": "skill2",
+              "name": "Frame Analysis",
+              "icon": "icn_skill_healcover_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates after performing 5 normal attacks. Affects all allies.\nRestores 4.38% of cover HP.\n■ Activates when entering Full Burst. Affects all allies.\nCritical Rate ▲ 11.01% for 5 sec.",
+                "■ Activates after performing 5 normal attacks. Affects all allies.\nRestores 4.73% of cover HP.\n■ Activates when entering Full Burst. Affects all allies.\nCritical Rate ▲ 11.86% for 5 sec.",
+                "■ Activates after performing 5 normal attacks. Affects all allies.\nRestores 5.08% of cover HP.\n■ Activates when entering Full Burst. Affects all allies.\nCritical Rate ▲ 12.7% for 5 sec.",
+                "■ Activates after performing 5 normal attacks. Affects all allies.\nRestores 5.43% of cover HP.\n■ Activates when entering Full Burst. Affects all allies.\nCritical Rate ▲ 13.55% for 5 sec.",
+                "■ Activates after performing 5 normal attacks. Affects all allies.\nRestores 5.78% of cover HP.\n■ Activates when entering Full Burst. Affects all allies.\nCritical Rate ▲ 14.4% for 5 sec.",
+                "■ Activates after performing 5 normal attacks. Affects all allies.\nRestores 6.13% of cover HP.\n■ Activates when entering Full Burst. Affects all allies.\nCritical Rate ▲ 15.25% for 5 sec.",
+                "■ Activates after performing 5 normal attacks. Affects all allies.\nRestores 6.48% of cover HP.\n■ Activates when entering Full Burst. Affects all allies.\nCritical Rate ▲ 16.09% for 5 sec.",
+                "■ Activates after performing 5 normal attacks. Affects all allies.\nRestores 6.83% of cover HP.\n■ Activates when entering Full Burst. Affects all allies.\nCritical Rate ▲ 16.94% for 5 sec.",
+                "■ Activates after performing 5 normal attacks. Affects all allies.\nRestores 7.17% of cover HP.\n■ Activates when entering Full Burst. Affects all allies.\nCritical Rate ▲ 17.79% for 5 sec.",
+                "■ Activates after performing 5 normal attacks. Affects all allies.\nRestores 7.52% of cover HP.\n■ Activates when entering Full Burst. Affects all allies.\nCritical Rate ▲ 18.63% for 5 sec."
+              ],
+              "level10": "■ Activates after performing 5 normal attacks. Affects all allies.\nRestores 7.52% of cover HP.\n■ Activates when entering Full Burst. Affects all allies.\nCritical Rate ▲ 18.63% for 5 sec."
+            },
+            {
+              "slot": "burst",
+              "name": "Overcharge Formula",
+              "icon": "icn_skill_c390_ult",
+              "cooldownSeconds": 20,
+              "levels": [
+                "■ Affects self.\nChanges the weapon in use:\nCharge Time: 1.5 sec\nDamage: 29.95% of final ATK\nFull Charge Damage: 300% of damage\nMax Ammunition Capacity: 1\nAdditional Effect: Pierce\n■ Affects all allies.\nPierce Damage ▲ 9.15% for 10 sec.",
+                "■ Affects self.\nChanges the weapon in use:\nCharge Time: 1.5 sec\nDamage: 32.26% of final ATK\nFull Charge Damage: 300% of damage\nMax Ammunition Capacity: 1\nAdditional Effect: Pierce\n■ Affects all allies.\nPierce Damage ▲ 9.85% for 10 sec.",
+                "■ Affects self.\nChanges the weapon in use:\nCharge Time: 1.5 sec\nDamage: 34.56% of final ATK\nFull Charge Damage: 300% of damage\nMax Ammunition Capacity: 1\nAdditional Effect: Pierce\n■ Affects all allies.\nPierce Damage ▲ 10.56% for 10 sec.",
+                "■ Affects self.\nChanges the weapon in use:\nCharge Time: 1.5 sec\nDamage: 36.86% of final ATK\nFull Charge Damage: 300% of damage\nMax Ammunition Capacity: 1\nAdditional Effect: Pierce\n■ Affects all allies.\nPierce Damage ▲ 11.26% for 10 sec.",
+                "■ Affects self.\nChanges the weapon in use:\nCharge Time: 1.5 sec\nDamage: 39.17% of final ATK\nFull Charge Damage: 300% of damage\nMax Ammunition Capacity: 1\nAdditional Effect: Pierce\n■ Affects all allies.\nPierce Damage ▲ 11.96% for 10 sec.",
+                "■ Affects self.\nChanges the weapon in use:\nCharge Time: 1.5 sec\nDamage: 41.47% of final ATK\nFull Charge Damage: 300% of damage\nMax Ammunition Capacity: 1\nAdditional Effect: Pierce\n■ Affects all allies.\nPierce Damage ▲ 12.67% for 10 sec.",
+                "■ Affects self.\nChanges the weapon in use:\nCharge Time: 1.5 sec\nDamage: 43.78% of final ATK\nFull Charge Damage: 300% of damage\nMax Ammunition Capacity: 1\nAdditional Effect: Pierce\n■ Affects all allies.\nPierce Damage ▲ 13.37% for 10 sec.",
+                "■ Affects self.\nChanges the weapon in use:\nCharge Time: 1.5 sec\nDamage: 46.08% of final ATK\nFull Charge Damage: 300% of damage\nMax Ammunition Capacity: 1\nAdditional Effect: Pierce\n■ Affects all allies.\nPierce Damage ▲ 14.08% for 10 sec.",
+                "■ Affects self.\nChanges the weapon in use:\nCharge Time: 1.5 sec\nDamage: 48.38% of final ATK\nFull Charge Damage: 300% of damage\nMax Ammunition Capacity: 1\nAdditional Effect: Pierce\n■ Affects all allies.\nPierce Damage ▲ 14.78% for 10 sec.",
+                "■ Affects self.\nChanges the weapon in use:\nCharge Time: 1.5 sec\nDamage: 50.69% of final ATK\nFull Charge Damage: 300% of damage\nMax Ammunition Capacity: 1\nAdditional Effect: Pierce\n■ Affects all allies.\nPierce Damage ▲ 15.48% for 10 sec."
+              ],
+              "level10": "■ Affects self.\nChanges the weapon in use:\nCharge Time: 1.5 sec\nDamage: 50.69% of final ATK\nFull Charge Damage: 300% of damage\nMax Ammunition Capacity: 1\nAdditional Effect: Pierce\n■ Affects all allies.\nPierce Damage ▲ 15.48% for 10 sec."
+            }
+          ],
+          "complete": true
+        }
       }
     },
     {
@@ -6033,7 +7114,79 @@
         ],
         "favoriteSkillCardsComplete": true,
         "favoritePanelText": "",
-        "lineCount": 153
+        "lineCount": 153,
+        "baseDetail": {
+          "source": "ENIKK deployed RSC detail object",
+          "htmlSha256": "f12dbf09f82b0e97ed67b1f815cb3070ddd18f0ab3233b929a3a2b94704be132",
+          "shot": {
+            "weaponType": "RL",
+            "name": "Rocket Launcher",
+            "maxAmmo": 6,
+            "reloadSeconds": 0.5,
+            "fireType": "HomingProjectile",
+            "description": "■ Affects target(s).\nDeals 61.3% of ATK as damage.\nCharge Time: 1 sec.\nFull Charge Damage: 250% of damage.\nDeals 200% damage when attacking core."
+          },
+          "skills": [
+            {
+              "slot": "skill1",
+              "name": "Maintain Fortification",
+              "icon": "icn_skill_statreloadtime_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates when landing a Full Charge attack. Affects self.\nCooldown of Skill 2 ▼ 4.58%.",
+                "■ Activates when landing a Full Charge attack. Affects self.\nCooldown of Skill 2 ▼ 5.09%.",
+                "■ Activates when landing a Full Charge attack. Affects self.\nCooldown of Skill 2 ▼ 5.6%.",
+                "■ Activates when landing a Full Charge attack. Affects self.\nCooldown of Skill 2 ▼ 6.11%.",
+                "■ Activates when landing a Full Charge attack. Affects self.\nCooldown of Skill 2 ▼ 6.62%.",
+                "■ Activates when landing a Full Charge attack. Affects self.\nCooldown of Skill 2 ▼ 7.12%.",
+                "■ Activates when landing a Full Charge attack. Affects self.\nCooldown of Skill 2 ▼ 7.63%.",
+                "■ Activates when landing a Full Charge attack. Affects self.\nCooldown of Skill 2 ▼ 8.14%.",
+                "■ Activates when landing a Full Charge attack. Affects self.\nCooldown of Skill 2 ▼ 8.65%.",
+                "■ Activates when landing a Full Charge attack. Affects self.\nCooldown of Skill 2 ▼ 9.16%."
+              ],
+              "level10": "■ Activates when landing a Full Charge attack. Affects self.\nCooldown of Skill 2 ▼ 9.16%."
+            },
+            {
+              "slot": "skill2",
+              "name": "Field Discussion",
+              "icon": "icn_skill_barrier_01",
+              "cooldownSeconds": 9,
+              "levels": [
+                "■ Affects self.\nCreates a shared shield with HP equal to 3.19% of the skill user's final max HP that protects all allies from damage. Lasts for 5 sec.",
+                "■ Affects self.\nCreates a shared shield with HP equal to 3.54% of the skill user's final max HP that protects all allies from damage. Lasts for 5 sec.",
+                "■ Affects self.\nCreates a shared shield with HP equal to 3.89% of the skill user's final max HP that protects all allies from damage. Lasts for 5 sec.",
+                "■ Affects self.\nCreates a shared shield with HP equal to 4.25% of the skill user's final max HP that protects all allies from damage. Lasts for 5 sec.",
+                "■ Affects self.\nCreates a shared shield with HP equal to 4.6% of the skill user's final max HP that protects all allies from damage. Lasts for 5 sec.",
+                "■ Affects self.\nCreates a shared shield with HP equal to 4.96% of the skill user's final max HP that protects all allies from damage. Lasts for 5 sec.",
+                "■ Affects self.\nCreates a shared shield with HP equal to 5.31% of the skill user's final max HP that protects all allies from damage. Lasts for 5 sec.",
+                "■ Affects self.\nCreates a shared shield with HP equal to 5.67% of the skill user's final max HP that protects all allies from damage. Lasts for 5 sec.",
+                "■ Affects self.\nCreates a shared shield with HP equal to 6.02% of the skill user's final max HP that protects all allies from damage. Lasts for 5 sec.",
+                "■ Affects self.\nCreates a shared shield with HP equal to 6.38% of the skill user's final max HP that protects all allies from damage. Lasts for 5 sec."
+              ],
+              "level10": "■ Affects self.\nCreates a shared shield with HP equal to 6.38% of the skill user's final max HP that protects all allies from damage. Lasts for 5 sec."
+            },
+            {
+              "slot": "burst",
+              "name": "Start Construction",
+              "icon": "icn_skill_c080_ult",
+              "cooldownSeconds": 20,
+              "levels": [
+                "■ Affects 5 enemy unit(s) with the lowest remaining HP.\nDeals 72.73% of final ATK as damage.\nDEF ▼ 7.27% for 10 sec.",
+                "■ Affects 5 enemy unit(s) with the lowest remaining HP.\nDeals 80.81% of final ATK as damage.\nDEF ▼ 8.08% for 10 sec.",
+                "■ Affects 5 enemy unit(s) with the lowest remaining HP.\nDeals 88.89% of final ATK as damage.\nDEF ▼ 8.88% for 10 sec.",
+                "■ Affects 5 enemy unit(s) with the lowest remaining HP.\nDeals 96.97% of final ATK as damage.\nDEF ▼ 9.69% for 10 sec.",
+                "■ Affects 5 enemy unit(s) with the lowest remaining HP.\nDeals 105.06% of final ATK as damage.\nDEF ▼ 10.5% for 10 sec.",
+                "■ Affects 5 enemy unit(s) with the lowest remaining HP.\nDeals 113.14% of final ATK as damage.\nDEF ▼ 11.31% for 10 sec.",
+                "■ Affects 5 enemy unit(s) with the lowest remaining HP.\nDeals 121.22% of final ATK as damage.\nDEF ▼ 12.12% for 10 sec.",
+                "■ Affects 5 enemy unit(s) with the lowest remaining HP.\nDeals 129.3% of final ATK as damage.\nDEF ▼ 12.93% for 10 sec.",
+                "■ Affects 5 enemy unit(s) with the lowest remaining HP.\nDeals 137.38% of final ATK as damage.\nDEF ▼ 13.73% for 10 sec.",
+                "■ Affects 5 enemy unit(s) with the lowest remaining HP.\nDeals 145.46% of final ATK as damage.\nDEF ▼ 14.54% for 10 sec."
+              ],
+              "level10": "■ Affects 5 enemy unit(s) with the lowest remaining HP.\nDeals 145.46% of final ATK as damage.\nDEF ▼ 14.54% for 10 sec."
+            }
+          ],
+          "complete": true
+        }
       }
     },
     {
@@ -6452,7 +7605,79 @@
         ],
         "favoriteSkillCardsComplete": true,
         "favoritePanelText": "",
-        "lineCount": 161
+        "lineCount": 161,
+        "baseDetail": {
+          "source": "ENIKK deployed RSC detail object",
+          "htmlSha256": "90883cdc91143d5b884eb8cabfc4987fb1f208fc629b27ee3d39e4c515bd38f6",
+          "shot": {
+            "weaponType": "AR",
+            "name": "Assault Rifle",
+            "maxAmmo": 60,
+            "reloadSeconds": 1.5,
+            "fireType": "Instant",
+            "description": "■ Affects target(s).\nDeals 14.71% of ATK as damage.\nDeals 200% damage when attacking core."
+          },
+          "skills": [
+            {
+              "slot": "skill1",
+              "name": "Bring It On!",
+              "icon": "icn_skill_defup_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates at the start of battle. Affects self.\nDEF ▲ 1.93% continuously for every 1% of HP lost.\n■ Activates after landing 5 normal attacks while weapon is changed. Affects the target.\nDeals 25.95% of final ATK as additional damage.",
+                "■ Activates at the start of battle. Affects self.\nDEF ▲ 2.1% continuously for every 1% of HP lost.\n■ Activates after landing 5 normal attacks while weapon is changed. Affects the target.\nDeals 28.31% of final ATK as additional damage.",
+                "■ Activates at the start of battle. Affects self.\nDEF ▲ 2.28% continuously for every 1% of HP lost.\n■ Activates after landing 5 normal attacks while weapon is changed. Affects the target.\nDeals 30.67% of final ATK as additional damage.",
+                "■ Activates at the start of battle. Affects self.\nDEF ▲ 2.45% continuously for every 1% of HP lost.\n■ Activates after landing 5 normal attacks while weapon is changed. Affects the target.\nDeals 33.03% of final ATK as additional damage.",
+                "■ Activates at the start of battle. Affects self.\nDEF ▲ 2.63% continuously for every 1% of HP lost.\n■ Activates after landing 5 normal attacks while weapon is changed. Affects the target.\nDeals 35.38% of final ATK as additional damage.",
+                "■ Activates at the start of battle. Affects self.\nDEF ▲ 2.81% continuously for every 1% of HP lost.\n■ Activates after landing 5 normal attacks while weapon is changed. Affects the target.\nDeals 37.74% of final ATK as additional damage.",
+                "■ Activates at the start of battle. Affects self.\nDEF ▲ 2.98% continuously for every 1% of HP lost.\n■ Activates after landing 5 normal attacks while weapon is changed. Affects the target.\nDeals 40.1% of final ATK as additional damage.",
+                "■ Activates at the start of battle. Affects self.\nDEF ▲ 3.16% continuously for every 1% of HP lost.\n■ Activates after landing 5 normal attacks while weapon is changed. Affects the target.\nDeals 42.46% of final ATK as additional damage.",
+                "■ Activates at the start of battle. Affects self.\nDEF ▲ 3.33% continuously for every 1% of HP lost.\n■ Activates after landing 5 normal attacks while weapon is changed. Affects the target.\nDeals 44.82% of final ATK as additional damage.",
+                "■ Activates at the start of battle. Affects self.\nDEF ▲ 3.51% continuously for every 1% of HP lost.\n■ Activates after landing 5 normal attacks while weapon is changed. Affects the target.\nDeals 47.18% of final ATK as additional damage."
+              ],
+              "level10": "■ Activates at the start of battle. Affects self.\nDEF ▲ 3.51% continuously for every 1% of HP lost.\n■ Activates after landing 5 normal attacks while weapon is changed. Affects the target.\nDeals 47.18% of final ATK as additional damage."
+            },
+            {
+              "slot": "skill2",
+              "name": "Leave It To Me!",
+              "icon": "icn_skill_stathp_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates when firing the final bullet. Affects the 3 enemy unit(s) with the highest final ATK.\nTaunts for 4 sec.\n■ Activates when HP falls below 20%. Affects self.\nEffects vary according to the number of uses. Perseverance: Only one effect is triggered at a time.\nOnce: Max HP ▲ 55% for 3 sec. Activates once per battle.\nTwice: Max HP ▲ 36.09% for 3 sec. Activates once per battle.\nThree Times: Max HP ▲ 25.78% for 3 sec. Activates once per battle.",
+                "■ Activates when firing the final bullet. Affects the 3 enemy unit(s) with the highest final ATK.\nTaunts for 4 sec.\n■ Activates when HP falls below 20%. Affects self.\nEffects vary according to the number of uses. Perseverance: Only one effect is triggered at a time.\nOnce: Max HP ▲ 59% for 3 sec. Activates once per battle.\nTwice: Max HP ▲ 39.84% for 3 sec. Activates once per battle.\nThree Times: Max HP ▲ 28.59% for 3 sec. Activates once per battle.",
+                "■ Activates when firing the final bullet. Affects the 3 enemy unit(s) with the highest final ATK.\nTaunts for 4 sec.\n■ Activates when HP falls below 20%. Affects self.\nEffects vary according to the number of uses. Perseverance: Only one effect is triggered at a time.\nOnce: Max HP ▲ 63% for 3 sec. Activates once per battle.\nTwice: Max HP ▲ 43.59% for 3 sec. Activates once per battle.\nThree Times: Max HP ▲ 31.4% for 3 sec. Activates once per battle.",
+                "■ Activates when firing the final bullet. Affects the 3 enemy unit(s) with the highest final ATK.\nTaunts for 4 sec.\n■ Activates when HP falls below 20%. Affects self.\nEffects vary according to the number of uses. Perseverance: Only one effect is triggered at a time.\nOnce: Max HP ▲ 67% for 3 sec. Activates once per battle.\nTwice: Max HP ▲ 47.34% for 3 sec. Activates once per battle.\nThree Times: Max HP ▲ 34.21% for 3 sec. Activates once per battle.",
+                "■ Activates when firing the final bullet. Affects the 3 enemy unit(s) with the highest final ATK.\nTaunts for 4 sec.\n■ Activates when HP falls below 20%. Affects self.\nEffects vary according to the number of uses. Perseverance: Only one effect is triggered at a time.\nOnce: Max HP ▲ 71% for 3 sec. Activates once per battle.\nTwice: Max HP ▲ 51.09% for 3 sec. Activates once per battle.\nThree Times: Max HP ▲ 37.03% for 3 sec. Activates once per battle.",
+                "■ Activates when firing the final bullet. Affects the 3 enemy unit(s) with the highest final ATK.\nTaunts for 4 sec.\n■ Activates when HP falls below 20%. Affects self.\nEffects vary according to the number of uses. Perseverance: Only one effect is triggered at a time.\nOnce: Max HP ▲ 75% for 3 sec. Activates once per battle.\nTwice: Max HP ▲ 54.84% for 3 sec. Activates once per battle.\nThree Times: Max HP ▲ 39.84% for 3 sec. Activates once per battle.",
+                "■ Activates when firing the final bullet. Affects the 3 enemy unit(s) with the highest final ATK.\nTaunts for 4 sec.\n■ Activates when HP falls below 20%. Affects self.\nEffects vary according to the number of uses. Perseverance: Only one effect is triggered at a time.\nOnce: Max HP ▲ 79% for 3 sec. Activates once per battle.\nTwice: Max HP ▲ 58.59% for 3 sec. Activates once per battle.\nThree Times: Max HP ▲ 42.65% for 3 sec. Activates once per battle.",
+                "■ Activates when firing the final bullet. Affects the 3 enemy unit(s) with the highest final ATK.\nTaunts for 4 sec.\n■ Activates when HP falls below 20%. Affects self.\nEffects vary according to the number of uses. Perseverance: Only one effect is triggered at a time.\nOnce: Max HP ▲ 83% for 3 sec. Activates once per battle.\nTwice: Max HP ▲ 62.34% for 3 sec. Activates once per battle.\nThree Times: Max HP ▲ 45.46% for 3 sec. Activates once per battle.",
+                "■ Activates when firing the final bullet. Affects the 3 enemy unit(s) with the highest final ATK.\nTaunts for 4 sec.\n■ Activates when HP falls below 20%. Affects self.\nEffects vary according to the number of uses. Perseverance: Only one effect is triggered at a time.\nOnce: Max HP ▲ 87% for 3 sec. Activates once per battle.\nTwice: Max HP ▲ 66.09% for 3 sec. Activates once per battle.\nThree Times: Max HP ▲ 48.28% for 3 sec. Activates once per battle.",
+                "■ Activates when firing the final bullet. Affects the 3 enemy unit(s) with the highest final ATK.\nTaunts for 4 sec.\n■ Activates when HP falls below 20%. Affects self.\nEffects vary according to the number of uses. Perseverance: Only one effect is triggered at a time.\nOnce: Max HP ▲ 91% for 3 sec. Activates once per battle.\nTwice: Max HP ▲ 69.84% for 3 sec. Activates once per battle.\nThree Times: Max HP ▲ 51.09% for 3 sec. Activates once per battle."
+              ],
+              "level10": "■ Activates when firing the final bullet. Affects the 3 enemy unit(s) with the highest final ATK.\nTaunts for 4 sec.\n■ Activates when HP falls below 20%. Affects self.\nEffects vary according to the number of uses. Perseverance: Only one effect is triggered at a time.\nOnce: Max HP ▲ 91% for 3 sec. Activates once per battle.\nTwice: Max HP ▲ 69.84% for 3 sec. Activates once per battle.\nThree Times: Max HP ▲ 51.09% for 3 sec. Activates once per battle."
+            },
+            {
+              "slot": "burst",
+              "name": "Fair and Square!",
+              "icon": "icn_skill_c281_ult",
+              "cooldownSeconds": 40,
+              "levels": [
+                "■ Affects self.\nChanges the weapon in use:\nDamage: 11.46% of final ATK\nDuration: 10 sec\nAdditional Effect(s):\nRestores HP equal to 19.89% of attack damage. Lasts for 10 sec.\nAttract: Taunts all enemies for 10 sec.\nUnlimited ammunition for 10 sec.\nNote: Unable to take cover while using Burst Skill.\n■ Affects all allies.\nDamage Taken ▼ 21.78% for 10 sec.\nDEF ▲ 8.16% of the skill user's DEF for 10 sec.",
+                "■ Affects self.\nChanges the weapon in use:\nDamage: 11.82% of final ATK\nDuration: 10 sec\nAdditional Effect(s):\nRestores HP equal to 21.7% of attack damage. Lasts for 10 sec.\nAttract: Taunts all enemies for 10 sec.\nUnlimited ammunition for 10 sec.\nNote: Unable to take cover while using Burst Skill.\n■ Affects all allies.\nDamage Taken ▼ 23.26% for 10 sec.\nDEF ▲ 8.91% of the skill user's DEF for 10 sec.",
+                "■ Affects self.\nChanges the weapon in use:\nDamage: 12.18% of final ATK\nDuration: 10 sec\nAdditional Effect(s):\nRestores HP equal to 23.51% of attack damage. Lasts for 10 sec.\nAttract: Taunts all enemies for 10 sec.\nUnlimited ammunition for 10 sec.\nNote: Unable to take cover while using Burst Skill.\n■ Affects all allies.\nDamage Taken ▼ 24.75% for 10 sec.\nDEF ▲ 9.65% of the skill user's DEF for 10 sec.",
+                "■ Affects self.\nChanges the weapon in use:\nDamage: 12.54% of final ATK\nDuration: 10 sec\nAdditional Effect(s):\nRestores HP equal to 25.31% of attack damage. Lasts for 10 sec.\nAttract: Taunts all enemies for 10 sec.\nUnlimited ammunition for 10 sec.\nNote: Unable to take cover while using Burst Skill.\n■ Affects all allies.\nDamage Taken ▼ 26.23% for 10 sec.\nDEF ▲ 10.39% of the skill user's DEF for 10 sec.",
+                "■ Affects self.\nChanges the weapon in use:\nDamage: 12.9% of final ATK\nDuration: 10 sec\nAdditional Effect(s):\nRestores HP equal to 27.12% of attack damage. Lasts for 10 sec.\nAttract: Taunts all enemies for 10 sec.\nUnlimited ammunition for 10 sec.\nNote: Unable to take cover while using Burst Skill.\n■ Affects all allies.\nDamage Taken ▼ 27.72% for 10 sec.\nDEF ▲ 11.13% of the skill user's DEF for 10 sec.",
+                "■ Affects self.\nChanges the weapon in use:\nDamage: 13.26% of final ATK\nDuration: 10 sec\nAdditional Effect(s):\nRestores HP equal to 28.92% of attack damage. Lasts for 10 sec.\nAttract: Taunts all enemies for 10 sec.\nUnlimited ammunition for 10 sec.\nNote: Unable to take cover while using Burst Skill.\n■ Affects all allies.\nDamage Taken ▼ 29.2% for 10 sec.\nDEF ▲ 11.88% of the skill user's DEF for 10 sec.",
+                "■ Affects self.\nChanges the weapon in use:\nDamage: 13.62% of final ATK\nDuration: 10 sec\nAdditional Effect(s):\nRestores HP equal to 30.73% of attack damage. Lasts for 10 sec.\nAttract: Taunts all enemies for 10 sec.\nUnlimited ammunition for 10 sec.\nNote: Unable to take cover while using Burst Skill.\n■ Affects all allies.\nDamage Taken ▼ 30.69% for 10 sec.\nDEF ▲ 12.62% of the skill user's DEF for 10 sec.",
+                "■ Affects self.\nChanges the weapon in use:\nDamage: 13.98% of final ATK\nDuration: 10 sec\nAdditional Effect(s):\nRestores HP equal to 32.53% of attack damage. Lasts for 10 sec.\nAttract: Taunts all enemies for 10 sec.\nUnlimited ammunition for 10 sec.\nNote: Unable to take cover while using Burst Skill.\n■ Affects all allies.\nDamage Taken ▼ 32.17% for 10 sec.\nDEF ▲ 13.36% of the skill user's DEF for 10 sec.",
+                "■ Affects self.\nChanges the weapon in use:\nDamage: 14.34% of final ATK\nDuration: 10 sec\nAdditional Effect(s):\nRestores HP equal to 34.34% of attack damage. Lasts for 10 sec.\nAttract: Taunts all enemies for 10 sec.\nUnlimited ammunition for 10 sec.\nNote: Unable to take cover while using Burst Skill.\n■ Affects all allies.\nDamage Taken ▼ 33.66% for 10 sec.\nDEF ▲ 14.1% of the skill user's DEF for 10 sec.",
+                "■ Affects self.\nChanges the weapon in use:\nDamage: 14.7% of final ATK\nDuration: 10 sec\nAdditional Effect(s):\nRestores HP equal to 36.14% of attack damage. Lasts for 10 sec.\nAttract: Taunts all enemies for 10 sec.\nUnlimited ammunition for 10 sec.\nNote: Unable to take cover while using Burst Skill.\n■ Affects all allies.\nDamage Taken ▼ 35.14% for 10 sec.\nDEF ▲ 14.85% of the skill user's DEF for 10 sec."
+              ],
+              "level10": "■ Affects self.\nChanges the weapon in use:\nDamage: 14.7% of final ATK\nDuration: 10 sec\nAdditional Effect(s):\nRestores HP equal to 36.14% of attack damage. Lasts for 10 sec.\nAttract: Taunts all enemies for 10 sec.\nUnlimited ammunition for 10 sec.\nNote: Unable to take cover while using Burst Skill.\n■ Affects all allies.\nDamage Taken ▼ 35.14% for 10 sec.\nDEF ▲ 14.85% of the skill user's DEF for 10 sec."
+            }
+          ],
+          "complete": true
+        }
       }
     },
     {
@@ -6859,7 +8084,79 @@
         ],
         "favoriteSkillCardsComplete": true,
         "favoritePanelText": "",
-        "lineCount": 165
+        "lineCount": 165,
+        "baseDetail": {
+          "source": "ENIKK deployed RSC detail object",
+          "htmlSha256": "e3feeb3a312303376e0920600c0de306759499ce93e95bee831c44682d282f4c",
+          "shot": {
+            "weaponType": "AR",
+            "name": "Assault Rifle",
+            "maxAmmo": 60,
+            "reloadSeconds": 2,
+            "fireType": "Instant",
+            "description": "■ Affects target(s).\nDeals 15.78% of ATK as damage.\nDeals 200% damage when attacking core."
+          },
+          "skills": [
+            {
+              "slot": "skill1",
+              "name": "Thief's Calling Card",
+              "icon": "icn_skill_atkup_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects the target.\nCalling Card: DEF ▼ 19.02% for 5 sec.\n■ Activates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects self.\nThief's Dagger: Hit Rate ▲ 15.22%. Stacks up to 3 times and lasts for 5 sec.\n■ Activates when landing a normal attack on a target that is in the Calling Card state. Affects self.\nAttack Damage ▲ 44.41% for 1 round(s).",
+                "■ Activates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects the target.\nCalling Card: DEF ▼ 20.49% for 5 sec.\n■ Activates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects self.\nThief's Dagger: Hit Rate ▲ 16.39%. Stacks up to 3 times and lasts for 5 sec.\n■ Activates when landing a normal attack on a target that is in the Calling Card state. Affects self.\nAttack Damage ▲ 47.83% for 1 round(s).",
+                "■ Activates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects the target.\nCalling Card: DEF ▼ 21.96% for 5 sec.\n■ Activates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects self.\nThief's Dagger: Hit Rate ▲ 17.57%. Stacks up to 3 times and lasts for 5 sec.\n■ Activates when landing a normal attack on a target that is in the Calling Card state. Affects self.\nAttack Damage ▲ 51.25% for 1 round(s).",
+                "■ Activates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects the target.\nCalling Card: DEF ▼ 23.43% for 5 sec.\n■ Activates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects self.\nThief's Dagger: Hit Rate ▲ 18.74%. Stacks up to 3 times and lasts for 5 sec.\n■ Activates when landing a normal attack on a target that is in the Calling Card state. Affects self.\nAttack Damage ▲ 54.67% for 1 round(s).",
+                "■ Activates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects the target.\nCalling Card: DEF ▼ 24.87% for 5 sec.\n■ Activates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects self.\nThief's Dagger: Hit Rate ▲ 19.9%. Stacks up to 3 times and lasts for 5 sec.\n■ Activates when landing a normal attack on a target that is in the Calling Card state. Affects self.\nAttack Damage ▲ 58.09% for 1 round(s).",
+                "■ Activates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects the target.\nCalling Card: DEF ▼ 26.34% for 5 sec.\n■ Activates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects self.\nThief's Dagger: Hit Rate ▲ 21.07%. Stacks up to 3 times and lasts for 5 sec.\n■ Activates when landing a normal attack on a target that is in the Calling Card state. Affects self.\nAttack Damage ▲ 61.49% for 1 round(s).",
+                "■ Activates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects the target.\nCalling Card: DEF ▼ 27.81% for 5 sec.\n■ Activates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects self.\nThief's Dagger: Hit Rate ▲ 22.25%. Stacks up to 3 times and lasts for 5 sec.\n■ Activates when landing a normal attack on a target that is in the Calling Card state. Affects self.\nAttack Damage ▲ 64.91% for 1 round(s).",
+                "■ Activates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects the target.\nCalling Card: DEF ▼ 29.28% for 5 sec.\n■ Activates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects self.\nThief's Dagger: Hit Rate ▲ 23.42%. Stacks up to 3 times and lasts for 5 sec.\n■ Activates when landing a normal attack on a target that is in the Calling Card state. Affects self.\nAttack Damage ▲ 68.33% for 1 round(s).",
+                "■ Activates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects the target.\nCalling Card: DEF ▼ 30.75% for 5 sec.\n■ Activates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects self.\nThief's Dagger: Hit Rate ▲ 24.6%. Stacks up to 3 times and lasts for 5 sec.\n■ Activates when landing a normal attack on a target that is in the Calling Card state. Affects self.\nAttack Damage ▲ 71.75% for 1 round(s).",
+                "■ Activates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects the target.\nCalling Card: DEF ▼ 32.19% for 5 sec.\n■ Activates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects self.\nThief's Dagger: Hit Rate ▲ 25.75%. Stacks up to 3 times and lasts for 5 sec.\n■ Activates when landing a normal attack on a target that is in the Calling Card state. Affects self.\nAttack Damage ▲ 75.17% for 1 round(s)."
+              ],
+              "level10": "■ Activates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects the target.\nCalling Card: DEF ▼ 32.19% for 5 sec.\n■ Activates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects self.\nThief's Dagger: Hit Rate ▲ 25.75%. Stacks up to 3 times and lasts for 5 sec.\n■ Activates when landing a normal attack on a target that is in the Calling Card state. Affects self.\nAttack Damage ▲ 75.17% for 1 round(s)."
+            },
+            {
+              "slot": "skill2",
+              "name": "Thief's Vision",
+              "icon": "icn_skill_sharedamageincrease",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates when Thief's Dagger is at max stacks. Affects targets in the Calling Card state.\nDeals 49.82% of final ATK as additional damage. Removes Calling Card.\n■ Activates when Thief's Dagger is at max stacks. Removes stacks and affects self.\nDistributed Damage ▲ 7.61% continuously. Stacks up to 3 times. Stacks are removed when using Burst Skill.\n■ Activates after performing 10 normal attacks. Affects self.\nATK ▲ 50.32% for 5 sec.\nDistributed Damage ▲ 18.87% for 10 sec.",
+                "■ Activates when Thief's Dagger is at max stacks. Affects targets in the Calling Card state.\nDeals 53.66% of final ATK as additional damage. Removes Calling Card.\n■ Activates when Thief's Dagger is at max stacks. Removes stacks and affects self.\nDistributed Damage ▲ 8.18% continuously. Stacks up to 3 times. Stacks are removed when using Burst Skill.\n■ Activates after performing 10 normal attacks. Affects self.\nATK ▲ 54.16% for 5 sec.\nDistributed Damage ▲ 20.31% for 10 sec.",
+                "■ Activates when Thief's Dagger is at max stacks. Affects targets in the Calling Card state.\nDeals 57.49% of final ATK as additional damage. Removes Calling Card.\n■ Activates when Thief's Dagger is at max stacks. Removes stacks and affects self.\nDistributed Damage ▲ 8.78% continuously. Stacks up to 3 times. Stacks are removed when using Burst Skill.\n■ Activates after performing 10 normal attacks. Affects self.\nATK ▲ 58.08% for 5 sec.\nDistributed Damage ▲ 21.78% for 10 sec.",
+                "■ Activates when Thief's Dagger is at max stacks. Affects targets in the Calling Card state.\nDeals 61.33% of final ATK as additional damage. Removes Calling Card.\n■ Activates when Thief's Dagger is at max stacks. Removes stacks and affects self.\nDistributed Damage ▲ 9.36% continuously. Stacks up to 3 times. Stacks are removed when using Burst Skill.\n■ Activates after performing 10 normal attacks. Affects self.\nATK ▲ 61.92% for 5 sec.\nDistributed Damage ▲ 23.22% for 10 sec.",
+                "■ Activates when Thief's Dagger is at max stacks. Affects targets in the Calling Card state.\nDeals 65.16% of final ATK as additional damage. Removes Calling Card.\n■ Activates when Thief's Dagger is at max stacks. Removes stacks and affects self.\nDistributed Damage ▲ 9.94% continuously. Stacks up to 3 times. Stacks are removed when using Burst Skill.\n■ Activates after performing 10 normal attacks. Affects self.\nATK ▲ 65.76% for 5 sec.\nDistributed Damage ▲ 24.66% for 10 sec.",
+                "■ Activates when Thief's Dagger is at max stacks. Affects targets in the Calling Card state.\nDeals 68.99% of final ATK as additional damage. Removes Calling Card.\n■ Activates when Thief's Dagger is at max stacks. Removes stacks and affects self.\nDistributed Damage ▲ 10.54% continuously. Stacks up to 3 times. Stacks are removed when using Burst Skill.\n■ Activates after performing 10 normal attacks. Affects self.\nATK ▲ 69.68% for 5 sec.\nDistributed Damage ▲ 26.13% for 10 sec.",
+                "■ Activates when Thief's Dagger is at max stacks. Affects targets in the Calling Card state.\nDeals 72.82% of final ATK as additional damage. Removes Calling Card.\n■ Activates when Thief's Dagger is at max stacks. Removes stacks and affects self.\nDistributed Damage ▲ 11.11% continuously. Stacks up to 3 times. Stacks are removed when using Burst Skill.\n■ Activates after performing 10 normal attacks. Affects self.\nATK ▲ 73.52% for 5 sec.\nDistributed Damage ▲ 27.57% for 10 sec.",
+                "■ Activates when Thief's Dagger is at max stacks. Affects targets in the Calling Card state.\nDeals 76.67% of final ATK as additional damage. Removes Calling Card.\n■ Activates when Thief's Dagger is at max stacks. Removes stacks and affects self.\nDistributed Damage ▲ 11.71% continuously. Stacks up to 3 times. Stacks are removed when using Burst Skill.\n■ Activates after performing 10 normal attacks. Affects self.\nATK ▲ 77.44% for 5 sec.\nDistributed Damage ▲ 29.04% for 10 sec.",
+                "■ Activates when Thief's Dagger is at max stacks. Affects targets in the Calling Card state.\nDeals 80.5% of final ATK as additional damage. Removes Calling Card.\n■ Activates when Thief's Dagger is at max stacks. Removes stacks and affects self.\nDistributed Damage ▲ 12.29% continuously. Stacks up to 3 times. Stacks are removed when using Burst Skill.\n■ Activates after performing 10 normal attacks. Affects self.\nATK ▲ 81.28% for 5 sec.\nDistributed Damage ▲ 30.48% for 10 sec.",
+                "■ Activates when Thief's Dagger is at max stacks. Affects targets in the Calling Card state.\nDeals 84.33% of final ATK as additional damage. Removes Calling Card.\n■ Activates when Thief's Dagger is at max stacks. Removes stacks and affects self.\nDistributed Damage ▲ 12.86% continuously. Stacks up to 3 times. Stacks are removed when using Burst Skill.\n■ Activates after performing 10 normal attacks. Affects self.\nATK ▲ 85.12% for 5 sec.\nDistributed Damage ▲ 31.92% for 10 sec."
+              ],
+              "level10": "■ Activates when Thief's Dagger is at max stacks. Affects targets in the Calling Card state.\nDeals 84.33% of final ATK as additional damage. Removes Calling Card.\n■ Activates when Thief's Dagger is at max stacks. Removes stacks and affects self.\nDistributed Damage ▲ 12.86% continuously. Stacks up to 3 times. Stacks are removed when using Burst Skill.\n■ Activates after performing 10 normal attacks. Affects self.\nATK ▲ 85.12% for 5 sec.\nDistributed Damage ▲ 31.92% for 10 sec."
+            },
+            {
+              "slot": "burst",
+              "name": "Secret Trick: Rampage of Thieves",
+              "icon": "icn_skill_c580_ult",
+              "cooldownSeconds": 40,
+              "levels": [
+                "■ Affects all enemies.\nDeals 861.12% of final ATK as distributed damage.",
+                "■ Affects all enemies.\nDeals 927.36% of final ATK as distributed damage.",
+                "■ Affects all enemies.\nDeals 993.6% of final ATK as distributed damage.",
+                "■ Affects all enemies.\nDeals 1059.84% of final ATK as distributed damage.",
+                "■ Affects all enemies.\nDeals 1126.08% of final ATK as distributed damage.",
+                "■ Affects all enemies.\nDeals 1192.32% of final ATK as distributed damage.",
+                "■ Affects all enemies.\nDeals 1258.56% of final ATK as distributed damage.",
+                "■ Affects all enemies.\nDeals 1324.8% of final ATK as distributed damage.",
+                "■ Affects all enemies.\nDeals 1391.04% of final ATK as distributed damage.",
+                "■ Affects all enemies.\nDeals 1457.28% of final ATK as distributed damage."
+              ],
+              "level10": "■ Affects all enemies.\nDeals 1457.28% of final ATK as distributed damage."
+            }
+          ],
+          "complete": true
+        }
       }
     },
     {
@@ -7212,7 +8509,79 @@
         ],
         "favoriteSkillCardsComplete": true,
         "favoritePanelText": "",
-        "lineCount": 152
+        "lineCount": 152,
+        "baseDetail": {
+          "source": "ENIKK deployed RSC detail object",
+          "htmlSha256": "1e68495b3109699b5116378e32825a4a5771c48c1ddc08e1912ffbf0241ac792",
+          "shot": {
+            "weaponType": "MG",
+            "name": "Machine Gun",
+            "maxAmmo": 300,
+            "reloadSeconds": 2.5,
+            "fireType": "Instant",
+            "description": "■ Affects target(s).\nDeals 5.57% of ATK as damage.\nDeals 200% damage when attacking core."
+          },
+          "skills": [
+            {
+              "slot": "skill1",
+              "name": "Petunia",
+              "icon": "icn_skill_heal_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates at the start of battle as long as this unit is alive. Affects self and both adjacent allies.\nRestores HP equal to 1% of the skill user's final max HP every second.\nIncoming Healing ▲ 2.36% continuously. Stacks up to 5 times.\n■ Activates after performing 100 normal attacks. Affects all Electric Code allies.\nIncreases the stack count of stackable buffs by 1.",
+                "■ Activates at the start of battle as long as this unit is alive. Affects self and both adjacent allies.\nRestores HP equal to 1% of the skill user's final max HP every second.\nIncoming Healing ▲ 2.55% continuously. Stacks up to 5 times.\n■ Activates after performing 100 normal attacks. Affects all Electric Code allies.\nIncreases the stack count of stackable buffs by 1.",
+                "■ Activates at the start of battle as long as this unit is alive. Affects self and both adjacent allies.\nRestores HP equal to 1% of the skill user's final max HP every second.\nIncoming Healing ▲ 2.73% continuously. Stacks up to 5 times.\n■ Activates after performing 100 normal attacks. Affects all Electric Code allies.\nIncreases the stack count of stackable buffs by 1.",
+                "■ Activates at the start of battle as long as this unit is alive. Affects self and both adjacent allies.\nRestores HP equal to 1% of the skill user's final max HP every second.\nIncoming Healing ▲ 2.91% continuously. Stacks up to 5 times.\n■ Activates after performing 100 normal attacks. Affects all Electric Code allies.\nIncreases the stack count of stackable buffs by 1.",
+                "■ Activates at the start of battle as long as this unit is alive. Affects self and both adjacent allies.\nRestores HP equal to 1% of the skill user's final max HP every second.\nIncoming Healing ▲ 3.09% continuously. Stacks up to 5 times.\n■ Activates after performing 100 normal attacks. Affects all Electric Code allies.\nIncreases the stack count of stackable buffs by 1.",
+                "■ Activates at the start of battle as long as this unit is alive. Affects self and both adjacent allies.\nRestores HP equal to 1% of the skill user's final max HP every second.\nIncoming Healing ▲ 3.27% continuously. Stacks up to 5 times.\n■ Activates after performing 100 normal attacks. Affects all Electric Code allies.\nIncreases the stack count of stackable buffs by 1.",
+                "■ Activates at the start of battle as long as this unit is alive. Affects self and both adjacent allies.\nRestores HP equal to 1% of the skill user's final max HP every second.\nIncoming Healing ▲ 3.46% continuously. Stacks up to 5 times.\n■ Activates after performing 100 normal attacks. Affects all Electric Code allies.\nIncreases the stack count of stackable buffs by 1.",
+                "■ Activates at the start of battle as long as this unit is alive. Affects self and both adjacent allies.\nRestores HP equal to 1% of the skill user's final max HP every second.\nIncoming Healing ▲ 3.64% continuously. Stacks up to 5 times.\n■ Activates after performing 100 normal attacks. Affects all Electric Code allies.\nIncreases the stack count of stackable buffs by 1.",
+                "■ Activates at the start of battle as long as this unit is alive. Affects self and both adjacent allies.\nRestores HP equal to 1% of the skill user's final max HP every second.\nIncoming Healing ▲ 3.82% continuously. Stacks up to 5 times.\n■ Activates after performing 100 normal attacks. Affects all Electric Code allies.\nIncreases the stack count of stackable buffs by 1.",
+                "■ Activates at the start of battle as long as this unit is alive. Affects self and both adjacent allies.\nRestores HP equal to 1% of the skill user's final max HP every second.\nIncoming Healing ▲ 4% continuously. Stacks up to 5 times.\n■ Activates after performing 100 normal attacks. Affects all Electric Code allies.\nIncreases the stack count of stackable buffs by 1."
+              ],
+              "level10": "■ Activates at the start of battle as long as this unit is alive. Affects self and both adjacent allies.\nRestores HP equal to 1% of the skill user's final max HP every second.\nIncoming Healing ▲ 4% continuously. Stacks up to 5 times.\n■ Activates after performing 100 normal attacks. Affects all Electric Code allies.\nIncreases the stack count of stackable buffs by 1."
+            },
+            {
+              "slot": "skill2",
+              "name": "Iris",
+              "icon": "icn_skill_barrier_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates when the HP of an adjacent ally drops to 90% or below while the ally is still alive. Affects all allies.\nCreates a shield with HP equal to 6.04% of the skill user's final max HP that lasts for 10 sec.\n■ Activates when either adjacent ally reaches max HP. Affects all allies.\nTrue Damage ▲ 18.3% for 5 sec.",
+                "■ Activates when the HP of an adjacent ally drops to 90% or below while the ally is still alive. Affects all allies.\nCreates a shield with HP equal to 6.5% of the skill user's final max HP that lasts for 10 sec.\n■ Activates when either adjacent ally reaches max HP. Affects all allies.\nTrue Damage ▲ 19.71% for 5 sec.",
+                "■ Activates when the HP of an adjacent ally drops to 90% or below while the ally is still alive. Affects all allies.\nCreates a shield with HP equal to 6.96% of the skill user's final max HP that lasts for 10 sec.\n■ Activates when either adjacent ally reaches max HP. Affects all allies.\nTrue Damage ▲ 21.12% for 5 sec.",
+                "■ Activates when the HP of an adjacent ally drops to 90% or below while the ally is still alive. Affects all allies.\nCreates a shield with HP equal to 7.43% of the skill user's final max HP that lasts for 10 sec.\n■ Activates when either adjacent ally reaches max HP. Affects all allies.\nTrue Damage ▲ 22.52% for 5 sec.",
+                "■ Activates when the HP of an adjacent ally drops to 90% or below while the ally is still alive. Affects all allies.\nCreates a shield with HP equal to 7.89% of the skill user's final max HP that lasts for 10 sec.\n■ Activates when either adjacent ally reaches max HP. Affects all allies.\nTrue Damage ▲ 23.93% for 5 sec.",
+                "■ Activates when the HP of an adjacent ally drops to 90% or below while the ally is still alive. Affects all allies.\nCreates a shield with HP equal to 8.36% of the skill user's final max HP that lasts for 10 sec.\n■ Activates when either adjacent ally reaches max HP. Affects all allies.\nTrue Damage ▲ 25.34% for 5 sec.",
+                "■ Activates when the HP of an adjacent ally drops to 90% or below while the ally is still alive. Affects all allies.\nCreates a shield with HP equal to 8.82% of the skill user's final max HP that lasts for 10 sec.\n■ Activates when either adjacent ally reaches max HP. Affects all allies.\nTrue Damage ▲ 26.75% for 5 sec.",
+                "■ Activates when the HP of an adjacent ally drops to 90% or below while the ally is still alive. Affects all allies.\nCreates a shield with HP equal to 9.29% of the skill user's final max HP that lasts for 10 sec.\n■ Activates when either adjacent ally reaches max HP. Affects all allies.\nTrue Damage ▲ 28.16% for 5 sec.",
+                "■ Activates when the HP of an adjacent ally drops to 90% or below while the ally is still alive. Affects all allies.\nCreates a shield with HP equal to 9.75% of the skill user's final max HP that lasts for 10 sec.\n■ Activates when either adjacent ally reaches max HP. Affects all allies.\nTrue Damage ▲ 29.56% for 5 sec.",
+                "■ Activates when the HP of an adjacent ally drops to 90% or below while the ally is still alive. Affects all allies.\nCreates a shield with HP equal to 10.22% of the skill user's final max HP that lasts for 10 sec.\n■ Activates when either adjacent ally reaches max HP. Affects all allies.\nTrue Damage ▲ 30.97% for 5 sec."
+              ],
+              "level10": "■ Activates when the HP of an adjacent ally drops to 90% or below while the ally is still alive. Affects all allies.\nCreates a shield with HP equal to 10.22% of the skill user's final max HP that lasts for 10 sec.\n■ Activates when either adjacent ally reaches max HP. Affects all allies.\nTrue Damage ▲ 30.97% for 5 sec."
+            },
+            {
+              "slot": "burst",
+              "name": "Secret Garden",
+              "icon": "icn_skill_c411_ult",
+              "cooldownSeconds": 40,
+              "levels": [
+                "■ Affects all allies.\nRestores HP equal to 6.17% of the skill user's final max HP.\nTrue Damage ▲ 25.05% for 10 sec.",
+                "■ Affects all allies.\nRestores HP equal to 6.65% of the skill user's final max HP.\nTrue Damage ▲ 26.98% for 10 sec.",
+                "■ Affects all allies.\nRestores HP equal to 7.12% of the skill user's final max HP.\nTrue Damage ▲ 28.9% for 10 sec.",
+                "■ Affects all allies.\nRestores HP equal to 7.6% of the skill user's final max HP.\nTrue Damage ▲ 30.83% for 10 sec.",
+                "■ Affects all allies.\nRestores HP equal to 8.07% of the skill user's final max HP.\nTrue Damage ▲ 32.76% for 10 sec.",
+                "■ Affects all allies.\nRestores HP equal to 8.55% of the skill user's final max HP.\nTrue Damage ▲ 34.68% for 10 sec.",
+                "■ Affects all allies.\nRestores HP equal to 9.02% of the skill user's final max HP.\nTrue Damage ▲ 36.61% for 10 sec.",
+                "■ Affects all allies.\nRestores HP equal to 9.5% of the skill user's final max HP.\nTrue Damage ▲ 38.54% for 10 sec.",
+                "■ Affects all allies.\nRestores HP equal to 9.97% of the skill user's final max HP.\nTrue Damage ▲ 40.47% for 10 sec.",
+                "■ Affects all allies.\nRestores HP equal to 10.45% of the skill user's final max HP.\nTrue Damage ▲ 42.39% for 10 sec."
+              ],
+              "level10": "■ Affects all allies.\nRestores HP equal to 10.45% of the skill user's final max HP.\nTrue Damage ▲ 42.39% for 10 sec."
+            }
+          ],
+          "complete": true
+        }
       }
     },
     {
@@ -7644,7 +9013,79 @@
         ],
         "favoriteSkillCardsComplete": true,
         "favoritePanelText": "",
-        "lineCount": 173
+        "lineCount": 173,
+        "baseDetail": {
+          "source": "ENIKK deployed RSC detail object",
+          "htmlSha256": "08a3f2d42ea0bddc398eab7eced5fad0f173a72580cf30b136bdfabaf3200f98",
+          "shot": {
+            "weaponType": "MG",
+            "name": "Machine Gun",
+            "maxAmmo": 300,
+            "reloadSeconds": 1.67,
+            "fireType": "Instant",
+            "description": "■ Affects target(s).\nDeals 5.1% of ATK as damage.\nDeals 200% damage when attacking core."
+          },
+          "skills": [
+            {
+              "slot": "skill1",
+              "name": "On the Lam",
+              "icon": "icn_skill_criticaldamage_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates after landing 120 normal attacks. Affects self.\nConcealment: Prevents being targeted by single-target attacks for 10 sec. This effect is removed upon taking a direct hit.\nCritical Rate ▲ 8.98% for 3 sec.\n■ Activates after performing 10 normal attacks. Affects the 2 enemy unit(s) with the highest final ATK.\nRemoves 1 buff(s). Activates 1 time(s) per battle.",
+                "■ Activates after landing 120 normal attacks. Affects self.\nConcealment: Prevents being targeted by single-target attacks for 10 sec. This effect is removed upon taking a direct hit.\nCritical Rate ▲ 10.13% for 3 sec.\n■ Activates after performing 10 normal attacks. Affects the 2 enemy unit(s) with the highest final ATK.\nRemoves 1 buff(s). Activates 1 time(s) per battle.",
+                "■ Activates after landing 120 normal attacks. Affects self.\nConcealment: Prevents being targeted by single-target attacks for 10 sec. This effect is removed upon taking a direct hit.\nCritical Rate ▲ 11.28% for 3 sec.\n■ Activates after performing 10 normal attacks. Affects the 2 enemy unit(s) with the highest final ATK.\nRemoves 1 buff(s). Activates 1 time(s) per battle.",
+                "■ Activates after landing 120 normal attacks. Affects self.\nConcealment: Prevents being targeted by single-target attacks for 10 sec. This effect is removed upon taking a direct hit.\nCritical Rate ▲ 12.43% for 3 sec.\n■ Activates after performing 10 normal attacks. Affects the 2 enemy unit(s) with the highest final ATK.\nRemoves 3 buff(s). Activates 1 time(s) per battle.",
+                "■ Activates after landing 120 normal attacks. Affects self.\nConcealment: Prevents being targeted by single-target attacks for 10 sec. This effect is removed upon taking a direct hit.\nCritical Rate ▲ 13.59% for 3 sec.\n■ Activates after performing 10 normal attacks. Affects the 2 enemy unit(s) with the highest final ATK.\nRemoves 3 buff(s). Activates 1 time(s) per battle.",
+                "■ Activates after landing 120 normal attacks. Affects self.\nConcealment: Prevents being targeted by single-target attacks for 10 sec. This effect is removed upon taking a direct hit.\nCritical Rate ▲ 14.74% for 3 sec.\n■ Activates after performing 10 normal attacks. Affects the 2 enemy unit(s) with the highest final ATK.\nRemoves 3 buff(s). Activates 1 time(s) per battle.",
+                "■ Activates after landing 120 normal attacks. Affects self.\nConcealment: Prevents being targeted by single-target attacks for 10 sec. This effect is removed upon taking a direct hit.\nCritical Rate ▲ 15.89% for 3 sec.\n■ Activates after performing 10 normal attacks. Affects the 2 enemy unit(s) with the highest final ATK.\nRemoves 5 buff(s). Activates 1 time(s) per battle.",
+                "■ Activates after landing 120 normal attacks. Affects self.\nConcealment: Prevents being targeted by single-target attacks for 10 sec. This effect is removed upon taking a direct hit.\nCritical Rate ▲ 17.04% for 3 sec.\n■ Activates after performing 10 normal attacks. Affects the 2 enemy unit(s) with the highest final ATK.\nRemoves 5 buff(s). Activates 1 time(s) per battle.",
+                "■ Activates after landing 120 normal attacks. Affects self.\nConcealment: Prevents being targeted by single-target attacks for 10 sec. This effect is removed upon taking a direct hit.\nCritical Rate ▲ 18.19% for 3 sec.\n■ Activates after performing 10 normal attacks. Affects the 2 enemy unit(s) with the highest final ATK.\nRemoves 5 buff(s). Activates 1 time(s) per battle.",
+                "■ Activates after landing 120 normal attacks. Affects self.\nConcealment: Prevents being targeted by single-target attacks for 10 sec. This effect is removed upon taking a direct hit.\nCritical Rate ▲ 19.34% for 3 sec.\n■ Activates after performing 10 normal attacks. Affects the 2 enemy unit(s) with the highest final ATK.\nRemoves 5 buff(s). Activates 1 time(s) per battle."
+              ],
+              "level10": "■ Activates after landing 120 normal attacks. Affects self.\nConcealment: Prevents being targeted by single-target attacks for 10 sec. This effect is removed upon taking a direct hit.\nCritical Rate ▲ 19.34% for 3 sec.\n■ Activates after performing 10 normal attacks. Affects the 2 enemy unit(s) with the highest final ATK.\nRemoves 5 buff(s). Activates 1 time(s) per battle."
+            },
+            {
+              "slot": "skill2",
+              "name": "Capo dei Capi",
+              "icon": "icn_skill_atkup_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates at the start of battle. Affects self.\nConcealment: Prevents being targeted by single-target attacks for 5 sec. This effect is removed upon taking a direct hit.\n■ Activates when a Nikke is incapacitated. Affects self.\nFrenzy: ATK ▲ 12.83%, stacks up to 10 time(s) and lasts for 30 sec.\nFills Burst Gauge by 20.54%.",
+                "■ Activates at the start of battle. Affects self.\nConcealment: Prevents being targeted by single-target attacks for 5 sec. This effect is removed upon taking a direct hit.\n■ Activates when a Nikke is incapacitated. Affects self.\nFrenzy: ATK ▲ 13.92%, stacks up to 10 time(s) and lasts for 30 sec.\nFills Burst Gauge by 22.32%.",
+                "■ Activates at the start of battle. Affects self.\nConcealment: Prevents being targeted by single-target attacks for 5 sec. This effect is removed upon taking a direct hit.\n■ Activates when a Nikke is incapacitated. Affects self.\nFrenzy: ATK ▲ 15.01%, stacks up to 10 time(s) and lasts for 30 sec.\nFills Burst Gauge by 24.09%.",
+                "■ Activates at the start of battle. Affects self.\nConcealment: Prevents being targeted by single-target attacks for 5 sec. This effect is removed upon taking a direct hit.\n■ Activates when a Nikke is incapacitated. Affects self.\nFrenzy: ATK ▲ 16.09%, stacks up to 10 time(s) and lasts for 30 sec.\nFills Burst Gauge by 25.87%.",
+                "■ Activates at the start of battle. Affects self.\nConcealment: Prevents being targeted by single-target attacks for 5 sec. This effect is removed upon taking a direct hit.\n■ Activates when a Nikke is incapacitated. Affects self.\nFrenzy: ATK ▲ 17.18%, stacks up to 10 time(s) and lasts for 30 sec.\nFills Burst Gauge by 27.65%.",
+                "■ Activates at the start of battle. Affects self.\nConcealment: Prevents being targeted by single-target attacks for 5 sec. This effect is removed upon taking a direct hit.\n■ Activates when a Nikke is incapacitated. Affects self.\nFrenzy: ATK ▲ 18.27%, stacks up to 10 time(s) and lasts for 30 sec.\nFills Burst Gauge by 29.43%.",
+                "■ Activates at the start of battle. Affects self.\nConcealment: Prevents being targeted by single-target attacks for 5 sec. This effect is removed upon taking a direct hit.\n■ Activates when a Nikke is incapacitated. Affects self.\nFrenzy: ATK ▲ 19.35%, stacks up to 10 time(s) and lasts for 30 sec.\nFills Burst Gauge by 31.2%.",
+                "■ Activates at the start of battle. Affects self.\nConcealment: Prevents being targeted by single-target attacks for 5 sec. This effect is removed upon taking a direct hit.\n■ Activates when a Nikke is incapacitated. Affects self.\nFrenzy: ATK ▲ 20.44%, stacks up to 10 time(s) and lasts for 30 sec.\nFills Burst Gauge by 32.98%.",
+                "■ Activates at the start of battle. Affects self.\nConcealment: Prevents being targeted by single-target attacks for 5 sec. This effect is removed upon taking a direct hit.\n■ Activates when a Nikke is incapacitated. Affects self.\nFrenzy: ATK ▲ 21.53%, stacks up to 10 time(s) and lasts for 30 sec.\nFills Burst Gauge by 34.76%.",
+                "■ Activates at the start of battle. Affects self.\nConcealment: Prevents being targeted by single-target attacks for 5 sec. This effect is removed upon taking a direct hit.\n■ Activates when a Nikke is incapacitated. Affects self.\nFrenzy: ATK ▲ 22.61%, stacks up to 10 time(s) and lasts for 30 sec.\nFills Burst Gauge by 36.54%."
+              ],
+              "level10": "■ Activates at the start of battle. Affects self.\nConcealment: Prevents being targeted by single-target attacks for 5 sec. This effect is removed upon taking a direct hit.\n■ Activates when a Nikke is incapacitated. Affects self.\nFrenzy: ATK ▲ 22.61%, stacks up to 10 time(s) and lasts for 30 sec.\nFills Burst Gauge by 36.54%."
+            },
+            {
+              "slot": "burst",
+              "name": "Vendetta",
+              "icon": "icn_skill_c280_ult",
+              "cooldownSeconds": 40,
+              "levels": [
+                "■ Prioritizes Attacker-type enemies. Affects 2 unit(s).\nDeals 720.72% of final ATK as damage.\n■ Activates if the skill user is in the Concealment state. Affects the same target(s).\nDeals 308.88% of final ATK as additional damage.",
+                "■ Prioritizes Attacker-type enemies. Affects 2 unit(s).\nDeals 786.24% of final ATK as damage.\n■ Activates if the skill user is in the Concealment state. Affects the same target(s).\nDeals 336.96% of final ATK as additional damage.",
+                "■ Prioritizes Attacker-type enemies. Affects 2 unit(s).\nDeals 851.76% of final ATK as damage.\n■ Activates if the skill user is in the Concealment state. Affects the same target(s).\nDeals 365.04% of final ATK as additional damage.",
+                "■ Prioritizes Attacker-type enemies. Affects 2 unit(s).\nDeals 917.28% of final ATK as damage.\n■ Activates if the skill user is in the Concealment state. Affects the same target(s).\nDeals 393.12% of final ATK as additional damage.",
+                "■ Prioritizes Attacker-type enemies. Affects 2 unit(s).\nDeals 982.8% of final ATK as damage.\n■ Activates if the skill user is in the Concealment state. Affects the same target(s).\nDeals 421.2% of final ATK as additional damage.",
+                "■ Prioritizes Attacker-type enemies. Affects 2 unit(s).\nDeals 1048.32% of final ATK as damage.\n■ Activates if the skill user is in the Concealment state. Affects the same target(s).\nDeals 449.28% of final ATK as additional damage.",
+                "■ Prioritizes Attacker-type enemies. Affects 2 unit(s).\nDeals 1113.84% of final ATK as damage.\n■ Activates if the skill user is in the Concealment state. Affects the same target(s).\nDeals 477.36% of final ATK as additional damage.",
+                "■ Prioritizes Attacker-type enemies. Affects 2 unit(s).\nDeals 1179.36% of final ATK as damage.\n■ Activates if the skill user is in the Concealment state. Affects the same target(s).\nDeals 505.44% of final ATK as additional damage.",
+                "■ Prioritizes Attacker-type enemies. Affects 2 unit(s).\nDeals 1244.88% of final ATK as damage.\n■ Activates if the skill user is in the Concealment state. Affects the same target(s).\nDeals 533.52% of final ATK as additional damage.",
+                "■ Prioritizes Attacker-type enemies. Affects 2 unit(s).\nDeals 1310.4% of final ATK as damage.\n■ Activates if the skill user is in the Concealment state. Affects the same target(s).\nDeals 561.6% of final ATK as additional damage."
+              ],
+              "level10": "■ Prioritizes Attacker-type enemies. Affects 2 unit(s).\nDeals 1310.4% of final ATK as damage.\n■ Activates if the skill user is in the Concealment state. Affects the same target(s).\nDeals 561.6% of final ATK as additional damage."
+            }
+          ],
+          "complete": true
+        }
       }
     },
     {
@@ -8032,14 +9473,91 @@
         ],
         "favoriteSkillCardsComplete": true,
         "favoritePanelText": "",
-        "lineCount": 149
+        "lineCount": 149,
+        "baseDetail": {
+          "source": "ENIKK deployed RSC detail object",
+          "htmlSha256": "71e1090720ff1c008710675ad226daf3a5cc75447c629b50ba73b0a4be06b623",
+          "shot": {
+            "weaponType": "SG",
+            "name": "Shotgun",
+            "maxAmmo": 9,
+            "reloadSeconds": 0.67,
+            "fireType": "Instant",
+            "description": "■ Affects target(s).\nDeals 231.6% of ATK as damage.\nDeals 200% damage when attacking core."
+          },
+          "skills": [
+            {
+              "slot": "skill1",
+              "name": "Black Typhoon",
+              "icon": "icn_skill_statreloadtime_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ There is a 20% chance of activating when cover is attacked. Affects self.\nCritical Damage ▲ 9.68% for 10 sec.\nReload Speed ▲ 7.16% for 10 sec.",
+                "■ There is a 20% chance of activating when cover is attacked. Affects self.\nCritical Damage ▲ 10.43% for 10 sec.\nReload Speed ▲ 7.71% for 10 sec.",
+                "■ There is a 20% chance of activating when cover is attacked. Affects self.\nCritical Damage ▲ 11.17% for 10 sec.\nReload Speed ▲ 8.26% for 10 sec.",
+                "■ There is a 20% chance of activating when cover is attacked. Affects self.\nCritical Damage ▲ 11.92% for 10 sec.\nReload Speed ▲ 8.82% for 10 sec.",
+                "■ There is a 20% chance of activating when cover is attacked. Affects self.\nCritical Damage ▲ 12.66% for 10 sec.\nReload Speed ▲ 9.37% for 10 sec.",
+                "■ There is a 20% chance of activating when cover is attacked. Affects self.\nCritical Damage ▲ 13.41% for 10 sec.\nReload Speed ▲ 9.92% for 10 sec.",
+                "■ There is a 20% chance of activating when cover is attacked. Affects self.\nCritical Damage ▲ 14.15% for 10 sec.\nReload Speed ▲ 10.47% for 10 sec.",
+                "■ There is a 20% chance of activating when cover is attacked. Affects self.\nCritical Damage ▲ 14.9% for 10 sec.\nReload Speed ▲ 11.02% for 10 sec.",
+                "■ There is a 20% chance of activating when cover is attacked. Affects self.\nCritical Damage ▲ 15.64% for 10 sec.\nReload Speed ▲ 11.57% for 10 sec.",
+                "■ There is a 20% chance of activating when cover is attacked. Affects self.\nCritical Damage ▲ 16.39% for 10 sec.\nReload Speed ▲ 12.12% for 10 sec."
+              ],
+              "level10": "■ There is a 20% chance of activating when cover is attacked. Affects self.\nCritical Damage ▲ 16.39% for 10 sec.\nReload Speed ▲ 12.12% for 10 sec."
+            },
+            {
+              "slot": "skill2",
+              "name": "Noire Sensor",
+              "icon": "icn_skill_statcritical_01",
+              "cooldownSeconds": null,
+              "levels": [
+                "■ Activates when entering Full Burst. Affects self.\nCritical Rate ▲ 7.69% for 10 sec.\n■ Activates when entering Full Burst. Affects all allies with shotguns.\nMax Ammunition Capacity ▲ 49.52% for 10 sec.",
+                "■ Activates when entering Full Burst. Affects self.\nCritical Rate ▲ 8.28% for 10 sec.\n■ Activates when entering Full Burst. Affects all allies with shotguns.\nMax Ammunition Capacity ▲ 53.33% for 10 sec.",
+                "■ Activates when entering Full Burst. Affects self.\nCritical Rate ▲ 8.87% for 10 sec.\n■ Activates when entering Full Burst. Affects all allies with shotguns.\nMax Ammunition Capacity ▲ 57.14% for 10 sec.",
+                "■ Activates when entering Full Burst. Affects self.\nCritical Rate ▲ 9.46% for 10 sec.\n■ Activates when entering Full Burst. Affects all allies with shotguns.\nMax Ammunition Capacity ▲ 60.95% for 10 sec.",
+                "■ Activates when entering Full Burst. Affects self.\nCritical Rate ▲ 10.06% for 10 sec.\n■ Activates when entering Full Burst. Affects all allies with shotguns.\nMax Ammunition Capacity ▲ 64.76% for 10 sec.",
+                "■ Activates when entering Full Burst. Affects self.\nCritical Rate ▲ 10.65% for 10 sec.\n■ Activates when entering Full Burst. Affects all allies with shotguns.\nMax Ammunition Capacity ▲ 68.57% for 10 sec.",
+                "■ Activates when entering Full Burst. Affects self.\nCritical Rate ▲ 11.24% for 10 sec.\n■ Activates when entering Full Burst. Affects all allies with shotguns.\nMax Ammunition Capacity ▲ 72.38% for 10 sec.",
+                "■ Activates when entering Full Burst. Affects self.\nCritical Rate ▲ 11.83% for 10 sec.\n■ Activates when entering Full Burst. Affects all allies with shotguns.\nMax Ammunition Capacity ▲ 76.19% for 10 sec.",
+                "■ Activates when entering Full Burst. Affects self.\nCritical Rate ▲ 12.42% for 10 sec.\n■ Activates when entering Full Burst. Affects all allies with shotguns.\nMax Ammunition Capacity ▲ 80% for 10 sec.",
+                "■ Activates when entering Full Burst. Affects self.\nCritical Rate ▲ 13.02% for 10 sec.\n■ Activates when entering Full Burst. Affects all allies with shotguns.\nMax Ammunition Capacity ▲ 83.8% for 10 sec."
+              ],
+              "level10": "■ Activates when entering Full Burst. Affects self.\nCritical Rate ▲ 13.02% for 10 sec.\n■ Activates when entering Full Burst. Affects all allies with shotguns.\nMax Ammunition Capacity ▲ 83.8% for 10 sec."
+            },
+            {
+              "slot": "burst",
+              "name": "Trouble Shooter",
+              "icon": "icn_skill_c140_ult",
+              "cooldownSeconds": 40,
+              "levels": [
+                "■ Affects self.\nAttack Speed ▲ 39% for 15 sec.\nHit Rate ▲ 19.5% for 15 sec.",
+                "■ Affects self.\nAttack Speed ▲ 42% for 15 sec.\nHit Rate ▲ 21% for 15 sec.",
+                "■ Affects self.\nAttack Speed ▲ 45% for 15 sec.\nHit Rate ▲ 22.5% for 15 sec.",
+                "■ Affects self.\nAttack Speed ▲ 48% for 15 sec.\nHit Rate ▲ 24% for 15 sec.",
+                "■ Affects self.\nAttack Speed ▲ 51% for 15 sec.\nHit Rate ▲ 25.5% for 15 sec.",
+                "■ Affects self.\nAttack Speed ▲ 54% for 15 sec.\nHit Rate ▲ 27% for 15 sec.",
+                "■ Affects self.\nAttack Speed ▲ 57% for 15 sec.\nHit Rate ▲ 28.5% for 15 sec.",
+                "■ Affects self.\nAttack Speed ▲ 60% for 15 sec.\nHit Rate ▲ 30% for 15 sec.",
+                "■ Affects self.\nAttack Speed ▲ 63% for 15 sec.\nHit Rate ▲ 31.5% for 15 sec.",
+                "■ Affects self.\nAttack Speed ▲ 66% for 15 sec.\nHit Rate ▲ 33% for 15 sec."
+              ],
+              "level10": "■ Affects self.\nAttack Speed ▲ 66% for 15 sec.\nHit Rate ▲ 33% for 15 sec."
+            }
+          ],
+          "complete": true
+        }
       }
     }
   ],
   "pageEnrichment": {
-    "fetchedAtUtc": "2026-08-26T19:17:18.620Z",
+    "fetchedAtUtc": "2026-08-26T19:25:12.164Z",
     "failures": [],
     "completePhaseOrders": 21,
     "completeFavoriteSkillCards": 21
+  },
+  "baseDetailEnrichment": {
+    "fetchedAtUtc": "2026-08-26T19:25:12.559Z",
+    "complete": 21,
+    "failures": []
   }
 }
