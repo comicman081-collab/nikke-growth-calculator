@@ -9,6 +9,7 @@ on:
       - .github/workflows/inspect-favorite-import-v3477.yml
       - scripts/audit_favorite_v3477.py
       - scripts/extract_enikk_favorite_master_v3477.mjs
+      - scripts/extract_app_favorite_consumer_v3477.mjs
 
 permissions:
   contents: write
@@ -27,8 +28,11 @@ jobs:
         with:
           node-version: 22
 
-      - name: Extract live ENIKK favorite master and app consumers
+      - name: Extract live ENIKK favorite master
         run: node scripts/extract_enikk_favorite_master_v3477.mjs
+
+      - name: Extract compact app favorite-item consumer evidence
+        run: node scripts/extract_app_favorite_consumer_v3477.mjs
 
       - name: Optionally inspect ENIKK APK payloads
         continue-on-error: true
