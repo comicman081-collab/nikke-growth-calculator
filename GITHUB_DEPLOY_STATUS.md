@@ -1,20 +1,22 @@
 # GitHub / Cloudflare deploy status
 
-Build prepared: **V34.7.4 Deploy AutoSync**
+Current production build: **V34.7.5 BlaBla AutoSync**
 
 ## Ready
 
-- GitHub repository content is prepared.
-- `public/index.html` and root `index.html` are identical.
-- Cloudflare Pages Function route: `/api/blabla/sync`.
-- Production web build forces same-origin bridge automatically.
-- Manual/stale bridge URL and bridge key are cleared in deployed web mode.
-- First successful profile/server pair is stored locally.
-- Later page visits auto-refresh once per browser session by default.
-- Central roster remains the single sink for external data, so precision/My Roster/cubes/5-team auto composition consume the same imported values.
+- GitHub repository content is prepared and `main` is the production branch.
+- Cloudflare Workers Builds is connected to `comicman081-collab/nikke-growth-calculator`.
+- Build command: `npm run build`.
+- Deploy command: `npm run deploy`.
+- `public/index.html` and root `index.html` are kept identical.
+- Production web build forces the same-origin `/api/blabla/sync` bridge.
+- BlaBla service secrets are stored only as encrypted Cloudflare runtime secrets.
+- Runtime variables are preserved across Wrangler deploys.
+- First successful profile/server pair is stored locally and later page visits can auto-refresh once per browser session.
+- Central roster remains the single sink for external data, so Precision / My Roster / cubes / 5-team auto composition consume the same imported values.
 
-## Still required once at deployment
+## Automatic deployment
 
-Cloudflare must have an encrypted BlaBla service session (`BLABLA_29080_GAME_TOKEN` + `BLABLA_29080_GAME_OPENID`). Those secrets cannot safely be committed to GitHub or embedded in HTML.
+Any future commit pushed to `main` is expected to trigger Cloudflare Workers Builds automatically. Non-production branch builds are disabled.
 
-The GitHub connector currently cannot create a brand-new repository or configure Cloudflare Pages itself. Once the repository exists and Cloudflare is connected, this tree is ready to commit and deploy.
+This documentation-only commit is intentionally used as the first production auto-deploy trigger after the Git integration was connected.
