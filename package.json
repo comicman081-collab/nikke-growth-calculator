@@ -1,0 +1,10 @@
+{
+  "name": "nikke-growth-calculator",
+  "private": true,
+  "version": "34.7.4",
+  "description": "NIKKE Growth Calculator web deployment with BlaBlaLink Cloudflare Pages bridge",
+  "scripts": {
+    "check": "node --check functions/api/blabla/sync.js && node tests/verify-deploy-autosync.mjs"
+  },
+  "type": "module"
+}

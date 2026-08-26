@@ -1,0 +1,24 @@
+NIKKE Growth Calculator V34.7.4 Deploy AutoSync verification
+============================================================
+
+PASS: root index.html == public/index.html
+PASS: Cloudflare Pages Function syntax
+PASS: V34.7.4 deploy auto-sync static verification
+PASS: public profile parser (base64 29080-openid)
+PASS: official region preference GLOBAL=84, then 81/82/83/85
+PASS: mocked GetUserCharacters + GetUserCharacterDetails bridge flow
+PASS: production same-origin bridge marker /api/blabla/sync
+PASS: stale V34.7.2 proxy URL/key clearing marker
+PASS: successful profile/server local persistence marker
+PASS: auto-sync default ON marker
+PASS: once-per-browser-session auto-sync guard marker
+PASS: central roster external importer dependency marker
+PASS: executable inline JavaScript syntax check (95/95)
+
+Environment limitation:
+- Full Chromium navigation E2E could not run because this execution environment blocks browser navigation with ERR_BLOCKED_BY_ADMINISTRATOR, including intercepted/local URLs.
+- The function, parser, mock upstream response path, inline scripts, deployment wiring, and persistence/auto-sync code were verified without a live Android/BlaBla session.
+
+Production requirement:
+- Cloudflare encrypted secrets BLABLA_29080_GAME_TOKEN and BLABLA_29080_GAME_OPENID must be configured once.
+- Leave BLABLA_SYNC_KEY empty for the same-origin zero-configuration web flow.
