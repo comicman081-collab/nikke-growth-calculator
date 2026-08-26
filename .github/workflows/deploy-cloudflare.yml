@@ -1,0 +1,75 @@
+name: Deploy Cloudflare production
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nikke-growth-calculator-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Require Cloudflare deployment credentials
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -z "${CLOUDFLARE_API_TOKEN:-}" ]; then
+            echo '::error::Missing GitHub Actions secret CLOUDFLARE_API_TOKEN'
+            exit 1
+          fi
+          if [ -z "${CLOUDFLARE_ACCOUNT_ID:-}" ]; then
+            echo '::error::Missing GitHub Actions secret CLOUDFLARE_ACCOUNT_ID'
+            exit 1
+          fi
+
+      - name: Verify calculator source
+        run: npm run check
+
+      - name: Build Cloudflare static assets
+        run: node scripts/build-cloudflare.mjs
+
+      - name: Verify Cloudflare asset limits
+        shell: bash
+        run: |
+          set -euo pipefail
+          max=$(find dist-cloudflare -type f -printf '%s\n' | sort -nr | head -1)
+          test "$max" -le 5242880
+          test -f dist-cloudflare/index.html
+          test -f dist-cloudflare/assets/embedded-1589970c503504f5.m4a
+          test -f dist-cloudflare/assets/embedded-09c0b4e4111442bc.png
+          test -f dist-cloudflare/assets/embedded-d06f53a6a32f681c.webp
+
+      - name: Deploy Worker and assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          npx --yes wrangler@latest deploy --config wrangler.worker.jsonc | tee /tmp/wrangler-deploy.log
+
+      - name: Deployment summary
+        if: success()
+        shell: bash
+        run: |
+          echo '### Cloudflare production deployment completed' >> "$GITHUB_STEP_SUMMARY"
+          echo '' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Worker: `nikke-growth-calculator`' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Source: `${{ github.sha }}`' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Embedded backgrounds, icons and BGM are preserved and emitted as static assets.' >> "$GITHUB_STEP_SUMMARY"
