@@ -1,6 +1,6 @@
 # GitHub / Cloudflare deploy status
 
-Current production build: **V34.7.5 BlaBla AutoSync**
+Current production build: **V34.7.6 BlaBla nameCode Authority AutoSync**
 
 ## Ready
 
@@ -14,6 +14,7 @@ Current production build: **V34.7.5 BlaBla AutoSync**
 - Runtime variables are preserved across Wrangler deploys.
 - First successful profile/server pair is stored locally and later page visits can auto-refresh once per browser session.
 - Central roster remains the single sink for external data, so Precision / My Roster / cubes / 5-team auto composition consume the same imported values.
+- BlaBla/ENIKK `nameCode` is the authority key for character identity; BlaBla master names remain display metadata, so duplicate names such as Rei/Asuka variants cannot overwrite each other.
 
 ## Automatic deployment
 

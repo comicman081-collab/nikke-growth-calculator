@@ -12,6 +12,19 @@ assert.match(html, /접속 시 자동 동기화/);
 assert.match(html, /dataset\.v3474Deploy/);
 assert.match(html, /sessionStorage/);
 assert.match(html, /NIKKEV3474DeployAutoSyncVerification/);
+// BlaBla/ENIKK nameCode is the character identity authority. Display names may collide.
+assert.match(html, /NIKKEV3476NameCodeMapping/);
+assert.match(html, /id=idForNameCode\(row\.nameCode\)\|\|supplementalId\(row\.nameCode\)/);
+assert.match(html, /"5118":"asukaShikinamiLangley"/);
+assert.match(html, /"5119":"reiAyanami"/);
+assert.match(html, /"5132":"reiAyanamiTentative"/);
+assert.match(html, /"5133":"asukaWille"/);
+assert.match(html, /"5016":"poliTreasure"/);
+assert.match(html, /"5045":"rosannaTreasure"/);
+assert.match(html, /"5120":"mariMakinami"/);
+assert.match(html, /"5122":"phantomTreasure"/);
+assert.match(html, /"5153":"jillValentine"/);
+assert.doesNotMatch(html, /"5069":"reiAyanami"/);
 
 const parsed = parseProfileInput('https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTczODk5ODEwMzMzMTgwOTYwMDc=');
 assert.equal(parsed.intlGameId, '29080');
@@ -36,4 +49,4 @@ assert.equal(synced.ok,true);
 assert.equal(synced.areas.length,1);
 assert.equal(synced.areas[0].area,84);
 assert.equal(synced.areas[0].details[0].skill1_lv,10);
-console.log('V34.7.5 deploy autosync static/function verification: PASS');
+console.log('V34.7.6 deploy autosync + nameCode authority verification: PASS');
