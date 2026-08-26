@@ -1,7 +1,7 @@
 {
-  "auditVersion": 2,
+  "auditVersion": 3,
   "evidenceRule": "The 21-character roster is driven by the 21 literal SSR Favorite master TIDs. Each item is joined to the deployed character master by the c### resource ID encoded in its icon; nameCode is only a recorded fallback. Phase order and skill excerpts come from each deployed ENIKK character page.",
-  "fetchedAtUtc": "2026-08-26T19:14:15.635Z",
+  "fetchedAtUtc": "2026-08-26T19:17:18.193Z",
   "counts": {
     "discoveredChunks": 49,
     "fetchedChunkFailures": 0,
@@ -9,7 +9,8 @@
     "favoriteMasterItems": 21,
     "resolvedFavoriteTids": 21,
     "favoriteCharacters": 21,
-    "completePhaseOrders": 0
+    "completePhaseOrders": 21,
+    "completeFavoriteSkillCards": 21
   },
   "chunkEvidence": [
     {
@@ -69,9 +70,9 @@
         "phaseOrder": {
           "1": "skill2",
           "2": "burst",
-          "3": null
+          "3": "skill1"
         },
-        "phaseOrderComplete": false,
+        "phaseOrderComplete": true,
         "treasureText": "Toy Train Set\n\nThe leader of Infinity Rail who has a heart of gold. She always carries a bag of strawberry candy and helps guide lost passengers to their seats.\nManufacturer Elysion\n\n",
         "skillSectionText": "SKILLS\n\nTREASURE Toy Train Set\nSSR\nMG\nPreviewing Phase 3\n\nPreview cumulative skill upgrades\nSelect a phase to update the skill cards below.\nBase skills\n\nPHASE 1 Quest unlock\nSweet Strawberry Goodness\nUpgrades Skill 2\nPHASE 2 +50 · 50 total\nStrawberry Shock\nUpgrades Burst Skill\nPHASE 3 +110 · 160 total\nStrawberry Fields\nUpgrades Skill 1\n\nInherited collection bonuses\nMaximum SR Collection Item effects retained after conversion.\nGaze of Courage\n■ Activates at the start of battle.\nMax Ammunition Capacity ▲ 9.5%.\nDEF ▲ 37%.\n\nGrounding Pillar\n■ Activates at the start of battle.\nDamage Taken ▼ 17%.\nMax HP of cover ▲ 30%.\n\nStrawberry Fields\nSkill 1\nTreasure · Phase 3\n\nLVL 10\n\nCompare base\n\n■ Activates when entering Full Burst. Affects self.\nDEF ▲ 25.92% for 10 sec.\n■ Activates when attacked while in the Attract state. Affects self.\nRestores 12.96% of the skill user's final max HP.\n■ Activates after landing 150 normal attacks while in the Attract state. Affects self.\nIncreases the stack count of stackable buffs by 1.\n\nSweet Strawberry Goodness\nSkill 2\nTreasure · Phase 1\n\nLVL 10\n\nCompare base\n\n■ Activates after landing 70 normal attacks. Affects self.\nStrawberry Candy: Max Ammunition Capacity ▲ 56.7%. Stacks up to 10 times and lasts for 10 sec.\n■ Affects all allies when the skill user reaches max stacks of Strawberry Candy. Activates after stacks are removed.\nReload 86.62% of the magazine.\nPierce Damage ▲ 30% for 10 sec.\n\nStrawberry Shock\nBurst Skill\n20 s\nTreasure · Phase 2\n\nLVL 10\n\nCompare base\n\n■ Affects 5 enemy unit(s) with the highest final ATK.\nDeals 299.66% of final ATK as damage.\n■ Affects self.\nMax HP ▲ 100.05% without restoring HP for 10 sec.\nAttract: Taunt all enemies for 10 sec.\n\n",
         "contexts": [
@@ -331,7 +332,119 @@
           "https://enikk.app/_next/static/chunks/app/characters/%5Bslug%5D/page-6982f32854cac348.js",
           "https://enikk.app/_next/static/chunks/polyfills-42372ed130431b0a.js",
           "https://enikk.app/_next/static/chunks/webpack-263e609f96ed74cc.js"
-        ]
+        ],
+        "visibleTextSha256": "074bbb95d71e193a3532db4b3a117114e6149bddbe8d230ecc727e5c7a053e5e",
+        "phaseNames": {
+          "1": "Sweet Strawberry Goodness",
+          "2": "Strawberry Shock",
+          "3": "Strawberry Fields"
+        },
+        "favoriteSkillCards": [
+          {
+            "phase": 1,
+            "slot": "skill2",
+            "name": "Sweet Strawberry Goodness",
+            "marker": "Treasure · Phase 1",
+            "description": "■\nActivates after landing 70 normal attacks. Affects self.\nStrawberry Candy: Max Ammunition Capacity ▲ 56.7%. Stacks up to 10 times and lasts for 10 sec.\n■\nAffects all allies when the skill user reaches max stacks of Strawberry Candy. Activates after stacks are removed.\nReload 86.62% of the magazine.\nPierce Damage\n▲ 30% for 10 sec.\nStrawberry Shock\nBurst Skill\n20 s",
+            "numericTokens": [
+              "70",
+              "56.7",
+              "10",
+              "86.62%",
+              "30%",
+              "20"
+            ],
+            "rawBlock": [
+              "Sweet Strawberry Goodness",
+              "Skill 2",
+              "Treasure · Phase 1",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates after landing 70 normal attacks. Affects self.",
+              "Strawberry Candy: Max Ammunition Capacity ▲ 56.7%. Stacks up to 10 times and lasts for 10 sec.",
+              "■",
+              "Affects all allies when the skill user reaches max stacks of Strawberry Candy. Activates after stacks are removed.",
+              "Reload 86.62% of the magazine.",
+              "Pierce Damage",
+              "▲ 30% for 10 sec.",
+              "Strawberry Shock",
+              "Burst Skill",
+              "20 s"
+            ]
+          },
+          {
+            "phase": 2,
+            "slot": "burst",
+            "name": "Strawberry Shock",
+            "marker": "Treasure · Phase 2",
+            "description": "■\nAffects 5 enemy unit(s) with the highest\nfinal\nATK.\nDeals 299.66% of\nfinal\nATK as damage.\n■\nAffects self.\nMax HP ▲ 100.05% without restoring HP for 10 sec.\nAttract: Taunt all enemies for 10 sec.",
+            "numericTokens": [
+              "5",
+              "299.66%",
+              "100.05%",
+              "10"
+            ],
+            "rawBlock": [
+              "Strawberry Shock",
+              "Burst Skill",
+              "20 s",
+              "Treasure · Phase 2",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Affects 5 enemy unit(s) with the highest",
+              "final",
+              "ATK.",
+              "Deals 299.66% of",
+              "final",
+              "ATK as damage.",
+              "■",
+              "Affects self.",
+              "Max HP ▲ 100.05% without restoring HP for 10 sec.",
+              "Attract: Taunt all enemies for 10 sec."
+            ]
+          },
+          {
+            "phase": 3,
+            "slot": "skill1",
+            "name": "Strawberry Fields",
+            "marker": "Treasure · Phase 3",
+            "description": "■\nActivates when entering Full Burst. Affects self.\nDEF ▲ 25.92% for 10 sec.\n■\nActivates when attacked while in the Attract state. Affects self.\nRestores 12.96% of the skill user's\nfinal\nmax HP.\n■\nActivates after landing 150 normal attacks while in the Attract state. Affects self.\nIncreases the\nstack count of stackable buffs\nby 1.\nSweet Strawberry Goodness\nSkill 2",
+            "numericTokens": [
+              "25.92%",
+              "10",
+              "12.96%",
+              "150",
+              "2"
+            ],
+            "rawBlock": [
+              "Strawberry Fields",
+              "Skill 1",
+              "Treasure · Phase 3",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates when entering Full Burst. Affects self.",
+              "DEF ▲ 25.92% for 10 sec.",
+              "■",
+              "Activates when attacked while in the Attract state. Affects self.",
+              "Restores 12.96% of the skill user's",
+              "final",
+              "max HP.",
+              "■",
+              "Activates after landing 150 normal attacks while in the Attract state. Affects self.",
+              "Increases the",
+              "stack count of stackable buffs",
+              "by 1.",
+              "Sweet Strawberry Goodness",
+              "Skill 2"
+            ]
+          }
+        ],
+        "favoriteSkillCardsComplete": true,
+        "favoritePanelText": "",
+        "lineCount": 149
       }
     },
     {
@@ -379,9 +492,9 @@
         "phaseOrder": {
           "1": "skill2",
           "2": "burst",
-          "3": null
+          "3": "skill1"
         },
-        "phaseOrderComplete": false,
+        "phaseOrderComplete": true,
         "treasureText": "Gamekid Evolution\n\nA hacking wunderkind from Protocol. No one can hold a candle to her when it comes to video games.\nManufacturer Tetra\n\n",
         "skillSectionText": "SKILLS\n\nTREASURE Gamekid Evolution\nSSR\nSR\nPreviewing Phase 3\n\nPreview cumulative skill upgrades\nSelect a phase to update the skill cards below.\nBase skills\n\nPHASE 1 Quest unlock\nSecret Code\nUpgrades Skill 2\nPHASE 2 +50 · 50 total\nPartisan Protocol\nUpgrades Burst Skill\nPHASE 3 +110 · 160 total\nInvasion\nUpgrades Skill 1\n\nInherited collection bonuses\nMaximum SR Collection Item effects retained after conversion.\nGaze of Courage\n■ Activates at the start of battle.\nCharge Damage Multiplier ▲ 9.47%.\nDEF ▲ 37%.\n\nGrounding Pillar\n■ Activates at the start of battle.\nDamage Taken ▼ 17%.\nMax HP of cover ▲ 30%.\n\nInvasion\nSkill 1\nTreasure · Phase 3\n\nLVL 10\n\nCompare base\n\n■ Activates when the last bullet hits the target. Affects the target if the skill user is in Collect Hacking Code.\nATK ▼ 13.77% for 5 sec.\nDEF ▼ 13.77% for 5 sec.\n■ Activates when entering Full Burst. Affects self.\nReload speed is fixed at a 95% increase for 10 sec.\n\nSecret Code\nSkill 2\nTreasure · Phase 1\n\nLVL 10\n\nCompare base\n\n■ Activates when landing an attack with Full Charge. Affects self.\nCollect Hacking Code: ATK ▲ 28%, stacks up to 5 time(s) for 5 sec.\n■ When the last round of ammunition hits, affects all Electric Code ally unit(s) if the skill user is in Collect Hacking Code.\nATK ▲ 5.8% of the skill user's ATK, stacks up to 5 time(s) for 15 sec.\n\nPartisan Protocol\nBurst Skill\n20 s\nTreasure · Phase 2\n\nLVL 10\n\nCompare base\n\n■ Affects the 10 enemy unit(s) with the highest final DEF.\nDeals 122.32% of final ATK as damage.\nDEF ▼ 2.71% for 5 sec.\n■ Activates when Collect Hacking Code is at max stacks. Affects the same target(s).\nDeals 122.32% of final ATK as additional damage.\nDamage Taken ▲ 18.04% for 10 sec.\n\n",
         "contexts": [
@@ -561,7 +674,114 @@
           "https://enikk.app/_next/static/chunks/app/characters/%5Bslug%5D/page-6982f32854cac348.js",
           "https://enikk.app/_next/static/chunks/polyfills-42372ed130431b0a.js",
           "https://enikk.app/_next/static/chunks/webpack-263e609f96ed74cc.js"
-        ]
+        ],
+        "visibleTextSha256": "f627f800191578391505a72438a317ccf411908beabda1c9d2cd036ef54543ce",
+        "phaseNames": {
+          "1": "Secret Code",
+          "2": "Partisan Protocol",
+          "3": "Invasion"
+        },
+        "favoriteSkillCards": [
+          {
+            "phase": 1,
+            "slot": "skill2",
+            "name": "Secret Code",
+            "marker": "Treasure · Phase 1",
+            "description": "■\nActivates when landing an attack with Full Charge. Affects self.\nCollect Hacking Code: ATK ▲ 28%, stacks up to 5 time(s) for 5 sec.\n■\nWhen the last round of ammunition hits, affects all Electric Code ally unit(s) if the skill user is in Collect Hacking Code.\nATK ▲ 5.8% of the skill user's ATK, stacks up to 5 time(s) for 15 sec.\nPartisan Protocol\nBurst Skill\n20 s",
+            "numericTokens": [
+              "28%",
+              "5",
+              "5.8%",
+              "15",
+              "20"
+            ],
+            "rawBlock": [
+              "Secret Code",
+              "Skill 2",
+              "Treasure · Phase 1",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates when landing an attack with Full Charge. Affects self.",
+              "Collect Hacking Code: ATK ▲ 28%, stacks up to 5 time(s) for 5 sec.",
+              "■",
+              "When the last round of ammunition hits, affects all Electric Code ally unit(s) if the skill user is in Collect Hacking Code.",
+              "ATK ▲ 5.8% of the skill user's ATK, stacks up to 5 time(s) for 15 sec.",
+              "Partisan Protocol",
+              "Burst Skill",
+              "20 s"
+            ]
+          },
+          {
+            "phase": 2,
+            "slot": "burst",
+            "name": "Partisan Protocol",
+            "marker": "Treasure · Phase 2",
+            "description": "■\nAffects the 10 enemy unit(s) with the highest\nfinal\nDEF.\nDeals 122.32% of\nfinal\nATK as damage.\nDEF ▼ 2.71% for 5 sec.\n■\nActivates when Collect Hacking Code is at max stacks. Affects the same target(s).\nDeals 122.32% of\nfinal\nATK as additional damage.\nDamage Taken ▲ 18.04% for 10 sec.",
+            "numericTokens": [
+              "10",
+              "122.32%",
+              "2.71%",
+              "5",
+              "18.04%"
+            ],
+            "rawBlock": [
+              "Partisan Protocol",
+              "Burst Skill",
+              "20 s",
+              "Treasure · Phase 2",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Affects the 10 enemy unit(s) with the highest",
+              "final",
+              "DEF.",
+              "Deals 122.32% of",
+              "final",
+              "ATK as damage.",
+              "DEF ▼ 2.71% for 5 sec.",
+              "■",
+              "Activates when Collect Hacking Code is at max stacks. Affects the same target(s).",
+              "Deals 122.32% of",
+              "final",
+              "ATK as additional damage.",
+              "Damage Taken ▲ 18.04% for 10 sec."
+            ]
+          },
+          {
+            "phase": 3,
+            "slot": "skill1",
+            "name": "Invasion",
+            "marker": "Treasure · Phase 3",
+            "description": "■\nActivates when the last bullet hits the target. Affects the target if the skill user is in Collect Hacking Code.\nATK ▼ 13.77% for 5 sec.\nDEF ▼ 13.77% for 5 sec.\n■\nActivates when entering Full Burst. Affects self.\nReload speed is fixed at a 95% increase for 10 sec.\nSecret Code\nSkill 2",
+            "numericTokens": [
+              "13.77%",
+              "5",
+              "95%",
+              "10",
+              "2"
+            ],
+            "rawBlock": [
+              "Invasion",
+              "Skill 1",
+              "Treasure · Phase 3",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates when the last bullet hits the target. Affects the target if the skill user is in Collect Hacking Code.",
+              "ATK ▼ 13.77% for 5 sec.",
+              "DEF ▼ 13.77% for 5 sec.",
+              "■",
+              "Activates when entering Full Burst. Affects self.",
+              "Reload speed is fixed at a 95% increase for 10 sec.",
+              "Secret Code",
+              "Skill 2"
+            ]
+          }
+        ],
+        "favoriteSkillCardsComplete": true,
+        "favoritePanelText": "",
+        "lineCount": 140
       }
     },
     {
@@ -609,9 +829,9 @@
         "phaseOrder": {
           "1": "skill1",
           "2": "burst",
-          "3": null
+          "3": "skill2"
         },
-        "phaseOrderComplete": false,
+        "phaseOrderComplete": true,
         "treasureText": "Beloved Pillow\n\nThe leader of Cafe Sweety, who sells cream coffee. Her inherent laziness actually leads her to discover the most efficient ways to get things done.\nManufacturer Tetra\n\n",
         "skillSectionText": "SKILLS\n\nTREASURE Beloved Pillow\nSSR\nSR\nPreviewing Phase 3\n\nPreview cumulative skill upgrades\nSelect a phase to update the skill cards below.\nBase skills\n\nPHASE 1 Quest unlock\n... I Want to Sleep\nUpgrades Skill 1\nPHASE 2 +50 · 50 total\n... Annoying\nUpgrades Burst Skill\nPHASE 3 +110 · 160 total\n... Ah\nUpgrades Skill 2\n\nInherited collection bonuses\nMaximum SR Collection Item effects retained after conversion.\nGaze of Courage\n■ Activates at the start of battle.\nCharge Damage Multiplier ▲ 9.47%.\nDEF ▲ 37%.\n\nGrounding Pillar\n■ Activates at the start of battle.\nDamage Taken ▼ 17%.\nMax HP of cover ▲ 30%.\n\n... I Want to Sleep\nSkill 1\nTreasure · Phase 1\n\nLVL 10\n\nCompare base\n\n■ Activates when hitting a target with Full Charge.\nSleepy: DEF ▼ 4%. Stacks up to 5 time(s) for 10 sec.\n■ Activates after landing 6 Full Charge Attacks on a target with max stacks of Sleepy. Affects self.\nWake Up: Normal attacks deal true damage for 10 sec.\n\n... Ah\nSkill 2\nTreasure · Phase 3\n\nLVL 10\n\nCompare base\n\n■ Activates when attacking with Full Charge. Affects all allies.\nMax HP ▲ 6.09% for 4 sec.\n■ Activates when attacking with Full Charge. Affects all allies when in Wake Up status.\nTrue Damage ▲ 28.16% for 5 sec.\n\n... Annoying\nBurst Skill\n20 s\nTreasure · Phase 2\n\nLVL 10\n\nCompare base\n\n■ Affects 10 enemy unit(s) with the highest final DEF.\nDeals 101.66% of final ATK as damage.\nDEF ▼ 9.86% for 10 sec.\n■ Affects all allies.\nMax HP ▲ 30.26% for 4 sec.\n■ Activiates when in Wake Up status. Affects all allies.\nTrue Damage ▲ 49.97% for 10 sec.\n\n",
         "contexts": [
@@ -831,7 +1051,114 @@
           "https://enikk.app/_next/static/chunks/app/characters/%5Bslug%5D/page-6982f32854cac348.js",
           "https://enikk.app/_next/static/chunks/polyfills-42372ed130431b0a.js",
           "https://enikk.app/_next/static/chunks/webpack-263e609f96ed74cc.js"
-        ]
+        ],
+        "visibleTextSha256": "3e319df1d19178954a1628cbe5c96aa72f5211ac441fd4f3f749acd491e48d75",
+        "phaseNames": {
+          "1": "... I Want to Sleep",
+          "2": "... Annoying",
+          "3": "... Ah"
+        },
+        "favoriteSkillCards": [
+          {
+            "phase": 1,
+            "slot": "skill1",
+            "name": "... I Want to Sleep",
+            "marker": "Treasure · Phase 1",
+            "description": "■\nActivates when hitting a target with Full Charge.\nSleepy: DEF ▼ 4%. Stacks up to 5 time(s) for 10 sec.\n■\nActivates after landing 6 Full Charge Attacks on a target with max stacks of Sleepy. Affects self.\nWake Up: Normal attacks deal true damage for 10 sec.\n... Ah\nSkill 2",
+            "numericTokens": [
+              "4",
+              "5",
+              "10",
+              "6",
+              "2"
+            ],
+            "rawBlock": [
+              "... I Want to Sleep",
+              "Skill 1",
+              "Treasure · Phase 1",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates when hitting a target with Full Charge.",
+              "Sleepy: DEF ▼ 4%. Stacks up to 5 time(s) for 10 sec.",
+              "■",
+              "Activates after landing 6 Full Charge Attacks on a target with max stacks of Sleepy. Affects self.",
+              "Wake Up: Normal attacks deal true damage for 10 sec.",
+              "... Ah",
+              "Skill 2"
+            ]
+          },
+          {
+            "phase": 2,
+            "slot": "burst",
+            "name": "... Annoying",
+            "marker": "Treasure · Phase 2",
+            "description": "■\nAffects 10 enemy unit(s) with the highest\nfinal\nDEF.\nDeals 101.66% of\nfinal\nATK as damage.\nDEF ▼ 9.86% for 10 sec.\n■\nAffects all allies.\nMax HP ▲ 30.26% for 4 sec.\n■\nActiviates when in Wake Up status. Affects all allies.\nTrue Damage ▲ 49.97% for 10 sec.",
+            "numericTokens": [
+              "10",
+              "101.66%",
+              "9.86%",
+              "30.26%",
+              "4",
+              "49.97%"
+            ],
+            "rawBlock": [
+              "... Annoying",
+              "Burst Skill",
+              "20 s",
+              "Treasure · Phase 2",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Affects 10 enemy unit(s) with the highest",
+              "final",
+              "DEF.",
+              "Deals 101.66% of",
+              "final",
+              "ATK as damage.",
+              "DEF ▼ 9.86% for 10 sec.",
+              "■",
+              "Affects all allies.",
+              "Max HP ▲ 30.26% for 4 sec.",
+              "■",
+              "Activiates when in Wake Up status. Affects all allies.",
+              "True Damage ▲ 49.97% for 10 sec."
+            ]
+          },
+          {
+            "phase": 3,
+            "slot": "skill2",
+            "name": "... Ah",
+            "marker": "Treasure · Phase 3",
+            "description": "■\nActivates when attacking with Full Charge. Affects all allies.\nMax HP ▲ 6.09% for 4 sec.\n■\nActivates when attacking with Full Charge. Affects all allies when in Wake Up status.\nTrue Damage ▲ 28.16% for 5 sec.\n... Annoying\nBurst Skill\n20 s",
+            "numericTokens": [
+              "6.09%",
+              "4",
+              "28.16%",
+              "5",
+              "20"
+            ],
+            "rawBlock": [
+              "... Ah",
+              "Skill 2",
+              "Treasure · Phase 3",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates when attacking with Full Charge. Affects all allies.",
+              "Max HP ▲ 6.09% for 4 sec.",
+              "■",
+              "Activates when attacking with Full Charge. Affects all allies when in Wake Up status.",
+              "True Damage ▲ 28.16% for 5 sec.",
+              "... Annoying",
+              "Burst Skill",
+              "20 s"
+            ]
+          }
+        ],
+        "favoriteSkillCardsComplete": true,
+        "favoritePanelText": "",
+        "lineCount": 142
       }
     },
     {
@@ -879,9 +1206,9 @@
         "phaseOrder": {
           "1": "skill2",
           "2": "burst",
-          "3": null
+          "3": "skill1"
         },
-        "phaseOrderComplete": false,
+        "phaseOrderComplete": true,
         "treasureText": "Hero Trilogy BD\n\nThe leader of Matis, the top ",
         "skillSectionText": "SKILLS\n\nTREASURE Hero Trilogy BD\nSSR\nRL\nPreviewing Phase 3\n\nPreview cumulative skill upgrades\nSelect a phase to update the skill cards below.\nBase skills\n\nPHASE 1 Quest unlock\nHero Bomber\nUpgrades Skill 2\nPHASE 2 +50 · 50 total\nLaplace Buster\nUpgrades Burst Skill\nPHASE 3 +110 · 160 total\nHero Vision\nUpgrades Skill 1\n\nInherited collection bonuses\nMaximum SR Collection Item effects retained after conversion.\nGaze of Courage\n■ Activates at the start of battle.\nCharge Damage Multiplier ▲ 9.47%.\nDEF ▲ 37%.\n\nGrounding Pillar\n■ Activates at the start of battle.\nDamage Taken ▼ 17%.\nMax HP of cover ▲ 30%.\n\nHero Vision\nSkill 1\nTreasure · Phase 3\n\nLVL 10\n\nCompare base\n\n■ Activates when attacking with Full Charge. Affects self.\nHero Vision: Explosion Radius ▲ 3.57%, stacks up to 5 time(s) and lasts for 15 sec.\n\nHero Bomber\nSkill 2\nTreasure · Phase 1\n\nLVL 10\n\nCompare base\n\n■ Activates when hitting a target with Full Charge. Affects the target.\nDeals 132.45% of final ATK as additional damage.\n■ Activates when hitting the target's Parts. Affects the target's body.\nDeals 14.78% of final ATK as additional damage.\n\nLaplace Buster\nBurst Skill\n40 s\nTreasure · Phase 2\n\nLVL 10\n\nCompare base\n\n■ Affects self.\nChanges the weapon in use:\nFirst Damage: 1455.72% of final ATK\nNormal Damage: 22.2% of final ATK\nDuration: 10 sec\nAdditional Effect 1: Gains Pierce.\nAdditional Effect 2: Normal damage is applied as true damage when Hero Vision is at max stacks.\nNote: Unable to take cover while using Burst Skill.\n■ Affects the same enemy unit(s) when Hero Vision is at max stacks.\nDeals 11.9% of final ATK as true damage.\n\n",
         "contexts": [
@@ -1121,7 +1448,116 @@
           "https://enikk.app/_next/static/chunks/app/characters/%5Bslug%5D/page-6982f32854cac348.js",
           "https://enikk.app/_next/static/chunks/polyfills-42372ed130431b0a.js",
           "https://enikk.app/_next/static/chunks/webpack-263e609f96ed74cc.js"
-        ]
+        ],
+        "visibleTextSha256": "d99446f34a46fdd06977f7d35168e4744fae6057d4d6d40980e8be04aee8f550",
+        "phaseNames": {
+          "1": "Hero Bomber",
+          "2": "Laplace Buster",
+          "3": "Hero Vision"
+        },
+        "favoriteSkillCards": [
+          {
+            "phase": 1,
+            "slot": "skill2",
+            "name": "Hero Bomber",
+            "marker": "Treasure · Phase 1",
+            "description": "■\nActivates when hitting a target with Full Charge. Affects the target.\nDeals 132.45% of\nfinal\nATK as additional damage.\n■\nActivates when hitting the target's Parts. Affects the target's body.\nDeals 14.78% of\nfinal\nATK as additional damage.\nLaplace Buster\nBurst Skill\n40 s",
+            "numericTokens": [
+              "132.45%",
+              "14.78%",
+              "40"
+            ],
+            "rawBlock": [
+              "Hero Bomber",
+              "Skill 2",
+              "Treasure · Phase 1",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates when hitting a target with Full Charge. Affects the target.",
+              "Deals 132.45% of",
+              "final",
+              "ATK as additional damage.",
+              "■",
+              "Activates when hitting the target's Parts. Affects the target's body.",
+              "Deals 14.78% of",
+              "final",
+              "ATK as additional damage.",
+              "Laplace Buster",
+              "Burst Skill",
+              "40 s"
+            ]
+          },
+          {
+            "phase": 2,
+            "slot": "burst",
+            "name": "Laplace Buster",
+            "marker": "Treasure · Phase 2",
+            "description": "■\nAffects self.\nChanges the weapon in use:\nFirst Damage: 1455.72% of\nfinal\nATK\nNormal Damage: 22.2% of\nfinal\nATK\nDuration: 10 sec\nAdditional Effect 1: Gains Pierce.\nAdditional Effect 2: Normal damage is applied as true damage when Hero Vision is at max stacks.\nNote: Unable to take cover while using Burst Skill.\n■\nAffects the same enemy unit(s) when Hero Vision is at max stacks.\nDeals 11.9% of\nfinal\nATK as true damage.",
+            "numericTokens": [
+              "1455.72%",
+              "22.2%",
+              "10",
+              "1",
+              "2",
+              "11.9%"
+            ],
+            "rawBlock": [
+              "Laplace Buster",
+              "Burst Skill",
+              "40 s",
+              "Treasure · Phase 2",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Affects self.",
+              "Changes the weapon in use:",
+              "First Damage: 1455.72% of",
+              "final",
+              "ATK",
+              "Normal Damage: 22.2% of",
+              "final",
+              "ATK",
+              "Duration: 10 sec",
+              "Additional Effect 1: Gains Pierce.",
+              "Additional Effect 2: Normal damage is applied as true damage when Hero Vision is at max stacks.",
+              "Note: Unable to take cover while using Burst Skill.",
+              "■",
+              "Affects the same enemy unit(s) when Hero Vision is at max stacks.",
+              "Deals 11.9% of",
+              "final",
+              "ATK as true damage."
+            ]
+          },
+          {
+            "phase": 3,
+            "slot": "skill1",
+            "name": "Hero Vision",
+            "marker": "Treasure · Phase 3",
+            "description": "■\nActivates when attacking with Full Charge. Affects self.\nHero Vision: Explosion Radius ▲ 3.57%, stacks up to 5 time(s) and lasts for 15 sec.\nHero Bomber\nSkill 2",
+            "numericTokens": [
+              "3.57%",
+              "5",
+              "15",
+              "2"
+            ],
+            "rawBlock": [
+              "Hero Vision",
+              "Skill 1",
+              "Treasure · Phase 3",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates when attacking with Full Charge. Affects self.",
+              "Hero Vision: Explosion Radius ▲ 3.57%, stacks up to 5 time(s) and lasts for 15 sec.",
+              "Hero Bomber",
+              "Skill 2"
+            ]
+          }
+        ],
+        "favoriteSkillCardsComplete": true,
+        "favoritePanelText": "",
+        "lineCount": 150
       }
     },
     {
@@ -1169,9 +1605,9 @@
         "phaseOrder": {
           "1": "skill1",
           "2": "burst",
-          "3": null
+          "3": "skill2"
         },
-        "phaseOrderComplete": false,
+        "phaseOrderComplete": true,
         "treasureText": "First Phone and Phone Book\n\nStaff officer of the Exotic ",
         "skillSectionText": "SKILLS\n\nTREASURE First Phone and Phone Book\nSSR\nSG\nPreviewing Phase 3\n\nPreview cumulative skill upgrades\nSelect a phase to update the skill cards below.\nBase skills\n\nPHASE 1 Quest unlock\nSnake Sense\nUpgrades Skill 1\nPHASE 2 +50 · 50 total\nSnake Bite\nUpgrades Burst Skill\nPHASE 3 +110 · 160 total\nSnake Scale\nUpgrades Skill 2\n\nInherited collection bonuses\nMaximum SR Collection Item effects retained after conversion.\nGaze of Courage\n■ Activates at the start of battle.\nNormal Attack Damage Multiplier ▲ 9.46%.\nDEF ▲ 37%.\n\nGrounding Pillar\n■ Activates at the start of battle.\nDamage Taken ▼ 17%.\nMax HP of cover ▲ 30%.\n\nSnake Sense\nSkill 1\nTreasure · Phase 1\n\nLVL 10\n\nCompare base\n\n■ Activates when the stage target appears. Affects all allies.\nATK ▲ 25.98% for 10 sec.\nHit Rate ▲ 11.13% for 10 sec.\n■ Only activates when attacking in Vamp status. Affects self.\nSustained Damage ▲ 4.4%. Stacks up to 10 times and lasts for 10 sec.\nHit Rate ▲ 1.84%. Stacks up to 10 times and lasts for 10 sec.\n\nSnake Scale\nSkill 2\nTreasure · Phase 3\n\nLVL 10\n\nCompare base\n\n■ Affects self.\nHit Rate ▲ 21.96% continuously.\n■ Activates when entering Full Burst. Affects self.\nVamp: Prevents being targeted by single-target attacks continuously. This effect is removed upon taking a direct hit.\nInvulnerable for 1 sec.\n■ Activates when using Burst Skill. Affects all allies.\nRe-enters Burst Stage 2.\n\nSnake Bite\nBurst Skill\n20 s\nTreasure · Phase 2\n\nLVL 10\n\nCompare base\n\n■ Affects 1 designated enemy unit(s).\nDeals 1029.6% of final ATK as damage.\n■ Affects the enemy if the enemy is the stage target .\nDEF ▼ 19.83% for 10 sec.\nDeals 105.3% of final ATK as sustained damage every second for 10 sec.\n\n",
         "contexts": [
@@ -1391,7 +1827,122 @@
           "https://enikk.app/_next/static/chunks/app/characters/%5Bslug%5D/page-6982f32854cac348.js",
           "https://enikk.app/_next/static/chunks/polyfills-42372ed130431b0a.js",
           "https://enikk.app/_next/static/chunks/webpack-263e609f96ed74cc.js"
-        ]
+        ],
+        "visibleTextSha256": "15d4ea764f22b41339c17f5dea0d7b2b830d41294b2655982d2643039b783d87",
+        "phaseNames": {
+          "1": "Snake Sense",
+          "2": "Snake Bite",
+          "3": "Snake Scale"
+        },
+        "favoriteSkillCards": [
+          {
+            "phase": 1,
+            "slot": "skill1",
+            "name": "Snake Sense",
+            "marker": "Treasure · Phase 1",
+            "description": "■\nActivates when the\nstage target\nappears. Affects all allies.\nATK ▲ 25.98% for 10 sec.\nHit Rate ▲ 11.13% for 10 sec.\n■\nOnly activates when attacking in Vamp status. Affects self.\nSustained Damage ▲ 4.4%. Stacks up to 10 times and lasts for 10 sec.\nHit Rate ▲ 1.84%. Stacks up to 10 times and lasts for 10 sec.\nSnake Scale\nSkill 2",
+            "numericTokens": [
+              "25.98%",
+              "10",
+              "11.13%",
+              "4.4",
+              "1.84",
+              "2"
+            ],
+            "rawBlock": [
+              "Snake Sense",
+              "Skill 1",
+              "Treasure · Phase 1",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates when the",
+              "stage target",
+              "appears. Affects all allies.",
+              "ATK ▲ 25.98% for 10 sec.",
+              "Hit Rate ▲ 11.13% for 10 sec.",
+              "■",
+              "Only activates when attacking in Vamp status. Affects self.",
+              "Sustained Damage ▲ 4.4%. Stacks up to 10 times and lasts for 10 sec.",
+              "Hit Rate ▲ 1.84%. Stacks up to 10 times and lasts for 10 sec.",
+              "Snake Scale",
+              "Skill 2"
+            ]
+          },
+          {
+            "phase": 2,
+            "slot": "burst",
+            "name": "Snake Bite",
+            "marker": "Treasure · Phase 2",
+            "description": "■\nAffects 1 designated enemy unit(s).\nDeals 1029.6% of\nfinal\nATK as damage.\n■\nAffects the enemy if the enemy is the\nstage target\n.\nDEF ▼ 19.83% for 10 sec.\nDeals 105.3% of\nfinal\nATK as sustained damage every second for 10 sec.",
+            "numericTokens": [
+              "1",
+              "1029.6%",
+              "19.83%",
+              "10",
+              "105.3%"
+            ],
+            "rawBlock": [
+              "Snake Bite",
+              "Burst Skill",
+              "20 s",
+              "Treasure · Phase 2",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Affects 1 designated enemy unit(s).",
+              "Deals 1029.6% of",
+              "final",
+              "ATK as damage.",
+              "■",
+              "Affects the enemy if the enemy is the",
+              "stage target",
+              ".",
+              "DEF ▼ 19.83% for 10 sec.",
+              "Deals 105.3% of",
+              "final",
+              "ATK as sustained damage every second for 10 sec."
+            ]
+          },
+          {
+            "phase": 3,
+            "slot": "skill2",
+            "name": "Snake Scale",
+            "marker": "Treasure · Phase 3",
+            "description": "■\nAffects self.\nHit Rate ▲ 21.96% continuously.\n■\nActivates when entering Full Burst. Affects self.\nVamp:\nPrevents being targeted by single-target attacks\ncontinuously. This effect is removed upon taking a direct hit.\nInvulnerable for 1 sec.\n■\nActivates when using Burst Skill. Affects all allies.\nRe-enters Burst\nStage 2.\nSnake Bite\nBurst Skill\n20 s",
+            "numericTokens": [
+              "21.96%",
+              "1",
+              "20"
+            ],
+            "rawBlock": [
+              "Snake Scale",
+              "Skill 2",
+              "Treasure · Phase 3",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Affects self.",
+              "Hit Rate ▲ 21.96% continuously.",
+              "■",
+              "Activates when entering Full Burst. Affects self.",
+              "Vamp:",
+              "Prevents being targeted by single-target attacks",
+              "continuously. This effect is removed upon taking a direct hit.",
+              "Invulnerable for 1 sec.",
+              "■",
+              "Activates when using Burst Skill. Affects all allies.",
+              "Re-enters Burst",
+              "Stage 2.",
+              "Snake Bite",
+              "Burst Skill",
+              "20 s"
+            ]
+          }
+        ],
+        "favoriteSkillCardsComplete": true,
+        "favoritePanelText": "",
+        "lineCount": 151
       }
     },
     {
@@ -1439,9 +1990,9 @@
         "phaseOrder": {
           "1": "burst",
           "2": "skill2",
-          "3": null
+          "3": "skill1"
         },
-        "phaseOrderComplete": false,
+        "phaseOrderComplete": true,
         "treasureText": "Sheet of Paper\n\nA Nikke from the A.C.P.U. who has no lack of passion but sometimes falls short in her work performance. Despite her supposed secret of being an A.C.P.U. Inspector, everyone is all too aware of it.\nManufacturer Elysion\n\n",
         "skillSectionText": "SKILLS\n\nTREASURE Sheet of Paper\nSSR\nSMG\nPreviewing Phase 3\n\nPreview cumulative skill upgrades\nSelect a phase to update the skill cards below.\nBase skills\n\nPHASE 1 Quest unlock\nPowering Up!\nUpgrades Burst Skill\nPHASE 2 +50 · 50 total\nWake Up!\nUpgrades Skill 2\nPHASE 3 +110 · 160 total\nHealth Up!\nUpgrades Skill 1\n\nInherited collection bonuses\nMaximum SR Collection Item effects retained after conversion.\nGaze of Courage\n■ Activates at the start of battle.\nNormal Attack Damage Multiplier ▲ 9.46%.\nDEF ▲ 37%.\n\nGrounding Pillar\n■ Activates at the start of battle.\nDamage Taken ▼ 17%.\nMax HP of cover ▲ 30%.\n\nHealth Up!\nSkill 1\nTreasure · Phase 3\n\nLVL 10\n\nCompare base\n\n■ Activates after landing 30 normal attacks. Affects all allies.\nHit Rate ▲ 5.44% for 5 sec.\n■ Activates after landing 30 normal attacks. Affects all allies with a Submachine Gun.\nHit Rate ▲ 3.79% for 5 sec.\n■ Activates after landing 30 normal attacks. Affects self.\nATK ▲ 50.06% for 5 sec.\n\nWake Up!\nSkill 2\nTreasure · Phase 2\n\nLVL 10\n\nCompare base\n\n■ Activates when entering Full Burst. Affects all allies.\nCritical Damage ▲ 32.99% for 10 sec.\n■ Activates when entering Full Burst. Affects self.\nCritical Rate ▲ 30.1% for 10 sec.\nAttack Damage ▲ 23.7% for 10 sec.\n■ Activates when entering Full Burst. Affects 1 ally unit(s) with the highest final ATK (except the skill user; including the skill user if there are not enough allies).\nCritical Rate ▲ 85.42% for 1 round(s).\n\nPowering Up!\nBurst Skill\n20 s\nTreasure · Phase 1\n\nLVL 10\n\nCompare base\n\n■ Affects 2 ally unit(s) with the highest final ATK (except the skill user; including the skill user if there are not enough allies).\nATK ▲ 40.4% for 10 sec.\nCritical Damage ▲ 56.23% for 10 sec.\n\n",
         "contexts": [
@@ -1641,7 +2192,116 @@
           "https://enikk.app/_next/static/chunks/app/characters/%5Bslug%5D/page-6982f32854cac348.js",
           "https://enikk.app/_next/static/chunks/polyfills-42372ed130431b0a.js",
           "https://enikk.app/_next/static/chunks/webpack-263e609f96ed74cc.js"
-        ]
+        ],
+        "visibleTextSha256": "23a819ae037ca9be35674072e61053504c1126ab38acee096ceeadca7f0c7672",
+        "phaseNames": {
+          "1": "Powering Up!",
+          "2": "Wake Up!",
+          "3": "Health Up!"
+        },
+        "favoriteSkillCards": [
+          {
+            "phase": 1,
+            "slot": "burst",
+            "name": "Powering Up!",
+            "marker": "Treasure · Phase 1",
+            "description": "■\nAffects 2 ally unit(s) with the highest\nfinal\nATK (except the skill user; including the skill user if there are not enough allies).\nATK ▲ 40.4% for 10 sec.\nCritical Damage ▲ 56.23% for 10 sec.",
+            "numericTokens": [
+              "2",
+              "40.4%",
+              "10",
+              "56.23%"
+            ],
+            "rawBlock": [
+              "Powering Up!",
+              "Burst Skill",
+              "20 s",
+              "Treasure · Phase 1",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Affects 2 ally unit(s) with the highest",
+              "final",
+              "ATK (except the skill user; including the skill user if there are not enough allies).",
+              "ATK ▲ 40.4% for 10 sec.",
+              "Critical Damage ▲ 56.23% for 10 sec."
+            ]
+          },
+          {
+            "phase": 2,
+            "slot": "skill2",
+            "name": "Wake Up!",
+            "marker": "Treasure · Phase 2",
+            "description": "■\nActivates when entering Full Burst. Affects all allies.\nCritical Damage ▲ 32.99% for 10 sec.\n■\nActivates when entering Full Burst. Affects self.\nCritical Rate ▲ 30.1% for 10 sec.\nAttack Damage ▲ 23.7% for 10 sec.\n■\nActivates when entering Full Burst. Affects 1 ally unit(s) with the highest\nfinal\nATK (except the skill user; including the skill user if there are not enough allies).\nCritical Rate ▲ 85.42% for 1 round(s).\nPowering Up!\nBurst Skill\n20 s",
+            "numericTokens": [
+              "32.99%",
+              "10",
+              "30.1%",
+              "23.7%",
+              "1",
+              "85.42%",
+              "20"
+            ],
+            "rawBlock": [
+              "Wake Up!",
+              "Skill 2",
+              "Treasure · Phase 2",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates when entering Full Burst. Affects all allies.",
+              "Critical Damage ▲ 32.99% for 10 sec.",
+              "■",
+              "Activates when entering Full Burst. Affects self.",
+              "Critical Rate ▲ 30.1% for 10 sec.",
+              "Attack Damage ▲ 23.7% for 10 sec.",
+              "■",
+              "Activates when entering Full Burst. Affects 1 ally unit(s) with the highest",
+              "final",
+              "ATK (except the skill user; including the skill user if there are not enough allies).",
+              "Critical Rate ▲ 85.42% for 1 round(s).",
+              "Powering Up!",
+              "Burst Skill",
+              "20 s"
+            ]
+          },
+          {
+            "phase": 3,
+            "slot": "skill1",
+            "name": "Health Up!",
+            "marker": "Treasure · Phase 3",
+            "description": "■\nActivates after landing 30 normal attacks. Affects all allies.\nHit Rate ▲ 5.44% for 5 sec.\n■\nActivates after landing 30 normal attacks. Affects all allies with a Submachine Gun.\nHit Rate ▲ 3.79% for 5 sec.\n■\nActivates after landing 30 normal attacks. Affects self.\nATK ▲ 50.06% for 5 sec.\nWake Up!\nSkill 2",
+            "numericTokens": [
+              "30",
+              "5.44%",
+              "5",
+              "3.79%",
+              "50.06%",
+              "2"
+            ],
+            "rawBlock": [
+              "Health Up!",
+              "Skill 1",
+              "Treasure · Phase 3",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates after landing 30 normal attacks. Affects all allies.",
+              "Hit Rate ▲ 5.44% for 5 sec.",
+              "■",
+              "Activates after landing 30 normal attacks. Affects all allies with a Submachine Gun.",
+              "Hit Rate ▲ 3.79% for 5 sec.",
+              "■",
+              "Activates after landing 30 normal attacks. Affects self.",
+              "ATK ▲ 50.06% for 5 sec.",
+              "Wake Up!",
+              "Skill 2"
+            ]
+          }
+        ],
+        "favoriteSkillCardsComplete": true,
+        "favoritePanelText": "",
+        "lineCount": 140
       }
     },
     {
@@ -1689,9 +2349,9 @@
         "phaseOrder": {
           "1": "skill1",
           "2": "skill2",
-          "3": null
+          "3": "burst"
         },
-        "phaseOrderComplete": false,
+        "phaseOrderComplete": true,
         "treasureText": "Antique Compass\n\nThe leader of Aegis and the captain of the Admire, an amphibious warship. She eagerly awaits the day when she can prove her mettle in naval combat.\nManufacturer Elysion\n\n",
         "skillSectionText": "SKILLS\n\nTREASURE Antique Compass\nSSR\nSR\nPreviewing Phase 3\n\nPreview cumulative skill upgrades\nSelect a phase to update the skill cards below.\nBase skills\n\nPHASE 1 Quest unlock\nFrontline Command\nUpgrades Skill 1\nPHASE 2 +50 · 50 total\nFire Away\nUpgrades Skill 2\nPHASE 3 +110 · 160 total\nAegis Cannon\nUpgrades Burst Skill\n\nInherited collection bonuses\nMaximum SR Collection Item effects retained after conversion.\nGaze of Courage\n■ Activates at the start of battle.\nCharge Damage Multiplier ▲ 9.47%.\nDEF ▲ 37%.\n\nGrounding Pillar\n■ Activates at the start of battle.\nDamage Taken ▼ 17%.\nMax HP of cover ▲ 30%.\n\nFrontline Command\nSkill 1\nTreasure · Phase 1\n\nLVL 10\n\nCompare base\n\n■ Activates when the last bullet hits the target. Affects all allies.\nCritical Rate of normal attacks ▲ 14.64% for 5 sec.\n■ Activates when attacking with Full Charge. Affects all allies.\nRestores HP equal to 0.59% of the skill user's final max HP.\nFills Burst Gauge by 14.31%.\n\nFire Away\nSkill 2\nTreasure · Phase 2\n\nLVL 10\n\nCompare base\n\n■ Affects all allies.\nDamage to Interruption Parts ▲ 3.08% continuously.\n■ Activates when entering Full Burst. Affects all allies.\nAttack Damage ▲ 27.87% for 10 sec.\n■ Activates when hitting a target with Full Charge. Affects the target.\nDeals 178.98% of final ATK as additional damage.\n\nAegis Cannon\nBurst Skill\n40 s\nTreasure · Phase 3\n\nLVL 10\n\nCompare base\n\n■ Affects the enemy with the highest final ATK.\nDeals 8236.8% of final ATK as Burst Skill damage.\n■ Affects all allies.\nRestores HP equal to 54.45% of attack damage. Lasts for 10 sec.\n■ Affects self.\nCharge Damage Multiplier ▲ 158.4% for 10 round(s).\n\n",
         "contexts": [
@@ -1951,7 +2611,123 @@
           "https://enikk.app/_next/static/chunks/app/characters/%5Bslug%5D/page-6982f32854cac348.js",
           "https://enikk.app/_next/static/chunks/polyfills-42372ed130431b0a.js",
           "https://enikk.app/_next/static/chunks/webpack-263e609f96ed74cc.js"
-        ]
+        ],
+        "visibleTextSha256": "a90211ad0bfbcb52d93d9d8b28eb1b57e4ec73a349b633c1b1289617bfb2603e",
+        "phaseNames": {
+          "1": "Frontline Command",
+          "2": "Fire Away",
+          "3": "Aegis Cannon"
+        },
+        "favoriteSkillCards": [
+          {
+            "phase": 1,
+            "slot": "skill1",
+            "name": "Frontline Command",
+            "marker": "Treasure · Phase 1",
+            "description": "■\nActivates when the last bullet hits the target. Affects all allies.\nCritical Rate of normal attacks ▲ 14.64% for 5 sec.\n■\nActivates when attacking with Full Charge. Affects all allies.\nRestores HP equal to 0.59% of the skill user's\nfinal\nmax HP.\nFills Burst Gauge\nby 14.31%.\nFire Away\nSkill 2",
+            "numericTokens": [
+              "14.64%",
+              "5",
+              "0.59%",
+              "14.31",
+              "2"
+            ],
+            "rawBlock": [
+              "Frontline Command",
+              "Skill 1",
+              "Treasure · Phase 1",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates when the last bullet hits the target. Affects all allies.",
+              "Critical Rate of normal attacks ▲ 14.64% for 5 sec.",
+              "■",
+              "Activates when attacking with Full Charge. Affects all allies.",
+              "Restores HP equal to 0.59% of the skill user's",
+              "final",
+              "max HP.",
+              "Fills Burst Gauge",
+              "by 14.31%.",
+              "Fire Away",
+              "Skill 2"
+            ]
+          },
+          {
+            "phase": 2,
+            "slot": "skill2",
+            "name": "Fire Away",
+            "marker": "Treasure · Phase 2",
+            "description": "■\nAffects all allies.\nDamage to Interruption Parts\n▲ 3.08% continuously.\n■\nActivates when entering Full Burst. Affects all allies.\nAttack Damage ▲ 27.87% for 10 sec.\n■\nActivates when hitting a target with Full Charge. Affects the target.\nDeals 178.98% of\nfinal\nATK as additional damage.\nAegis Cannon\nBurst Skill\n40 s",
+            "numericTokens": [
+              "3.08%",
+              "27.87%",
+              "10",
+              "178.98%",
+              "40"
+            ],
+            "rawBlock": [
+              "Fire Away",
+              "Skill 2",
+              "Treasure · Phase 2",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Affects all allies.",
+              "Damage to Interruption Parts",
+              "▲ 3.08% continuously.",
+              "■",
+              "Activates when entering Full Burst. Affects all allies.",
+              "Attack Damage ▲ 27.87% for 10 sec.",
+              "■",
+              "Activates when hitting a target with Full Charge. Affects the target.",
+              "Deals 178.98% of",
+              "final",
+              "ATK as additional damage.",
+              "Aegis Cannon",
+              "Burst Skill",
+              "40 s"
+            ]
+          },
+          {
+            "phase": 3,
+            "slot": "burst",
+            "name": "Aegis Cannon",
+            "marker": "Treasure · Phase 3",
+            "description": "■\nAffects the enemy with the highest\nfinal\nATK.\nDeals 8236.8% of\nfinal\nATK as Burst Skill damage.\n■\nAffects all allies.\nRestores HP equal to 54.45% of attack damage. Lasts for 10 sec.\n■\nAffects self.\nCharge Damage\nMultiplier\n▲ 158.4% for 10 round(s).",
+            "numericTokens": [
+              "8236.8%",
+              "54.45%",
+              "10",
+              "158.4%"
+            ],
+            "rawBlock": [
+              "Aegis Cannon",
+              "Burst Skill",
+              "40 s",
+              "Treasure · Phase 3",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Affects the enemy with the highest",
+              "final",
+              "ATK.",
+              "Deals 8236.8% of",
+              "final",
+              "ATK as Burst Skill damage.",
+              "■",
+              "Affects all allies.",
+              "Restores HP equal to 54.45% of attack damage. Lasts for 10 sec.",
+              "■",
+              "Affects self.",
+              "Charge Damage",
+              "Multiplier",
+              "▲ 158.4% for 10 round(s)."
+            ]
+          }
+        ],
+        "favoriteSkillCardsComplete": true,
+        "favoritePanelText": "",
+        "lineCount": 158
       }
     },
     {
@@ -1999,9 +2775,9 @@
         "phaseOrder": {
           "1": "skill1",
           "2": "skill2",
-          "3": null
+          "3": "burst"
         },
-        "phaseOrderComplete": false,
+        "phaseOrderComplete": true,
         "treasureText": "Villain Figurine\n\nA hero who yearns to be a villain. As a part of Matis, she has the special ability to detect radio waves with her body.\nManufacturer Missilis\n\n",
         "skillSectionText": "SKILLS\n\nTREASURE Villain Figurine\nSSR\nSG\nPreviewing Phase 3\n\nPreview cumulative skill upgrades\nSelect a phase to update the skill cards below.\nBase skills\n\nPHASE 1 Quest unlock\nOvercharge\nUpgrades Skill 1\nPHASE 2 +50 · 50 total\nThunderbolt\nUpgrades Skill 2\nPHASE 3 +110 · 160 total\nDrake Special\nUpgrades Burst Skill\n\nInherited collection bonuses\nMaximum SR Collection Item effects retained after conversion.\nGaze of Courage\n■ Activates at the start of battle.\nNormal Attack Damage Multiplier ▲ 9.46%.\nDEF ▲ 37%.\n\nGrounding Pillar\n■ Activates at the start of battle.\nDamage Taken ▼ 17%.\nMax HP of cover ▲ 30%.\n\nOvercharge\nSkill 1\nTreasure · Phase 1\n\nLVL 10\n\nCompare base\n\n■ Activates when entering Full Burst. Affects all allies.\nHit Rate ▲ 20.09% for 10 sec.\nATK ▲ 11.85% for 10 sec.\n■ Activates when entering Full Burst. Affects all allies with shotguns.\nATK ▲ 63.88% for 10 sec.\nMax Ammunition Capacity ▲ 50.14% for 10 sec.\n\nThunderbolt\nSkill 2\nTreasure · Phase 2\n\nLVL 10\n\nCompare base\n\n■ Activates after performing 10 normal attacks. Affects the 3 enemy unit(s) with the lowest remaining HP.\nDeals 98.55% of final ATK as damage.\n■ Activates after performing 5 normal attacks. Affects the 1 enemy unit(s) with the lowest remaining HP.\nDeals 201.6% of final ATK as damage.\n\nDrake Special\nBurst Skill\n40 s\nTreasure · Phase 3\n\nLVL 10\n\nCompare base\n\n■ Affects enemies within attack range .\nDeals 3009.6% of final ATK as damage.\n■ Affects self.\nMax Ammunition Capacity ▲ 72.18% for 10 sec.\nAttack Damage ▲ 31.68% for 10 sec.\n\n",
         "contexts": [
@@ -2241,7 +3017,119 @@
           "https://enikk.app/_next/static/chunks/app/characters/%5Bslug%5D/page-6982f32854cac348.js",
           "https://enikk.app/_next/static/chunks/polyfills-42372ed130431b0a.js",
           "https://enikk.app/_next/static/chunks/webpack-263e609f96ed74cc.js"
-        ]
+        ],
+        "visibleTextSha256": "2b09fdf392a0f277364b42c4cea3c7d3485913896c537926d969936d6c3536aa",
+        "phaseNames": {
+          "1": "Overcharge",
+          "2": "Thunderbolt",
+          "3": "Drake Special"
+        },
+        "favoriteSkillCards": [
+          {
+            "phase": 1,
+            "slot": "skill1",
+            "name": "Overcharge",
+            "marker": "Treasure · Phase 1",
+            "description": "■\nActivates when entering Full Burst. Affects all allies.\nHit Rate ▲ 20.09% for 10 sec.\nATK ▲ 11.85% for 10 sec.\n■\nActivates when entering Full Burst. Affects all allies with shotguns.\nATK ▲ 63.88% for 10 sec.\nMax Ammunition Capacity ▲ 50.14% for 10 sec.\nThunderbolt\nSkill 2",
+            "numericTokens": [
+              "20.09%",
+              "10",
+              "11.85%",
+              "63.88%",
+              "50.14%",
+              "2"
+            ],
+            "rawBlock": [
+              "Overcharge",
+              "Skill 1",
+              "Treasure · Phase 1",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates when entering Full Burst. Affects all allies.",
+              "Hit Rate ▲ 20.09% for 10 sec.",
+              "ATK ▲ 11.85% for 10 sec.",
+              "■",
+              "Activates when entering Full Burst. Affects all allies with shotguns.",
+              "ATK ▲ 63.88% for 10 sec.",
+              "Max Ammunition Capacity ▲ 50.14% for 10 sec.",
+              "Thunderbolt",
+              "Skill 2"
+            ]
+          },
+          {
+            "phase": 2,
+            "slot": "skill2",
+            "name": "Thunderbolt",
+            "marker": "Treasure · Phase 2",
+            "description": "■\nActivates after performing 10 normal attacks. Affects the 3 enemy unit(s) with the lowest remaining HP.\nDeals 98.55% of\nfinal\nATK as damage.\n■\nActivates after performing 5 normal attacks. Affects the 1 enemy unit(s) with the lowest remaining HP.\nDeals 201.6% of\nfinal\nATK as damage.\nDrake Special\nBurst Skill\n40 s",
+            "numericTokens": [
+              "10",
+              "3",
+              "98.55%",
+              "5",
+              "1",
+              "201.6%",
+              "40"
+            ],
+            "rawBlock": [
+              "Thunderbolt",
+              "Skill 2",
+              "Treasure · Phase 2",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates after performing 10 normal attacks. Affects the 3 enemy unit(s) with the lowest remaining HP.",
+              "Deals 98.55% of",
+              "final",
+              "ATK as damage.",
+              "■",
+              "Activates after performing 5 normal attacks. Affects the 1 enemy unit(s) with the lowest remaining HP.",
+              "Deals 201.6% of",
+              "final",
+              "ATK as damage.",
+              "Drake Special",
+              "Burst Skill",
+              "40 s"
+            ]
+          },
+          {
+            "phase": 3,
+            "slot": "burst",
+            "name": "Drake Special",
+            "marker": "Treasure · Phase 3",
+            "description": "■\nAffects\nenemies within attack range\n.\nDeals\n3009.6% of\nfinal\nATK as damage.\n■\nAffects self.\nMax Ammunition Capacity ▲ 72.18% for 10 sec.\nAttack Damage ▲ 31.68% for 10 sec.",
+            "numericTokens": [
+              "3009.6%",
+              "72.18%",
+              "10",
+              "31.68%"
+            ],
+            "rawBlock": [
+              "Drake Special",
+              "Burst Skill",
+              "40 s",
+              "Treasure · Phase 3",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Affects",
+              "enemies within attack range",
+              ".",
+              "Deals",
+              "3009.6% of",
+              "final",
+              "ATK as damage.",
+              "■",
+              "Affects self.",
+              "Max Ammunition Capacity ▲ 72.18% for 10 sec.",
+              "Attack Damage ▲ 31.68% for 10 sec."
+            ]
+          }
+        ],
+        "favoriteSkillCardsComplete": true,
+        "favoritePanelText": "",
+        "lineCount": 147
       }
     },
     {
@@ -2289,9 +3177,9 @@
         "phaseOrder": {
           "1": "skill1",
           "2": "skill2",
-          "3": null
+          "3": "burst"
         },
-        "phaseOrderComplete": false,
+        "phaseOrderComplete": true,
         "treasureText": "Lover Mug\n\nA combative girl who likes to provoke others. She sells milk coffee in Cafe Sweety.\nManufacturer Tetra\n\n",
         "skillSectionText": "SKILLS\n\nTREASURE Lover Mug\nSSR\nSR\nPreviewing Phase 3\n\nPreview cumulative skill upgrades\nSelect a phase to update the skill cards below.\nBase skills\n\nPHASE 1 Quest unlock\nIn It to Win It\nUpgrades Skill 1\nPHASE 2 +50 · 50 total\nSugar Rush\nUpgrades Skill 2\nPHASE 3 +110 · 160 total\nVictory is Mine\nUpgrades Burst Skill\n\nInherited collection bonuses\nMaximum SR Collection Item effects retained after conversion.\nGaze of Courage\n■ Activates at the start of battle.\nCharge Damage Multiplier ▲ 9.47%.\nDEF ▲ 37%.\n\nGrounding Pillar\n■ Activates at the start of battle.\nDamage Taken ▼ 17%.\nMax HP of cover ▲ 30%.\n\nIn It to Win It\nSkill 1\nTreasure · Phase 1\n\nLVL 10\n\nCompare base\n\n■ Activates every 20 sec. Affects 3 ally unit(s) with the highest final ATK.\nATK ▲ 31.83% for 10 sec.\n■ Activates at the start of battle. Affects self.\nCooldown of Burst Skill ▼ 20 sec continuously.\n\nSugar Rush\nSkill 2\nTreasure · Phase 2\n\nLVL 10\n\nCompare base\n\n■ Activates when above 80% HP. Affects all allies.\nCritical Damage ▲ 11.13% continuously.\n■ Activates when attacking with Full Charge for 10 time(s). Affects all allies.\nCooldown of Burst Skill ▼ 2.83 sec.\n\nVictory is Mine\nBurst Skill\n40 s\nTreasure · Phase 3\n\nLVL 10\n\nCompare base\n\n■ Affects 1 enemy unit(s) with the highest final DEF.\nDeals 367.34% of final ATK as Burst Skill damage.\n■ Affects all allies.\nRestores HP equal to 16.16% of attack damage. Lasts for 10 sec.\nIncoming Healing ▲ 75.5% for 10 sec.\n\n",
         "contexts": [
@@ -2511,7 +3399,114 @@
           "https://enikk.app/_next/static/chunks/app/characters/%5Bslug%5D/page-6982f32854cac348.js",
           "https://enikk.app/_next/static/chunks/polyfills-42372ed130431b0a.js",
           "https://enikk.app/_next/static/chunks/webpack-263e609f96ed74cc.js"
-        ]
+        ],
+        "visibleTextSha256": "b81201bde5637942970b7a2d035a52c926f4a5091bd822e851b40d7f28ad6f98",
+        "phaseNames": {
+          "1": "In It to Win It",
+          "2": "Sugar Rush",
+          "3": "Victory is Mine"
+        },
+        "favoriteSkillCards": [
+          {
+            "phase": 1,
+            "slot": "skill1",
+            "name": "In It to Win It",
+            "marker": "Treasure · Phase 1",
+            "description": "■\nActivates every 20 sec. Affects 3 ally unit(s) with the highest\nfinal\nATK.\nATK ▲ 31.83% for 10 sec.\n■\nActivates at the start of battle. Affects self.\nCooldown\nof Burst Skill ▼ 20 sec continuously.\nSugar Rush\nSkill 2",
+            "numericTokens": [
+              "20",
+              "3",
+              "31.83%",
+              "10",
+              "2"
+            ],
+            "rawBlock": [
+              "In It to Win It",
+              "Skill 1",
+              "Treasure · Phase 1",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates every 20 sec. Affects 3 ally unit(s) with the highest",
+              "final",
+              "ATK.",
+              "ATK ▲ 31.83% for 10 sec.",
+              "■",
+              "Activates at the start of battle. Affects self.",
+              "Cooldown",
+              "of Burst Skill ▼ 20 sec continuously.",
+              "Sugar Rush",
+              "Skill 2"
+            ]
+          },
+          {
+            "phase": 2,
+            "slot": "skill2",
+            "name": "Sugar Rush",
+            "marker": "Treasure · Phase 2",
+            "description": "■\nActivates when above 80% HP. Affects all allies.\nCritical Damage ▲ 11.13% continuously.\n■\nActivates when attacking with Full Charge for 10 time(s). Affects all allies.\nCooldown\nof Burst Skill ▼ 2.83 sec.\nVictory is Mine\nBurst Skill\n40 s",
+            "numericTokens": [
+              "80%",
+              "11.13%",
+              "10",
+              "2.83",
+              "40"
+            ],
+            "rawBlock": [
+              "Sugar Rush",
+              "Skill 2",
+              "Treasure · Phase 2",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates when above 80% HP. Affects all allies.",
+              "Critical Damage ▲ 11.13% continuously.",
+              "■",
+              "Activates when attacking with Full Charge for 10 time(s). Affects all allies.",
+              "Cooldown",
+              "of Burst Skill ▼ 2.83 sec.",
+              "Victory is Mine",
+              "Burst Skill",
+              "40 s"
+            ]
+          },
+          {
+            "phase": 3,
+            "slot": "burst",
+            "name": "Victory is Mine",
+            "marker": "Treasure · Phase 3",
+            "description": "■\nAffects 1 enemy unit(s) with the highest\nfinal\nDEF.\nDeals 367.34% of\nfinal\nATK as Burst Skill damage.\n■\nAffects all allies.\nRestores HP equal to 16.16% of attack damage. Lasts for 10 sec.\nIncoming Healing ▲ 75.5% for 10 sec.",
+            "numericTokens": [
+              "1",
+              "367.34%",
+              "16.16%",
+              "10",
+              "75.5%"
+            ],
+            "rawBlock": [
+              "Victory is Mine",
+              "Burst Skill",
+              "40 s",
+              "Treasure · Phase 3",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Affects 1 enemy unit(s) with the highest",
+              "final",
+              "DEF.",
+              "Deals 367.34% of",
+              "final",
+              "ATK as Burst Skill damage.",
+              "■",
+              "Affects all allies.",
+              "Restores HP equal to 16.16% of attack damage. Lasts for 10 sec.",
+              "Incoming Healing ▲ 75.5% for 10 sec."
+            ]
+          }
+        ],
+        "favoriteSkillCardsComplete": true,
+        "favoritePanelText": "",
+        "lineCount": 143
       }
     },
     {
@@ -2559,9 +3554,9 @@
         "phaseOrder": {
           "1": "skill1",
           "2": "burst",
-          "3": null
+          "3": "skill2"
         },
-        "phaseOrderComplete": false,
+        "phaseOrderComplete": true,
         "treasureText": "Police Notebook\n\nA member of the Ark police force and captain of the A.C.P.U. ",
         "skillSectionText": "SKILLS\n\nTREASURE Police Notebook\nSSR\nSG\nPreviewing Phase 3\n\nPreview cumulative skill upgrades\nSelect a phase to update the skill cards below.\nBase skills\n\nPHASE 1 Quest unlock\nBrave Call\nUpgrades Skill 1\nPHASE 2 +50 · 50 total\nPoli's Defense Line\nUpgrades Burst Skill\nPHASE 3 +110 · 160 total\nThat's a Good Boy\nUpgrades Skill 2\n\nInherited collection bonuses\nMaximum SR Collection Item effects retained after conversion.\nGaze of Courage\n■ Activates at the start of battle.\nNormal Attack Damage Multiplier ▲ 9.46%.\nDEF ▲ 37%.\n\nGrounding Pillar\n■ Activates at the start of battle.\nDamage Taken ▼ 17%.\nMax HP of cover ▲ 30%.\n\nBrave Call\nSkill 1\nTreasure · Phase 1\n\nLVL 10\n\nCompare base\n\n■ Activates after performing 5 normal attacks. Affects all allies.\nATK ▲ 5.46% for 10 sec.\n■ Activates at the start of battle. Affects self.\nPolice Badge: Creates a shield with HP equal to 100% of the skill user's final max HP that lasts for 10 sec.\n\nThat's a Good Boy\nSkill 2\nTreasure · Phase 3\n\nLVL 10\n\nCompare base\n\n■ Activates every 20 sec. Affects self and the 2 ally unit(s) with the lowest HP.\nDEF ▲ 23.51% for 10 sec.\nEqually shares damage taken for 10 sec.\n■ Activates when Police Badge ends. Affects self.\nRestores HP equal to 5% of the skill user's final max HP every second for 5 sec.\n\nPoli's Defense Line\nBurst Skill\n40 s\nTreasure · Phase 2\n\nLVL 10\n\nCompare base\n\n■ Activates when in the Police Badge state. Affects self.\nGains Indomitability for 5 sec. Removes Police Badge.\n■ Affects self.\nCreates a shared shield with HP equal to 40% of the skill user's final max HP that protects all allies from damage. Lasts for 10 sec.\n■ Affects all allies.\nATK ▲ 44.55% for 10 sec.\n\n",
         "contexts": [
@@ -2761,7 +3756,123 @@
           "https://enikk.app/_next/static/chunks/app/characters/%5Bslug%5D/page-6982f32854cac348.js",
           "https://enikk.app/_next/static/chunks/polyfills-42372ed130431b0a.js",
           "https://enikk.app/_next/static/chunks/webpack-263e609f96ed74cc.js"
-        ]
+        ],
+        "visibleTextSha256": "f8e1d871b7b39462b2373645ba0f77a5e2857c4dc1e6a15018ea7dcd35912ce0",
+        "phaseNames": {
+          "1": "Brave Call",
+          "2": "Poli's Defense Line",
+          "3": "That's a Good Boy"
+        },
+        "favoriteSkillCards": [
+          {
+            "phase": 1,
+            "slot": "skill1",
+            "name": "Brave Call",
+            "marker": "Treasure · Phase 1",
+            "description": "■\nActivates after performing 5 normal attacks. Affects all allies.\nATK ▲ 5.46% for 10 sec.\n■\nActivates at the start of battle. Affects self.\nPolice Badge: Creates a\nshield\nwith HP equal to 100% of the skill user's\nfinal\nmax HP that lasts for 10 sec.\nThat's a Good Boy\nSkill 2",
+            "numericTokens": [
+              "5",
+              "5.46%",
+              "10",
+              "100%",
+              "2"
+            ],
+            "rawBlock": [
+              "Brave Call",
+              "Skill 1",
+              "Treasure · Phase 1",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates after performing 5 normal attacks. Affects all allies.",
+              "ATK ▲ 5.46% for 10 sec.",
+              "■",
+              "Activates at the start of battle. Affects self.",
+              "Police Badge: Creates a",
+              "shield",
+              "with HP equal to 100% of the skill user's",
+              "final",
+              "max HP that lasts for 10 sec.",
+              "That's a Good Boy",
+              "Skill 2"
+            ]
+          },
+          {
+            "phase": 2,
+            "slot": "burst",
+            "name": "Poli's Defense Line",
+            "marker": "Treasure · Phase 2",
+            "description": "■\nActivates when in the Police Badge state. Affects self.\nGains\nIndomitability\nfor 5 sec. Removes Police Badge.\n■\nAffects self.\nCreates a shared\nshield\nwith HP equal to 40% of the skill user's\nfinal\nmax HP that protects all allies from damage. Lasts for 10 sec.\n■\nAffects all allies.\nATK ▲ 44.55% for 10 sec.",
+            "numericTokens": [
+              "5",
+              "40%",
+              "10",
+              "44.55%"
+            ],
+            "rawBlock": [
+              "Poli's Defense Line",
+              "Burst Skill",
+              "40 s",
+              "Treasure · Phase 2",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates when in the Police Badge state. Affects self.",
+              "Gains",
+              "Indomitability",
+              "for 5 sec. Removes Police Badge.",
+              "■",
+              "Affects self.",
+              "Creates a shared",
+              "shield",
+              "with HP equal to 40% of the skill user's",
+              "final",
+              "max HP that protects all allies from damage. Lasts for 10 sec.",
+              "■",
+              "Affects all allies.",
+              "ATK ▲ 44.55% for 10 sec."
+            ]
+          },
+          {
+            "phase": 3,
+            "slot": "skill2",
+            "name": "That's a Good Boy",
+            "marker": "Treasure · Phase 3",
+            "description": "■\nActivates every 20 sec. Affects self and the 2 ally unit(s) with the lowest HP.\nDEF ▲ 23.51% for 10 sec.\nEqually shares damage taken\nfor 10 sec.\n■\nActivates when Police Badge ends. Affects self.\nRestores HP equal to 5% of the skill user's\nfinal\nmax HP every second for 5 sec.\nPoli's Defense Line\nBurst Skill\n40 s",
+            "numericTokens": [
+              "20",
+              "2",
+              "23.51%",
+              "10",
+              "5%",
+              "5",
+              "40"
+            ],
+            "rawBlock": [
+              "That's a Good Boy",
+              "Skill 2",
+              "Treasure · Phase 3",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates every 20 sec. Affects self and the 2 ally unit(s) with the lowest HP.",
+              "DEF ▲ 23.51% for 10 sec.",
+              "Equally shares damage taken",
+              "for 10 sec.",
+              "■",
+              "Activates when Police Badge ends. Affects self.",
+              "Restores HP equal to 5% of the skill user's",
+              "final",
+              "max HP every second for 5 sec.",
+              "Poli's Defense Line",
+              "Burst Skill",
+              "40 s"
+            ]
+          }
+        ],
+        "favoriteSkillCardsComplete": true,
+        "favoritePanelText": "",
+        "lineCount": 148
       }
     },
     {
@@ -2809,9 +3920,9 @@
         "phaseOrder": {
           "1": "skill1",
           "2": "burst",
-          "3": null
+          "3": "skill2"
         },
-        "phaseOrderComplete": false,
+        "phaseOrderComplete": true,
         "treasureText": "Fire Starter\n\nA Nikke acting as a new mechanic in Unlimited, which is the ",
         "skillSectionText": "SKILLS\n\nTREASURE Fire Starter\nSSR\nAR\nPreviewing Phase 3\n\nPreview cumulative skill upgrades\nSelect a phase to update the skill cards below.\nBase skills\n\nPHASE 1 Quest unlock\nEmergency-Crafted Bullets\nUpgrades Skill 1\nPHASE 2 +50 · 50 total\nMiracle of Makeshifts\nUpgrades Burst Skill\nPHASE 3 +110 · 160 total\nModification Successful\nUpgrades Skill 2\n\nInherited collection bonuses\nMaximum SR Collection Item effects retained after conversion.\nGaze of Courage\n■ Activates at the start of battle.\nDamage dealt when attacking core ▲ 17.04%.\nDEF ▲ 37%.\n\nGrounding Pillar\n■ Activates at the start of battle.\nDamage Taken ▼ 17%.\nMax HP of cover ▲ 30%.\n\nEmergency-Crafted Bullets\nSkill 1\nTreasure · Phase 1\n\nLVL 10\n\nCompare base\n\n■ Activates after performing 10 normal attacks. Affects self.\nEmergency-Crafted Bullets: Reloads 5.31% of the magazine.\n■ Activates during Emergency-Crafted Bullets. Affects all allies.\nTemporary Modification: Max Ammunition Capacity ▲ 2. Stacks up to 3 time(s) and lasts for 5 sec.\nCritical Damage ▲ 5.24% for 5 sec.\n\nModification Successful\nSkill 2\nTreasure · Phase 3\n\nLVL 10\n\nCompare base\n\n■ Only activates when Temporary Modification is at max stacks. Affects all allies.\nCritical Rate ▲ 10.08% continuously.\n■ Only activates when Temporary Modification is at max stacks. Affects all allies with shotguns.\nAttack Speed ▲ 42.24% continuously.\n\nMiracle of Makeshifts\nBurst Skill\n20 s\nTreasure · Phase 2\n\nLVL 10\n\nCompare base\n\n■ Affects all allies.\nMiracle of Makeshifts: ATK ▲ 2.32% of the skill user's ATK. Mirrors the stack count of Temporary Modification for 15 sec.\n■ Affects all allies with shotguns.\nMiracle of Makeshifts: ATK ▲ 24.21% of the skill user's ATK. Mirrors the stack count of Temporary Modification for 15 sec.\n\n",
         "contexts": [
@@ -3071,7 +4182,107 @@
           "https://enikk.app/_next/static/chunks/app/characters/%5Bslug%5D/page-6982f32854cac348.js",
           "https://enikk.app/_next/static/chunks/polyfills-42372ed130431b0a.js",
           "https://enikk.app/_next/static/chunks/webpack-263e609f96ed74cc.js"
-        ]
+        ],
+        "visibleTextSha256": "77ce9d8071857c4c2c907495b69837657f3ba1a0c867f3ab6eb51cb70e8e2838",
+        "phaseNames": {
+          "1": "Emergency-Crafted Bullets",
+          "2": "Miracle of Makeshifts",
+          "3": "Modification Successful"
+        },
+        "favoriteSkillCards": [
+          {
+            "phase": 1,
+            "slot": "skill1",
+            "name": "Emergency-Crafted Bullets",
+            "marker": "Treasure · Phase 1",
+            "description": "■\nActivates after performing 10 normal attacks. Affects self.\nEmergency-Crafted Bullets: Reloads 5.31% of the magazine.\n■\nActivates during Emergency-Crafted Bullets. Affects all allies.\nTemporary Modification: Max Ammunition Capacity ▲ 2. Stacks up to 3 time(s) and lasts for 5 sec.\nCritical Damage ▲ 5.24% for 5 sec.\nModification Successful\nSkill 2",
+            "numericTokens": [
+              "10",
+              "5.31%",
+              "3",
+              "5",
+              "5.24%",
+              "2"
+            ],
+            "rawBlock": [
+              "Emergency-Crafted Bullets",
+              "Skill 1",
+              "Treasure · Phase 1",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates after performing 10 normal attacks. Affects self.",
+              "Emergency-Crafted Bullets: Reloads 5.31% of the magazine.",
+              "■",
+              "Activates during Emergency-Crafted Bullets. Affects all allies.",
+              "Temporary Modification: Max Ammunition Capacity ▲ 2. Stacks up to 3 time(s) and lasts for 5 sec.",
+              "Critical Damage ▲ 5.24% for 5 sec.",
+              "Modification Successful",
+              "Skill 2"
+            ]
+          },
+          {
+            "phase": 2,
+            "slot": "burst",
+            "name": "Miracle of Makeshifts",
+            "marker": "Treasure · Phase 2",
+            "description": "■\nAffects all allies.\nMiracle of Makeshifts: ATK ▲ 2.32% of the skill user's ATK.\nMirrors the stack count\nof Temporary Modification for 15 sec.\n■\nAffects all allies with shotguns.\nMiracle of Makeshifts: ATK ▲ 24.21% of the skill user's ATK.\nMirrors the stack count\nof Temporary Modification for 15 sec.",
+            "numericTokens": [
+              "2.32%",
+              "15",
+              "24.21%"
+            ],
+            "rawBlock": [
+              "Miracle of Makeshifts",
+              "Burst Skill",
+              "20 s",
+              "Treasure · Phase 2",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Affects all allies.",
+              "Miracle of Makeshifts: ATK ▲ 2.32% of the skill user's ATK.",
+              "Mirrors the stack count",
+              "of Temporary Modification for 15 sec.",
+              "■",
+              "Affects all allies with shotguns.",
+              "Miracle of Makeshifts: ATK ▲ 24.21% of the skill user's ATK.",
+              "Mirrors the stack count",
+              "of Temporary Modification for 15 sec."
+            ]
+          },
+          {
+            "phase": 3,
+            "slot": "skill2",
+            "name": "Modification Successful",
+            "marker": "Treasure · Phase 3",
+            "description": "■\nOnly activates when Temporary Modification is at max stacks. Affects all allies.\nCritical Rate ▲ 10.08% continuously.\n■\nOnly activates when Temporary Modification is at max stacks. Affects all allies with shotguns.\nAttack Speed ▲ 42.24% continuously.\nMiracle of Makeshifts\nBurst Skill\n20 s",
+            "numericTokens": [
+              "10.08%",
+              "42.24%",
+              "20"
+            ],
+            "rawBlock": [
+              "Modification Successful",
+              "Skill 2",
+              "Treasure · Phase 3",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Only activates when Temporary Modification is at max stacks. Affects all allies.",
+              "Critical Rate ▲ 10.08% continuously.",
+              "■",
+              "Only activates when Temporary Modification is at max stacks. Affects all allies with shotguns.",
+              "Attack Speed ▲ 42.24% continuously.",
+              "Miracle of Makeshifts",
+              "Burst Skill",
+              "20 s"
+            ]
+          }
+        ],
+        "favoriteSkillCardsComplete": true,
+        "favoritePanelText": "",
+        "lineCount": 141
       }
     },
     {
@@ -3119,9 +4330,9 @@
         "phaseOrder": {
           "1": "skill2",
           "2": "skill1",
-          "3": null
+          "3": "burst"
         },
-        "phaseOrderComplete": false,
+        "phaseOrderComplete": true,
         "treasureText": "Music Notebook\n\nA violinist whose life revolves around music. Belonging to Master Hand, she uses music as a way to express herself.\nManufacturer Missilis\n\n",
         "skillSectionText": "SKILLS\n\nTREASURE Music Notebook\nSSR\nAR\nPreviewing Phase 3\n\nPreview cumulative skill upgrades\nSelect a phase to update the skill cards below.\nBase skills\n\nPHASE 1 Quest unlock\nCrescendo\nUpgrades Skill 2\nPHASE 2 +50 · 50 total\nDecrescendo\nUpgrades Skill 1\nPHASE 3 +110 · 160 total\nClimax\nUpgrades Burst Skill\n\nInherited collection bonuses\nMaximum SR Collection Item effects retained after conversion.\nGaze of Courage\n■ Activates at the start of battle.\nDamage dealt when attacking core ▲ 17.04%.\nDEF ▲ 37%.\n\nGrounding Pillar\n■ Activates at the start of battle.\nDamage Taken ▼ 17%.\nMax HP of cover ▲ 30%.\n\nDecrescendo\nSkill 1\nTreasure · Phase 2\n\nLVL 10\n\nCompare base\n\n■ Affects self.\nCritical Rate ▲ 26.04% for 10 sec.\nATK ▲ 20% for 10 sec.\nNormal Attack Critical Rate ▲ 36.16% for 10 sec.\n\nCrescendo\nSkill 2\nTreasure · Phase 1\n\nLVL 10\n\nCompare base\n\n■ Activates after landing 6 critical hit(s) with normal attacks. Affects self.\nCrescendo: Critical Damage ▲ 24.79%. Stacks up to 5 times and lasts for 15 sec.\n■ Activates after landing 8 critical hit(s) with normal attacks. Affects the target(s).\nMarcato: Deals 88% of final ATK as additional damage.\n■ Activates if Marcato lands as a crit attack. Affects the same target.\nDeals 100% of final ATK as additional damage.\n■ Activates at the start of battle. Affects self.\nForcefully uses Skill 1.\n\nClimax\nBurst Skill\n40 s\nTreasure · Phase 3\n\nLVL 10\n\nCompare base\n\n■ Affects random enemies.\nDeals 544.5% of final ATK as damage. Attacks sequentially 5 times.\n■ Activates when Crescendo is at max stacks. Affects the same target.\nDeals 544.5% of final ATK as additional damage.\n\n",
         "contexts": [
@@ -3281,7 +4492,120 @@
           "https://enikk.app/_next/static/chunks/app/characters/%5Bslug%5D/page-6982f32854cac348.js",
           "https://enikk.app/_next/static/chunks/polyfills-42372ed130431b0a.js",
           "https://enikk.app/_next/static/chunks/webpack-263e609f96ed74cc.js"
-        ]
+        ],
+        "visibleTextSha256": "c33d1c4631f8184fbdefd7f5d5de11d2d11b169358999a4e50659bcd4090c548",
+        "phaseNames": {
+          "1": "Crescendo",
+          "2": "Decrescendo",
+          "3": "Climax"
+        },
+        "favoriteSkillCards": [
+          {
+            "phase": 1,
+            "slot": "skill2",
+            "name": "Crescendo",
+            "marker": "Treasure · Phase 1",
+            "description": "■\nActivates after landing 6 critical hit(s) with normal attacks. Affects self.\nCrescendo: Critical Damage ▲ 24.79%. Stacks up to 5 times and lasts for 15 sec.\n■\nActivates after landing 8 critical hit(s) with normal attacks. Affects the target(s).\nMarcato: Deals 88% of\nfinal\nATK as additional damage.\n■\nActivates if Marcato lands as a crit attack. Affects the same target.\nDeals 100% of\nfinal\nATK as additional damage.\n■\nActivates at the start of battle. Affects self.\nForcefully uses Skill 1.\nClimax\nBurst Skill\n40 s",
+            "numericTokens": [
+              "6",
+              "24.79",
+              "5",
+              "15",
+              "8",
+              "88%",
+              "100%",
+              "40"
+            ],
+            "rawBlock": [
+              "Crescendo",
+              "Skill 2",
+              "Treasure · Phase 1",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates after landing 6 critical hit(s) with normal attacks. Affects self.",
+              "Crescendo: Critical Damage ▲ 24.79%. Stacks up to 5 times and lasts for 15 sec.",
+              "■",
+              "Activates after landing 8 critical hit(s) with normal attacks. Affects the target(s).",
+              "Marcato: Deals 88% of",
+              "final",
+              "ATK as additional damage.",
+              "■",
+              "Activates if Marcato lands as a crit attack. Affects the same target.",
+              "Deals 100% of",
+              "final",
+              "ATK as additional damage.",
+              "■",
+              "Activates at the start of battle. Affects self.",
+              "Forcefully uses Skill 1.",
+              "Climax",
+              "Burst Skill",
+              "40 s"
+            ]
+          },
+          {
+            "phase": 2,
+            "slot": "skill1",
+            "name": "Decrescendo",
+            "marker": "Treasure · Phase 2",
+            "description": "■\nAffects self.\nCritical Rate ▲ 26.04% for 10 sec.\nATK ▲ 20% for 10 sec.\nNormal Attack Critical Rate ▲ 36.16% for 10 sec.\nCrescendo\nSkill 2",
+            "numericTokens": [
+              "26.04%",
+              "10",
+              "20%",
+              "36.16%",
+              "2"
+            ],
+            "rawBlock": [
+              "Decrescendo",
+              "Skill 1",
+              "Treasure · Phase 2",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Affects self.",
+              "Critical Rate ▲ 26.04% for 10 sec.",
+              "ATK ▲ 20% for 10 sec.",
+              "Normal Attack Critical Rate ▲ 36.16% for 10 sec.",
+              "Crescendo",
+              "Skill 2"
+            ]
+          },
+          {
+            "phase": 3,
+            "slot": "burst",
+            "name": "Climax",
+            "marker": "Treasure · Phase 3",
+            "description": "■\nAffects random enemies.\nDeals 544.5% of\nfinal\nATK as damage.\nAttacks sequentially\n5 times.\n■\nActivates when Crescendo is at max stacks. Affects the same target.\nDeals 544.5% of\nfinal\nATK as additional damage.",
+            "numericTokens": [
+              "544.5%",
+              "5"
+            ],
+            "rawBlock": [
+              "Climax",
+              "Burst Skill",
+              "40 s",
+              "Treasure · Phase 3",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Affects random enemies.",
+              "Deals 544.5% of",
+              "final",
+              "ATK as damage.",
+              "Attacks sequentially",
+              "5 times.",
+              "■",
+              "Activates when Crescendo is at max stacks. Affects the same target.",
+              "Deals 544.5% of",
+              "final",
+              "ATK as additional damage."
+            ]
+          }
+        ],
+        "favoriteSkillCardsComplete": true,
+        "favoritePanelText": "",
+        "lineCount": 140
       }
     },
     {
@@ -3329,9 +4653,9 @@
         "phaseOrder": {
           "1": "skill1",
           "2": "skill2",
-          "3": null
+          "3": "burst"
         },
-        "phaseOrderComplete": false,
+        "phaseOrderComplete": true,
         "treasureText": "Practice Shoes\n\nArk's Cheerleading ",
         "skillSectionText": "SKILLS\n\nTREASURE Practice Shoes\nSSR\nRL\nPreviewing Phase 3\n\nPreview cumulative skill upgrades\nSelect a phase to update the skill cards below.\nBase skills\n\nPHASE 1 Quest unlock\nYou Can Do It\nUpgrades Skill 1\nPHASE 2 +50 · 50 total\nCheer Up Together\nUpgrades Skill 2\nPHASE 3 +110 · 160 total\nFirst Winner\nUpgrades Burst Skill\n\nInherited collection bonuses\nMaximum SR Collection Item effects retained after conversion.\nGaze of Courage\n■ Activates at the start of battle.\nCharge Damage Multiplier ▲ 9.47%.\nDEF ▲ 37%.\n\nGrounding Pillar\n■ Activates at the start of battle.\nDamage Taken ▼ 17%.\nMax HP of cover ▲ 30%.\n\nYou Can Do It\nSkill 1\nTreasure · Phase 1\n\nLVL 10\n\nCompare base\n\n■ Activates when using Burst Skill as long as this unit is still alive. Affects all allies.\nProportionally shares damage taken . This effect is continuous.\nDEF ▲ 10.13% of the skill user's DEF continuously.\n■ Activates when performing a Full Charge attack. Affects all allies (except self).\nRestores HP equal to 4% of the skill user's final max HP.\n\nCheer Up Together\nSkill 2\nTreasure · Phase 2\n\nLVL 10\n\nCompare base\n\n■ Activates when using Burst Skill as long as this unit is still alive. Affects this unit's cover.\nProportionally shares damage taken . This effect is continuous.\n■ Activates when Full Burst ends. Affects self.\nContinuously restores cover HP equal to 2.88% of the skill user's final max HP every second for 5 sec.\n■ Activates when entering Burst Stage 1 if this unit's cover has been destroyed. Affects self.\nRestores HP equal to 20% of the skill user's final max HP.\n\nFirst Winner\nBurst Skill\n40 s\nTreasure · Phase 3\n\nLVL 10\n\nCompare base\n\n■ Affects this unit if her cover has been destroyed.\nRebuilds cover with 20% HP. Activates once per battle.\n■ Affects self.\nMax HP of cover ▲ 18% of the skill user's max HP for 20 sec.\n■ Affects all allies.\nDamage Taken ▼ 8.87% for 10 sec.\n\n",
         "contexts": [
@@ -3511,7 +4835,121 @@
           "https://enikk.app/_next/static/chunks/app/characters/%5Bslug%5D/page-6982f32854cac348.js",
           "https://enikk.app/_next/static/chunks/polyfills-42372ed130431b0a.js",
           "https://enikk.app/_next/static/chunks/webpack-263e609f96ed74cc.js"
-        ]
+        ],
+        "visibleTextSha256": "77fcc6301857eeecb4be2d8b7b0d5c9b8d4ab021b5f373b5c7ea101a37957a2a",
+        "phaseNames": {
+          "1": "You Can Do It",
+          "2": "Cheer Up Together",
+          "3": "First Winner"
+        },
+        "favoriteSkillCards": [
+          {
+            "phase": 1,
+            "slot": "skill1",
+            "name": "You Can Do It",
+            "marker": "Treasure · Phase 1",
+            "description": "■\nActivates when using Burst Skill as long as this unit is still alive. Affects all allies.\nProportionally shares damage taken\n. This effect is continuous.\nDEF ▲ 10.13% of the skill user's DEF continuously.\n■\nActivates when performing a Full Charge attack. Affects all allies (except self).\nRestores HP equal to 4% of the skill user's\nfinal\nmax HP.\nCheer Up Together\nSkill 2",
+            "numericTokens": [
+              "10.13%",
+              "4%",
+              "2"
+            ],
+            "rawBlock": [
+              "You Can Do It",
+              "Skill 1",
+              "Treasure · Phase 1",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates when using Burst Skill as long as this unit is still alive. Affects all allies.",
+              "Proportionally shares damage taken",
+              ". This effect is continuous.",
+              "DEF ▲ 10.13% of the skill user's DEF continuously.",
+              "■",
+              "Activates when performing a Full Charge attack. Affects all allies (except self).",
+              "Restores HP equal to 4% of the skill user's",
+              "final",
+              "max HP.",
+              "Cheer Up Together",
+              "Skill 2"
+            ]
+          },
+          {
+            "phase": 2,
+            "slot": "skill2",
+            "name": "Cheer Up Together",
+            "marker": "Treasure · Phase 2",
+            "description": "■\nActivates when using Burst Skill as long as this unit is still alive. Affects this unit's cover.\nProportionally shares damage taken\n. This effect is continuous.\n■\nActivates when Full Burst ends. Affects self.\nContinuously restores cover HP\nequal to 2.88% of the skill user's\nfinal\nmax HP every second for 5 sec.\n■\nActivates when entering Burst Stage 1 if this unit's cover has been destroyed. Affects self.\nRestores HP equal to 20% of the skill user's\nfinal\nmax HP.\nFirst Winner\nBurst Skill\n40 s",
+            "numericTokens": [
+              "2.88%",
+              "5",
+              "1",
+              "20%",
+              "40"
+            ],
+            "rawBlock": [
+              "Cheer Up Together",
+              "Skill 2",
+              "Treasure · Phase 2",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates when using Burst Skill as long as this unit is still alive. Affects this unit's cover.",
+              "Proportionally shares damage taken",
+              ". This effect is continuous.",
+              "■",
+              "Activates when Full Burst ends. Affects self.",
+              "Continuously restores cover HP",
+              "equal to 2.88% of the skill user's",
+              "final",
+              "max HP every second for 5 sec.",
+              "■",
+              "Activates when entering Burst Stage 1 if this unit's cover has been destroyed. Affects self.",
+              "Restores HP equal to 20% of the skill user's",
+              "final",
+              "max HP.",
+              "First Winner",
+              "Burst Skill",
+              "40 s"
+            ]
+          },
+          {
+            "phase": 3,
+            "slot": "burst",
+            "name": "First Winner",
+            "marker": "Treasure · Phase 3",
+            "description": "■\nAffects this unit if her cover has been destroyed.\nRebuilds cover\nwith 20% HP. Activates once per battle.\n■\nAffects self.\nMax HP of cover\n▲ 18% of the skill user's max HP for 20 sec.\n■\nAffects all allies.\nDamage Taken ▼ 8.87% for 10 sec.",
+            "numericTokens": [
+              "20%",
+              "18%",
+              "20",
+              "8.87%",
+              "10"
+            ],
+            "rawBlock": [
+              "First Winner",
+              "Burst Skill",
+              "40 s",
+              "Treasure · Phase 3",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Affects this unit if her cover has been destroyed.",
+              "Rebuilds cover",
+              "with 20% HP. Activates once per battle.",
+              "■",
+              "Affects self.",
+              "Max HP of cover",
+              "▲ 18% of the skill user's max HP for 20 sec.",
+              "■",
+              "Affects all allies.",
+              "Damage Taken ▼ 8.87% for 10 sec."
+            ]
+          }
+        ],
+        "favoriteSkillCardsComplete": true,
+        "favoritePanelText": "",
+        "lineCount": 150
       }
     },
     {
@@ -3559,9 +4997,9 @@
         "phaseOrder": {
           "1": "burst",
           "2": "skill2",
-          "3": null
+          "3": "skill1"
         },
-        "phaseOrderComplete": false,
+        "phaseOrderComplete": true,
         "treasureText": "Central Government Special Medal\n\nA girl who puts on a hard front, but in fact she enjoys taking care of others. At this juncture, she is the most highly skilled member of Triangle.\nManufacturer Elysion\n\n",
         "skillSectionText": "SKILLS\n\nTREASURE Central Government Special Medal\nSSR\nAR\nPreviewing Phase 3\n\nPreview cumulative skill upgrades\nSelect a phase to update the skill cards below.\nBase skills\n\nPHASE 1 Quest unlock\nAK Missile\nUpgrades Burst Skill\nPHASE 2 +50 · 50 total\nLD Assault\nUpgrades Skill 2\nPHASE 3 +110 · 160 total\nEX Magazine\nUpgrades Skill 1\n\nInherited collection bonuses\nMaximum SR Collection Item effects retained after conversion.\nGaze of Courage\n■ Activates at the start of battle.\nDamage dealt when attacking core ▲ 17.04%.\nDEF ▲ 37%.\n\nGrounding Pillar\n■ Activates at the start of battle.\nDamage Taken ▼ 17%.\nMax HP of cover ▲ 30%.\n\nEX Magazine\nSkill 1\nTreasure · Phase 3\n\nLVL 10\n\nCompare base\n\n■ Activates when entering Full Burst. Affects all allies.\nATK ▲ 23.61% for 10 sec.\nReload Speed ▲ 51.16% for 10 sec.\nMax Ammunition Capacity ▼ 50.66% for 10 sec.\nAttack Damage ▲ 20.16% for 10 sec.\n\nLD Assault\nSkill 2\nTreasure · Phase 2\n\nLVL 10\n\nCompare base\n\n■ Activates when the last bullet hits the target. Affects the target.\nDamage Taken ▲ 10.01% for 10 sec.\nDeals 256.17% of final ATK as additional damage.\n■ Activates when the last bullet hits a target in Designated Target status. Affects the target.\nDeals 1687% of final ATK as additional damage.\n\nAK Missile\nBurst Skill\n40 s\nTreasure · Phase 1\n\nLVL 10\n\nCompare base\n\n■ Affects self.\nElemental Advantage Attack Damage ▲ 130% for 10 sec.\n■ Affects all enemies.\nDeals 1407.64% of final ATK as Burst Skill damage.\nStuns for 3 sec.\nDesignated Target: ATK ▼ 5.02% for 10 sec.\n\n",
         "contexts": [
@@ -3761,7 +5199,116 @@
           "https://enikk.app/_next/static/chunks/app/characters/%5Bslug%5D/page-6982f32854cac348.js",
           "https://enikk.app/_next/static/chunks/polyfills-42372ed130431b0a.js",
           "https://enikk.app/_next/static/chunks/webpack-263e609f96ed74cc.js"
-        ]
+        ],
+        "visibleTextSha256": "a6fba98d10eb49bdcef6a30d39f253d91b7e302cd71b89d4c6d78e12a797b104",
+        "phaseNames": {
+          "1": "AK Missile",
+          "2": "LD Assault",
+          "3": "EX Magazine"
+        },
+        "favoriteSkillCards": [
+          {
+            "phase": 1,
+            "slot": "burst",
+            "name": "AK Missile",
+            "marker": "Treasure · Phase 1",
+            "description": "■\nAffects self.\nElemental Advantage Attack Damage\n▲ 130% for 10 sec.\n■\nAffects all enemies.\nDeals 1407.64% of\nfinal\nATK as Burst Skill damage.\nStuns for 3 sec.\nDesignated Target: ATK ▼ 5.02% for 10 sec.",
+            "numericTokens": [
+              "130%",
+              "10",
+              "1407.64%",
+              "3",
+              "5.02%"
+            ],
+            "rawBlock": [
+              "AK Missile",
+              "Burst Skill",
+              "40 s",
+              "Treasure · Phase 1",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Affects self.",
+              "Elemental Advantage Attack Damage",
+              "▲ 130% for 10 sec.",
+              "■",
+              "Affects all enemies.",
+              "Deals 1407.64% of",
+              "final",
+              "ATK as Burst Skill damage.",
+              "Stuns for 3 sec.",
+              "Designated Target: ATK ▼ 5.02% for 10 sec."
+            ]
+          },
+          {
+            "phase": 2,
+            "slot": "skill2",
+            "name": "LD Assault",
+            "marker": "Treasure · Phase 2",
+            "description": "■\nActivates when the last bullet hits the target. Affects the target.\nDamage Taken ▲ 10.01% for 10 sec.\nDeals 256.17% of\nfinal\nATK as additional damage.\n■\nActivates when the last bullet hits a target in Designated Target status. Affects the target.\nDeals 1687% of\nfinal\nATK as additional damage.\nAK Missile\nBurst Skill\n40 s",
+            "numericTokens": [
+              "10.01%",
+              "10",
+              "256.17%",
+              "1687%",
+              "40"
+            ],
+            "rawBlock": [
+              "LD Assault",
+              "Skill 2",
+              "Treasure · Phase 2",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates when the last bullet hits the target. Affects the target.",
+              "Damage Taken ▲ 10.01% for 10 sec.",
+              "Deals 256.17% of",
+              "final",
+              "ATK as additional damage.",
+              "■",
+              "Activates when the last bullet hits a target in Designated Target status. Affects the target.",
+              "Deals 1687% of",
+              "final",
+              "ATK as additional damage.",
+              "AK Missile",
+              "Burst Skill",
+              "40 s"
+            ]
+          },
+          {
+            "phase": 3,
+            "slot": "skill1",
+            "name": "EX Magazine",
+            "marker": "Treasure · Phase 3",
+            "description": "■\nActivates when entering Full Burst. Affects all allies.\nATK ▲ 23.61% for 10 sec.\nReload Speed ▲ 51.16% for 10 sec.\nMax Ammunition Capacity ▼ 50.66% for 10 sec.\nAttack Damage ▲ 20.16% for 10 sec.\nLD Assault\nSkill 2",
+            "numericTokens": [
+              "23.61%",
+              "10",
+              "51.16%",
+              "50.66%",
+              "20.16%",
+              "2"
+            ],
+            "rawBlock": [
+              "EX Magazine",
+              "Skill 1",
+              "Treasure · Phase 3",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates when entering Full Burst. Affects all allies.",
+              "ATK ▲ 23.61% for 10 sec.",
+              "Reload Speed ▲ 51.16% for 10 sec.",
+              "Max Ammunition Capacity ▼ 50.66% for 10 sec.",
+              "Attack Damage ▲ 20.16% for 10 sec.",
+              "LD Assault",
+              "Skill 2"
+            ]
+          }
+        ],
+        "favoriteSkillCardsComplete": true,
+        "favoritePanelText": "",
+        "lineCount": 139
       }
     },
     {
@@ -3809,9 +5356,9 @@
         "phaseOrder": {
           "1": "burst",
           "2": "skill2",
-          "3": null
+          "3": "skill1"
         },
-        "phaseOrderComplete": false,
+        "phaseOrderComplete": true,
         "treasureText": "Four-Leaf Clover Bookmark\n\nA model student from M.M.R. Vocational School, who is both honest and composed.\nHaving no dreams or aspirations of her own, she is merely doing what she believes is the correct thing to do.\nShe appears very calm, and is always looking after Rei and Ein in subtle ways.\nManufacturer Elysion\n\n",
         "skillSectionText": "SKILLS\n\nTREASURE Four-Leaf Clover Bookmark\nSSR\nSG\nPreviewing Phase 3\n\nPreview cumulative skill upgrades\nSelect a phase to update the skill cards below.\nBase skills\n\nPHASE 1 Quest unlock\nOvercharge Formula\nUpgrades Burst Skill\nPHASE 2 +50 · 50 total\nFrame Analysis\nUpgrades Skill 2\nPHASE 3 +110 · 160 total\nPierce Equation\nUpgrades Skill 1\n\nInherited collection bonuses\nMaximum SR Collection Item effects retained after conversion.\nGaze of Courage\n■ Activates at the start of battle.\nNormal Attack Damage Multiplier ▲ 9.46%.\nDEF ▲ 37%.\n\nGrounding Pillar\n■ Activates at the start of battle.\nDamage Taken ▼ 17%.\nMax HP of cover ▲ 30%.\n\nPierce Equation\nSkill 1\nTreasure · Phase 3\n\nLVL 10\n\nCompare base\n\n■ Activates when entering Full Burst. Affects all allies.\nPierce Damage ▲ 20.13% for 1 round(s).\nPierce Damage ▲ 10.06% for 10 sec.\n■ Activates when performing a normal attack during Full Burst. Affects all allies.\nPierce Damage ▲ 24.99%, stacks up to 3 time(s), for 1 round(s).\n\nFrame Analysis\nSkill 2\nTreasure · Phase 2\n\nLVL 10\n\nCompare base\n\n■ Activates after performing 5 normal attacks. Affects all allies.\nRestores 7.52% of cover HP .\n■ Activates when entering Full Burst. Affects all allies.\nCritical Rate ▲ 18.63% for 10 sec.\n■ Activates when performing a normal attack while in the Pierce Attacks 101 state. Affects all allies.\nCritical Rate ▲ 15% for 5 sec. Stacks up to 3 times.\n\nOvercharge Formula\nBurst Skill\n20 s\nTreasure · Phase 1\n\nLVL 10\n\nCompare base\n\n■ Affects self.\nChanges the weapon in use:\nCharge Time: 1.2 sec\nDamage: 50.69% of final ATK\nFull Charge Damage: 300% of damage\nMax Ammunition Capacity: 1\nAdditional Effect: Pierce\n■ Affects all allies.\nPierce Attacks 101: Pierce Damage ▲ 25.03% for 10 sec.\n\n",
         "contexts": [
@@ -4011,7 +5558,129 @@
           "https://enikk.app/_next/static/chunks/app/characters/%5Bslug%5D/page-6982f32854cac348.js",
           "https://enikk.app/_next/static/chunks/polyfills-42372ed130431b0a.js",
           "https://enikk.app/_next/static/chunks/webpack-263e609f96ed74cc.js"
-        ]
+        ],
+        "visibleTextSha256": "e8cf718ab8209800eee0f2a609b118d17bd16ce662cd64b8df57d8ec8c08030e",
+        "phaseNames": {
+          "1": "Overcharge Formula",
+          "2": "Frame Analysis",
+          "3": "Pierce Equation"
+        },
+        "favoriteSkillCards": [
+          {
+            "phase": 1,
+            "slot": "burst",
+            "name": "Overcharge Formula",
+            "marker": "Treasure · Phase 1",
+            "description": "■\nAffects self.\nChanges the weapon in use:\nCharge Time: 1.2 sec\nDamage: 50.69% of\nfinal\nATK\nFull Charge Damage: 300% of damage\nMax Ammunition Capacity: 1\nAdditional Effect: Pierce\n■\nAffects all allies.\nPierce Attacks 101:\nPierce Damage\n▲ 25.03% for 10 sec.",
+            "numericTokens": [
+              "1.2",
+              "50.69%",
+              "300%",
+              "1",
+              "101",
+              "25.03%",
+              "10"
+            ],
+            "rawBlock": [
+              "Overcharge Formula",
+              "Burst Skill",
+              "20 s",
+              "Treasure · Phase 1",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Affects self.",
+              "Changes the weapon in use:",
+              "Charge Time: 1.2 sec",
+              "Damage: 50.69% of",
+              "final",
+              "ATK",
+              "Full Charge Damage: 300% of damage",
+              "Max Ammunition Capacity: 1",
+              "Additional Effect: Pierce",
+              "■",
+              "Affects all allies.",
+              "Pierce Attacks 101:",
+              "Pierce Damage",
+              "▲ 25.03% for 10 sec."
+            ]
+          },
+          {
+            "phase": 2,
+            "slot": "skill2",
+            "name": "Frame Analysis",
+            "marker": "Treasure · Phase 2",
+            "description": "■\nActivates after performing 5 normal attacks. Affects all allies.\nRestores 7.52% of cover HP\n.\n■\nActivates when entering Full Burst. Affects all allies.\nCritical Rate ▲ 18.63% for 10 sec.\n■\nActivates when performing a normal attack while in the Pierce Attacks 101 state. Affects all allies.\nCritical Rate ▲ 15% for 5 sec. Stacks up to 3 times.\nOvercharge Formula\nBurst Skill\n20 s",
+            "numericTokens": [
+              "5",
+              "7.52%",
+              "18.63%",
+              "10",
+              "101",
+              "15%",
+              "3",
+              "20"
+            ],
+            "rawBlock": [
+              "Frame Analysis",
+              "Skill 2",
+              "Treasure · Phase 2",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates after performing 5 normal attacks. Affects all allies.",
+              "Restores 7.52% of cover HP",
+              ".",
+              "■",
+              "Activates when entering Full Burst. Affects all allies.",
+              "Critical Rate ▲ 18.63% for 10 sec.",
+              "■",
+              "Activates when performing a normal attack while in the Pierce Attacks 101 state. Affects all allies.",
+              "Critical Rate ▲ 15% for 5 sec. Stacks up to 3 times.",
+              "Overcharge Formula",
+              "Burst Skill",
+              "20 s"
+            ]
+          },
+          {
+            "phase": 3,
+            "slot": "skill1",
+            "name": "Pierce Equation",
+            "marker": "Treasure · Phase 3",
+            "description": "■\nActivates when entering Full Burst. Affects all allies.\nPierce Damage\n▲ 20.13% for 1 round(s).\nPierce Damage\n▲ 10.06% for 10 sec.\n■\nActivates when performing a normal attack during Full Burst. Affects all allies.\nPierce Damage\n▲ 24.99%, stacks up to 3 time(s), for 1 round(s).\nFrame Analysis\nSkill 2",
+            "numericTokens": [
+              "20.13%",
+              "1",
+              "10.06%",
+              "10",
+              "24.99%",
+              "3",
+              "2"
+            ],
+            "rawBlock": [
+              "Pierce Equation",
+              "Skill 1",
+              "Treasure · Phase 3",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates when entering Full Burst. Affects all allies.",
+              "Pierce Damage",
+              "▲ 20.13% for 1 round(s).",
+              "Pierce Damage",
+              "▲ 10.06% for 10 sec.",
+              "■",
+              "Activates when performing a normal attack during Full Burst. Affects all allies.",
+              "Pierce Damage",
+              "▲ 24.99%, stacks up to 3 time(s), for 1 round(s).",
+              "Frame Analysis",
+              "Skill 2"
+            ]
+          }
+        ],
+        "favoriteSkillCardsComplete": true,
+        "favoritePanelText": "",
+        "lineCount": 150
       }
     },
     {
@@ -4059,9 +5728,9 @@
         "phaseOrder": {
           "1": "skill2",
           "2": "skill1",
-          "3": null
+          "3": "burst"
         },
-        "phaseOrderComplete": false,
+        "phaseOrderComplete": true,
         "treasureText": "Metal Pendant\n\nAn artisan with incredible strength who puts her heart into everything she does, never failing to get the job done at Mighty Tools. As Liter's first apprentice, she has great respect for her mentor. She always listens to what Liter says, and studies her techniques in earnest.\nManufacturer Missilis\n\n",
         "skillSectionText": "SKILLS\n\nTREASURE Metal Pendant\nSSR\nRL\nPreviewing Phase 3\n\nPreview cumulative skill upgrades\nSelect a phase to update the skill cards below.\nBase skills\n\nPHASE 1 Quest unlock\nField Discussion\nUpgrades Skill 2\nPHASE 2 +50 · 50 total\nMaintain Fortification\nUpgrades Skill 1\nPHASE 3 +110 · 160 total\nStart Construction\nUpgrades Burst Skill\n\nInherited collection bonuses\nMaximum SR Collection Item effects retained after conversion.\nGaze of Courage\n■ Activates at the start of battle.\nCharge Damage Multiplier ▲ 9.47%.\nDEF ▲ 37%.\n\nGrounding Pillar\n■ Activates at the start of battle.\nDamage Taken ▼ 17%.\nMax HP of cover ▲ 30%.\n\nMaintain Fortification\nSkill 1\nTreasure · Phase 2\n\nLVL 10\n\nCompare base\n\n■ Activates when landing a Full Charge attack. Affects self.\nCooldown of Skill 2 ▼ 9.16%.\n■ Activates when Skill 2 activates. Affects all Iron Code allies.\nElemental Advantage Attack Damage ▲ 5.69%. Stacks up to 10 times and lasts for 10 sec.\n■ Activates at the start of battle. Affects all allies.\nStockpile: Stores excess incoming healing, up to 7% of the skill user's max HP. Lasts for 5 sec.\nRestores HP equal to 7% of the skill user's final max HP.\n■ Activates when an ally's HP (including this unit's) drops to 100% or below while this unit is in the Stockpile state. Affects all allies.\nRestores HP equal to 7% of the skill user's final max HP.\n\nField Discussion\nSkill 2\nTreasure · Phase 1\n\nLVL 10\n\nCompare base\n\n■ Affects self.\nCreates a shared shield with HP equal to 7% of the skill user's final max HP that protects all allies from damage. Lasts for 5 sec.\n■ Affects all allies.\nATK ▲ 4.6% of the skill user's ATK. Stacks up to 10 times and lasts for 8 sec.\n\nStart Construction\nBurst Skill\n20 s\nTreasure · Phase 3\n\nLVL 10\n\nCompare base\n\n■ Affects the 5 enemy unit(s) with the lowest remaining HP.\nDeals 145.46% of final ATK as damage.\nDEF ▼ 14.54% for 10 sec.\n■ Affects all allies.\nRestores HP equal to 30.2% of the skill user's final max HP.\n\n",
         "contexts": [
@@ -4241,7 +5910,130 @@
           "https://enikk.app/_next/static/chunks/app/characters/%5Bslug%5D/page-6982f32854cac348.js",
           "https://enikk.app/_next/static/chunks/polyfills-42372ed130431b0a.js",
           "https://enikk.app/_next/static/chunks/webpack-263e609f96ed74cc.js"
-        ]
+        ],
+        "visibleTextSha256": "34e4f11e4f7f9cc1057523983c4e0064c3f52dd53a6492aff04e2cbcc3350c4f",
+        "phaseNames": {
+          "1": "Field Discussion",
+          "2": "Maintain Fortification",
+          "3": "Start Construction"
+        },
+        "favoriteSkillCards": [
+          {
+            "phase": 1,
+            "slot": "skill2",
+            "name": "Field Discussion",
+            "marker": "Treasure · Phase 1",
+            "description": "■\nAffects self.\nCreates a shared\nshield\nwith HP equal to 7% of the skill user's\nfinal\nmax HP that protects all allies from damage. Lasts for 5 sec.\n■\nAffects all allies.\nATK ▲ 4.6% of the skill user's ATK. Stacks up to 10 times and lasts for 8 sec.\nStart Construction\nBurst Skill\n20 s",
+            "numericTokens": [
+              "7%",
+              "5",
+              "4.6%",
+              "10",
+              "8",
+              "20"
+            ],
+            "rawBlock": [
+              "Field Discussion",
+              "Skill 2",
+              "Treasure · Phase 1",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Affects self.",
+              "Creates a shared",
+              "shield",
+              "with HP equal to 7% of the skill user's",
+              "final",
+              "max HP that protects all allies from damage. Lasts for 5 sec.",
+              "■",
+              "Affects all allies.",
+              "ATK ▲ 4.6% of the skill user's ATK. Stacks up to 10 times and lasts for 8 sec.",
+              "Start Construction",
+              "Burst Skill",
+              "20 s"
+            ]
+          },
+          {
+            "phase": 2,
+            "slot": "skill1",
+            "name": "Maintain Fortification",
+            "marker": "Treasure · Phase 2",
+            "description": "■\nActivates when landing a Full Charge attack. Affects self.\nCooldown\nof Skill 2 ▼ 9.16%.\n■\nActivates when Skill 2 activates. Affects all Iron Code allies.\nElemental Advantage Attack Damage\n▲ 5.69%. Stacks up to 10 times and lasts for 10 sec.\n■\nActivates at the start of battle. Affects all allies.\nStockpile: Stores excess incoming healing, up to 7% of the skill user's max HP. Lasts for 5 sec.\nRestores HP equal to 7% of the skill user's\nfinal\nmax HP.\n■\nActivates when an ally's HP (including this unit's) drops to 100% or below while this unit is in the Stockpile state. Affects all allies.\nRestores HP equal to 7% of the skill user's\nfinal\nmax HP.\nField Discussion\nSkill 2",
+            "numericTokens": [
+              "2",
+              "9.16",
+              "5.69",
+              "10",
+              "7%",
+              "5",
+              "100%"
+            ],
+            "rawBlock": [
+              "Maintain Fortification",
+              "Skill 1",
+              "Treasure · Phase 2",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates when landing a Full Charge attack. Affects self.",
+              "Cooldown",
+              "of Skill 2 ▼ 9.16%.",
+              "■",
+              "Activates when Skill 2 activates. Affects all Iron Code allies.",
+              "Elemental Advantage Attack Damage",
+              "▲ 5.69%. Stacks up to 10 times and lasts for 10 sec.",
+              "■",
+              "Activates at the start of battle. Affects all allies.",
+              "Stockpile: Stores excess incoming healing, up to 7% of the skill user's max HP. Lasts for 5 sec.",
+              "Restores HP equal to 7% of the skill user's",
+              "final",
+              "max HP.",
+              "■",
+              "Activates when an ally's HP (including this unit's) drops to 100% or below while this unit is in the Stockpile state. Affects all allies.",
+              "Restores HP equal to 7% of the skill user's",
+              "final",
+              "max HP.",
+              "Field Discussion",
+              "Skill 2"
+            ]
+          },
+          {
+            "phase": 3,
+            "slot": "burst",
+            "name": "Start Construction",
+            "marker": "Treasure · Phase 3",
+            "description": "■\nAffects the 5 enemy unit(s) with the lowest remaining HP.\nDeals 145.46% of\nfinal\nATK as damage.\nDEF ▼ 14.54% for 10 sec.\n■\nAffects all allies.\nRestores HP equal to 30.2% of the skill user's\nfinal\nmax HP.",
+            "numericTokens": [
+              "5",
+              "145.46%",
+              "14.54%",
+              "10",
+              "30.2%"
+            ],
+            "rawBlock": [
+              "Start Construction",
+              "Burst Skill",
+              "20 s",
+              "Treasure · Phase 3",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Affects the 5 enemy unit(s) with the lowest remaining HP.",
+              "Deals 145.46% of",
+              "final",
+              "ATK as damage.",
+              "DEF ▼ 14.54% for 10 sec.",
+              "■",
+              "Affects all allies.",
+              "Restores HP equal to 30.2% of the skill user's",
+              "final",
+              "max HP."
+            ]
+          }
+        ],
+        "favoriteSkillCardsComplete": true,
+        "favoritePanelText": "",
+        "lineCount": 153
       }
     },
     {
@@ -4289,9 +6081,9 @@
         "phaseOrder": {
           "1": "skill1",
           "2": "skill2",
-          "3": null
+          "3": "burst"
         },
-        "phaseOrderComplete": false,
+        "phaseOrderComplete": true,
         "treasureText": "Peony Hairpin\n\nA Nikke from Underworld Queen ",
         "skillSectionText": "SKILLS\n\nTREASURE Peony Hairpin\nSSR\nAR\nPreviewing Phase 3\n\nPreview cumulative skill upgrades\nSelect a phase to update the skill cards below.\nBase skills\n\nPHASE 1 Quest unlock\nBring It On!\nUpgrades Skill 1\nPHASE 2 +50 · 50 total\nLeave It To Me!\nUpgrades Skill 2\nPHASE 3 +110 · 160 total\nFair and Square!\nUpgrades Burst Skill\n\nInherited collection bonuses\nMaximum SR Collection Item effects retained after conversion.\nGaze of Courage\n■ Activates at the start of battle.\nDamage dealt when attacking core ▲ 17.04%.\nDEF ▲ 37%.\n\nGrounding Pillar\n■ Activates at the start of battle.\nDamage Taken ▼ 17%.\nMax HP of cover ▲ 30%.\n\nBring It On!\nSkill 1\nTreasure · Phase 1\n\nLVL 10\n\nCompare base\n\n■ Activates at the start of battle. Affects self.\nDEF ▲ 3.51% continuously for every 1% of HP lost.\n■ Activates after landing 5 normal attacks while weapon is changed. Affects the target.\nDeals 47.18% of final ATK as additional damage.\n■ Activates when Raptures appear. Affects self.\nFervor: Cooldown of Burst Skill ▼ 20 sec continuously.\n\nLeave It To Me!\nSkill 2\nTreasure · Phase 2\n\nLVL 10\n\nCompare base\n\n■ Activates when firing the final bullet. Affects the 3 enemy unit(s) with the highest final ATK.\nTaunts for 4 sec.\n■ Activates when HP falls below 20%. Affects self.\nEffect varies according to the number of uses. Perseverance: Only one effect is triggered at a time.\nOnce: Max HP ▲ 91% for 3 sec. Activates once per battle.\nTwice: Max HP ▲ 69.84% for 3 sec. Activates once per battle.\nThree Times: Max HP ▲ 51.09% for 3 sec. Activates once per battle.\n■ Activates when entering Full Burst while in Fervor status. Affects all allies.\nCooldown of Burst Skill ▼ 7.48 sec.\n\nFair and Square!\nBurst Skill\n40 s\nTreasure · Phase 3\n\nLVL 10\n\nCompare base\n\n■ Affects self.\nChanges the weapon in use:\nDamage: 14.7% of final ATK\nDuration: 10 sec\nAdditional Effect:\nRestores HP equal to 36.14% of attack damage. Lasts for 10 sec.\nAttract: Taunts all enemies for 10 sec.\nUnlimited ammunition for 10 sec.\n■ Affects all allies.\nDamage Taken ▼ 35.14% for 10 sec.\nDEF ▲ 14.85% of the skill user's DEF for 10 sec.\nATK ▲ 42.57% of the skill user's ATK for 10 sec.\n\n",
         "contexts": [
@@ -4531,7 +6323,136 @@
           "https://enikk.app/_next/static/chunks/app/characters/%5Bslug%5D/page-6982f32854cac348.js",
           "https://enikk.app/_next/static/chunks/polyfills-42372ed130431b0a.js",
           "https://enikk.app/_next/static/chunks/webpack-263e609f96ed74cc.js"
-        ]
+        ],
+        "visibleTextSha256": "a6a67d551c1ca3c7ff52b16cc605a6d18e6501bd4a9ec04cf3bc6125ad789525",
+        "phaseNames": {
+          "1": "Bring It On!",
+          "2": "Leave It To Me!",
+          "3": "Fair and Square!"
+        },
+        "favoriteSkillCards": [
+          {
+            "phase": 1,
+            "slot": "skill1",
+            "name": "Bring It On!",
+            "marker": "Treasure · Phase 1",
+            "description": "■\nActivates at the start of battle. Affects self.\nDEF ▲ 3.51% continuously for every 1% of HP lost.\n■\nActivates after landing 5 normal attacks while weapon is changed. Affects the target.\nDeals 47.18% of\nfinal\nATK as additional damage.\n■\nActivates when Raptures appear. Affects self.\nFervor:\nCooldown\nof Burst Skill ▼ 20 sec continuously.\nLeave It To Me!\nSkill 2",
+            "numericTokens": [
+              "3.51%",
+              "1%",
+              "5",
+              "47.18%",
+              "20",
+              "2"
+            ],
+            "rawBlock": [
+              "Bring It On!",
+              "Skill 1",
+              "Treasure · Phase 1",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates at the start of battle. Affects self.",
+              "DEF ▲ 3.51% continuously for every 1% of HP lost.",
+              "■",
+              "Activates after landing 5 normal attacks while weapon is changed. Affects the target.",
+              "Deals 47.18% of",
+              "final",
+              "ATK as additional damage.",
+              "■",
+              "Activates when Raptures appear. Affects self.",
+              "Fervor:",
+              "Cooldown",
+              "of Burst Skill ▼ 20 sec continuously.",
+              "Leave It To Me!",
+              "Skill 2"
+            ]
+          },
+          {
+            "phase": 2,
+            "slot": "skill2",
+            "name": "Leave It To Me!",
+            "marker": "Treasure · Phase 2",
+            "description": "■\nActivates when firing the final bullet. Affects the 3 enemy unit(s) with the highest\nfinal\nATK.\nTaunts for 4 sec.\n■\nActivates when HP falls below 20%. Affects self.\nEffect varies according to the number of uses. Perseverance: Only one effect is triggered at a time.\nOnce: Max HP ▲ 91% for 3 sec. Activates once per battle.\nTwice: Max HP ▲ 69.84% for 3 sec. Activates once per battle.\nThree Times: Max HP ▲ 51.09% for 3 sec. Activates once per battle.\n■\nActivates when entering Full Burst while in Fervor status. Affects all allies.\nCooldown\nof Burst Skill ▼ 7.48 sec.\nFair and Square!\nBurst Skill\n40 s",
+            "numericTokens": [
+              "3",
+              "4",
+              "20",
+              "91%",
+              "69.84%",
+              "51.09%",
+              "7.48",
+              "40"
+            ],
+            "rawBlock": [
+              "Leave It To Me!",
+              "Skill 2",
+              "Treasure · Phase 2",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates when firing the final bullet. Affects the 3 enemy unit(s) with the highest",
+              "final",
+              "ATK.",
+              "Taunts for 4 sec.",
+              "■",
+              "Activates when HP falls below 20%. Affects self.",
+              "Effect varies according to the number of uses. Perseverance: Only one effect is triggered at a time.",
+              "Once: Max HP ▲ 91% for 3 sec. Activates once per battle.",
+              "Twice: Max HP ▲ 69.84% for 3 sec. Activates once per battle.",
+              "Three Times: Max HP ▲ 51.09% for 3 sec. Activates once per battle.",
+              "■",
+              "Activates when entering Full Burst while in Fervor status. Affects all allies.",
+              "Cooldown",
+              "of Burst Skill ▼ 7.48 sec.",
+              "Fair and Square!",
+              "Burst Skill",
+              "40 s"
+            ]
+          },
+          {
+            "phase": 3,
+            "slot": "burst",
+            "name": "Fair and Square!",
+            "marker": "Treasure · Phase 3",
+            "description": "■\nAffects self.\nChanges the weapon in use:\nDamage: 14.7% of\nfinal\nATK\nDuration: 10 sec\nAdditional Effect:\nRestores HP equal to 36.14% of attack damage. Lasts for 10 sec.\nAttract: Taunts all enemies for 10 sec.\nUnlimited ammunition for 10 sec.\n■\nAffects all allies.\nDamage Taken ▼ 35.14% for 10 sec.\nDEF ▲ 14.85% of the skill user's DEF for 10 sec.\nATK ▲ 42.57% of the skill user's ATK for 10 sec.",
+            "numericTokens": [
+              "14.7%",
+              "10",
+              "36.14%",
+              "35.14%",
+              "14.85%",
+              "42.57%"
+            ],
+            "rawBlock": [
+              "Fair and Square!",
+              "Burst Skill",
+              "40 s",
+              "Treasure · Phase 3",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Affects self.",
+              "Changes the weapon in use:",
+              "Damage: 14.7% of",
+              "final",
+              "ATK",
+              "Duration: 10 sec",
+              "Additional Effect:",
+              "Restores HP equal to 36.14% of attack damage. Lasts for 10 sec.",
+              "Attract: Taunts all enemies for 10 sec.",
+              "Unlimited ammunition for 10 sec.",
+              "■",
+              "Affects all allies.",
+              "Damage Taken ▼ 35.14% for 10 sec.",
+              "DEF ▲ 14.85% of the skill user's DEF for 10 sec.",
+              "ATK ▲ 42.57% of the skill user's ATK for 10 sec."
+            ]
+          }
+        ],
+        "favoriteSkillCardsComplete": true,
+        "favoritePanelText": "",
+        "lineCount": 161
       }
     },
     {
@@ -4579,9 +6500,9 @@
         "phaseOrder": {
           "1": "skill1",
           "2": "skill2",
-          "3": null
+          "3": "burst"
         },
-        "phaseOrderComplete": false,
+        "phaseOrderComplete": true,
         "treasureText": "Precious Masks\n\nDuring the day, she's a librarian at the Ark's biggest library.\nAt night, she's a phantom thief who punishes evil in the name of justice.\nThough she believes she keeps her nightly activities well hidden, most of the people who should know of it already do.\nManufacturer Elysion\n\n",
         "skillSectionText": "SKILLS\n\nTREASURE Precious Masks\nSSR\nAR\nPreviewing Phase 3\n\nPreview cumulative skill upgrades\nSelect a phase to update the skill cards below.\nBase skills\n\nPHASE 1 Quest unlock\nThief's Calling Card\nUpgrades Skill 1\nPHASE 2 +50 · 50 total\nThief's Vision\nUpgrades Skill 2\nPHASE 3 +110 · 160 total\nSecret Trick: Rampage of Thieves\nUpgrades Burst Skill\n\nInherited collection bonuses\nMaximum SR Collection Item effects retained after conversion.\nGaze of Courage\n■ Activates at the start of battle.\nDamage dealt when attacking core ▲ 17.04%.\nDEF ▲ 37%.\n\nGrounding Pillar\n■ Activates at the start of battle.\nDamage Taken ▼ 17%.\nMax HP of cover ▲ 30%.\n\nThief's Calling Card\nSkill 1\nTreasure · Phase 1\n\nLVL 10\n\nCompare base\n\n■ Activates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects the target.\nCalling Card: DEF ▼ 32.19% for 5 sec.\n■ Activates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects self.\nThief's Dagger: Hit Rate ▲ 25.75%. Stacks up to 3 times and lasts for 5 sec.\n■ Activates after landing 30 normal attacks on the stage target . Affects self.\nThief's Dagger: Hit Rate ▲ 25.75%. Stacks up to 3 times and lasts for 5 sec.\n■ Activates when landing a normal attack on a target that is in the Calling Card state. Affects self.\nAttack Damage ▲ 75.17% for 1 round(s).\n\nThief's Vision\nSkill 2\nTreasure · Phase 2\n\nLVL 10\n\nCompare base\n\n■ Activates when Thief's Dagger is at max stacks. Affects targets in the Calling Card state.\nDeals 84.33% of final ATK as additional damage. Removes Calling Card.\n■ Activates when Thief's Dagger is at max stacks. Affects self.\nDistributed Damage ▲ 12.86% continuously. Stacks up to 3 times. Stacks are removed when using Burst Skill.\n■ Activates when Thief's Dagger is at max stacks. Removes stacks and affects all enemies.\nDeals 250% of final ATK as distributed damage .\n■ Activates after performing 10 normal attacks. Affects self.\nATK ▲ 85.12% for 5 sec.\nDistributed Damage ▲ 31.92% for 10 sec.\n\nSecret Trick: Rampage of Thieves\nBurst Skill\n40 s\nTreasure · Phase 3\n\nLVL 10\n\nCompare base\n\n■ Affects all enemies.\nDeals 1457.28% of final ATK as distributed damage .\n■ Affects the enemy if the enemy is a Fire Code stage target .\nDamage Taken ▲ 18% for 30 sec.\n■ Affects self.\nMax Ammunition Capacity ▲ 50% for 10 sec.\n\n",
         "contexts": [
@@ -4801,7 +6722,144 @@
           "https://enikk.app/_next/static/chunks/app/characters/%5Bslug%5D/page-6982f32854cac348.js",
           "https://enikk.app/_next/static/chunks/polyfills-42372ed130431b0a.js",
           "https://enikk.app/_next/static/chunks/webpack-263e609f96ed74cc.js"
-        ]
+        ],
+        "visibleTextSha256": "4065756abf752386bfe63907e04c4c5d6be38287a4379f3fbf0e70333a1e78e6",
+        "phaseNames": {
+          "1": "Thief's Calling Card",
+          "2": "Thief's Vision",
+          "3": "Secret Trick: Rampage of Thieves"
+        },
+        "favoriteSkillCards": [
+          {
+            "phase": 1,
+            "slot": "skill1",
+            "name": "Thief's Calling Card",
+            "marker": "Treasure · Phase 1",
+            "description": "■\nActivates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects the target.\nCalling Card: DEF ▼ 32.19% for 5 sec.\n■\nActivates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects self.\nThief's Dagger: Hit Rate ▲ 25.75%. Stacks up to 3 times and lasts for 5 sec.\n■\nActivates after landing 30 normal attacks on the\nstage target\n. Affects self.\nThief's Dagger: Hit Rate ▲ 25.75%. Stacks up to 3 times and lasts for 5 sec.\n■\nActivates when landing a normal attack on a target that is in the Calling Card state. Affects self.\nAttack Damage ▲ 75.17% for 1 round(s).\nThief's Vision\nSkill 2",
+            "numericTokens": [
+              "32.19%",
+              "5",
+              "25.75",
+              "3",
+              "30",
+              "75.17%",
+              "1",
+              "2"
+            ],
+            "rawBlock": [
+              "Thief's Calling Card",
+              "Skill 1",
+              "Treasure · Phase 1",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects the target.",
+              "Calling Card: DEF ▼ 32.19% for 5 sec.",
+              "■",
+              "Activates when landing a normal attack on a Rapture that is not in the Calling Card state. Affects self.",
+              "Thief's Dagger: Hit Rate ▲ 25.75%. Stacks up to 3 times and lasts for 5 sec.",
+              "■",
+              "Activates after landing 30 normal attacks on the",
+              "stage target",
+              ". Affects self.",
+              "Thief's Dagger: Hit Rate ▲ 25.75%. Stacks up to 3 times and lasts for 5 sec.",
+              "■",
+              "Activates when landing a normal attack on a target that is in the Calling Card state. Affects self.",
+              "Attack Damage ▲ 75.17% for 1 round(s).",
+              "Thief's Vision",
+              "Skill 2"
+            ]
+          },
+          {
+            "phase": 2,
+            "slot": "skill2",
+            "name": "Thief's Vision",
+            "marker": "Treasure · Phase 2",
+            "description": "■\nActivates when Thief's Dagger is at max stacks. Affects targets in the Calling Card state.\nDeals 84.33% of\nfinal\nATK as additional damage. Removes Calling Card.\n■\nActivates when Thief's Dagger is at max stacks. Affects self.\nDistributed Damage\n▲ 12.86% continuously. Stacks up to 3 times. Stacks are removed when using Burst Skill.\n■\nActivates when Thief's Dagger is at max stacks. Removes stacks and affects all enemies.\nDeals 250% of\nfinal\nATK as\ndistributed damage\n.\n■\nActivates after performing 10 normal attacks. Affects self.\nATK ▲ 85.12% for 5 sec.\nDistributed Damage\n▲ 31.92% for 10 sec.\nSecret Trick: Rampage of Thieves\nBurst Skill\n40 s",
+            "numericTokens": [
+              "84.33%",
+              "12.86%",
+              "3",
+              "250%",
+              "10",
+              "85.12%",
+              "5",
+              "31.92%",
+              "40"
+            ],
+            "rawBlock": [
+              "Thief's Vision",
+              "Skill 2",
+              "Treasure · Phase 2",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates when Thief's Dagger is at max stacks. Affects targets in the Calling Card state.",
+              "Deals 84.33% of",
+              "final",
+              "ATK as additional damage. Removes Calling Card.",
+              "■",
+              "Activates when Thief's Dagger is at max stacks. Affects self.",
+              "Distributed Damage",
+              "▲ 12.86% continuously. Stacks up to 3 times. Stacks are removed when using Burst Skill.",
+              "■",
+              "Activates when Thief's Dagger is at max stacks. Removes stacks and affects all enemies.",
+              "Deals 250% of",
+              "final",
+              "ATK as",
+              "distributed damage",
+              ".",
+              "■",
+              "Activates after performing 10 normal attacks. Affects self.",
+              "ATK ▲ 85.12% for 5 sec.",
+              "Distributed Damage",
+              "▲ 31.92% for 10 sec.",
+              "Secret Trick: Rampage of Thieves",
+              "Burst Skill",
+              "40 s"
+            ]
+          },
+          {
+            "phase": 3,
+            "slot": "burst",
+            "name": "Secret Trick: Rampage of Thieves",
+            "marker": "Treasure · Phase 3",
+            "description": "■\nAffects all enemies.\nDeals 1457.28% of\nfinal\nATK as\ndistributed damage\n.\n■\nAffects the enemy if the enemy is a Fire Code\nstage target\n.\nDamage Taken ▲ 18% for 30 sec.\n■\nAffects self.\nMax Ammunition Capacity ▲ 50% for 10 sec.",
+            "numericTokens": [
+              "1457.28%",
+              "18%",
+              "30",
+              "50%",
+              "10"
+            ],
+            "rawBlock": [
+              "Secret Trick: Rampage of Thieves",
+              "Burst Skill",
+              "40 s",
+              "Treasure · Phase 3",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Affects all enemies.",
+              "Deals 1457.28% of",
+              "final",
+              "ATK as",
+              "distributed damage",
+              ".",
+              "■",
+              "Affects the enemy if the enemy is a Fire Code",
+              "stage target",
+              ".",
+              "Damage Taken ▲ 18% for 30 sec.",
+              "■",
+              "Affects self.",
+              "Max Ammunition Capacity ▲ 50% for 10 sec."
+            ]
+          }
+        ],
+        "favoriteSkillCardsComplete": true,
+        "favoritePanelText": "",
+        "lineCount": 165
       }
     },
     {
@@ -4849,9 +6907,9 @@
         "phaseOrder": {
           "1": "skill1",
           "2": "skill2",
-          "3": null
+          "3": "burst"
         },
-        "phaseOrderComplete": false,
+        "phaseOrderComplete": true,
         "treasureText": "Planter We Made Together\n\nA Nikke from the Botanic Garden ",
         "skillSectionText": "SKILLS\n\nTREASURE Planter We Made Together\nSSR\nMG\nPreviewing Phase 3\n\nPreview cumulative skill upgrades\nSelect a phase to update the skill cards below.\nBase skills\n\nPHASE 1 Quest unlock\nPetunia\nUpgrades Skill 1\nPHASE 2 +50 · 50 total\nIris\nUpgrades Skill 2\nPHASE 3 +110 · 160 total\nSecret Garden\nUpgrades Burst Skill\n\nInherited collection bonuses\nMaximum SR Collection Item effects retained after conversion.\nGaze of Courage\n■ Activates at the start of battle.\nMax Ammunition Capacity ▲ 9.5%.\nDEF ▲ 37%.\n\nGrounding Pillar\n■ Activates at the start of battle.\nDamage Taken ▼ 17%.\nMax HP of cover ▲ 30%.\n\nPetunia\nSkill 1\nTreasure · Phase 1\n\nLVL 10\n\nCompare base\n\n■ Activates at the start of battle as long as this unit is alive. Affects self and both adjacent allies.\nPeace of Mind: Restores HP equal to 1% of the skill user's final max HP every second continuously.\nIncoming Healing ▲ 4% continuously. Stacks up to 5 times.\n■ Activates after performing 100 normal attacks. Affects all Electric Code allies.\nIncreases the stack count of stackable buffs by 1.\n■ Activates when entering Burst Stage 2. Affects all allies in the Peace of Mind state.\nMax HP ▲ 15.01% of the skill user's max HP (without restoring HP) for 2 sec.\n\nIris\nSkill 2\nTreasure · Phase 2\n\nLVL 10\n\nCompare base\n\n■ Activates when the HP of an adjacent ally drops to 90% or below while the ally is still alive. Affects all allies.\nCreates a shield with HP equal to 10.22% of the skill user's final max HP that lasts for 10 sec.\n■ Activates when either adjacent ally reaches max HP. Affects all allies.\nTrue Damage ▲ 30.97% for 10 sec.\n■ Activates when a shield is placed in front of this unit. Affects all allies in the Peace of Mind state.\nATK ▲ 45.12% of the skill user's ATK for 10 sec.\n\nSecret Garden\nBurst Skill\n40 s\nTreasure · Phase 3\n\nLVL 10\n\nCompare base\n\n■ Affects all allies.\nRestores HP equal to 10.45% of the skill user's final max HP.\nTrue Damage ▲ 42.39% for 10 sec.\nATK ▲ 85.86% of the skill user's ATK for 10 sec.\n\n",
         "contexts": [
@@ -5031,7 +7089,130 @@
           "https://enikk.app/_next/static/chunks/app/characters/%5Bslug%5D/page-6982f32854cac348.js",
           "https://enikk.app/_next/static/chunks/polyfills-42372ed130431b0a.js",
           "https://enikk.app/_next/static/chunks/webpack-263e609f96ed74cc.js"
-        ]
+        ],
+        "visibleTextSha256": "c82ee4b0f76f8ba6dd4c21f71ab7b3d974cbe24a18e13b46037f7b59c9789784",
+        "phaseNames": {
+          "1": "Petunia",
+          "2": "Iris",
+          "3": "Secret Garden"
+        },
+        "favoriteSkillCards": [
+          {
+            "phase": 1,
+            "slot": "skill1",
+            "name": "Petunia",
+            "marker": "Treasure · Phase 1",
+            "description": "■\nActivates at the start of battle as long as this unit is alive. Affects self and both\nadjacent\nallies.\nPeace of Mind: Restores HP equal to 1% of the skill user's\nfinal\nmax HP every second continuously.\nIncoming Healing ▲ 4% continuously. Stacks up to 5 times.\n■\nActivates after performing 100 normal attacks. Affects all Electric Code allies.\nIncreases the\nstack count of stackable buffs\nby 1.\n■\nActivates when entering Burst Stage 2. Affects all allies in the Peace of Mind state.\nMax HP ▲ 15.01% of the skill user's max HP (without restoring HP) for 2 sec.\nIris\nSkill 2",
+            "numericTokens": [
+              "1%",
+              "4%",
+              "5",
+              "100",
+              "15.01%",
+              "2"
+            ],
+            "rawBlock": [
+              "Petunia",
+              "Skill 1",
+              "Treasure · Phase 1",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates at the start of battle as long as this unit is alive. Affects self and both",
+              "adjacent",
+              "allies.",
+              "Peace of Mind: Restores HP equal to 1% of the skill user's",
+              "final",
+              "max HP every second continuously.",
+              "Incoming Healing ▲ 4% continuously. Stacks up to 5 times.",
+              "■",
+              "Activates after performing 100 normal attacks. Affects all Electric Code allies.",
+              "Increases the",
+              "stack count of stackable buffs",
+              "by 1.",
+              "■",
+              "Activates when entering Burst Stage 2. Affects all allies in the Peace of Mind state.",
+              "Max HP ▲ 15.01% of the skill user's max HP (without restoring HP) for 2 sec.",
+              "Iris",
+              "Skill 2"
+            ]
+          },
+          {
+            "phase": 2,
+            "slot": "skill2",
+            "name": "Iris",
+            "marker": "Treasure · Phase 2",
+            "description": "■\nActivates when the HP of an\nadjacent\nally drops to 90% or below while the ally is still alive. Affects all allies.\nCreates a\nshield\nwith HP equal to 10.22% of the skill user's\nfinal\nmax HP that lasts for 10 sec.\n■\nActivates when either\nadjacent\nally reaches max HP. Affects all allies.\nTrue Damage ▲ 30.97% for 10 sec.\n■\nActivates when\na shield is placed\nin front of this unit. Affects all allies in the Peace of Mind state.\nATK ▲ 45.12% of the skill user's ATK for 10 sec.\nSecret Garden\nBurst Skill\n40 s",
+            "numericTokens": [
+              "90%",
+              "10.22%",
+              "10",
+              "30.97%",
+              "45.12%",
+              "40"
+            ],
+            "rawBlock": [
+              "Iris",
+              "Skill 2",
+              "Treasure · Phase 2",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates when the HP of an",
+              "adjacent",
+              "ally drops to 90% or below while the ally is still alive. Affects all allies.",
+              "Creates a",
+              "shield",
+              "with HP equal to 10.22% of the skill user's",
+              "final",
+              "max HP that lasts for 10 sec.",
+              "■",
+              "Activates when either",
+              "adjacent",
+              "ally reaches max HP. Affects all allies.",
+              "True Damage ▲ 30.97% for 10 sec.",
+              "■",
+              "Activates when",
+              "a shield is placed",
+              "in front of this unit. Affects all allies in the Peace of Mind state.",
+              "ATK ▲ 45.12% of the skill user's ATK for 10 sec.",
+              "Secret Garden",
+              "Burst Skill",
+              "40 s"
+            ]
+          },
+          {
+            "phase": 3,
+            "slot": "burst",
+            "name": "Secret Garden",
+            "marker": "Treasure · Phase 3",
+            "description": "■\nAffects all allies.\nRestores HP equal to 10.45% of the skill user's\nfinal\nmax HP.\nTrue Damage ▲ 42.39% for 10 sec.\nATK ▲ 85.86% of the skill user's ATK for 10 sec.",
+            "numericTokens": [
+              "10.45%",
+              "42.39%",
+              "10",
+              "85.86%"
+            ],
+            "rawBlock": [
+              "Secret Garden",
+              "Burst Skill",
+              "40 s",
+              "Treasure · Phase 3",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Affects all allies.",
+              "Restores HP equal to 10.45% of the skill user's",
+              "final",
+              "max HP.",
+              "True Damage ▲ 42.39% for 10 sec.",
+              "ATK ▲ 85.86% of the skill user's ATK for 10 sec."
+            ]
+          }
+        ],
+        "favoriteSkillCardsComplete": true,
+        "favoritePanelText": "",
+        "lineCount": 152
       }
     },
     {
@@ -5079,9 +7260,9 @@
         "phaseOrder": {
           "1": "skill2",
           "2": "burst",
-          "3": null
+          "3": "skill1"
         },
-        "phaseOrderComplete": false,
+        "phaseOrderComplete": true,
         "treasureText": "Signet Ring\n\nLeader of Hedonia, a sizable criminal gang.\nCompared with other members of the Underworld Queen, she is far more pugnacious and firmly believes that violence is the ultimate panacea.\nShe does, however, take exceedingly good care of those who are part of her gang.\nManufacturer Tetra\n\n",
         "skillSectionText": "SKILLS\n\nTREASURE Signet Ring\nSSR\nMG\nPreviewing Phase 3\n\nPreview cumulative skill upgrades\nSelect a phase to update the skill cards below.\nBase skills\n\nPHASE 1 Quest unlock\nCapo dei Capi\nUpgrades Skill 2\nPHASE 2 +50 · 50 total\nVendetta\nUpgrades Burst Skill\nPHASE 3 +110 · 160 total\nOn the Lam\nUpgrades Skill 1\n\nInherited collection bonuses\nMaximum SR Collection Item effects retained after conversion.\nGaze of Courage\n■ Activates at the start of battle.\nMax Ammunition Capacity ▲ 9.5%.\nDEF ▲ 37%.\n\nGrounding Pillar\n■ Activates at the start of battle.\nDamage Taken ▼ 17%.\nMax HP of cover ▲ 30%.\n\nOn the Lam\nSkill 1\nTreasure · Phase 3\n\nLVL 10\n\nCompare base\n\n■ Activates after landing 120 normal attacks. Affects self.\nConcealment: Prevents being targeted by single-target attacks for 10 sec. This effect is removed upon taking a direct hit.\nCritical Rate ▲ 19.34% for 3 sec.\n■ Activates after performing 10 normal attacks. Affects the 2 enemy unit(s) with the highest final ATK.\nRemoves 5 buff(s) . Activates once per battle.\n■ Activates when the stage target appears. Affects self.\nElemental Advantage Attack Damage ▲ 20% continuously.\n\nCapo dei Capi\nSkill 2\nTreasure · Phase 1\n\nLVL 10\n\nCompare base\n\n■ Activates at the start of battle. Affects self.\nConcealment: Prevents being targeted by single-target attacks for 5 sec. This effect is removed upon taking a direct hit.\n■ Activates when a Nikke is incapacitated. Affects self.\nFrenzy: ATK ▲ 22.61%. Stacks up to 10 times and lasts for 30 sec.\nFills Burst Gauge by 36.54%.\n■ Activates when a Nikke is incapacitated. Prioritizes Attacker-type enemies . Affects 1 unit(s).\nDeals 400% of final ATK as damage.\n■ Activates after landing 500 normal attacks on the stage target . Affects self.\nFrenzy: ATK ▲ 22.61%. Stacks up to 10 times and lasts for 30 sec.\n\nVendetta\nBurst Skill\n40 s\nTreasure · Phase 2\n\nLVL 10\n\nCompare base\n\n■ Prioritizes Attacker-type enemies . Affects 2 enemy unit(s).\nAssalto: Deals 1310.4% of final ATK as damage.\n■ Activates when the skill user is in the Concealment state. Affects the target(s) hit by Assalto.\nDeals 561.6% of final ATK as additional damage.\n■ Activates if the target that was hit by Assalto is a Water Code stage target . Affects the target.\nDamage Taken ▲ 29% for 30 sec.\n\n",
         "contexts": [
@@ -5321,7 +7502,149 @@
           "https://enikk.app/_next/static/chunks/app/characters/%5Bslug%5D/page-6982f32854cac348.js",
           "https://enikk.app/_next/static/chunks/polyfills-42372ed130431b0a.js",
           "https://enikk.app/_next/static/chunks/webpack-263e609f96ed74cc.js"
-        ]
+        ],
+        "visibleTextSha256": "80bf401f6a353a6a87a830917d061672fce8356268f27b20c5c5e1e9aecb64d4",
+        "phaseNames": {
+          "1": "Capo dei Capi",
+          "2": "Vendetta",
+          "3": "On the Lam"
+        },
+        "favoriteSkillCards": [
+          {
+            "phase": 1,
+            "slot": "skill2",
+            "name": "Capo dei Capi",
+            "marker": "Treasure · Phase 1",
+            "description": "■\nActivates at the start of battle. Affects self.\nConcealment:\nPrevents being targeted by single-target attacks\nfor 5 sec. This effect is removed upon taking a direct hit.\n■\nActivates when a Nikke is incapacitated. Affects self.\nFrenzy: ATK ▲ 22.61%. Stacks up to 10 times and lasts for 30 sec.\nFills Burst Gauge\nby 36.54%.\n■\nActivates when a Nikke is incapacitated.\nPrioritizes Attacker-type enemies\n. Affects 1 unit(s).\nDeals 400% of\nfinal\nATK as damage.\n■\nActivates after landing 500 normal attacks on the\nstage target\n. Affects self.\nFrenzy: ATK ▲ 22.61%. Stacks up to 10 times and lasts for 30 sec.\nVendetta\nBurst Skill\n40 s",
+            "numericTokens": [
+              "5",
+              "22.61",
+              "10",
+              "30",
+              "36.54",
+              "1",
+              "400%",
+              "500",
+              "40"
+            ],
+            "rawBlock": [
+              "Capo dei Capi",
+              "Skill 2",
+              "Treasure · Phase 1",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates at the start of battle. Affects self.",
+              "Concealment:",
+              "Prevents being targeted by single-target attacks",
+              "for 5 sec. This effect is removed upon taking a direct hit.",
+              "■",
+              "Activates when a Nikke is incapacitated. Affects self.",
+              "Frenzy: ATK ▲ 22.61%. Stacks up to 10 times and lasts for 30 sec.",
+              "Fills Burst Gauge",
+              "by 36.54%.",
+              "■",
+              "Activates when a Nikke is incapacitated.",
+              "Prioritizes Attacker-type enemies",
+              ". Affects 1 unit(s).",
+              "Deals 400% of",
+              "final",
+              "ATK as damage.",
+              "■",
+              "Activates after landing 500 normal attacks on the",
+              "stage target",
+              ". Affects self.",
+              "Frenzy: ATK ▲ 22.61%. Stacks up to 10 times and lasts for 30 sec.",
+              "Vendetta",
+              "Burst Skill",
+              "40 s"
+            ]
+          },
+          {
+            "phase": 2,
+            "slot": "burst",
+            "name": "Vendetta",
+            "marker": "Treasure · Phase 2",
+            "description": "■\nPrioritizes Attacker-type enemies\n. Affects 2 enemy unit(s).\nAssalto: Deals 1310.4% of\nfinal\nATK as damage.\n■\nActivates when the skill user is in the Concealment state. Affects the target(s) hit by Assalto.\nDeals 561.6% of\nfinal\nATK as additional damage.\n■\nActivates if the target that was hit by Assalto is a Water Code\nstage target\n. Affects the target.\nDamage Taken ▲ 29% for 30 sec.",
+            "numericTokens": [
+              "2",
+              "1310.4%",
+              "561.6%",
+              "29%",
+              "30"
+            ],
+            "rawBlock": [
+              "Vendetta",
+              "Burst Skill",
+              "40 s",
+              "Treasure · Phase 2",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Prioritizes Attacker-type enemies",
+              ". Affects 2 enemy unit(s).",
+              "Assalto: Deals 1310.4% of",
+              "final",
+              "ATK as damage.",
+              "■",
+              "Activates when the skill user is in the Concealment state. Affects the target(s) hit by Assalto.",
+              "Deals 561.6% of",
+              "final",
+              "ATK as additional damage.",
+              "■",
+              "Activates if the target that was hit by Assalto is a Water Code",
+              "stage target",
+              ". Affects the target.",
+              "Damage Taken ▲ 29% for 30 sec."
+            ]
+          },
+          {
+            "phase": 3,
+            "slot": "skill1",
+            "name": "On the Lam",
+            "marker": "Treasure · Phase 3",
+            "description": "■\nActivates after landing 120 normal attacks. Affects self.\nConcealment:\nPrevents being targeted by single-target attacks\nfor 10 sec. This effect is removed upon taking a direct hit.\nCritical Rate ▲ 19.34% for 3 sec.\n■\nActivates after performing 10 normal attacks. Affects the 2 enemy unit(s) with the highest\nfinal\nATK.\nRemoves 5 buff(s)\n. Activates once per battle.\n■\nActivates when the\nstage target\nappears. Affects self.\nElemental Advantage Attack Damage\n▲ 20% continuously.\nCapo dei Capi\nSkill 2",
+            "numericTokens": [
+              "120",
+              "10",
+              "19.34%",
+              "3",
+              "2",
+              "5",
+              "20%"
+            ],
+            "rawBlock": [
+              "On the Lam",
+              "Skill 1",
+              "Treasure · Phase 3",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates after landing 120 normal attacks. Affects self.",
+              "Concealment:",
+              "Prevents being targeted by single-target attacks",
+              "for 10 sec. This effect is removed upon taking a direct hit.",
+              "Critical Rate ▲ 19.34% for 3 sec.",
+              "■",
+              "Activates after performing 10 normal attacks. Affects the 2 enemy unit(s) with the highest",
+              "final",
+              "ATK.",
+              "Removes 5 buff(s)",
+              ". Activates once per battle.",
+              "■",
+              "Activates when the",
+              "stage target",
+              "appears. Affects self.",
+              "Elemental Advantage Attack Damage",
+              "▲ 20% continuously.",
+              "Capo dei Capi",
+              "Skill 2"
+            ]
+          }
+        ],
+        "favoriteSkillCardsComplete": true,
+        "favoritePanelText": "",
+        "lineCount": 173
       }
     },
     {
@@ -5369,9 +7692,9 @@
         "phaseOrder": {
           "1": "skill1",
           "2": "skill2",
-          "3": null
+          "3": "burst"
         },
-        "phaseOrderComplete": false,
+        "phaseOrderComplete": true,
         "treasureText": "Commemorative Keychain\n\nA gearhead, who gets a thrill from burning rubber, sells sugar coffee in Cafe Sweety.\nManufacturer Tetra\n\n",
         "skillSectionText": "SKILLS\n\nTREASURE Commemorative Keychain\nSSR\nSG\nPreviewing Phase 3\n\nPreview cumulative skill upgrades\nSelect a phase to update the skill cards below.\nBase skills\n\nPHASE 1 Quest unlock\nBlack Typhoon\nUpgrades Skill 1\nPHASE 2 +50 · 50 total\nNoire Sensor\nUpgrades Skill 2\nPHASE 3 +110 · 160 total\nTrouble Shooter\nUpgrades Burst Skill\n\nInherited collection bonuses\nMaximum SR Collection Item effects retained after conversion.\nGaze of Courage\n■ Activates at the start of battle.\nNormal Attack Damage Multiplier ▲ 9.46%.\nDEF ▲ 37%.\n\nGrounding Pillar\n■ Activates at the start of battle.\nDamage Taken ▼ 17%.\nMax HP of cover ▲ 30%.\n\nBlack Typhoon\nSkill 1\nTreasure · Phase 1\n\nLVL 10\n\nCompare base\n\n■ Activates when cover is attacked. Affects self.\nCritical Damage ▲ 16.39% for 10 sec.\nReload Speed ▲ 12.12% for 10 sec.\nRestores cover HP equal to 1.5% of the skill user's final max HP.\n■ Activates if this unit's cover is still intact. Affects self.\nAttack Damage ▲ 19.98% continuously.\n■ Activates at the start of battle. Affects self.\nConverts damage to Elemental Advantage damage against Fire Code enemies. This effect is continuous and cannot be removed.\n\nNoire Sensor\nSkill 2\nTreasure · Phase 2\n\nLVL 10\n\nCompare base\n\n■ Activates when entering Full Burst. Affects self.\nCritical Rate ▲ 13.02% for 10 sec.\nATK ▲ 25.01% for 10 sec.\n■ Activates when entering Full Burst. Affects all allies with shotguns.\nMax Ammunition Capacity ▲ 83.8% for 15 sec.\n■ Activates when entering Full Burst. Affects all Water Code and Iron Code allies with shotguns.\nElemental Advantage Attack Damage ▲ 40.02% for 15 sec.\n\nTrouble Shooter\nBurst Skill\n40 s\nTreasure · Phase 3\n\nLVL 10\n\nCompare base\n\n■ Affects self.\nAttack Speed ▲ 66% for 15 sec.\nHit Rate ▲ 33% for 15 sec.\nATK ▲ 20% for 15 sec.\n■ Affects all Water Code and Iron Code allies with shotguns.\nElemental Advantage Attack Damage ▲ 60.01% for 15 sec.\n\n",
         "contexts": [
@@ -5591,8 +7914,132 @@
           "https://enikk.app/_next/static/chunks/app/characters/%5Bslug%5D/page-6982f32854cac348.js",
           "https://enikk.app/_next/static/chunks/polyfills-42372ed130431b0a.js",
           "https://enikk.app/_next/static/chunks/webpack-263e609f96ed74cc.js"
-        ]
+        ],
+        "visibleTextSha256": "100beaad8abae0027d48c949d584bddc12585c0975351064a9c74b19b40f9309",
+        "phaseNames": {
+          "1": "Black Typhoon",
+          "2": "Noire Sensor",
+          "3": "Trouble Shooter"
+        },
+        "favoriteSkillCards": [
+          {
+            "phase": 1,
+            "slot": "skill1",
+            "name": "Black Typhoon",
+            "marker": "Treasure · Phase 1",
+            "description": "■\nActivates when cover is attacked. Affects self.\nCritical Damage ▲ 16.39% for 10 sec.\nReload Speed ▲ 12.12% for 10 sec.\nRestores cover HP\nequal to 1.5% of the skill user's\nfinal\nmax HP.\n■\nActivates if this unit's cover is still intact. Affects self.\nAttack Damage ▲ 19.98% continuously.\n■\nActivates at the start of battle. Affects self.\nConverts damage to Elemental Advantage damage\nagainst Fire Code enemies. This effect is continuous and cannot be removed.\nNoire Sensor\nSkill 2",
+            "numericTokens": [
+              "16.39%",
+              "10",
+              "12.12%",
+              "1.5%",
+              "19.98%",
+              "2"
+            ],
+            "rawBlock": [
+              "Black Typhoon",
+              "Skill 1",
+              "Treasure · Phase 1",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates when cover is attacked. Affects self.",
+              "Critical Damage ▲ 16.39% for 10 sec.",
+              "Reload Speed ▲ 12.12% for 10 sec.",
+              "Restores cover HP",
+              "equal to 1.5% of the skill user's",
+              "final",
+              "max HP.",
+              "■",
+              "Activates if this unit's cover is still intact. Affects self.",
+              "Attack Damage ▲ 19.98% continuously.",
+              "■",
+              "Activates at the start of battle. Affects self.",
+              "Converts damage to Elemental Advantage damage",
+              "against Fire Code enemies. This effect is continuous and cannot be removed.",
+              "Noire Sensor",
+              "Skill 2"
+            ]
+          },
+          {
+            "phase": 2,
+            "slot": "skill2",
+            "name": "Noire Sensor",
+            "marker": "Treasure · Phase 2",
+            "description": "■\nActivates when entering Full Burst. Affects self.\nCritical Rate ▲ 13.02% for 10 sec.\nATK ▲ 25.01% for 10 sec.\n■\nActivates when entering Full Burst. Affects all allies with shotguns.\nMax Ammunition Capacity ▲ 83.8% for 15 sec.\n■\nActivates when entering Full Burst. Affects all Water Code and Iron Code allies with shotguns.\nElemental Advantage Attack Damage\n▲ 40.02% for 15 sec.\nTrouble Shooter\nBurst Skill\n40 s",
+            "numericTokens": [
+              "13.02%",
+              "10",
+              "25.01%",
+              "83.8%",
+              "15",
+              "40.02%",
+              "40"
+            ],
+            "rawBlock": [
+              "Noire Sensor",
+              "Skill 2",
+              "Treasure · Phase 2",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Activates when entering Full Burst. Affects self.",
+              "Critical Rate ▲ 13.02% for 10 sec.",
+              "ATK ▲ 25.01% for 10 sec.",
+              "■",
+              "Activates when entering Full Burst. Affects all allies with shotguns.",
+              "Max Ammunition Capacity ▲ 83.8% for 15 sec.",
+              "■",
+              "Activates when entering Full Burst. Affects all Water Code and Iron Code allies with shotguns.",
+              "Elemental Advantage Attack Damage",
+              "▲ 40.02% for 15 sec.",
+              "Trouble Shooter",
+              "Burst Skill",
+              "40 s"
+            ]
+          },
+          {
+            "phase": 3,
+            "slot": "burst",
+            "name": "Trouble Shooter",
+            "marker": "Treasure · Phase 3",
+            "description": "■\nAffects self.\nAttack Speed ▲ 66% for 15 sec.\nHit Rate ▲ 33% for 15 sec.\nATK ▲ 20% for 15 sec.\n■\nAffects all Water Code and Iron Code allies with shotguns.\nElemental Advantage Attack Damage\n▲ 60.01% for 15 sec.",
+            "numericTokens": [
+              "66%",
+              "15",
+              "33%",
+              "20%",
+              "60.01%"
+            ],
+            "rawBlock": [
+              "Trouble Shooter",
+              "Burst Skill",
+              "40 s",
+              "Treasure · Phase 3",
+              "LVL 10",
+              "Compare base",
+              "■",
+              "Affects self.",
+              "Attack Speed ▲ 66% for 15 sec.",
+              "Hit Rate ▲ 33% for 15 sec.",
+              "ATK ▲ 20% for 15 sec.",
+              "■",
+              "Affects all Water Code and Iron Code allies with shotguns.",
+              "Elemental Advantage Attack Damage",
+              "▲ 60.01% for 15 sec."
+            ]
+          }
+        ],
+        "favoriteSkillCardsComplete": true,
+        "favoritePanelText": "",
+        "lineCount": 149
       }
     }
-  ]
+  ],
+  "pageEnrichment": {
+    "fetchedAtUtc": "2026-08-26T19:17:18.620Z",
+    "failures": [],
+    "completePhaseOrders": 21,
+    "completeFavoriteSkillCards": 21
+  }
 }
