@@ -28,7 +28,7 @@ permissions:
 
 env:
   PRODUCTION_URL: https://nikke-growth-calculator.breezy-mum.workers.dev
-  PUBLIC_PROFILE_URL: https://blablalink.com/profiles/29080/83/108407451
+  PUBLIC_PROFILE_URL: https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTczODk5ODEwMzMzMTgwOTYwMDc=
 
 jobs:
   integration-preflight:
@@ -109,8 +109,12 @@ jobs:
 
           const bridgeResponse = await request(`${productionUrl}/api/blabla/sync`, {
             method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({ publicProfileUrl }),
+            headers: {
+              'content-type': 'application/json',
+              Origin: productionUrl,
+              Referer: `${productionUrl}/`,
+            },
+            body: JSON.stringify({ profileUrl: publicProfileUrl, serverHint: 'GLOBAL' }),
           });
           const bridgeText = await bridgeResponse.text();
           let bridgePayload = null;
@@ -119,9 +123,16 @@ jobs:
             throw new Error(`Cloudflare BlaBla bridge HTTP ${bridgeResponse.status}: ${bridgeText.slice(0, 800)}`);
           }
           if (!bridgePayload || typeof bridgePayload !== 'object') throw new Error('Cloudflare BlaBla bridge did not return JSON');
+          if (bridgePayload.ok !== true) throw new Error(`Cloudflare BlaBla bridge returned ok=false: ${bridgeText.slice(0, 800)}`);
+          const areas = Array.isArray(bridgePayload.areas) ? bridgePayload.areas : [];
+          const areaCharacterCount = areas.reduce((sum, area) => sum + (Array.isArray(area.characters) ? area.characters.length : 0), 0);
+          const areaDetailCount = areas.reduce((sum, area) => sum + (Array.isArray(area.details) ? area.details.length : 0), 0);
           const roster = bridgePayload?.data?.roster || bridgePayload?.roster || bridgePayload?.data?.characters || bridgePayload?.characters;
-          const rosterCount = Array.isArray(roster) ? roster.length : (roster && typeof roster === 'object' ? Object.keys(roster).length : 0);
-          if (rosterCount < 1) throw new Error(`Cloudflare BlaBla bridge returned an empty roster: ${bridgeText.slice(0, 800)}`);
+          const fallbackRosterCount = Array.isArray(roster) ? roster.length : (roster && typeof roster === 'object' ? Object.keys(roster).length : 0);
+          const rosterCount = Math.max(areaCharacterCount, fallbackRosterCount);
+          if (rosterCount < 1 || (areas.length && areaDetailCount < 1)) {
+            throw new Error(`Cloudflare BlaBla bridge returned incomplete roster data: ${bridgeText.slice(0, 800)}`);
+          }
 
           const result = {
             checkedAtUtc: new Date().toISOString(),
@@ -138,6 +149,8 @@ jobs:
               server: bridgeResponse.headers.get('server') || '',
               cfRay: bridgeResponse.headers.get('cf-ray') || '',
               rosterCount,
+              detailCount: areaDetailCount,
+              areas: areas.map(area => Number(area.area)).filter(Number.isFinite),
               payloadVersion: bridgePayload.version || bridgePayload?.data?.version || null,
             },
             pass: true,
@@ -171,7 +184,9 @@ jobs:
 
       - name: Wait for automatic Cloudflare production deployment and verify it
         env:
-          EXPECTED_VERSION: '34.7.8'
+          CLOUDFLARE_PRODUCTION_URL: ${{ env.PRODUCTION_URL }}
+          BLABLA_PUBLIC_PROFILE: ${{ env.PUBLIC_PROFILE_URL }}
+          CLOUDFLARE_LIVE_REPORT: V3478_CLOUDFLARE_RESULTS.json
         run: node tests/verify-cloudflare-production-v3478.mjs
 
       - name: Upload production verification evidence
