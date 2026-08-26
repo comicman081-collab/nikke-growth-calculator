@@ -14,14 +14,15 @@ const clean = (value, limit = 5000) => String(value)
   .replace(/\n{3,}/g, '\n\n')
   .slice(0, limit);
 
-const terms = [
+const richTerms = [
   'favoriteItemPhase', 'favoriteItemTid', 'favoriteItem', 'favorite_item',
   'favorite item', 'favorite-item', 'treasure', '애장품',
   'poliTreasure', 'sugarTreasure', 'laplaceTreasure',
   'Poli', 'Sugar', 'Laplace', '폴리', '슈가', '라플라스',
   'c030', 'c112', 'c100', '201001', '200501', '200401',
-  'skillLevels', 'skillLevel', 'skills', 'blabla', 'nameCode',
 ];
+const countOnlyTerms = ['skillLevels', 'skillLevel', 'skills', 'blabla', 'nameCode'];
+const allTerms = [...richTerms, ...countOnlyTerms];
 
 const lineStarts = [0];
 for (let i = 0; i < source.length; i += 1) if (source.charCodeAt(i) === 10) lineStarts.push(i + 1);
@@ -36,58 +37,54 @@ const lineColumnAt = offset => {
   return { line: lo + 1, column: offset - lineStarts[lo] + 1 };
 };
 
-const containingLine = offset => {
-  const start = source.lastIndexOf('\n', Math.max(0, offset - 1)) + 1;
-  const endPos = source.indexOf('\n', offset);
-  const end = endPos < 0 ? source.length : endPos;
-  return clean(source.slice(start, end), 12000);
-};
-
-const declarationWindow = offset => {
-  const anchors = [
-    source.lastIndexOf('\nfunction ', offset),
-    source.lastIndexOf('\nasync function ', offset),
-    source.lastIndexOf('\nconst ', offset),
-    source.lastIndexOf('\nlet ', offset),
-    source.lastIndexOf('\nvar ', offset),
-    source.lastIndexOf('\nclass ', offset),
-    source.lastIndexOf('\n  function ', offset),
-    source.lastIndexOf('\n  const ', offset),
-    source.lastIndexOf('\n    function ', offset),
-    source.lastIndexOf('\n    const ', offset),
-  ].filter(pos => pos >= 0);
-  const start = anchors.length ? Math.max(...anchors) + 1 : Math.max(0, offset - 1400);
-  return clean(source.slice(start, Math.min(source.length, Math.max(offset + 2600, start + 5200))), 9000);
-};
-
-const collect = (term, max = 80) => {
+const offsetsFor = (term, max = 120) => {
   const needle = term.toLocaleLowerCase('en-US');
-  const hits = [];
+  const offsets = [];
   let start = 0;
-  while (hits.length < max) {
+  while (offsets.length < max) {
     const offset = lower.indexOf(needle, start);
     if (offset < 0) break;
-    hits.push({
-      term,
-      offset,
-      ...lineColumnAt(offset),
-      lineText: containingLine(offset),
-      context: clean(source.slice(Math.max(0, offset - 1100), Math.min(source.length, offset + term.length + 2200)), 5000),
-      declarationWindow: declarationWindow(offset),
-    });
+    offsets.push(offset);
     start = offset + Math.max(1, needle.length);
   }
-  return hits;
+  return offsets;
 };
 
-const hitsByTerm = Object.fromEntries(terms.map(term => [term, collect(term)]));
+const localDeclarationWindow = offset => {
+  const lookBehind = 16000;
+  const localStart = Math.max(0, offset - lookBehind);
+  const prefix = source.slice(localStart, offset);
+  const pattern = /(?:^|\n)(?:\s*)(?:async\s+function|function|const|let|var|class)\s+/g;
+  let last = null;
+  for (const match of prefix.matchAll(pattern)) last = match;
+  const start = last ? localStart + last.index + (last[0].startsWith('\n') ? 1 : 0) : Math.max(0, offset - 1600);
+  return clean(source.slice(start, Math.min(source.length, Math.max(offset + 3000, start + 6500))), 10000);
+};
+
+const richHit = (term, offset) => {
+  const lineStart = source.lastIndexOf('\n', Math.max(0, offset - 1)) + 1;
+  const nextLine = source.indexOf('\n', offset);
+  const lineEnd = nextLine < 0 ? source.length : nextLine;
+  return {
+    term,
+    offset,
+    ...lineColumnAt(offset),
+    lineText: clean(source.slice(lineStart, lineEnd), 14000),
+    context: clean(source.slice(Math.max(0, offset - 1300), Math.min(source.length, offset + term.length + 2600)), 6000),
+    declarationWindow: localDeclarationWindow(offset),
+  };
+};
+
+const offsetsByTerm = Object.fromEntries(allTerms.map(term => [term, offsetsFor(term)]));
+const hitsByTerm = Object.fromEntries(richTerms.map(term => [term, offsetsByTerm[term].slice(0, 60).map(offset => richHit(term, offset))]));
+const counts = Object.fromEntries(allTerms.map(term => [term, offsetsByTerm[term].length]));
 
 const phaseContexts = hitsByTerm.favoriteItemPhase;
 const assignmentFragments = [...new Set(phaseContexts.flatMap(hit => {
   const fragments = [];
-  const text = hit.context;
-  const pattern = /[^\n;{}]{0,260}favoriteItemPhase[^\n;{}]{0,420}/gi;
-  for (const match of text.matchAll(pattern)) fragments.push(clean(match[0], 1000));
+  for (const match of hit.context.matchAll(/[^\n;{}]{0,300}favoriteItemPhase[^\n;{}]{0,500}/gi)) {
+    fragments.push(clean(match[0], 1200));
+  }
   return fragments;
 }))];
 
@@ -99,11 +96,11 @@ const targetSpecs = [
 const targetEvidence = {};
 for (const target of targetSpecs) {
   const targetTerms = [...target.names, target.code, target.tid, `${target.key}Treasure`];
-  const occurrences = targetTerms.flatMap(term => hitsByTerm[term] ?? collect(term));
+  const occurrences = targetTerms.flatMap(term => hitsByTerm[term] ?? []);
   const combined = occurrences.map(hit => `${hit.context}\n${hit.declarationWindow}`).join('\n');
   targetEvidence[target.key] = {
     ...target,
-    termCounts: Object.fromEntries(targetTerms.map(term => [term, (hitsByTerm[term] ?? collect(term)).length])),
+    termCounts: Object.fromEntries(targetTerms.map(term => [term, counts[term] ?? 0])),
     numericTokens: [...new Set([...combined.matchAll(/(?<!\d)\d{3,14}(?!\d)/g)].map(match => match[0]))].sort(),
     identifiers: [...new Set([...combined.matchAll(/\b[A-Za-z_$][A-Za-z0-9_$]{3,80}\b/g)].map(match => match[0]))]
       .filter(value => /(?:skill|favorite|treasure|phase|poli|sugar|laplace|blabla|nikke|char|master)/i.test(value))
@@ -112,7 +109,7 @@ for (const target of targetSpecs) {
   };
 }
 
-const exactPatterns = {
+const patterns = {
   phaseComparisons: /favoriteItemPhase\s*(?:===|!==|==|!=|>=|<=|>|<)\s*[^\s,;)\]}]+|[^\s,;({\[]+\s*(?:===|!==|==|!=|>=|<=|>|<)\s*favoriteItemPhase/gi,
   phaseAssignments: /(?:[A-Za-z_$][\w$]*\.)*favoriteItemPhase\s*(?:=|\?\?=|\|\|=|&&=)\s*[^;\n]{0,500}/gi,
   phaseReads: /(?:[A-Za-z_$][\w$]*|\[[^\]]{0,160}\])(?:\??\.[A-Za-z_$][\w$]*|\[[^\]]{0,160}\])*\??\.favoriteItemPhase\b/gi,
@@ -120,24 +117,27 @@ const exactPatterns = {
   targetTidLiterals: /(?<!\d)(?:201001|200501|200401)(?!\d)/g,
   targetCharacterCodes: /\bc(?:030|112|100)\b/gi,
 };
-const patternMatches = {};
-for (const [name, pattern] of Object.entries(exactPatterns)) {
-  patternMatches[name] = [...new Set([...source.matchAll(pattern)].map(match => clean(match[0], 900)))];
-}
+const patternMatches = Object.fromEntries(Object.entries(patterns).map(([name, pattern]) => [
+  name,
+  [...new Set([...source.matchAll(pattern)].map(match => clean(match[0], 1200)))],
+]));
 
 const phaseValues = [...new Set(phaseContexts.flatMap(hit => {
   const values = [];
-  for (const match of hit.context.matchAll(/favoriteItemPhase[^\n;]{0,200}/gi)) {
+  for (const match of hit.context.matchAll(/favoriteItemPhase[^\n;]{0,240}/gi)) {
     for (const number of match[0].matchAll(/(?<!\d)-?\d+(?:\.\d+)?(?!\d)/g)) values.push(number[0]);
   }
   return values;
 }))].sort();
 
 const versionTerms = ['34.7.6', 'V34.7.6', '34.7.7', 'V34.7.7'];
-const versionHits = Object.fromEntries(versionTerms.map(term => [term, collect(term, 40)]));
+const versionHits = Object.fromEntries(versionTerms.map(term => [
+  term,
+  offsetsFor(term, 20).map(offset => richHit(term, offset)),
+]));
 
 const report = {
-  auditVersion: 1,
+  auditVersion: 2,
   rule: 'Source-only lexical audit. No favorite-item phase or skill rule is inferred.',
   source: {
     path: sourcePath,
@@ -145,9 +145,9 @@ const report = {
     sha256: sha256(source),
     lines: lineStarts.length,
   },
-  counts: Object.fromEntries(terms.map(term => [term, hitsByTerm[term].length])),
+  counts,
   phase: {
-    exactCount: phaseContexts.length,
+    exactCount: counts.favoriteItemPhase,
     literalNumbersObservedNearPhase: phaseValues,
     assignmentFragments,
     comparisons: patternMatches.phaseComparisons,
@@ -161,7 +161,6 @@ const report = {
 };
 
 fs.writeFileSync(`${outDir}/enikk-favorite-app-consumer-v3477.json`, JSON.stringify(report, null, 2));
-
 const md = [
   '# App favorite-item consumer audit — V34.7.7',
   '',
