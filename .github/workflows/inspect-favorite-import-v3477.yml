@@ -10,13 +10,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Print relevant importer source slices
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install browser runtime dependency
+        run: npm install --no-save --ignore-scripts puppeteer-core@24.17.0
+      - name: Inspect importer source and runtime favorite metadata
+        env:
+          CHROME_BIN: /usr/bin/google-chrome
         run: |
           python3 - <<'PY'
           from pathlib import Path
           s=Path('index.html').read_text(encoding='utf-8')
-          terms=['function importExternalRoster','importExternalRoster','favoriteItemPhase','favoriteItemTid','favorite_item_tid','stateEffects','state_effects','skill1Lv','skill1_lv','nameCode']
-          for term in terms:
+          for term in ['function favoritePhase','favoritePhase=','favoriteItemPhase:favoritePhase','function importExternalRoster','stateEffects','state_effects']:
               print('\n===== TERM',term,'=====')
               start=0; seen=0
               while True:
@@ -24,7 +30,24 @@ jobs:
                   if i<0: break
                   seen+=1
                   print(f'--- occurrence {seen} @ {i} ---')
-                  print(s[max(0,i-1800):min(len(s),i+3500)])
+                  print(s[max(0,i-2200):min(len(s),i+5000)])
                   start=i+len(term)
-                  if seen>=8: break
+                  if seen>=6: break
           PY
+          node --input-type=module <<'NODE'
+          import path from 'node:path';
+          import {pathToFileURL} from 'node:url';
+          import puppeteer from 'puppeteer-core';
+          const browser=await puppeteer.launch({executablePath:process.env.CHROME_BIN,headless:true,args:['--no-sandbox','--disable-dev-shm-usage','--allow-file-access-from-files']});
+          const page=await browser.newPage();
+          await page.goto(pathToFileURL(path.resolve('index.html')).href,{waitUntil:'domcontentloaded',timeout:30000});
+          await page.waitForFunction(()=>Array.isArray(window.NIKKE_V26_7_CHARACTER_CATALOG)&&window.NIKKE_V26_7_CHARACTER_CATALOG.length>=100,{timeout:30000});
+          await new Promise(r=>setTimeout(r,1200));
+          const result=await page.evaluate(()=>{
+            const cat=window.NIKKE_V26_7_CHARACTER_CATALOG||[];
+            const fav=cat.filter(x=>x?.favoriteItem||String(x?.id||'').toLowerCase().includes('treasure'));
+            return fav.map(x=>({id:x.id,name:x.name,nameCode:x.nameCode||x.name_code||null,element:x.element,favoriteItem:x.favoriteItem,skillProfile:x.skillProfile,aliases:x.aliases||[]}));
+          });
+          await browser.close();
+          console.log('FAVORITE_RUNTIME='+JSON.stringify(result));
+          NODE
