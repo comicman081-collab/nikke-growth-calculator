@@ -26,9 +26,10 @@ jobs:
           cp "$root/apksigner" android-build-tools/
           cp "$root/zipalign" android-build-tools/
           cp -R "$root/lib" android-build-tools/
+          cp -R "$root/lib64" android-build-tools/
           chmod +x android-build-tools/apksigner android-build-tools/zipalign
           ./android-build-tools/apksigner version
-          ./android-build-tools/zipalign -h >/dev/null 2>&1 || true
+          LD_LIBRARY_PATH="$PWD/android-build-tools/lib64" ./android-build-tools/zipalign -h >/dev/null 2>&1 || true
       - uses: actions/upload-artifact@v4
         with:
           name: android-build-tools-35.0.1-signing
