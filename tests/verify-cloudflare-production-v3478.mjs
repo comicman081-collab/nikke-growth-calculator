@@ -64,9 +64,11 @@ assert.ok(Array.isArray(live.json.areas)&&live.json.areas.length>0,'live bridge 
 const characterCount=live.json.areas.reduce((sum,area)=>sum+(Array.isArray(area.characters)?area.characters.length:0),0);
 const detailCount=live.json.areas.reduce((sum,area)=>sum+(Array.isArray(area.details)?area.details.length:0),0);
 const effectCount=live.json.areas.reduce((sum,area)=>sum+(Array.isArray(area.stateEffects)?area.stateEffects.length:0),0);
+const returnedAreas=live.json.areas.map(area=>Number(area.area)).filter(Number.isFinite);
+const supportedGlobalAreas=new Set([81,82,83,84,85]);
 assert.ok(characterCount>0,'live character summaries');
 assert.ok(detailCount>0,'live character details');
-assert.ok(live.json.areas.some(area=>Number(area.area)===84),'GLOBAL area 84');
+assert.ok(returnedAreas.length>0&&returnedAreas.every(area=>supportedGlobalAreas.has(area)),`unsupported 29080 area: ${returnedAreas.join(',')}`);
 
 const report={
   version:VERSION,
@@ -75,7 +77,7 @@ const report={
   productionUrl:BASE,
   html:{status:htmlStatus,bytes:Buffer.byteLength(deployedHtml),versionMarker:true,propagationMarker:true,cfRay:htmlHeaders['cf-ray']||null,server:htmlHeaders.server||null},
   bridgeProbe:{status:probe.response.status,configured:probe.json.configured,games:probe.json.games},
-  liveSync:{status:live.response.status,maskedOpenId:live.json.profile?.maskedOpenId||null,areas:live.json.areas.map(area=>({area:area.area,characters:area.characters?.length||0,details:area.details?.length||0,stateEffects:area.stateEffects?.length||0})),characterCount,detailCount,effectCount,attempts:live.json.diagnostics?.attempts||[]}
+  liveSync:{status:live.response.status,maskedOpenId:live.json.profile?.maskedOpenId||null,areas:live.json.areas.map(area=>({area:area.area,characters:area.characters?.length||0,details:area.details?.length||0,stateEffects:area.stateEffects?.length||0})),returnedAreas,characterCount,detailCount,effectCount,attempts:live.json.diagnostics?.attempts||[]}
 };
 fs.writeFileSync(REPORT,JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify(report,null,2));
