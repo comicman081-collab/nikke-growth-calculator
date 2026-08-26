@@ -1154,9 +1154,12 @@ endurance:{label:'엔듀런스 / Endurance Lv.15',element:19.09,hit:0,reload:0,r
 healing:{label:'힐링 / Healing Lv.15',element:19.09,hit:0,reload:0,refund:0,cd:0,cs:0,burstGen:0,ammo:0,pierce:0,parts:0,maxHp:0,defense:0,heal:16.16,damageTaken:0,critMaxHp:0},
 tempering:{label:'템퍼링 / Tempering Lv.15',element:19.09,hit:0,reload:0,refund:0,cd:0,cs:0,burstGen:0,ammo:0,pierce:0,parts:0,maxHp:0,defense:0,heal:0,damageTaken:9.69,critMaxHp:0},
 assist:{label:'어시스트 / Assist Lv.15',element:19.09,hit:0,reload:0,refund:0,cd:0,cs:0,burstGen:0,ammo:0,pierce:0,parts:0,maxHp:0,defense:0,heal:0,damageTaken:0,critMaxHp:12.14},
-destruction:{label:'렐릭디스트로이어 / Destruction Lv.15',element:19.09,hit:0,reload:0,refund:0,cd:0,cs:0,burstGen:0,ammo:0,pierce:0,parts:31.90,maxHp:0,defense:0,heal:0,damageTaken:0,critMaxHp:0}
+destruction:{label:'렐릭디스트로이어 / Destruction Lv.15',element:19.09,hit:0,reload:0,refund:0,cd:0,cs:0,burstGen:0,ammo:0,pierce:0,parts:31.90,maxHp:0,defense:0,heal:0,damageTaken:0,critMaxHp:0},
+rupture:{label:'럽처 / Rupture Lv.15',element:19.09,hit:0,reload:0,refund:0,cd:0,cs:0,burstGen:0,ammo:0,pierce:0,parts:0,maxHp:0,defense:0,heal:0,damageTaken:0,critMaxHp:0,trueDamage:14.14,distributed:0},
+stealth:{label:'스텔스 / Stealth Lv.15 · 팀 엄폐물 HP↑(주효과 수치 미검증)',element:19.09,hit:0,reload:0,refund:0,cd:0,cs:0,burstGen:0,ammo:0,pierce:0,parts:0,maxHp:0,defense:0,heal:0,damageTaken:0,critMaxHp:0,trueDamage:0,distributed:0,coverHpTeam:null},
+diffusion:{label:'디퓨전 / Diffusion Lv.15',element:19.09,hit:0,reload:0,refund:0,cd:0,cs:0,burstGen:0,ammo:0,pierce:0,parts:0,maxHp:0,defense:0,heal:0,damageTaken:0,critMaxHp:0,trueDamage:0,distributed:17.69}
 };
-const nativeFields=[['element','우월 코드 대미지','%','direct'],['hit','명중률','%','display'],['reload','재장전 속도','%','direct'],['refund','10발마다 탄환 충전','발','direct'],['cd','차지 대미지','%','direct'],['cs','차지 속도','%','direct'],['burstGen','버스트 차지량 증가','%','support'],['ammo','최대 장탄','%','direct'],['pierce','관통 피해','%','direct'],['parts','파츠 피해','%','direct'],['maxHp','최대 HP','%','passive'],['defense','방어력','%','passive'],['heal','회복량','%','passive'],['damageTaken','받는 대미지 감소','%','passive'],['critMaxHp','크리티컬 시 최대 HP','%','passive']];
+const nativeFields=[['element','우월 코드 대미지','%','direct'],['hit','명중률','%','display'],['reload','재장전 속도','%','direct'],['refund','10발마다 탄환 충전','발','direct'],['cd','차지 대미지','%','direct'],['cs','차지 속도','%','direct'],['burstGen','버스트 차지량 증가','%','support'],['ammo','최대 장탄','%','direct'],['pierce','관통 피해','%','direct'],['parts','파츠 피해','%','direct'],['maxHp','최대 HP','%','passive'],['defense','방어력','%','passive'],['heal','회복량','%','passive'],['damageTaken','받는 대미지 감소','%','passive'],['critMaxHp','크리티컬 시 최대 HP','%','passive'],['trueDamage','트루 대미지','%','direct'],['distributed','분배 대미지','%','direct']];
 const cubeEffectList=c=>nativeFields.filter(([k])=>c[k]).map(([k,n,u,mode])=>({k,name:n,value:c[k],unit:u,mode}));
 const cubeEffectText=c=>{const a=cubeEffectList(c);return a.length?a.map(x=>`${x.name} +${f2(x.value)}${x.unit}`).join(' · '):'별도 전투 효과 없음'};
 const cubeDirectText=c=>{const a=cubeEffectList(c).filter(x=>x.mode==='direct');return a.length?a.map(x=>`${x.name} +${f2(x.value)}${x.unit}`).join(' · '):'순수 화력식 직접 반영 효과 없음'};
@@ -9708,6 +9711,8 @@ document.addEventListener('DOMContentLoaded',()=>{soloRaidRenderSaved();soloRaid
   const STORAGE_KEY = global.NIKKE_V26_ACCOUNT_API?.scopeKey?.(BASE_STORAGE_KEY) || BASE_STORAGE_KEY;
   const AUTO_CUBE_POLICY_BASE_KEY = 'nikke_v34_3_1_auto_cube_policy_v1';
   const AUTO_CUBE_POLICY_KEY = global.NIKKE_V26_ACCOUNT_API?.scopeKey?.(AUTO_CUBE_POLICY_BASE_KEY) || AUTO_CUBE_POLICY_BASE_KEY;
+  const SUPPLEMENTAL_BASE_STORAGE_KEY = 'nikke_v3475_roster_supplemental_catalog_v1';
+  const SUPPLEMENTAL_STORAGE_KEY = global.NIKKE_V26_ACCOUNT_API?.scopeKey?.(SUPPLEMENTAL_BASE_STORAGE_KEY) || SUPPLEMENTAL_BASE_STORAGE_KEY;
   const PAGE_ID = 'v26Roster';
   const PARTS = [
     { id: 'head', label: '머리' },
@@ -9800,6 +9805,77 @@ document.addEventListener('DOMContentLoaded',()=>{soloRaidRenderSaved();soloRaid
     return policy.active && Object.prototype.hasOwnProperty.call(cubes, policy.cubeId) ? policy.cubeId : 'none';
   }
 
+  function normalizeSupplementalCatalogEntry(raw) {
+    if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return null;
+    const id = String(raw.id || '').trim();
+    const name = String(raw.name || '').trim();
+    if (!id || !name) return null;
+    return {
+      id,
+      name,
+      aliases: Array.from(new Set((Array.isArray(raw.aliases) ? raw.aliases : []).map((value) => String(value || '').trim()).filter(Boolean))),
+      weapon: String(raw.weapon || '-'),
+      element: String(raw.element || '-'),
+      burst: String(raw.burst || '-'),
+      role: String(raw.role || '-'),
+      rarity: String(raw.rarity || ''),
+      nameCode: String(raw.nameCode || ''),
+      resourceId: String(raw.resourceId || ''),
+      source: String(raw.source || 'external-master'),
+      calculationSupported: raw.calculationSupported === true
+    };
+  }
+
+  function readSupplementalCatalog() {
+    const merged = new Map();
+    const absorb = (rows) => {
+      for (const raw of (Array.isArray(rows) ? rows : [])) {
+        const entry = normalizeSupplementalCatalogEntry(raw);
+        if (entry) merged.set(entry.id, entry);
+      }
+    };
+    try { absorb(JSON.parse(global.localStorage?.getItem(SUPPLEMENTAL_STORAGE_KEY) || '[]')); } catch (_) {}
+    try { absorb(global.NIKKE_V3475_ROSTER_SUPPLEMENTAL_CATALOG); } catch (_) {}
+    return Array.from(merged.values());
+  }
+
+  function writeSupplementalCatalog(rows) {
+    const normalized = [];
+    const seen = new Set();
+    for (const raw of (Array.isArray(rows) ? rows : [])) {
+      const entry = normalizeSupplementalCatalogEntry(raw);
+      if (!entry || seen.has(entry.id)) continue;
+      seen.add(entry.id);
+      normalized.push(entry);
+    }
+    try { global.localStorage?.setItem(SUPPLEMENTAL_STORAGE_KEY, JSON.stringify(normalized)); } catch (_) {}
+    try { global.NIKKE_V3475_ROSTER_SUPPLEMENTAL_CATALOG = normalized; } catch (_) {}
+    return normalized;
+  }
+
+  function registerSupplementalCatalog(entries) {
+    const merged = new Map(readSupplementalCatalog().map((entry) => [entry.id, entry]));
+    let added = 0;
+    let changed = 0;
+    for (const raw of (Array.isArray(entries) ? entries : [])) {
+      const entry = normalizeSupplementalCatalogEntry(raw);
+      if (!entry) continue;
+      const previous = merged.get(entry.id);
+      if (!previous) added += 1;
+      const next = previous ? {
+        ...previous,
+        ...entry,
+        aliases: Array.from(new Set([...(previous.aliases || []), ...(entry.aliases || [])].filter(Boolean)))
+      } : entry;
+      if (JSON.stringify(previous || null) !== JSON.stringify(next)) changed += 1;
+      merged.set(entry.id, next);
+    }
+    const rows = writeSupplementalCatalog(Array.from(merged.values()));
+    // load()는 registry()를 매 호출마다 다시 확인하므로 새 ID를 즉시 중앙 문서에 병합한다.
+    if (changed && memory) load();
+    return { ok: true, added, changed, total: rows.length, storageKey: SUPPLEMENTAL_STORAGE_KEY };
+  }
+
   function registry() {
     const labels = new Map();
     try {
@@ -9817,6 +9893,10 @@ document.addEventListener('DOMContentLoaded',()=>{soloRaidRenderSaved();soloRaid
         if (entry?.id) labels.set(String(entry.id), String(entry.name || entry.id));
       }
     }
+    const builtinIds = new Set(labels.keys());
+    const supplemental = readSupplementalCatalog();
+    const supplementalById = new Map(supplemental.map((entry) => [entry.id, entry]));
+    for (const entry of supplemental) if (!labels.has(entry.id)) labels.set(entry.id, entry.name);
 
     return Array.from(labels, ([id, name]) => {
       let profile = null;
@@ -9826,15 +9906,24 @@ document.addEventListener('DOMContentLoaded',()=>{soloRaidRenderSaved();soloRaid
         if (typeof weaponPresets !== 'undefined') preset = weaponPresets[id] || null;
       } catch (_) { /* optional metadata */ }
       const entry = groups.flatMap((group) => Array.isArray(group) ? group : []).find((item) => item?.id === id);
+      const extra = supplementalById.get(id) || null;
       profile = profile || entry?.skillProfile || {};
       preset = preset || entry?.weaponPreset || {};
+      const calculationSupported = builtinIds.has(id) || extra?.calculationSupported === true;
       return {
         id,
         name,
-        weapon: String(profile.weapon || preset.weapon || '-'),
-        element: String(profile.element || '-'),
-        burst: String(profile.burst || '-'),
-        role: String(profile.role || '-')
+        aliases: extra?.aliases || [],
+        weapon: String(profile.weapon || preset.weapon || extra?.weapon || '-'),
+        element: String(profile.element || extra?.element || '-'),
+        burst: String(profile.burst || extra?.burst || '-'),
+        role: String(profile.role || extra?.role || '-'),
+        rarity: String(extra?.rarity || ''),
+        nameCode: String(extra?.nameCode || ''),
+        resourceId: String(extra?.resourceId || ''),
+        source: builtinIds.has(id) ? 'builtin' : String(extra?.source || 'supplemental'),
+        calculationSupported,
+        rosterOnly: !calculationSupported
       };
     }).sort((a, b) => a.name.localeCompare(b.name, 'ko'));
   }
@@ -9878,6 +9967,10 @@ document.addEventListener('DOMContentLoaded',()=>{soloRaidRenderSaved();soloRaid
       cubeId: defaultCubeForNewCharacter(),
       manualRatio: 0,
       measuredCoeff: 1,
+      equipmentAttack: null,
+      equipmentHp: null,
+      equipmentDefense: null,
+      equipmentObservedSlots: 0,
       weaponMode: id === 'cinderellaCrystalWave' ? 'mg' : null,
       cwSrRatio: 50,
       cwSrCycle: 1.37,
@@ -9938,6 +10031,13 @@ document.addEventListener('DOMContentLoaded',()=>{soloRaidRenderSaved();soloRaid
       }
       result[key] = whole ? integer(source[key], min, max, fallback) : clamp(source[key], min, max, fallback);
     }
+    for (const key of ['equipmentAttack','equipmentHp','equipmentDefense']) {
+      if (source[key] == null || source[key] === '') { result[key] = null; continue; }
+      const value = Number(source[key]);
+      if (!Number.isFinite(value) || value < 0 || value > 1000000000) errors.push(`characters.${id}.${key}: 0 이상의 유효한 장비 스탯이어야 해요.`);
+      result[key] = Number.isFinite(value) ? Math.max(0, Math.min(1000000000, value)) : null;
+    }
+    result.equipmentObservedSlots = integer(source.equipmentObservedSlots, 0, 4, 0);
 
     if (source.skills != null && (!source.skills || typeof source.skills !== 'object' || Array.isArray(source.skills))) {
       errors.push(`characters.${id}.skills: 스킬 레벨 객체여야 해요.`);
@@ -10362,7 +10462,7 @@ document.addEventListener('DOMContentLoaded',()=>{soloRaidRenderSaved();soloRaid
     const entries = filteredRegistry();
     const ownedCount = getOwned().length;
     const count = document.getElementById('v26RosterCount');
-    if (count) count.textContent = `표시 ${entries.length}명 · 보유 ${ownedCount}/${registry().length}명`;
+    if (count) { const all = registry(), calcCount = all.filter((entry) => entry.calculationSupported !== false).length; count.textContent = `표시 ${entries.length}명 · 보유 ${ownedCount}/${all.length}명 · 계산 모델 ${calcCount}명`; }
     const toggleAll = document.getElementById('v26RosterSelectAll');
     if (toggleAll) {
       const selectedCount = entries.reduce((sum, entry) => sum + (documentValue.characters[entry.id]?.owned ? 1 : 0), 0);
@@ -10377,7 +10477,7 @@ document.addEventListener('DOMContentLoaded',()=>{soloRaidRenderSaved();soloRaid
       return `<article class="v26-roster-row${entry.id === selectedCharacterId ? ' is-selected' : ''}${character.owned ? ' is-owned' : ''}">
         <label class="v26-owned-check"><input type="checkbox" data-roster-action="owned" data-character-id="${html(entry.id)}"${character.owned ? ' checked' : ''}><span>보유</span></label>
         <button type="button" class="v26-roster-pick" data-roster-action="select" data-character-id="${html(entry.id)}">
-          <strong>${html(entry.name)}</strong><small>${html(entry.burst)} · ${html(entry.weapon)} · ${html(entry.element)} · ${html(entry.role)}</small>
+          <strong>${html(entry.name)}${entry.rosterOnly ? ' <em class="v3475-roster-only-badge">로스터 전용</em>' : ''}</strong><small>${html(entry.burst)} · ${html(entry.weapon)} · ${html(entry.element)} · ${html(entry.role)}</small>
           <span>${html(totalSummary(character))}</span>
         </button>
       </article>`;
@@ -10404,7 +10504,7 @@ document.addEventListener('DOMContentLoaded',()=>{soloRaidRenderSaved();soloRaid
       <div><span>선택 캐릭터</span><h2>${html(meta.name)}</h2><p>${html(meta.burst)} · ${html(meta.weapon)} · ${html(meta.element)} · ${html(meta.role)}</p></div>
       <label class="v26-editor-owned"><input type="checkbox" data-roster-field="owned"${character.owned ? ' checked' : ''}> 보유 중</label>
     </div>
-    <div class="v26-roster-warning"><b>정밀 탭과 공용 데이터</b><br>스킬 1·2·버스트 레벨, OL 옵션 합계, 큐브, 수동 보정은 정밀 탭과 양방향으로 공유해요. 레벨은 R3 Lv.1~1100 성장곡선으로 정밀·자동편성·시뮬레이션에 반영하며, 한계돌파·코어·스킬·OL·큐브·애장품도 기존 규칙대로 연산합니다. 호감도 절대 스탯만 저장값으로 유지해요.</div>
+    ${meta.rosterOnly ? '<div class="v26-roster-warning"><b>로스터 저장 전용 캐릭터</b><br>BlaBla에서 받은 보유·레벨·돌파/코어·스킬·OL·큐브·장비값은 중앙 로스터에 안전하게 저장합니다. 아직 전용 스킬/무기 계산 모델이 없으므로 정밀 계산과 5덱 자동편성에는 넣지 않아 가짜 점수를 방지합니다.</div>' : '<div class="v26-roster-warning"><b>정밀 탭과 공용 데이터</b><br>스킬 1·2·버스트 레벨, OL 옵션 합계, 큐브, 수동 보정은 정밀 탭과 양방향으로 공유해요. 레벨은 R3 Lv.1~1100 성장곡선으로 정밀·자동편성·시뮬레이션에 반영하며, 한계돌파·코어·스킬·OL·큐브·애장품도 기존 규칙대로 연산합니다. 호감도 절대 스탯만 저장값으로 유지해요.</div>'}
     <h3>성장·보정 데이터</h3>
     <div class="v26-editor-grid">
       ${numberInput('레벨', 'level', character.level, 1, 1100, 1, 'R3 연산 반영')}
@@ -10421,7 +10521,7 @@ document.addEventListener('DOMContentLoaded',()=>{soloRaidRenderSaved();soloRaid
     </div>
     <div class="v26-ol-head"><div><h3>오버로드 옵션 합계</h3><p>장비별 12라인 대신 정밀 탭과 같은 옵션 합계만 입력해요. 최대값은 단일 최고 옵션 × 4부위 기준이에요.</p></div><strong id="v26RosterOlSummary">${html(totalSummary(character))}</strong></div>
     <div class="v26-ol-compact">${Object.entries(OL_STATS).filter(([stat]) => stat !== 'none').map(([stat, definition]) => `<label class="v26-ol-total"><span><b>${html(definition.label)}</b><small>최대 ${definition.max}%</small></span><input type="number" data-roster-ol-total="${html(stat)}" min="0" max="${definition.max}" step="0.01" value="${html(totals[stat] || 0)}"><em>%</em></label>`).join('')}</div>
-    <div class="v26-editor-actions"><button type="button" class="primary" data-roster-action="apply" data-character-id="${html(meta.id)}">정밀 탭에 적용</button><span>${totals.activeOptions}/9개 옵션 입력 · 스킬·OL·큐브를 함께 적용하며 정밀 탭 수정도 이 로스터에 자동 저장돼요.</span></div>`;
+    <div class="v26-editor-actions">${meta.rosterOnly ? '<button type="button" class="primary" disabled title="전용 정밀 계산 모델 미등록">정밀 모델 미등록</button><span>성장 데이터는 저장되며 전용 계산 모델 추가 전까지 정밀·5덱 계산에서는 제외됩니다.</span>' : `<button type="button" class="primary" data-roster-action="apply" data-character-id="${html(meta.id)}">정밀 탭에 적용</button><span>${totals.activeOptions}/9개 옵션 입력 · 스킬·OL·큐브를 함께 적용하며 정밀 탭 수정도 이 로스터에 자동 저장돼요.</span>`}</div>`;
   }
 
   function renderAll() {
@@ -10760,6 +10860,10 @@ document.addEventListener('DOMContentLoaded',()=>{soloRaidRenderSaved();soloRaid
     import: importJson,
     export: exportJson,
     getOwned,
+    catalog: registry,
+    supplementalStorageKey: SUPPLEMENTAL_STORAGE_KEY,
+    registerSupplementalCatalog,
+    isCalculationSupported: (id) => registryMap().get(String(id || ''))?.calculationSupported !== false,
     cubeEntries,
     bulkApplyCube,
     getAutoCubePolicy: readAutoCubePolicy,
@@ -12827,8 +12931,12 @@ document.addEventListener('DOMContentLoaded',()=>{soloRaidRenderSaved();soloRaid
       coreLevel: finite(stored.coreLevel, 0),
       bond: finite(stored.bond, 30),
       skills: clone(stored.skills || { skill1: 10, skill2: 10, burst: 10 }),
-      favoriteItemPhase: finite(stored.favoriteItemPhase, 0)
-    } : { level: 400, limitBreak: 0, coreLevel: 0, bond: 30, skills: { skill1: 10, skill2: 10, burst: 10 }, favoriteItemPhase: 0 };
+      favoriteItemPhase: finite(stored.favoriteItemPhase, 0),
+      ...(stored.equipmentAttack != null && Number.isFinite(Number(stored.equipmentAttack)) ? { equipmentAttack: Math.max(0, Number(stored.equipmentAttack)) } : {}),
+      ...(stored.equipmentHp != null && Number.isFinite(Number(stored.equipmentHp)) ? { equipmentHp: Math.max(0, Number(stored.equipmentHp)) } : {}),
+      ...(stored.equipmentDefense != null && Number.isFinite(Number(stored.equipmentDefense)) ? { equipmentDefense: Math.max(0, Number(stored.equipmentDefense)) } : {}),
+      equipmentObservedSlots: finite(stored.equipmentObservedSlots, 0)
+    } : { level: 400, limitBreak: 0, coreLevel: 0, bond: 30, skills: { skill1: 10, skill2: 10, burst: 10 }, favoriteItemPhase: 0, equipmentObservedSlots: 0 };
     // 한돌과 코어 강화는 각각 전투 스탯 +2%로 직접 반영하고, 스킬 레벨은
     // 별도 계수 엔진이 캐릭터별 사격·패킷·버프·CDR에 적용합니다.
     const r3LevelStats = global.NIKKE_R3_DATA_API?.statAtLevel?.(row, growth.level) || null;
@@ -15044,6 +15152,10 @@ document.addEventListener('DOMContentLoaded',()=>{soloRaidRenderSaved();soloRaid
     const rLimit = read([source.limitBreak], 0);
     const rCore = read([source.coreLevel], 0);
     const rFavorite = read([source.favoriteItemPhase, source.favoriteItemStage], 0);
+    const rEquipmentAttack = read([source.equipmentAttack, source.gearAttack], 0);
+    const rEquipmentHp = read([source.equipmentHp, source.gearHp], 0);
+    const rEquipmentDefense = read([source.equipmentDefense, source.gearDefense], 0);
+    const rEquipmentObservedSlots = read([source.equipmentObservedSlots], 0);
     const s1 = clamp(rS1.value, 1, 10), s2 = clamp(rS2.value, 1, 10), burst = clamp(rBurst.value, 1, 10);
     const level = clamp(rLevel.value, 1, 1100), limitBreak = clamp(rLimit.value, 0, 3), coreLevel = clamp(rCore.value, 0, 7), favorite = clamp(rFavorite.value, 0, 3);
     const ol = source.overloadTotals || source.overload || {};
@@ -15078,7 +15190,12 @@ document.addEventListener('DOMContentLoaded',()=>{soloRaidRenderSaved();soloRaid
     return {
       skills: { skill1: s1, skill2: s2, burst }, level, limitBreak, coreLevel, favoriteItemPhase: favorite,
       overload: { atk: atkOl, element: elementOl, maxAmmo: maxAmmoOl, chargeSpeed: chargeSpeedOl, chargeDamage: chargeDamageOl, critRate: critRateOl, critDamage: critDamageOl, accuracy: accuracyOl },
-      measuredCoeff: measured, manualRatio: manual, cubeId:String(source.cubeId || nested.cubeId || precision.cubeId || 'none'), weaponMode, activeWeaponMode:weaponMode, selectedWeaponMode:weaponMode, cwWeaponMode:weaponMode, cwSrRatio, cwSrCycle, cwSwitches,
+      measuredCoeff: measured, manualRatio: manual, cubeId:String(source.cubeId || nested.cubeId || precision.cubeId || 'none'),
+      ...(rEquipmentAttack.provided ? { equipmentAttack: Math.max(0, rEquipmentAttack.value) } : {}),
+      ...(rEquipmentHp.provided ? { equipmentHp: Math.max(0, rEquipmentHp.value) } : {}),
+      ...(rEquipmentDefense.provided ? { equipmentDefense: Math.max(0, rEquipmentDefense.value) } : {}),
+      equipmentObservedSlots: rEquipmentObservedSlots.provided ? clamp(rEquipmentObservedSlots.value,0,4) : 0,
+      weaponMode, activeWeaponMode:weaponMode, selectedWeaponMode:weaponMode, cwWeaponMode:weaponMode, cwSrRatio, cwSrCycle, cwSwitches,
       inputStatus:{ complete:missingFields.filter((key)=>key!=='weaponMode').length===0, providedFields, missingFields, conservativeDefaultsUsed:missingFields.some((key)=>key!=='weaponMode') },
       dealerMultiplier: clamp(baseInvest * levelFactor * favoriteFactor * measured, 0.32, 2.35),
       supportMultiplier: clamp((0.52 + skillSupport * 0.39 + limitBreak * 0.012 + coreLevel * 0.007) * levelFactor * favoriteFactor * Math.sqrt(measured), 0.36, 1.75)
@@ -19022,7 +19139,7 @@ document.addEventListener('DOMContentLoaded',()=>{soloRaidRenderSaved();soloRaid
     const growth=profile&&profile.growth||{},ol=growth.overload||{},status=growth.inputStatus||{};
     return [profile&&profile.id,profile&&profile.weaponMode||profile&&profile.weapon,profile&&profile.cwSrRatio,profile&&profile.cwSrCycle,profile&&profile.cwSwitches,
       growth.level,growth.limitBreak,growth.coreLevel,growth.favoriteItemPhase,growth.skills&&growth.skills.skill1,growth.skills&&growth.skills.skill2,growth.skills&&growth.skills.burst,
-      ol.atk,ol.element,ol.maxAmmo,ol.chargeSpeed,ol.chargeDamage,ol.critRate,ol.critDamage,ol.accuracy,profile&&profile.cubeId||growth.cubeId||'none',growth.measuredCoeff,growth.manualRatio,status.complete,status.conservativeDefaultsUsed].join(':');
+      ol.atk,ol.element,ol.maxAmmo,ol.chargeSpeed,ol.chargeDamage,ol.critRate,ol.critDamage,ol.accuracy,profile&&profile.cubeId||growth.cubeId||'none',growth.equipmentAttack,growth.equipmentHp,growth.equipmentDefense,growth.equipmentObservedSlots,growth.measuredCoeff,growth.manualRatio,status.complete,status.conservativeDefaultsUsed].join(':');
   }
 
   function timelineIntervalAt(boss,time) {
@@ -19141,7 +19258,7 @@ document.addEventListener('DOMContentLoaded',()=>{soloRaidRenderSaved();soloRaid
       const packetUnits=rows.reduce((sum,row)=>sum+effectivePacketUnits(row),0),legacyUnits=Math.max(0,finite(out.skill,0))+Math.max(0,finite(out.burst,0))+Math.max(0,finite(out.trueUnits,0));
       const skillUnits=legacyUnits+packetUnits;
       const categoryShare=(predicate)=>skillUnits>0?rows.filter(predicate).reduce((sum,row)=>sum+effectivePacketUnits(row),0)/skillUnits:0;
-      const result={source:'precision-v21-character-kit',attackPct:finite(out.atk,0),damagePct:finite(out.dmg,0),sustainedDamagePct:finite(out.sustainedDmg,0),damageTakenPct:finite(out.damageTaken,0),critRatePct:finite(out.critRate,0)+finite(out.normalCritRate,0),critDamagePct:finite(out.critDmg,0),chargeDamagePct:finite(out.chargeDmg,0),coreDamagePct:finite(out.coreDmg,0),partsDamagePct:finite(out.partsDmg,0),pierceDamagePct:finite(out.pierceDmg,0),projectileDamagePct:finite(out.projectileDmg,0),distributedDamagePct:finite(out.distributedDmg,0),trueDamagePct:finite(out.trueDamageDmg,0),selfRateMultiplier,selfReloadMultiplier,selfAmmoMultiplier,skillUnits,skillCoefficientPerSecond:skillUnits/Math.max(1,duration)/100,sustainedSkillShare:categoryShare(row=>!!row?.sustained),pierceSkillShare:categoryShare(row=>!!row?.pierce),projectileSkillShare:categoryShare(row=>!!row?.projectileExplosion),distributedSkillShare:categoryShare(row=>!!row?.distributed),trueSkillShare:categoryShare(row=>row?.kind==='true'),shotScaledSkillShare:categoryShare(row=>!!row?.normalHitScaled||!!row?.normalLike||/shot|full-charge|pellet|normal-hit|normal-attacks/i.test(String(row?.timing||''))),ownUses,fullBurstEntries,partsDestroyedCount,sustainedUptime};PRECISION_KIT_CACHE.set(cacheKey,result);return result;
+      const result={source:'precision-v21-character-kit',attackPct:finite(out.atk,0),damagePct:finite(out.dmg,0),sustainedDamagePct:finite(out.sustainedDmg,0),damageTakenPct:finite(out.damageTaken,0),critRatePct:finite(out.critRate,0)+finite(out.normalCritRate,0),critDamagePct:finite(out.critDmg,0),chargeDamagePct:finite(out.chargeDmg,0),coreDamagePct:finite(out.coreDmg,0),partsDamagePct:finite(out.partsDmg,0),pierceDamagePct:finite(out.pierceDmg,0),projectileDamagePct:finite(out.projectileDmg,0),distributedDamagePct:finite(out.distributedDmg,0)+finite(ctx.cube?.distributed,0),trueDamagePct:finite(out.trueDamageDmg,0)+finite(ctx.cube?.trueDamage,0),selfRateMultiplier,selfReloadMultiplier,selfAmmoMultiplier,skillUnits,skillCoefficientPerSecond:skillUnits/Math.max(1,duration)/100,sustainedSkillShare:categoryShare(row=>!!row?.sustained),pierceSkillShare:categoryShare(row=>!!row?.pierce),projectileSkillShare:categoryShare(row=>!!row?.projectileExplosion),distributedSkillShare:categoryShare(row=>!!row?.distributed),trueSkillShare:categoryShare(row=>row?.kind==='true'),shotScaledSkillShare:categoryShare(row=>!!row?.normalHitScaled||!!row?.normalLike||/shot|full-charge|pellet|normal-hit|normal-attacks/i.test(String(row?.timing||''))),ownUses,fullBurstEntries,partsDestroyedCount,sustainedUptime};PRECISION_KIT_CACHE.set(cacheKey,result);return result;
     }catch(_){PRECISION_KIT_CACHE.set(cacheKey,null);return null;}
   }
 
@@ -29725,7 +29842,8 @@ let brandTicks=0;const brandTimer=root.setInterval(()=>{brand();if(++brandTicks>
 <script id="v34610-enikk-static-data">window.__NIKKE_V34610_ENIKK_TABLES__={"options":{"7000501":{"statType":"IncElementDmg","level":1,"maxLevel":15,"value":954,"valueType":"Percent","description":"Increased Elemental Advantage Dmg"},"7000502":{"statType":"IncElementDmg","level":2,"maxLevel":15,"value":1094,"valueType":"Percent","description":"Increased Elemental Advantage Dmg"},"7000503":{"statType":"IncElementDmg","level":3,"maxLevel":15,"value":1234,"valueType":"Percent","description":"Increased Elemental Advantage Dmg"},"7000504":{"statType":"IncElementDmg","level":4,"maxLevel":15,"value":1375,"valueType":"Percent","description":"Increased Elemental Advantage Dmg"},"7000505":{"statType":"IncElementDmg","level":5,"maxLevel":15,"value":1515,"valueType":"Percent","description":"Increased Elemental Advantage Dmg"},"7000506":{"statType":"IncElementDmg","level":6,"maxLevel":15,"value":1655,"valueType":"Percent","description":"Increased Elemental Advantage Dmg"},"7000507":{"statType":"IncElementDmg","level":7,"maxLevel":15,"value":1795,"valueType":"Percent","description":"Increased Elemental Advantage Dmg"},"7000508":{"statType":"IncElementDmg","level":8,"maxLevel":15,"value":1935,"valueType":"Percent","description":"Increased Elemental Advantage Dmg"},"7000509":{"statType":"IncElementDmg","level":9,"maxLevel":15,"value":2075,"valueType":"Percent","description":"Increased Elemental Advantage Dmg"},"7000510":{"statType":"IncElementDmg","level":10,"maxLevel":15,"value":2215,"valueType":"Percent","description":"Increased Elemental Advantage Dmg"},"7000511":{"statType":"IncElementDmg","level":11,"maxLevel":15,"value":2356,"valueType":"Percent","description":"Increased Elemental Advantage Dmg"},"7000512":{"statType":"IncElementDmg","level":12,"maxLevel":15,"value":2496,"valueType":"Percent","description":"Increased Elemental Advantage Dmg"},"7000513":{"statType":"IncElementDmg","level":13,"maxLevel":15,"value":2636,"valueType":"Percent","description":"Increased Elemental Advantage Dmg"},"7000514":{"statType":"IncElementDmg","level":14,"maxLevel":15,"value":2776,"valueType":"Percent","description":"Increased Elemental Advantage Dmg"},"7000515":{"statType":"IncElementDmg","level":15,"maxLevel":15,"value":2916,"valueType":"Percent","description":"Increased Elemental Advantage Dmg"},"7000601":{"statType":"StatAccuracyCircle","level":1,"maxLevel":15,"value":-477,"valueType":"Percent","description":"Increased Hit Rate"},"7000602":{"statType":"StatAccuracyCircle","level":2,"maxLevel":15,"value":-547,"valueType":"Percent","description":"Increased Hit Rate"},"7000603":{"statType":"StatAccuracyCircle","level":3,"maxLevel":15,"value":-618,"valueType":"Percent","description":"Increased Hit Rate"},"7000604":{"statType":"StatAccuracyCircle","level":4,"maxLevel":15,"value":-688,"valueType":"Percent","description":"Increased Hit Rate"},"7000605":{"statType":"StatAccuracyCircle","level":5,"maxLevel":15,"value":-759,"valueType":"Percent","description":"Increased Hit Rate"},"7000606":{"statType":"StatAccuracyCircle","level":6,"maxLevel":15,"value":-829,"valueType":"Percent","description":"Increased Hit Rate"},"7000607":{"statType":"StatAccuracyCircle","level":7,"maxLevel":15,"value":-900,"valueType":"Percent","description":"Increased Hit Rate"},"7000608":{"statType":"StatAccuracyCircle","level":8,"maxLevel":15,"value":-970,"valueType":"Percent","description":"Increased Hit Rate"},"7000609":{"statType":"StatAccuracyCircle","level":9,"maxLevel":15,"value":-1040,"valueType":"Percent","description":"Increased Hit Rate"},"7000610":{"statType":"StatAccuracyCircle","level":10,"maxLevel":15,"value":-1111,"valueType":"Percent","description":"Increased Hit Rate"},"7000611":{"statType":"StatAccuracyCircle","level":11,"maxLevel":15,"value":-1181,"valueType":"Percent","description":"Increased Hit Rate"},"7000612":{"statType":"StatAccuracyCircle","level":12,"maxLevel":15,"value":-1252,"valueType":"Percent","description":"Increased Hit Rate"},"7000613":{"statType":"StatAccuracyCircle","level":13,"maxLevel":15,"value":-1322,"valueType":"Percent","description":"Increased Hit Rate"},"7000614":{"statType":"StatAccuracyCircle","level":14,"maxLevel":15,"value":-1393,"valueType":"Percent","description":"Increased Hit Rate"},"7000615":{"statType":"StatAccuracyCircle","level":15,"maxLevel":15,"value":-1463,"valueType":"Percent","description":"Increased Hit Rate"},"7000701":{"statType":"StatAmmoLoad","level":1,"maxLevel":15,"value":2784,"valueType":"Percent","description":"Increased Max Ammunition Capacity"},"7000702":{"statType":"StatAmmoLoad","level":2,"maxLevel":15,"value":3195,"valueType":"Percent","description":"Increased Max Ammunition Capacity"},"7000703":{"statType":"StatAmmoLoad","level":3,"maxLevel":15,"value":3606,"valueType":"Percent","description":"Increased Max Ammunition Capacity"},"7000704":{"statType":"StatAmmoLoad","level":4,"maxLevel":15,"value":4017,"valueType":"Percent","description":"Increased Max Ammunition Capacity"},"7000705":{"statType":"StatAmmoLoad","level":5,"maxLevel":15,"value":4428,"valueType":"Percent","description":"Increased Max Ammunition Capacity"},"7000706":{"statType":"StatAmmoLoad","level":6,"maxLevel":15,"value":4839,"valueType":"Percent","description":"Increased Max Ammunition Capacity"},"7000707":{"statType":"StatAmmoLoad","level":7,"maxLevel":15,"value":5250,"valueType":"Percent","description":"Increased Max Ammunition Capacity"},"7000708":{"statType":"StatAmmoLoad","level":8,"maxLevel":15,"value":5660,"valueType":"Percent","description":"Increased Max Ammunition Capacity"},"7000709":{"statType":"StatAmmoLoad","level":9,"maxLevel":15,"value":6071,"valueType":"Percent","description":"Increased Max Ammunition Capacity"},"7000710":{"statType":"StatAmmoLoad","level":10,"maxLevel":15,"value":6482,"valueType":"Percent","description":"Increased Max Ammunition Capacity"},"7000711":{"statType":"StatAmmoLoad","level":11,"maxLevel":15,"value":6893,"valueType":"Percent","description":"Increased Max Ammunition Capacity"},"7000712":{"statType":"StatAmmoLoad","level":12,"maxLevel":15,"value":7304,"valueType":"Percent","description":"Increased Max Ammunition Capacity"},"7000713":{"statType":"StatAmmoLoad","level":13,"maxLevel":15,"value":7715,"valueType":"Percent","description":"Increased Max Ammunition Capacity"},"7000714":{"statType":"StatAmmoLoad","level":14,"maxLevel":15,"value":8126,"valueType":"Percent","description":"Increased Max Ammunition Capacity"},"7000715":{"statType":"StatAmmoLoad","level":15,"maxLevel":15,"value":8537,"valueType":"Percent","description":"Increased Max Ammunition Capacity"},"7000801":{"statType":"StatAtk","level":1,"maxLevel":15,"value":477,"valueType":"Percent","description":"Increased ATK"},"7000802":{"statType":"StatAtk","level":2,"maxLevel":15,"value":547,"valueType":"Percent","description":"Increased ATK"},"7000803":{"statType":"StatAtk","level":3,"maxLevel":15,"value":618,"valueType":"Percent","description":"Increased ATK"},"7000804":{"statType":"StatAtk","level":4,"maxLevel":15,"value":688,"valueType":"Percent","description":"Increased ATK"},"7000805":{"statType":"StatAtk","level":5,"maxLevel":15,"value":759,"valueType":"Percent","description":"Increased ATK"},"7000806":{"statType":"StatAtk","level":6,"maxLevel":15,"value":829,"valueType":"Percent","description":"Increased ATK"},"7000807":{"statType":"StatAtk","level":7,"maxLevel":15,"value":900,"valueType":"Percent","description":"Increased ATK"},"7000808":{"statType":"StatAtk","level":8,"maxLevel":15,"value":970,"valueType":"Percent","description":"Increased ATK"},"7000809":{"statType":"StatAtk","level":9,"maxLevel":15,"value":1040,"valueType":"Percent","description":"Increased ATK"},"7000810":{"statType":"StatAtk","level":10,"maxLevel":15,"value":1111,"valueType":"Percent","description":"Increased ATK"},"7000811":{"statType":"StatAtk","level":11,"maxLevel":15,"value":1181,"valueType":"Percent","description":"Increased ATK"},"7000812":{"statType":"StatAtk","level":12,"maxLevel":15,"value":1252,"valueType":"Percent","description":"Increased ATK"},"7000813":{"statType":"StatAtk","level":13,"maxLevel":15,"value":1322,"valueType":"Percent","description":"Increased ATK"},"7000814":{"statType":"StatAtk","level":14,"maxLevel":15,"value":1393,"valueType":"Percent","description":"Increased ATK"},"7000815":{"statType":"StatAtk","level":15,"maxLevel":15,"value":1463,"valueType":"Percent","description":"Increased ATK"},"7000901":{"statType":"StatChargeDamage","level":1,"maxLevel":15,"value":477,"valueType":"Integer","description":"Increased Charge Damage"},"7000902":{"statType":"StatChargeDamage","level":2,"maxLevel":15,"value":547,"valueType":"Integer","description":"Increased Charge Damage"},"7000903":{"statType":"StatChargeDamage","level":3,"maxLevel":15,"value":618,"valueType":"Integer","description":"Increased Charge Damage"},"7000904":{"statType":"StatChargeDamage","level":4,"maxLevel":15,"value":688,"valueType":"Integer","description":"Increased Charge Damage"},"7000905":{"statType":"StatChargeDamage","level":5,"maxLevel":15,"value":759,"valueType":"Integer","description":"Increased Charge Damage"},"7000906":{"statType":"StatChargeDamage","level":6,"maxLevel":15,"value":829,"valueType":"Integer","description":"Increased Charge Damage"},"7000907":{"statType":"StatChargeDamage","level":7,"maxLevel":15,"value":900,"valueType":"Integer","description":"Increased Charge Damage"},"7000908":{"statType":"StatChargeDamage","level":8,"maxLevel":15,"value":970,"valueType":"Integer","description":"Increased Charge Damage"},"7000909":{"statType":"StatChargeDamage","level":9,"maxLevel":15,"value":1040,"valueType":"Integer","description":"Increased Charge Damage"},"7000910":{"statType":"StatChargeDamage","level":10,"maxLevel":15,"value":1111,"valueType":"Integer","description":"Increased Charge Damage"},"7000911":{"statType":"StatChargeDamage","level":11,"maxLevel":15,"value":1181,"valueType":"Integer","description":"Increased Charge Damage"},"7000912":{"statType":"StatChargeDamage","level":12,"maxLevel":15,"value":1252,"valueType":"Integer","description":"Increased Charge Damage"},"7000913":{"statType":"StatChargeDamage","level":13,"maxLevel":15,"value":1322,"valueType":"Integer","description":"Increased Charge Damage"},"7000914":{"statType":"StatChargeDamage","level":14,"maxLevel":15,"value":1393,"valueType":"Integer","description":"Increased Charge Damage"},"7000915":{"statType":"StatChargeDamage","level":15,"maxLevel":15,"value":1463,"valueType":"Integer","description":"Increased Charge Damage"},"7001001":{"statType":"StatChargeTime","level":1,"maxLevel":15,"value":-198,"valueType":"Percent","description":"Increased Charge Speed"},"7001002":{"statType":"StatChargeTime","level":2,"maxLevel":15,"value":-228,"valueType":"Percent","description":"Increased Charge Speed"},"7001003":{"statType":"StatChargeTime","level":3,"maxLevel":15,"value":-257,"valueType":"Percent","description":"Increased Charge Speed"},"7001004":{"statType":"StatChargeTime","level":4,"maxLevel":15,"value":-286,"valueType":"Percent","description":"Increased Charge Speed"},"7001005":{"statType":"StatChargeTime","level":5,"maxLevel":15,"value":-316,"valueType":"Percent","description":"Increased Charge Speed"},"7001006":{"statType":"StatChargeTime","level":6,"maxLevel":15,"value":-345,"valueType":"Percent","description":"Increased Charge Speed"},"7001007":{"statType":"StatChargeTime","level":7,"maxLevel":15,"value":-375,"valueType":"Percent","description":"Increased Charge Speed"},"7001008":{"statType":"StatChargeTime","level":8,"maxLevel":15,"value":-404,"valueType":"Percent","description":"Increased Charge Speed"},"7001009":{"statType":"StatChargeTime","level":9,"maxLevel":15,"value":-433,"valueType":"Percent","description":"Increased Charge Speed"},"7001010":{"statType":"StatChargeTime","level":10,"maxLevel":15,"value":-463,"valueType":"Percent","description":"Increased Charge Speed"},"7001011":{"statType":"StatChargeTime","level":11,"maxLevel":15,"value":-492,"valueType":"Percent","description":"Increased Charge Speed"},"7001012":{"statType":"StatChargeTime","level":12,"maxLevel":15,"value":-521,"valueType":"Percent","description":"Increased Charge Speed"},"7001013":{"statType":"StatChargeTime","level":13,"maxLevel":15,"value":-551,"valueType":"Percent","description":"Increased Charge Speed"},"7001014":{"statType":"StatChargeTime","level":14,"maxLevel":15,"value":-580,"valueType":"Percent","description":"Increased Charge Speed"},"7001015":{"statType":"StatChargeTime","level":15,"maxLevel":15,"value":-609,"valueType":"Percent","description":"Increased Charge Speed"},"7001101":{"statType":"StatCritical","level":1,"maxLevel":15,"value":230,"valueType":"Integer","description":"Increased Critical Rate"},"7001102":{"statType":"StatCritical","level":2,"maxLevel":15,"value":264,"valueType":"Integer","description":"Increased Critical Rate"},"7001103":{"statType":"StatCritical","level":3,"maxLevel":15,"value":298,"valueType":"Integer","description":"Increased Critical Rate"},"7001104":{"statType":"StatCritical","level":4,"maxLevel":15,"value":332,"valueType":"Integer","description":"Increased Critical Rate"},"7001105":{"statType":"StatCritical","level":5,"maxLevel":15,"value":366,"valueType":"Integer","description":"Increased Critical Rate"},"7001106":{"statType":"StatCritical","level":6,"maxLevel":15,"value":400,"valueType":"Integer","description":"Increased Critical Rate"},"7001107":{"statType":"StatCritical","level":7,"maxLevel":15,"value":435,"valueType":"Integer","description":"Increased Critical Rate"},"7001108":{"statType":"StatCritical","level":8,"maxLevel":15,"value":469,"valueType":"Integer","description":"Increased Critical Rate"},"7001109":{"statType":"StatCritical","level":9,"maxLevel":15,"value":503,"valueType":"Integer","description":"Increased Critical Rate"},"7001110":{"statType":"StatCritical","level":10,"maxLevel":15,"value":537,"valueType":"Integer","description":"Increased Critical Rate"},"7001111":{"statType":"StatCritical","level":11,"maxLevel":15,"value":571,"valueType":"Integer","description":"Increased Critical Rate"},"7001112":{"statType":"StatCritical","level":12,"maxLevel":15,"value":605,"valueType":"Integer","description":"Increased Critical Rate"},"7001113":{"statType":"StatCritical","level":13,"maxLevel":15,"value":639,"valueType":"Integer","description":"Increased Critical Rate"},"7001114":{"statType":"StatCritical","level":14,"maxLevel":15,"value":673,"valueType":"Integer","description":"Increased Critical Rate"},"7001115":{"statType":"StatCritical","level":15,"maxLevel":15,"value":707,"valueType":"Integer","description":"Increased Critical Rate"},"7001201":{"statType":"StatCriticalDamage","level":1,"maxLevel":15,"value":664,"valueType":"Integer","description":"Increased Critical Damage"},"7001202":{"statType":"StatCriticalDamage","level":2,"maxLevel":15,"value":762,"valueType":"Integer","description":"Increased Critical Damage"},"7001203":{"statType":"StatCriticalDamage","level":3,"maxLevel":15,"value":860,"valueType":"Integer","description":"Increased Critical Damage"},"7001204":{"statType":"StatCriticalDamage","level":4,"maxLevel":15,"value":958,"valueType":"Integer","description":"Increased Critical Damage"},"7001205":{"statType":"StatCriticalDamage","level":5,"maxLevel":15,"value":1056,"valueType":"Integer","description":"Increased Critical Damage"},"7001206":{"statType":"StatCriticalDamage","level":6,"maxLevel":15,"value":1154,"valueType":"Integer","description":"Increased Critical Damage"},"7001207":{"statType":"StatCriticalDamage","level":7,"maxLevel":15,"value":1252,"valueType":"Integer","description":"Increased Critical Damage"},"7001208":{"statType":"StatCriticalDamage","level":8,"maxLevel":15,"value":1350,"valueType":"Integer","description":"Increased Critical Damage"},"7001209":{"statType":"StatCriticalDamage","level":9,"maxLevel":15,"value":1448,"valueType":"Integer","description":"Increased Critical Damage"},"7001210":{"statType":"StatCriticalDamage","level":10,"maxLevel":15,"value":1546,"valueType":"Integer","description":"Increased Critical Damage"},"7001211":{"statType":"StatCriticalDamage","level":11,"maxLevel":15,"value":1644,"valueType":"Integer","description":"Increased Critical Damage"},"7001212":{"statType":"StatCriticalDamage","level":12,"maxLevel":15,"value":1742,"valueType":"Integer","description":"Increased Critical Damage"},"7001213":{"statType":"StatCriticalDamage","level":13,"maxLevel":15,"value":1840,"valueType":"Integer","description":"Increased Critical Damage"},"7001214":{"statType":"StatCriticalDamage","level":14,"maxLevel":15,"value":1938,"valueType":"Integer","description":"Increased Critical Damage"},"7001215":{"statType":"StatCriticalDamage","level":15,"maxLevel":15,"value":2036,"valueType":"Integer","description":"Increased Critical Damage"},"7001301":{"statType":"StatDef","level":1,"maxLevel":15,"value":477,"valueType":"Percent","description":"Increased DEF"},"7001302":{"statType":"StatDef","level":2,"maxLevel":15,"value":547,"valueType":"Percent","description":"Increased DEF"},"7001303":{"statType":"StatDef","level":3,"maxLevel":15,"value":618,"valueType":"Percent","description":"Increased DEF"},"7001304":{"statType":"StatDef","level":4,"maxLevel":15,"value":688,"valueType":"Percent","description":"Increased DEF"},"7001305":{"statType":"StatDef","level":5,"maxLevel":15,"value":759,"valueType":"Percent","description":"Increased DEF"},"7001306":{"statType":"StatDef","level":6,"maxLevel":15,"value":829,"valueType":"Percent","description":"Increased DEF"},"7001307":{"statType":"StatDef","level":7,"maxLevel":15,"value":900,"valueType":"Percent","description":"Increased DEF"},"7001308":{"statType":"StatDef","level":8,"maxLevel":15,"value":970,"valueType":"Percent","description":"Increased DEF"},"7001309":{"statType":"StatDef","level":9,"maxLevel":15,"value":1040,"valueType":"Percent","description":"Increased DEF"},"7001310":{"statType":"StatDef","level":10,"maxLevel":15,"value":1111,"valueType":"Percent","description":"Increased DEF"},"7001311":{"statType":"StatDef","level":11,"maxLevel":15,"value":1181,"valueType":"Percent","description":"Increased DEF"},"7001312":{"statType":"StatDef","level":12,"maxLevel":15,"value":1252,"valueType":"Percent","description":"Increased DEF"},"7001313":{"statType":"StatDef","level":13,"maxLevel":15,"value":1322,"valueType":"Percent","description":"Increased DEF"},"7001314":{"statType":"StatDef","level":14,"maxLevel":15,"value":1393,"valueType":"Percent","description":"Increased DEF"},"7001315":{"statType":"StatDef","level":15,"maxLevel":15,"value":1463,"valueType":"Percent","description":"Increased DEF"},"9310101":{"statType":"StatAtk","level":1,"maxLevel":5,"value":1000,"valueType":"Percent","description":"Increased ATK"},"9310102":{"statType":"StatAtk","level":2,"maxLevel":5,"value":1200,"valueType":"Percent","description":"Increased ATK"},"9310103":{"statType":"StatAtk","level":3,"maxLevel":5,"value":1400,"valueType":"Percent","description":"Increased ATK"},"9310104":{"statType":"StatAtk","level":4,"maxLevel":5,"value":1600,"valueType":"Percent","description":"Increased ATK"},"9310105":{"statType":"StatAtk","level":5,"maxLevel":5,"value":1800,"valueType":"Percent","description":"Increased ATK"},"9310201":{"statType":"StatDef","level":1,"maxLevel":5,"value":1000,"valueType":"Percent","description":"Increased Recovery"},"9310202":{"statType":"StatDef","level":2,"maxLevel":5,"value":1200,"valueType":"Percent","description":"Increased Recovery"},"9310203":{"statType":"StatDef","level":3,"maxLevel":5,"value":1400,"valueType":"Percent","description":"Increased Recovery"},"9310204":{"statType":"StatDef","level":4,"maxLevel":5,"value":1600,"valueType":"Percent","description":"Increased Recovery"},"9310205":{"statType":"StatDef","level":5,"maxLevel":5,"value":1800,"valueType":"Percent","description":"Increased Recovery"},"9310301":{"statType":"HealVariation","level":1,"maxLevel":5,"value":1000,"valueType":"Percent","description":"Increased Hit Rate"},"9310302":{"statType":"HealVariation","level":2,"maxLevel":5,"value":1200,"valueType":"Percent","description":"Increased Hit Rate"},"9310303":{"statType":"HealVariation","level":3,"maxLevel":5,"value":1400,"valueType":"Percent","description":"Increased Hit Rate"},"9310304":{"statType":"HealVariation","level":4,"maxLevel":5,"value":1600,"valueType":"Percent","description":"Increased Hit Rate"},"9310305":{"statType":"HealVariation","level":5,"maxLevel":5,"value":1800,"valueType":"Percent","description":"Increased Hit Rate"}},"cubes":{"1000301":{"name":"Assault Cube","rare":"SSR","icon":"ie_10001"},"1000302":{"name":"Onslaught Cube","rare":"SSR","icon":"ie_10002"},"1000303":{"name":"Resilience Cube","rare":"SSR","icon":"ie_10003"},"1000304":{"name":"Bastion Cube","rare":"SSR","icon":"ie_10004"},"1000305":{"name":"Adjutant Cube","rare":"SSR","icon":"ie_10005"},"1000306":{"name":"Wingman Cube","rare":"SSR","icon":"ie_10006"},"1000307":{"name":"Quantum Cube","rare":"SSR","icon":"ie_11001"},"1000308":{"name":"Vigor Cube","rare":"SSR","icon":"ie_13001"},"1000309":{"name":"Endurance Cube","rare":"SSR","icon":"ie_12001"},"1000310":{"name":"Healing Cube","rare":"SSR","icon":"ie_13002"},"1000311":{"name":"Tempering Cube","rare":"SSR","icon":"ie_12002"},"1000312":{"name":"Assist Cube","rare":"SSR","icon":"ie_10009"},"1000313":{"name":"Destruction Cube","rare":"SSR","icon":"ie_10007"},"1000314":{"name":"Piercing Cube","rare":"SSR","icon":"ie_10008"},"1000315":{"name":"Rupture Cube","rare":"SSR","icon":"ie_10010"},"1000316":{"name":"Stealth Cube","rare":"SSR","icon":"ie_10012"},"1000317":{"name":"Diffusion Cube","rare":"SSR","icon":"ie_10013"}},"favorites":{"100101":{"name":"Cooking Commander Doll","rare":"R","type":"Collection","weaponType":"AR","nameCode":0,"icon":"si_favoriteitem_ar_00"},"100102":{"name":"Cooking Commander Doll Ltd.","rare":"SR","type":"Collection","weaponType":"AR","nameCode":0,"icon":"si_favoriteitem_ar_00"},"100201":{"name":"Shopping Commander Doll","rare":"R","type":"Collection","weaponType":"MG","nameCode":0,"icon":"si_favoriteitem_mg_00"},"100202":{"name":"Shopping Commander Doll Ltd.","rare":"SR","type":"Collection","weaponType":"MG","nameCode":0,"icon":"si_favoriteitem_mg_00"},"100301":{"name":"Exercising Commander Doll","rare":"R","type":"Collection","weaponType":"RL","nameCode":0,"icon":"si_favoriteitem_rl_00"},"100302":{"name":"Exercising Commander Doll Ltd.","rare":"SR","type":"Collection","weaponType":"RL","nameCode":0,"icon":"si_favoriteitem_rl_00"},"100401":{"name":"Battling Commander Doll","rare":"R","type":"Collection","weaponType":"SG","nameCode":0,"icon":"si_favoriteitem_sg_00"},"100402":{"name":"Battling Commander Doll Ltd.","rare":"SR","type":"Collection","weaponType":"SG","nameCode":0,"icon":"si_favoriteitem_sg_00"},"100501":{"name":"Coffee Commander Doll","rare":"R","type":"Collection","weaponType":"SMG","nameCode":0,"icon":"si_favoriteitem_smg_00"},"100502":{"name":"Coffee Commander Doll Ltd.","rare":"SR","type":"Collection","weaponType":"SMG","nameCode":0,"icon":"si_favoriteitem_smg_00"},"100601":{"name":"Napping Commander Doll","rare":"R","type":"Collection","weaponType":"SR","nameCode":0,"icon":"si_favoriteitem_sr_00"},"100602":{"name":"Napping Commander Doll Ltd.","rare":"SR","type":"Collection","weaponType":"SR","nameCode":0,"icon":"si_favoriteitem_sr_00"},"200101":{"name":"Toy Train Set","rare":"SSR","type":"Favorite","weaponType":"MG","nameCode":5020,"icon":"si_favoriteitem_c072_00"},"200201":{"name":"Gamekid Evolution","rare":"SSR","type":"Favorite","weaponType":"SR","nameCode":5003,"icon":"si_favoriteitem_c210_00"},"200301":{"name":"Beloved Pillow","rare":"SSR","type":"Favorite","weaponType":"SR","nameCode":5010,"icon":"si_favoriteitem_c142_00"},"200401":{"name":"Hero Trilogy BD","rare":"SSR","type":"Favorite","weaponType":"RL","nameCode":1010,"icon":"si_favoriteitem_c100_00"},"200501":{"name":"First Phone and Phone Book","rare":"SSR","type":"Favorite","weaponType":"SG","nameCode":1022,"icon":"si_favoriteitem_c112_00"},"200601":{"name":"Sheet of Paper","rare":"SSR","type":"Favorite","weaponType":"SMG","nameCode":5017,"icon":"si_favoriteitem_c032_00"},"200701":{"name":"Antique Compass","rare":"SSR","type":"Favorite","weaponType":"SR","nameCode":5066,"icon":"si_favoriteitem_c352_00"},"200801":{"name":"Villain Figurine","rare":"SSR","type":"Favorite","weaponType":"SG","nameCode":5024,"icon":"si_favoriteitem_c101_00"},"200901":{"name":"Lover Mug","rare":"SSR","type":"Favorite","weaponType":"SR","nameCode":5028,"icon":"si_favoriteitem_c141_00"},"201001":{"name":"Police Notebook","rare":"SSR","type":"Favorite","weaponType":"SG","nameCode":5016,"icon":"si_favoriteitem_c030_00"},"201101":{"name":"Fire Starter","rare":"SSR","type":"Favorite","weaponType":"AR","nameCode":5081,"icon":"si_favoriteitem_c192_00"},"201201":{"name":"Music Notebook","rare":"SSR","type":"Favorite","weaponType":"AR","nameCode":5014,"icon":"si_favoriteitem_c150_00"},"201301":{"name":"Practice Shoes","rare":"SSR","type":"Favorite","weaponType":"RL","nameCode":5111,"icon":"si_favoriteitem_c550_00"},"201401":{"name":"Central Government Special Medal","rare":"SSR","type":"Favorite","weaponType":"AR","nameCode":5007,"icon":"si_favoriteitem_c170_00"},"201501":{"name":"Four-Leaf Clover Bookmark","rare":"SSR","type":"Favorite","weaponType":"SG","nameCode":5088,"icon":"si_favoriteitem_c390_00"},"201601":{"name":"Metal Pendant","rare":"SSR","type":"Favorite","weaponType":"RL","nameCode":5021,"icon":"si_favoriteitem_c080_00"},"201701":{"name":"Peony Hairpin","rare":"SSR","type":"Favorite","weaponType":"AR","nameCode":1021,"icon":"si_favoriteitem_c281_00"},"201801":{"name":"Precious Masks","rare":"SSR","type":"Favorite","weaponType":"AR","nameCode":5122,"icon":"si_favoriteitem_c580_00"},"201901":{"name":"Planter We Made Together","rare":"SSR","type":"Favorite","weaponType":"MG","nameCode":5126,"icon":"si_favoriteitem_c411_00"},"202001":{"name":"Signet Ring","rare":"SSR","type":"Favorite","weaponType":"MG","nameCode":5045,"icon":"si_favoriteitem_c280_00"},"202101":{"name":"Commemorative Keychain","rare":"SSR","type":"Favorite","weaponType":"SG","nameCode":5002,"icon":"si_favoriteitem_c140_00"}}};</script>
 <script id="v34610-external-integration">
 (function(root){'use strict';
-const VERSION='34.7.1',PAGE='v34610External',META_KEY='nikke_v34610_external_roster_meta_v1';
+const VERSION='34.7.5',PAGE='v34610External',META_BASE_KEY='nikke_v34610_external_roster_meta_v1';
+const metaStorageKey=()=>root.NIKKE_V26_ACCOUNT_API?.scopeKey?.(META_BASE_KEY)||META_BASE_KEY;
 const $=id=>root.document.getElementById(id),arr=v=>Array.isArray(v)?v:[],num=(v,d=0)=>Number.isFinite(Number(v))?Number(v):d,clamp=(v,a,b)=>Math.min(b,Math.max(a,num(v,a)));
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const canon=v=>{try{return root.NIKKEKitAwareOptimizer?.canonical?.(v)||String(v||'').toLowerCase().replace(/[^a-z0-9가-힣]+/g,'');}catch(_){return String(v||'').toLowerCase().replace(/[^a-z0-9가-힣]+/g,'');}};
@@ -29777,6 +29895,7 @@ function aliasIndex(){
   const map=new Map(),put=(name,id)=>{const key=canon(name);if(key&&!map.has(key))map.set(key,String(id));};
   for(const [name,id] of Object.entries(explicit))put(name,id);
   const catalog=arr(root.NIKKE_V26_7_CHARACTER_CATALOG);for(const row of catalog){if(!row?.id)continue;put(row.id,row.id);put(row.name,row.id);arr(row.aliases).forEach(a=>put(a,row.id));const sp=row.skillProfile||{};put(sp.name,row.id);arr(sp.aliases).forEach(a=>put(a,row.id));}
+  try{for(const row of arr(root.NIKKE_V26_ROSTER_API?.catalog?.())){if(!row?.id)continue;put(row.id,row.id);put(row.name,row.id);arr(row.aliases).forEach(a=>put(a,row.id));if(row.nameCode)put(row.nameCode,row.id);if(row.resourceId)put(row.resourceId,row.id);}}catch(_){}
   try{for(const p of arr(root.NIKKEKitAwareOptimizer?.collectProfiles?.({},root)?.profiles)){put(p.id,p.id);put(p.name,p.id);arr(p.aliases).forEach(a=>put(a,p.id));}}catch(_){}
   return map;
 }
@@ -29788,27 +29907,47 @@ function cubeId(tid){const wanted=CUBES[num(tid)]||'none',entries=arr(root.NIKKE
 function publicGear(row){return row?.gear||{};}
 function olTotals(row,options){const out=Object.fromEntries(Object.keys(OL_CAP).map(k=>[k,0]));for(const slot of ['head','torso','arm','leg'])for(const oid of arr(publicGear(row)?.[slot]?.optionIds)){const opt=options?.[oid];if(!opt)continue;const key=OL_TYPE[opt.statType];if(key)out[key]+=Math.abs(num(opt.value))/100;}for(const key of Object.keys(out))out[key]=Number(clamp(out[key],0,OL_CAP[key]).toFixed(4));return out;}
 function gearMeta(row){const out={};for(const slot of ['head','torso','arm','leg']){const g=publicGear(row)?.[slot]||{};out[slot]={tid:num(g.tid),tier:num(g.tier),level:num(g.lv),corporationType:num(g.corporationType),optionIds:arr(g.optionIds).map(Number)};}return out;}
+function observedGearTotals(row,master){
+  const api=root.NIKKE_R3_DATA_API,role=master?.class||master?.role||'',map={head:'head',torso:'body',arm:'arm',leg:'leg'};let atk=0,hp=0,defense=0,observedSlots=0,unknownSlots=0,t9Slots=0;
+  for(const [slot,part] of Object.entries(map)){const g=publicGear(row)?.[slot]||{},tier=num(g.tier),level=num(g.lv);if(tier<=0)continue;const stat=api?.gearStats?.(role,tier,part,level,false);if(!stat){unknownSlots++;continue;}observedSlots++;if(tier===9)t9Slots++;atk+=num(stat.atk);hp+=num(stat.hp);defense+=num(stat.def);}
+  return{equipmentAttack:atk,equipmentHp:hp,equipmentDefense:defense,equipmentObservedSlots:observedSlots,equipmentUnknownSlots:unknownSlots,t9Slots,manufacturerBonusMode:t9Slots?'base-stat-no-manufacturer-bonus':'not-applicable'};
+}
+function supplementalId(nameCode){const code=String(nameCode||'').replace(/\D/g,'');return code?`enikk_${code}`:'';}
+function supplementalBurst(value){const n=num(value);return n>=1&&n<=3?`버스트 ${['','I','II','III'][n]}`:String(value||'-');}
+function seedRosterSupplementals(rows,byCode){
+  const api=root.NIKKE_V26_ROSTER_API;if(!api?.registerSupplementalCatalog)return{ok:false,added:0,changed:0,total:0};
+  const additions=[];
+  for(const row of arr(rows)){
+    const master=byCode.get(String(row?.nameCode)),display=String(master?.name_localkey||'').trim(),code=String(row?.nameCode||master?.name_code||'').trim();
+    if(!master||!display||!code||idForName(display))continue;
+    const id=supplementalId(code);if(!id)continue;
+    additions.push({id,name:display,aliases:[String(master.resource_id||'').trim(),code].filter(Boolean),weapon:'-',element:String(master.element_id||'-'),burst:supplementalBurst(master.use_burst_skill),role:String(master.class||'-'),rarity:String(master.original_rare||''),nameCode:code,resourceId:String(master.resource_id||''),source:'ENIKK/BlaBla master',calculationSupported:false});
+  }
+  return api.registerSupplementalCatalog(additions);
+}
+
 async function importExternalRoster(roster,source,optionOverride=null){
   const api=root.NIKKE_V26_ROSTER_API;if(!api?.import)throw new Error('내 로스터 저장 API를 찾지 못했습니다.');
-  const [{byCode},tables]=await Promise.all([enikkLookups(),staticTables()]),options=optionOverride||tables.options||{},characters={},external={},unmatched=[],cubeMode=$('v34610CubeImportMode')?.value||'import',current=api.load?.()?.characters||{};
+  const [{byCode},tables]=await Promise.all([enikkLookups(),staticTables()]),options=optionOverride||tables.options||{},characters={},external={},unmatched=[],cubeMode=$('v34610CubeImportMode')?.value||'import';
+  const supplemental=seedRosterSupplementals(roster.characters,byCode),current=api.load?.()?.characters||{};
   for(const row of arr(roster.characters)){
-    const master=byCode.get(String(row.nameCode)),display=master?.name_localkey||`nameCode ${row.nameCode}`,id=idForName(display);
+    const master=byCode.get(String(row.nameCode)),display=master?.name_localkey||`nameCode ${row.nameCode}`,id=idForName(display)||supplementalId(row.nameCode);
     if(!id||!api.load()?.characters?.[id]){unmatched.push(display);continue;}
-    const fav=tables.favorites?.[row.favoriteItemTid],favoriteItemPhase=fav?.rare==='SSR'?clamp(num(row.favoriteItemLv)+1,1,3):0;
-    characters[id]={owned:true,level:clamp(row.lv,1,1100),limitBreak:clamp(row.grade,0,3),coreLevel:clamp(row.core,0,7),bond:clamp(row.attractiveLv,0,40),skills:{skill1:clamp(row.skill1Lv,1,10),skill2:clamp(row.skill2Lv,1,10),burst:clamp(row.ultiSkillLv,1,10)},favoriteItemPhase,cubeId:cubeMode==='preserve'?String(current[id]?.cubeId||'none'):cubeId(row.harmonyCubeTid),overloadTotals:olTotals(row,options)};
-    external[id]={source,nameCode:row.nameCode,display,combat:num(row.combat),arenaCombat:num(row.arenaCombat),cubeTid:num(row.harmonyCubeTid),cubeLevel:num(row.harmonyCubeLv),favoriteItemTid:num(row.favoriteItemTid),favoriteItemLevel:num(row.favoriteItemLv),gear:gearMeta(row),observedAt:roster.observedAt||new Date().toISOString()};
+    const fav=tables.favorites?.[row.favoriteItemTid],favoriteItemPhase=fav?.rare==='SSR'?clamp(num(row.favoriteItemLv)+1,1,3):0,gearTotals=observedGearTotals(row,master);
+    characters[id]={owned:true,level:clamp(row.lv,1,1100),limitBreak:clamp(row.grade,0,3),coreLevel:clamp(row.core,0,7),bond:clamp(row.attractiveLv,0,40),skills:{skill1:clamp(row.skill1Lv,1,10),skill2:clamp(row.skill2Lv,1,10),burst:clamp(row.ultiSkillLv,1,10)},favoriteItemPhase,cubeId:cubeMode==='preserve'?String(current[id]?.cubeId||'none'):cubeId(row.harmonyCubeTid),overloadTotals:olTotals(row,options),...(gearTotals.equipmentObservedSlots?{equipmentAttack:gearTotals.equipmentAttack,equipmentHp:gearTotals.equipmentHp,equipmentDefense:gearTotals.equipmentDefense,equipmentObservedSlots:gearTotals.equipmentObservedSlots}:{})};
+    external[id]={source,nameCode:row.nameCode,display,combat:num(row.combat),arenaCombat:num(row.arenaCombat),cubeTid:num(row.harmonyCubeTid),cubeLevel:num(row.harmonyCubeLv),favoriteItemTid:num(row.favoriteItemTid),favoriteItemLevel:num(row.favoriteItemLv),gear:gearMeta(row),gearTotals,observedAt:roster.observedAt||new Date().toISOString()};
   }
   const imported=api.import({schemaVersion:1,updatedAt:new Date().toISOString(),characters},'merge');if(!imported.ok)throw new Error(arr(imported.errors).slice(0,8).join('\n'));
-  try{const old=JSON.parse(localStorage.getItem(META_KEY)||'{}');localStorage.setItem(META_KEY,JSON.stringify({...old,...external,_meta:{source,nickname:roster.nickname||'',observedAt:roster.observedAt||new Date().toISOString()}}));}catch(_){}
-  api.render?.();try{root.dispatchEvent(new CustomEvent('nikke:v26-roster-updated',{detail:{source:'v34610-external-sync',updatedAt:new Date().toISOString(),count:Object.keys(characters).length}}));}catch(_){}renderSyncResult({source,nickname:roster.nickname||'',observedAt:roster.observedAt,count:arr(roster.characters).length,imported:Object.keys(characters).length,unmatched,warning:tables.warning||'',cubeMode},external);renderCubeManager();
-  return {imported:Object.keys(characters).length,unmatched};
+  try{const key=metaStorageKey(),legacy=localStorage.getItem(META_BASE_KEY),old=JSON.parse(localStorage.getItem(key)||legacy||'{}');localStorage.setItem(key,JSON.stringify({...old,...external,_meta:{source,nickname:roster.nickname||'',observedAt:roster.observedAt||new Date().toISOString()}}));}catch(_){}
+  api.render?.();try{root.dispatchEvent(new CustomEvent('nikke:v26-roster-updated',{detail:{source:'v34610-external-sync',updatedAt:new Date().toISOString(),count:Object.keys(characters).length}}));}catch(_){}renderSyncResult({source,nickname:roster.nickname||'',observedAt:roster.observedAt,count:arr(roster.characters).length,imported:Object.keys(characters).length,unmatched,warning:tables.warning||'',cubeMode,supplementalAdded:num(supplemental?.added)},external);renderCubeManager();
+  return {imported:Object.keys(characters).length,unmatched,supplemental};
 }
 function renderSyncResult(result,external){
   const host=$('v34610SyncResult');if(!host)return;const gearCount=Object.values(external||{}).filter(x=>Object.values(x.gear||{}).some(g=>g.tier>0)).length;
-  host.innerHTML=`<div class="ext-status"><b>${esc(result.nickname||result.source)}</b> · 관측 ${esc(result.observedAt||'-')}<br>수신 ${result.count}명 · 중앙 로스터 매핑/저장 ${result.imported}명 · 장비 상세 ${gearCount}명 · 미지원 ${result.unmatched.length}명 · 큐브 ${result.cubeMode==='preserve'?'현재 설정 유지':'불러온 값 적용'}<br><b>정밀·내 로스터·5덱 자동 공통 성장 입력에 즉시 반영됨</b>${result.warning?`<br>보조 데이터 경고: ${esc(result.warning)}`:''}</div>${result.unmatched.length?`<details class="v340-diag"><summary>미지원·이름 미매핑 ${result.unmatched.length}명</summary><p class="ext-unmatched">${result.unmatched.map(esc).join(' · ')}</p></details>`:''}`;
+  host.innerHTML=`<div class="ext-status"><b>${esc(result.nickname||result.source)}</b> · 관측 ${esc(result.observedAt||'-')}<br>수신 ${result.count}명 · 중앙 로스터 매핑/저장 ${result.imported}명 · 장비 상세 ${gearCount}명 · 신규 로스터 전용 등록 ${num(result.supplementalAdded)}명 · 미지원 ${result.unmatched.length}명 · 큐브 ${result.cubeMode==='preserve'?'현재 설정 유지':'불러온 값 적용'}<br><b>정밀·내 로스터·5덱 자동 공통 성장 입력에 즉시 반영됨</b>${result.warning?`<br>보조 데이터 경고: ${esc(result.warning)}`:''}</div>${result.unmatched.length?`<details class="v340-diag"><summary>미지원·이름 미매핑 ${result.unmatched.length}명</summary><p class="ext-unmatched">${result.unmatched.map(esc).join(' · ')}</p></details>`:''}`;
 }
 function cubeOptions(selected){const entries=arr(root.NIKKE_V26_ROSTER_API?.cubeEntries?.());return entries.map(x=>`<option value="${esc(x.id)}"${String(x.id)===String(selected)?' selected':''}>${esc(x.label||x.name||x.id)}</option>`).join('');}
-function renderCubeManager(){const host=$('v34610CubeRows'),api=root.NIKKE_V26_ROSTER_API;if(!host||!api?.load)return;const saved=api.load()?.characters||{},names=new Map(arr(root.NIKKE_V26_7_CHARACTER_CATALOG).map(x=>[x.id,x.name||x.id]));const rows=Object.entries(saved).filter(([,v])=>v?.owned).sort((a,b)=>String(names.get(a[0])||a[0]).localeCompare(String(names.get(b[0])||b[0]),'ko'));host.innerHTML=rows.map(([id,row])=>`<label class="ext-cube-row"><input type="checkbox" data-v34610-cube-check="${esc(id)}"><b>${esc(names.get(id)||id)}</b><select data-v34610-cube-id="${esc(id)}">${cubeOptions(row.cubeId||'none')}</select></label>`).join('')||'<div class="ext-status">보유 로스터가 없습니다. 먼저 동기화하거나 내 로스터에서 보유 니케를 저장하세요.</div>';}
+function renderCubeManager(){const host=$('v34610CubeRows'),api=root.NIKKE_V26_ROSTER_API;if(!host||!api?.load)return;const saved=api.load()?.characters||{},names=new Map(arr(api.catalog?.()).map(x=>[x.id,x.name||x.id]));const rows=Object.entries(saved).filter(([,v])=>v?.owned).sort((a,b)=>String(names.get(a[0])||a[0]).localeCompare(String(names.get(b[0])||b[0]),'ko'));host.innerHTML=rows.map(([id,row])=>`<label class="ext-cube-row"><input type="checkbox" data-v34610-cube-check="${esc(id)}"><b>${esc(names.get(id)||id)}</b><select data-v34610-cube-id="${esc(id)}">${cubeOptions(row.cubeId||'none')}</select></label>`).join('')||'<div class="ext-status">보유 로스터가 없습니다. 먼저 동기화하거나 내 로스터에서 보유 니케를 저장하세요.</div>';}
 function updateCubes(mode){const api=root.NIKKE_V26_ROSTER_API,current=api?.load?.()?.characters||{},patch={};let count=0;document.querySelectorAll('[data-v34610-cube-id]').forEach(select=>{const id=select.dataset.v34610CubeId,checked=document.querySelector(`[data-v34610-cube-check="${CSS.escape(id)}"]`)?.checked;if(mode==='rows'||mode==='all'||checked){patch[id]={...current[id],cubeId:mode==='rows'?select.value:String($('v34610CubeBulk')?.value||'none')};count++;}});if(!count)throw new Error('큐브를 적용할 니케를 선택해 주세요.');const out=api.import({schemaVersion:1,updatedAt:new Date().toISOString(),characters:patch},'merge');if(!out.ok)throw new Error(arr(out.errors).join('\n'));api.render?.();try{root.dispatchEvent(new CustomEvent('nikke:v26-roster-updated',{detail:{source:'v34610-cube-manager',updatedAt:new Date().toISOString(),count}}));}catch(_){}renderCubeManager();status('v34610CubeStatus',`${count}명 큐브 저장 완료 · 정밀/내 로스터/5덱 자동에 즉시 반영`);}
 const PUBLIC_ROSTER_QUERY=`query V34610BlaBlaRoster($server:String!,$gameid:String!){publicBlaBlaRoster(server:$server,gameid:$gameid){server gameid nickname observedAt characters{nameCode lv combat arenaCombat grade core skill1Lv skill2Lv ultiSkillLv attractiveLv favoriteItemTid favoriteItemLv harmonyCubeTid harmonyCubeLv arenaHarmonyCubeTid arenaHarmonyCubeLv gear{head{tid tier lv corporationType optionIds}torso{tid tier lv corporationType optionIds}arm{tid tier lv corporationType optionIds}leg{tid tier lv corporationType optionIds}}}}}`;
 async function syncEnikkPublic(){
@@ -30687,7 +30826,7 @@ if(!install()){
 <script id="v3474-deploy-autosync">
 (function(root){
 'use strict';
-const VERSION='34.7.4';
+const VERSION='34.7.5';
 const PROFILE_KEY='nikke_v3474_deploy_blablalink_profile';
 const SERVER_KEY='nikke_v3474_deploy_blablalink_server';
 const ENABLED_KEY='nikke_v3474_deploy_blablalink_autosync';
@@ -30791,4 +30930,57 @@ if(root.document.readyState==='loading')root.document.addEventListener('DOMConte
 })(window);
 </script>
 
+
+<script id="v3475-sync-propagation-audit-fix">
+(function(root){
+'use strict';
+const VERSION='34.7.5';
+const NEW_CUBES={
+  rupture:{label:'럽처 / Rupture Lv.15',element:19.09,trueDamage:14.14,distributed:0},
+  stealth:{label:'스텔스 / Stealth Lv.15 · 팀 엄폐물 HP↑(주효과 수치 미검증)',element:19.09,trueDamage:0,distributed:0,coverHpTeam:null},
+  diffusion:{label:'디퓨전 / Diffusion Lv.15',element:19.09,trueDamage:0,distributed:17.69}
+};
+function finite(v,d=0){return Number.isFinite(Number(v))?Number(v):d;}
+function augmentCubeTable(){
+  try{if(typeof cubes!=='undefined'&&cubes)Object.assign(cubes,NEW_CUBES);}catch(_){}
+  try{const values=root.NIKKE_V26_DATA?.cubes?.values;if(values)Object.assign(values,NEW_CUBES);}catch(_){}
+  try{if(typeof nativeFields!=='undefined'&&Array.isArray(nativeFields)){if(!nativeFields.some(x=>x?.[0]==='trueDamage'))nativeFields.push(['trueDamage','트루 대미지','%','direct']);if(!nativeFields.some(x=>x?.[0]==='distributed'))nativeFields.push(['distributed','분배 대미지','%','direct']);}}catch(_){}
+}
+function patchLegacyPrecisionCategoryCubes(){
+  try{
+    if(root.__V3475_CATEGORY_CUBE_PATCHED__||typeof v21ApplyMultipliers!=='function')return;
+    const previous=v21ApplyMultipliers;
+    v21ApplyMultipliers=function(model,p,ctx,isTarget){
+      const cube=ctx?.cube||{};
+      if(!isTarget||(!finite(cube.trueDamage)&&!finite(cube.distributed)))return previous(model,p,ctx,isTarget);
+      const next={...ctx,combo:{...(ctx?.combo||{})}};
+      next.combo.trueDamageDmg=finite(next.combo.trueDamageDmg)+finite(cube.trueDamage);
+      next.combo.distributedDmg=finite(next.combo.distributedDmg)+finite(cube.distributed);
+      return previous(model,p,next,isTarget);
+    };
+    root.__V3475_CATEGORY_CUBE_PATCHED__=true;
+  }catch(_){}
+}
+function installImmediateGrowthContext(){
+  try{
+    const result=root.NIKKEKitAwareOptimizer?.collectProfiles?.({},root);
+    const rows=Array.isArray(result?.profiles)?result.profiles:[];if(!rows.length)return null;
+    const byId={},byName={};
+    for(const row of rows){const g=row?.growth||{},level=finite(g.level,200),ratio=finite(root.NIKKE_R3_DATA_API?.combatLevelRatio?.(row,level,400,'atk'),1),value={id:row.id,name:row.name,role:row.role,statGrowthFactor:ratio*(1+.02*(finite(g.limitBreak)+finite(g.coreLevel))),olAtk:finite(g.overload?.atk),olDefense:finite(g.overload?.defense),cubeId:row.cubeId||g.cubeId||'none',cubeDefense:finite(root.NIKKE_V26_DATA?.cubes?.values?.[row.cubeId||g.cubeId||'none']?.defense),limitBreak:finite(g.limitBreak),coreLevel:finite(g.coreLevel),level,skills:{...(g.skills||{})},equipmentAttack:g.equipmentAttack!=null?finite(g.equipmentAttack):null,equipmentObservedSlots:finite(g.equipmentObservedSlots)};byId[row.id]=value;byName[row.name]=value;}
+    if(byId.mastRomanticMaid)byName['메이드 마스트']=byId.mastRomanticMaid;if(byId.anchorInnocentMaid)byName['메이드 앵커']=byId.anchorInnocentMaid;
+    root.__v26TeamGrowthContext={byId,byName,source:'v3475-central-roster-immediate',updatedAt:new Date().toISOString()};return root.__v26TeamGrowthContext;
+  }catch(_){return null;}
+}
+function refreshPrecision(){installImmediateGrowthContext();try{root.NIKKEV34610ProjectionTrace?.applyPrecisionRoster?.();}catch(_){}}
+function verify(){augmentCubeTable();patchLegacyPrecisionCategoryCubes();const entries=root.NIKKE_V26_ROSTER_API?.cubeEntries?.()||[],ids=new Set(entries.map(x=>x.id)),ctx=installImmediateGrowthContext(),result={version:VERSION,cubes:{rupture:ids.has('rupture'),stealth:ids.has('stealth'),diffusion:ids.has('diffusion'),count:entries.length},categoryPrecisionPatched:!!root.__V3475_CATEGORY_CUBE_PATCHED__,growthContext:!!ctx,contextCount:Object.keys(ctx?.byId||{}).length,externalImporter:!!root.NIKKEV34610External?.importExternalRoster,accountScopedMeta:typeof root.NIKKE_V26_ACCOUNT_API?.scopeKey==='function'};result.pass=result.cubes.rupture&&result.cubes.stealth&&result.cubes.diffusion&&result.categoryPrecisionPatched&&result.growthContext&&result.externalImporter;root.NIKKEV3475SyncPropagationVerification=Object.freeze(result);return result;}
+function brand(){try{root.document.title='니케 성장 계산기 V34.7.5 · BlaBla 실제반영 검증';for(const f of root.document.querySelectorAll('.footer,.footer-version'))f.textContent='Nikke Damage Growth Calculator · V34.7.5 · 2026-08-26';}catch(_){}}
+function install(){augmentCubeTable();patchLegacyPrecisionCategoryCubes();refreshPrecision();verify();brand();if(root.__V3475_PROPAGATION_BOUND__)return;root.__V3475_PROPAGATION_BOUND__=true;root.addEventListener('nikke:v26-roster-updated',()=>root.setTimeout(refreshPrecision,0));root.document?.getElementById('precisionChar')?.addEventListener('change',()=>root.setTimeout(refreshPrecision,0));}
+if(root.document?.readyState==='loading')root.document.addEventListener('DOMContentLoaded',install,{once:true});else install();[80,350,900,1800,4200].forEach(ms=>root.setTimeout(install,ms));
+root.NIKKEV3475SyncPropagation=Object.freeze({version:VERSION,verify,refreshPrecision,installImmediateGrowthContext});
+})(window);
+</script>
+
+<style id="v3475-supplemental-roster-style">
+.v3475-roster-only-badge{display:inline-block;margin-left:6px;padding:1px 5px;border-radius:999px;background:rgba(214,146,40,.14);color:#9a5a00;font-size:9px;font-style:normal;vertical-align:1px}.v26-roster-row .v26-roster-pick strong{display:flex;align-items:center;gap:3px;flex-wrap:wrap}
+</style>
 </body></html>
