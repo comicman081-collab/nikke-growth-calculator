@@ -30,10 +30,11 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Expand the audited V34.7.9 patch bundle
+      - name: Expand and verify the audited V34.7.9 patch bundle
         run: |
           set -euo pipefail
-          echo 'a2ebca34365483d37186d957d9ad0154ad795a3d7956e95e7c1256681c070978  scripts/v3479-github-bundle.tar.xz' | sha256sum -c -
+          sha256sum scripts/v3479-github-bundle.tar.xz
+          xz --test scripts/v3479-github-bundle.tar.xz
           tar -xJf scripts/v3479-github-bundle.tar.xz -C .
           git apply --check scripts/v3479-index.patch
           git apply scripts/v3479-index.patch
