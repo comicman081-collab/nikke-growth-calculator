@@ -38,11 +38,24 @@ jobs:
             -H 'content-type: application/json' \
             --data-binary @enikk-query.json \
             https://enikk.app/api/graphql > enikk-character-master-response.json
-          cat enikk-character-master-response.json
           jq -e '.data.characters | length > 100' enikk-character-master-response.json >/dev/null
           jq '.data.characters' enikk-character-master-response.json > enikk-character-master.json
-          jq -n --argfile roster live-blabla-roster.json --argfile master enikk-character-master.json \
-            '{rosterVersion:$roster.version, rosterAreas:[$roster.areas[]|{area,characterCount:(.characters|length),detailCount:(.details|length)}], masterCount:($master|length)}'
+          python3 - <<'PY'
+          import json
+          roster=json.load(open('live-blabla-roster.json',encoding='utf-8'))
+          master=json.load(open('enikk-character-master.json',encoding='utf-8'))
+          summary={
+            'rosterVersion':roster.get('version'),
+            'rosterAreas':[{
+              'area':area.get('area'),
+              'characterCount':len(area.get('characters') or []),
+              'detailCount':len(area.get('details') or []),
+            } for area in roster.get('areas') or []],
+            'masterCount':len(master),
+          }
+          print(json.dumps(summary,ensure_ascii=False,indent=2))
+          json.dump(summary,open('capture-summary.json','w',encoding='utf-8'),ensure_ascii=False,indent=2)
+          PY
 
       - uses: actions/upload-artifact@v4
         with:
@@ -50,4 +63,5 @@ jobs:
           path: |
             live-blabla-roster.json
             enikk-character-master.json
+            capture-summary.json
           if-no-files-found: error
