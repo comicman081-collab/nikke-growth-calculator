@@ -45,8 +45,22 @@ jobs:
           xz --test /tmp/v3479-support.tar.xz
           tar -xJf /tmp/v3479-support.tar.xz -C .
 
-          sed -i "s/assert.equal(api.version,'34.7.8');/assert.equal(api.version,'34.7.9');/" tests/verify-favorite-phase-v3477.mjs
+          python3 - <<'PY'
+          from pathlib import Path
+          files = [
+              Path('tests/verify-deploy-autosync.mjs'),
+              Path('tests/verify-favorite-phase-v3477.mjs'),
+              Path('tests/verify-blabla-propagation-v3478.mjs'),
+              Path('tests/verify-blabla-propagation-browser-v3478.mjs'),
+          ]
+          for path in files:
+              text = path.read_text('utf-8')
+              text = text.replace(r'34\.7\.8', r'34\.7\.9').replace('34.7.8', '34.7.9')
+              path.write_text(text, 'utf-8')
+          PY
           grep -F "assert.equal(api.version,'34.7.9');" tests/verify-favorite-phase-v3477.mjs
+          grep -F "V34\\.7\\.9" tests/verify-blabla-propagation-v3478.mjs
+          grep -F "const VERSION='34.7.9';" tests/verify-blabla-propagation-browser-v3478.mjs
 
           git apply --check scripts/v3479-index.patch
           git apply scripts/v3479-index.patch
@@ -94,7 +108,10 @@ jobs:
           sha256sum \
             index.html public/index.html package.json package-lock.json \
             functions/api/blabla/sync.js \
+            tests/verify-deploy-autosync.mjs \
             tests/verify-favorite-phase-v3477.mjs \
+            tests/verify-blabla-propagation-v3478.mjs \
+            tests/verify-blabla-propagation-browser-v3478.mjs \
             tests/verify-five-deck-stability-v3479.mjs \
             tests/verify-five-deck-stability-browser-v3479.mjs \
             docs/V34.7.9_FIVE_DECK_STABILITY.md \
@@ -110,7 +127,9 @@ jobs:
           git add \
             index.html public/index.html package.json package-lock.json \
             functions/api/blabla/sync.js GITHUB_DEPLOY_STATUS.md SHA256SUMS.txt \
+            tests/verify-deploy-autosync.mjs \
             tests/verify-favorite-phase-v3477.mjs \
+            tests/verify-blabla-propagation-v3478.mjs \
             tests/verify-blabla-propagation-browser-v3478.mjs \
             tests/verify-five-deck-stability-v3479.mjs \
             tests/verify-five-deck-stability-browser-v3479.mjs \
