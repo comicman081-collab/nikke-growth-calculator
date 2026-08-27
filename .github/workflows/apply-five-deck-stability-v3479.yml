@@ -7,7 +7,7 @@ on:
       - fix-five-deck-stability-v3479
     paths:
       - .github/workflows/apply-five-deck-stability-v3479.yml
-      - scripts/v3479-github-bundle.tar.xz
+      - scripts/v3479-upload/**
 
 concurrency:
   group: apply-five-deck-v3479-${{ github.ref }}
@@ -30,18 +30,31 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Expand and verify the audited V34.7.9 patch bundle
+      - name: Reconstruct and verify the audited V34.7.9 source payloads
         run: |
           set -euo pipefail
-          sha256sum scripts/v3479-github-bundle.tar.xz
-          xz --test scripts/v3479-github-bundle.tar.xz
-          tar -xJf scripts/v3479-github-bundle.tar.xz -C .
+
+          cat scripts/v3479-upload/patch-*.b64 | base64 --decode > /tmp/v3479-index.patch.xz
+          echo '946e8164f665be2394efdc3d49c4daf3c8ca417ac97315b941ff7acc330c19fe  /tmp/v3479-index.patch.xz' | sha256sum -c -
+          xz --test /tmp/v3479-index.patch.xz
+          xz --decompress --stdout /tmp/v3479-index.patch.xz > scripts/v3479-index.patch
+          echo 'ecc5467802495c706ce89b368da6b82ef8546da3d6bc712d6b880b7bc2d05362  scripts/v3479-index.patch' | sha256sum -c -
+
+          cat scripts/v3479-upload/support-*.b64 | base64 --decode > /tmp/v3479-support.tar.xz
+          echo '8a32dbe1adfa69b2d0f564e6956fc3bfcb4542b4ec60c846a25040282e823a80  /tmp/v3479-support.tar.xz' | sha256sum -c -
+          xz --test /tmp/v3479-support.tar.xz
+          tar -xJf /tmp/v3479-support.tar.xz -C .
+
           git apply --check scripts/v3479-index.patch
           git apply scripts/v3479-index.patch
           cp index.html public/index.html
+
           rm scripts/v3479-index.patch
-          git rm scripts/v3479-github-bundle.tar.xz
+          git rm -r scripts/v3479-upload
+          git rm -f --ignore-unmatch scripts/v3479-github-bundle.tar.xz scripts/v3479-index.patch.xz.b64
+
           echo '330e8f898a728fbce49a64f71bb396d99c80da9753a66fa1ec84c2bfbc12d23c  index.html' | sha256sum -c -
+          echo '330e8f898a728fbce49a64f71bb396d99c80da9753a66fa1ec84c2bfbc12d23c  public/index.html' | sha256sum -c -
           cmp --silent index.html public/index.html
 
       - name: Install pinned dependencies
