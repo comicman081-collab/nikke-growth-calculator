@@ -37,3 +37,9 @@ Release candidate: **V34.7.10 BlaBla Full Linked-Roster Repair**
 - Current production Cloudflare origin and live same-origin BlaBla bridge preflight: PASS.
 
 The main-only Cloudflare workflow verifies the deployed V34.7.10 HTML marker, Worker version, configured bridge and a real nonempty profile response after merge.
+
+## V34.7.11 linked roster policy
+
+- Linked external rows are retained in an account-scoped raw snapshot, while calculations use the current app registry and current calculation profiles dynamically.
+- No 100-character hardcode exists; future app-supported characters automatically join calculation after app update.
+- Thursday BlaBla refresh: 11:00 and 19:00 KST while running, with missed latest slot catch-up on next launch and a manual refresh button.

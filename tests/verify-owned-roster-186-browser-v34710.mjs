@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const DIST=path.join(ROOT,'dist-cloudflare');
 const HTML=fs.readFileSync(path.join(ROOT,'public/index.html'),'utf8');
-const VERSION='34.7.10';
+const VERSION='34.7.11';
 const PROFILE='https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTczODk5ODEwMzMzMTgwOTYwMDc=';
 
 function parseJsonLiteral(regex,label){const match=HTML.match(regex);assert.ok(match,`${label} missing`);return JSON.parse(match[1]);}
@@ -46,9 +46,9 @@ for(const [index,code] of codes.entries()){
   }
   details.push(detail);
 }
-// Reproduce the user's 186-character linked roster. The extra rows are current-master
+// Reproduce the user's 193-character linked roster. The extra rows are current-master
 // supplementals: they must be retained in My Roster even when no audited damage model exists.
-for(let index=codes.length;index<186;index++){
+for(let index=codes.length;index<193;index++){
   const code=6000+index;
   masterRows.push({name_code:code,name_localkey:`Linked Supplemental ${index+1}`,resource_id:9000+index,original_rare:'SSR',class:index%3===0?'Attacker':index%3===1?'Supporter':'Defender',element_id:['Fire','Water','Wind','Electronic','Iron'][index%5],use_burst_skill:(index%3)+1,corporation:['ELYSION','MISSILIS','TETRA'][index%3]});
   summaries.push({name_code:code,lv:400+(index%51),combat:500000+index*73,arena_combat:450000+index*61,grade:3,core:index%4});
@@ -124,17 +124,22 @@ try{
   assert.ok(frameId,'CDP main frame');
   await cdp.send('Page.setDocumentContent',{frameId,html:HTML});
   console.error('[stage] page-content-set');
-  await waitFor(cdp,'window.NIKKEV3472BlaPublicSync&&window.NIKKEV34610External&&window.NIKKE_V26_ROSTER_API&&window.NIKKESinglePartyTimelineSimulator&&window.NIKKE_V26_OPTIMIZER_API&&window.NIKKEV3478BlaPropagation&&window.NIKKEV34710OwnedRosterRepair',90000);
+  await waitFor(cdp,'window.NIKKEV3472BlaPublicSync&&window.NIKKEV34610External&&window.NIKKE_V26_ROSTER_API&&window.NIKKESinglePartyTimelineSimulator&&window.NIKKE_V26_OPTIMIZER_API&&window.NIKKEV3478BlaPropagation&&window.NIKKEV34710OwnedRosterRepair&&window.NIKKEV34711LinkedRosterRefresh',90000);
 
   console.error('[stage] app-ready');
-  const syncResult=await evaluate(cdp,`(async()=>{document.getElementById('v34610BlaUrl').value=${JSON.stringify(PROFILE)};document.getElementById('v34610BlaServer').value='GLOBAL';const result=await NIKKEV3472BlaPublicSync.sync();await new Promise(r=>setTimeout(r,50));NIKKEV3475SyncPropagation.refreshPrecision();return{imported:result.out.imported,unmatched:result.out.unmatched,area:result.area.area,status:document.getElementById('v34610BlaStatus')?.textContent};})()`);
+  const syncResult=await evaluate(cdp,`(async()=>{document.getElementById('v34610BlaUrl').value=${JSON.stringify(PROFILE)};document.getElementById('v34610BlaServer').value='GLOBAL';const result=await NIKKEV3472BlaPublicSync.sync();await new Promise(r=>setTimeout(r,100));NIKKEV3475SyncPropagation.refreshPrecision();const policy=NIKKEV34711LinkedRosterRefresh.verify();const snap=NIKKEV34711LinkedRosterRefresh.getSnapshot();return{imported:result.out.imported,unmatched:result.out.unmatched,received:result.out.received,area:result.area.area,status:document.getElementById('v34610BlaStatus')?.textContent,policy,snapshotRows:snap?.characters?.length||0};})()`);
   console.error('[stage] sync-done',syncResult);
-  assert.equal(syncResult.area,84);assert.equal(syncResult.imported,186,`imported ${syncResult.imported}`);assert.equal(syncResult.unmatched.length,0,`unmatched ${syncResult.unmatched.length}`);assert.match(syncResult.status,/시뮬레이션/);
+  assert.equal(syncResult.area,84);assert.equal(syncResult.received,193);assert.equal(syncResult.snapshotRows,193,'all linked rows must remain in raw snapshot');assert.ok(syncResult.imported>=25&&syncResult.imported<=syncResult.policy.registered,`imported ${syncResult.imported} / registered ${syncResult.policy.registered}`);assert.equal(syncResult.unmatched.length,193-syncResult.imported,'non-app rows stay snapshot-only');assert.equal(syncResult.policy.hardcoded100,false);assert.equal(syncResult.policy.dynamicRegistration,true);
+
+  console.error('[stage] refresh-policy-start');
+  const refreshPolicy=await evaluate(cdp,`(async()=>{await new Promise(r=>setTimeout(r,1800));const api=NIKKEV34711LinkedRosterRefresh;const thursdayNoon=Date.UTC(2026,7,27,3,0,0);const thursdayNight=Date.UTC(2026,7,27,11,0,0);const slotNoon=api.latestDueSlot(thursdayNoon),nextNoon=api.nextSlot(thursdayNoon),slotNight=api.latestDueSlot(thursdayNight),nextNight=api.nextSlot(thursdayNight);const manual=await api.manualRefresh();await new Promise(r=>setTimeout(r,50));const snap=api.getSnapshot(),state=api.getRefreshState();return{button:!!document.getElementById('v34711RefreshNow'),panel:!!document.getElementById('v34711RefreshPanel'),slotNoon:{hour:slotNoon.hour,next:nextNoon.hour},slotNight:{hour:slotNight.hour,next:nextNight.hour},manualReceived:manual?.out?.received??manual?.received??0,snapshotRows:snap?.characters?.length||0,lastSuccess:state?.lastSuccess||'',verification:api.verify()};})()`);
+  console.error('[stage] refresh-policy-done',refreshPolicy);
+  assert.equal(refreshPolicy.button,true);assert.equal(refreshPolicy.panel,true);assert.deepEqual(refreshPolicy.slotNoon,{hour:11,next:19});assert.deepEqual(refreshPolicy.slotNight,{hour:19,next:11});assert.equal(refreshPolicy.snapshotRows,193);assert.ok(refreshPolicy.lastSuccess);assert.equal(refreshPolicy.verification.dynamicRegistration,true);assert.equal(refreshPolicy.verification.hardcoded100,false);
 
   console.error('[stage] roster-start');
   const rosterState=await evaluate(cdp,`(()=>{NIKKE_V26_ROSTER_API.render();const button=document.querySelector('[data-roster-action="select"][data-character-id="sugarTreasure"]');button?.click();const central=NIKKE_V26_ROSTER_API.load().characters.sugarTreasure;const editor=document.getElementById('v26RosterEditor');const read=selector=>editor?.querySelector(selector)?.value;return{central,rowOwned:button?.closest('.v26-roster-row')?.classList.contains('is-owned'),countText:document.getElementById('v26RosterCount')?.textContent||'',renderedRows:document.querySelectorAll('#v26RosterList .v26-roster-row').length,renderedOwned:document.querySelectorAll('#v26RosterList .v26-roster-row.is-owned').length,editor:{owned:editor?.querySelector('[data-roster-field="owned"]')?.checked,level:read('[data-roster-field="level"]'),limitBreak:read('[data-roster-field="limitBreak"]'),coreLevel:read('[data-roster-field="coreLevel"]'),skill1:read('[data-roster-field="skills.skill1"]'),skill2:read('[data-roster-field="skills.skill2"]'),burst:read('[data-roster-field="skills.burst"]'),phase:read('[data-roster-field="favoriteItemPhase"]'),cube:read('[data-roster-field="cubeId"]')}};})()`);
   console.error('[stage] roster-done');
-  const central=rosterState.central;assert.equal(rosterState.rowOwned,true);assert.match(rosterState.countText,/보유 186\/186명/);assert.equal(rosterState.renderedRows,186);assert.equal(rosterState.renderedOwned,186);assert.equal(rosterState.editor.owned,true);assert.equal(Number(rosterState.editor.level),450);assert.equal(Number(rosterState.editor.limitBreak),3);assert.equal(Number(rosterState.editor.coreLevel),5);assert.deepEqual([Number(rosterState.editor.skill1),Number(rosterState.editor.skill2),Number(rosterState.editor.burst)],[2,7,9]);assert.equal(Number(rosterState.editor.phase),3);assert.equal(rosterState.editor.cube,'diffusion');
+  const central=rosterState.central;assert.equal(rosterState.rowOwned,true);assert.equal(rosterState.renderedRows,syncResult.policy.registered);assert.equal(rosterState.renderedOwned,syncResult.imported);assert.ok(rosterState.countText.includes(`보유 ${syncResult.imported}/${syncResult.policy.registered}명`));assert.equal(rosterState.editor.owned,true);assert.equal(Number(rosterState.editor.level),450);assert.equal(Number(rosterState.editor.limitBreak),3);assert.equal(Number(rosterState.editor.coreLevel),5);assert.deepEqual([Number(rosterState.editor.skill1),Number(rosterState.editor.skill2),Number(rosterState.editor.burst)],[2,7,9]);assert.equal(Number(rosterState.editor.phase),3);assert.equal(rosterState.editor.cube,'diffusion');
   assert.equal(central.level,450);assert.equal(central.limitBreak,3);assert.equal(central.coreLevel,5);assert.equal(central.bond,40);assert.equal(central.favoriteItemPhase,3);assert.deepEqual(central.skills,{skill1:2,skill2:7,burst:9});assert.equal(central.equipmentObservedSlots,4);assert.ok(central.equipmentAttack>0);assert.ok(central.equipmentHp>0);assert.ok(central.equipmentDefense>0);assert.equal(central.overloadTotals.atk,32.2);assert.equal(central.overloadTotals.element,46.6);assert.equal(central.overloadTotals.maxAmmo,89.8);
 
   console.error('[stage] precision-start');
@@ -159,19 +164,19 @@ try{
   const runtimeHeap=await cdp.send('Runtime.getHeapUsage');
   const first=fiveDeck.first,second=fiveDeck.second;
   console.error('[stage] five-deck-done',first.teams,first.elapsed.toFixed(1),second.elapsed.toFixed(1));
-  assert.equal(fiveDeck.owned,186,'all linked rows retained in My Roster');
-  assert.equal(fiveDeck.rosterCounts?.owned,186,'dynamic roster count');assert.equal(fiveDeck.rosterCounts?.registered,186,'dynamic registered count');assert.equal(fiveDeck.rosterCounts?.rosterOnly,79,'roster-only supplementals');assert.deepEqual(fiveDeck.unsupportedSelected,[],'roster-only supplementals must not receive invented calculation scores');
-  assert.ok(fiveDeck.registered>=186,`registered ${fiveDeck.registered}`);
+  assert.equal(fiveDeck.owned,syncResult.imported,'only current app-registered linked rows participate');
+  assert.equal(fiveDeck.rosterCounts?.owned,syncResult.imported,'dynamic owned count');assert.equal(fiveDeck.rosterCounts?.registered,syncResult.policy.registered,'dynamic app registry count');assert.equal(fiveDeck.rosterCounts?.rosterOnly,0,'external supplemental catalog must not expand My Roster');assert.deepEqual(fiveDeck.unsupportedSelected,[],'roster-only supplementals must not receive invented calculation scores');
+  assert.equal(fiveDeck.registered,syncResult.policy.registered,`registered ${fiveDeck.registered}`);
   assert.equal(fiveDeck.propagation.pass,true,JSON.stringify(fiveDeck.propagation));
   for(const [label,row] of [['first',first],['second',second]]){
-    assert.equal(row.status,'ok',`${label} status`);assert.equal(row.teams,5,`${label} teams`);assert.equal(row.ids.length,25,`${label} slots`);assert.equal(row.unique,25,`${label} unique`);assert.equal(row.validation?.pass,true,`${label} validation ${JSON.stringify(row.validation)}`);assert.equal(row.error,null,`${label} error`);assert.equal(row.diagnostics?.ownedCount,186,`${label} diagnostic owned count`);assert.ok(row.diagnostics?.profileCount>=100&&row.diagnostics?.profileCount<186,`${label} supported calculation profiles`);assert.match(row.uiStatus,/연동 186명/);assert.match(row.uiStatus,/5팀 25명/);assert.match(row.uiStatus,/중복 0/);
+    assert.equal(row.status,'ok',`${label} status`);assert.equal(row.teams,5,`${label} teams`);assert.equal(row.ids.length,25,`${label} slots`);assert.equal(row.unique,25,`${label} unique`);assert.equal(row.validation?.pass,true,`${label} validation ${JSON.stringify(row.validation)}`);assert.equal(row.error,null,`${label} error`);assert.equal(row.diagnostics?.ownedCount,syncResult.imported,`${label} diagnostic owned count`);assert.ok(row.diagnostics?.profileCount>=25&&row.diagnostics?.profileCount<=syncResult.policy.registered,`${label} dynamically supported calculation profiles`);assert.match(row.uiStatus,/연동 193명/);assert.match(row.uiStatus,/5팀 25명/);assert.match(row.uiStatus,/중복 0/);
   }
   assert.ok(first.elapsed<25000,`first run ${first.elapsed}ms`);assert.ok(second.elapsed<1200,`cached second run ${second.elapsed}ms`);assert.equal(first.totalScore,second.totalScore,'repeat deterministic total');assert.deepEqual(first.ids,second.ids,'repeat deterministic teams');assert.ok(fiveDeck.firstHeartbeats>=20,`UI heartbeat ${fiveDeck.firstHeartbeats}`);assert.ok(runtimeHeap.usedSize<140000000,`post-GC renderer heap ${runtimeHeap.usedSize}`);
 
-  const verification={version:VERSION,verifiedAtUtc:new Date().toISOString(),environment:{viewport:'412x915',deviceMemoryGb:4,v8OldSpaceMb:96},bridge:{received:186,imported:syncResult.imported,area:syncResult.area},roster:{registered:fiveDeck.registered,owned:fiveDeck.owned,id:'sugarTreasure',level:central.level,skills:central.skills,phase:central.favoriteItemPhase,cube:central.cubeId,equipmentAttack:central.equipmentAttack,equipmentHp:central.equipmentHp,equipmentDefense:central.equipmentDefense,slots:central.equipmentObservedSlots},precision:{total:precision.total,pass:precision.diagnostic.pass},simulation:{phase0:simulation.p0.member.damage,phase3:simulation.p3.member.damage,gearAttack:simulation.p3.member.damageBasis.gearAttack},fiveDeck:{first,second,heartbeats:fiveDeck.firstHeartbeats,postGcHeap:runtimeHeap},pass:true};
-  fs.writeFileSync(path.join(ROOT,'V34710_OWNED_ROSTER_186_BROWSER_RESULTS.json'),JSON.stringify(verification,null,2)+'\n');
+  const verification={version:VERSION,verifiedAtUtc:new Date().toISOString(),environment:{viewport:'412x915',deviceMemoryGb:4,v8OldSpaceMb:96},bridge:{received:193,imported:syncResult.imported,snapshotRows:syncResult.snapshotRows,area:syncResult.area},roster:{registered:fiveDeck.registered,owned:fiveDeck.owned,id:'sugarTreasure',level:central.level,skills:central.skills,phase:central.favoriteItemPhase,cube:central.cubeId,equipmentAttack:central.equipmentAttack,equipmentHp:central.equipmentHp,equipmentDefense:central.equipmentDefense,slots:central.equipmentObservedSlots},precision:{total:precision.total,pass:precision.diagnostic.pass},simulation:{phase0:simulation.p0.member.damage,phase3:simulation.p3.member.damage,gearAttack:simulation.p3.member.damageBasis.gearAttack},fiveDeck:{first,second,heartbeats:fiveDeck.firstHeartbeats,postGcHeap:runtimeHeap},pass:true};
+  fs.writeFileSync(path.join(ROOT,'V34711_LINKED_ROSTER_193_BROWSER_RESULTS.json'),JSON.stringify(verification,null,2)+'\n');
   console.log(JSON.stringify(verification,null,2));
-  console.log('V34.7.10 BlaBla 186 linked roster -> My Roster -> Precision -> Simulation -> repaired repeated 5-deck browser verification: PASS');
+  console.log('V34.7.11 BlaBla 193 raw rows -> dynamic app registry -> Precision -> Simulation -> 5-deck browser verification: PASS');
 }finally{
   cdp?.close();
   if(chrome.exitCode===null){
