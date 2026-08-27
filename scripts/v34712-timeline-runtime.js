@@ -119,3 +119,4 @@ root.NIKKEV34712UnifiedTimeline=Object.freeze({version:VERSION,compactName,compa
 })(window);
 
 // v34712 canonical integration trigger
+// v34712 normalized regression trigger
