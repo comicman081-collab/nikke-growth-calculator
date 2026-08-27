@@ -9,12 +9,12 @@ import { fileURLToPath } from 'node:url';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const DIST=path.join(ROOT,'dist-cloudflare');
 const HTML=fs.readFileSync(path.join(ROOT,'public/index.html'),'utf8');
-const VERSION='34.7.11';
+const VERSION='34.7.12';
 const PROFILE='https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTczODk5ODEwMzMzMTgwOTYwMDc=';
 
 function parseJsonLiteral(regex,label){const match=HTML.match(regex);assert.ok(match,`${label} missing`);return JSON.parse(match[1]);}
 const nameCodeMap=parseJsonLiteral(/const V3476_NAMECODE_TO_APP_ID=Object\.freeze\((\{[^\n]+\})\);/,'nameCode map');
-const favoriteRecords=parseJsonLiteral(/<script id="v3477-favorite-registry">[\s\S]*?const records=(\[[\s\S]*?\]);\nconst freezeDeep=/,'favorite registry');
+const favoriteRecords=parseJsonLiteral(/<script id="v3477-favorite-registry">[\s\S]*?const records=(\[[\s\S]*?\]);\r?\nconst freezeDeep=/,'favorite registry');
 const tidById=Object.fromEntries(favoriteRecords.map(row=>[row.id,String(row.tid)]));
 const favoriteTable=Object.fromEntries(favoriteRecords.map(row=>[String(row.tid),{rare:'SSR',type:'Favorite',name:row.favoriteItemName||row.name}]));
 const masterRows=Object.entries(nameCodeMap).map(([code,id],index)=>({
@@ -152,7 +152,7 @@ try{
   const verification={version:VERSION,verifiedAtUtc:new Date().toISOString(),environment:{viewport:'412x915',deviceMemoryGb:4,v8OldSpaceMb:96,heapLimit:first.heapLimit},bridge:{imported:syncResult.imported,area:syncResult.area},roster:{id:'sugarTreasure',level:central.level,skills:central.skills,phase:central.favoriteItemPhase,cube:central.cubeId,equipmentAttack:central.equipmentAttack,equipmentHp:central.equipmentHp,equipmentDefense:central.equipmentDefense,slots:central.equipmentObservedSlots},precision:{total:precision.total,pass:precision.diagnostic.pass},simulation:{phase0:simulation.p0.member.damage,phase3:simulation.p3.member.damage,gearAttack:simulation.p3.member.damageBasis.gearAttack},fiveDeck:{first:{buildMs:first.buildMs,optimizeMs:first.optimizeMs,candidates:first.candidates,candidateJsonBytes:first.candidateJsonBytes,totalScore:first.totalScore,teams:first.teams,unique:first.unique,diagnostics:first.diagnostics},second:{buildMs:second.buildMs,optimizeMs:second.optimizeMs,candidates:second.candidates,candidateJsonBytes:second.candidateJsonBytes,totalScore:second.totalScore,teams:second.teams,unique:second.unique,diagnostics:second.diagnostics},deterministic:first.totalScore===second.totalScore&&JSON.stringify(first.ids)===JSON.stringify(second.ids),postGcHeap:runtimeHeap},pass:true};
   fs.writeFileSync(path.join(ROOT,'V3479_FIVE_DECK_BROWSER_RESULTS.json'),JSON.stringify(verification,null,2)+'\n');
   console.log(JSON.stringify(verification,null,2));
-  console.log('V34.7.11 BlaBla large roster -> My Roster -> Precision -> Simulation -> stable repeated 5-deck browser verification: PASS');
+  console.log('V34.7.12 BlaBla large roster -> My Roster -> Precision -> Simulation -> stable repeated 5-deck browser verification: PASS');
 }finally{
   cdp?.close();
   if(chrome.exitCode===null){

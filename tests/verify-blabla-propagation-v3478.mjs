@@ -5,7 +5,7 @@ import { parseProfileInput, areaCandidates, syncPublicRoster } from '../function
 const rootHtml=fs.readFileSync(new URL('../index.html',import.meta.url),'utf8');
 const publicHtml=fs.readFileSync(new URL('../public/index.html',import.meta.url),'utf8');
 assert.equal(rootHtml,publicHtml,'root/public index mismatch');
-assert.match(rootHtml,/V34\.7\.11/,'V34.7.11 branding');
+assert.match(rootHtml,/V34\.7\.12/,'V34.7.12 branding');
 assert.match(rootHtml,/id="v3478-blabla-propagation"/,'propagation diagnostics');
 assert.match(rootHtml,/source: 'v3478-optimizer-central-roster'/,'5-deck context source');
 assert.match(rootHtml,/favoriteItemPhase: finite\(growth\.favoriteItemPhase, 0\)/,'5-deck favorite phase');
@@ -13,7 +13,7 @@ assert.match(rootHtml,/equipmentAttack: growth\.equipmentAttack != null/,'5-deck
 assert.match(rootHtml,/equipmentHp: growth\.equipmentHp != null/,'5-deck equipment HP');
 assert.match(rootHtml,/equipmentDefense: growth\.equipmentDefense != null/,'5-deck equipment DEF');
 assert.match(rootHtml,/equipmentObservedSlots: finite\(growth\.equipmentObservedSlots, 0\)/,'5-deck observed equipment slots');
-assert.match(rootHtml,/overload,\n        cubeId:/,'5-deck overload object');
+assert.match(rootHtml,/overload,\r?\n\s*cubeId:/,'5-deck overload object');
 assert.match(rootHtml,/equipmentHp:g\.equipmentHp!=null\?finite\(g\.equipmentHp\):null/,'shared context HP');
 assert.match(rootHtml,/equipmentDefense:g\.equipmentDefense!=null\?finite\(g\.equipmentDefense\):null/,'shared context DEF');
 assert.match(rootHtml,/정밀\/내 로스터\/시뮬레이션\/5덱 자동/,'four-surface sync status');
@@ -42,7 +42,7 @@ const fakeFetch=async(url,init)=>{
 };
 const synced=await syncPublicRoster({profileInput:'29080-17389981033318096007',serverHint:'GLOBAL',env,fetchImpl:fakeFetch});
 assert.equal(synced.ok,true);
-assert.equal(synced.version,'34.7.11');
+assert.equal(synced.version,'34.7.12');
 assert.equal(synced.areas.length,1);
 assert.equal(synced.areas[0].area,84);
 assert.deepEqual(synced.areas[0].characters,summaries);
@@ -50,4 +50,4 @@ assert.deepEqual(synced.areas[0].details,details);
 assert.deepEqual(synced.areas[0].stateEffects,stateEffects);
 assert.equal(calls.filter(call=>call.url.endsWith('/GetUserCharacters')).length,5,'all official areas audited');
 assert.equal(calls.filter(call=>call.url.endsWith('/GetUserCharacterDetails')).length,1,'one detail batch for populated area');
-console.log('V34.7.11 BlaBla bridge + four-surface propagation static verification: PASS');
+console.log('V34.7.12 BlaBla bridge + four-surface propagation static verification: PASS');

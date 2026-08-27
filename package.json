@@ -1,13 +1,14 @@
 {
   "name": "nikke-growth-calculator",
   "private": true,
-  "version": "34.7.11",
+  "version": "34.7.12",
   "description": "NIKKE Growth Calculator web deployment with BlaBlaLink Cloudflare Worker bridge",
   "scripts": {
-    "check": "node --check functions/api/blabla/sync.js && node tests/verify-deploy-autosync.mjs && node tests/verify-favorite-phase-v3477.mjs && node tests/verify-blabla-propagation-v3478.mjs && node tests/verify-five-deck-stability-v3479.mjs && node tests/verify-owned-roster-v34710.mjs && node tests/verify-inline-v34710.mjs && node tests/verify-linked-roster-refresh-v34711.mjs",
+    "check": "node --check functions/api/blabla/sync.js && node tests/verify-deploy-autosync.mjs && node tests/verify-favorite-phase-v3477.mjs && node tests/verify-blabla-propagation-v3478.mjs && node tests/verify-five-deck-stability-v3479.mjs && node tests/verify-owned-roster-v34710.mjs && node tests/verify-inline-v34710.mjs && node tests/verify-linked-roster-refresh-v34711.mjs && node tests/verify-damage-surfaces-v34712.mjs",
     "build": "npm run check && node scripts/build-cloudflare.mjs",
     "deploy": "npx wrangler deploy --config wrangler.worker.jsonc",
-    "check:browser": "node tests/verify-blabla-propagation-browser-v3478.mjs && node tests/verify-five-deck-stability-browser-v3479.mjs && node tests/verify-owned-roster-186-browser-v34710.mjs"
+    "check:browser": "node tests/verify-blabla-propagation-browser-v3478.mjs && node tests/verify-five-deck-stability-browser-v3479.mjs && node tests/verify-owned-roster-186-browser-v34710.mjs",
+    "apply:v34712": "node scripts/apply-v34712-timelines.mjs"
   },
   "devDependencies": {
     "wrangler": "4.126.0"

@@ -1,6 +1,6 @@
 # NIKKE Growth Calculator
 
-Current web deployment build: **V34.7.4 Deploy AutoSync**
+Current web deployment build: **V34.7.12 Unified Damage Timeline & Linked Roster Refresh**
 
 ## What is automatic in the deployed build
 
@@ -42,7 +42,7 @@ For the normal same-origin production deployment, leave `BLABLA_SYNC_KEY` empty.
 3. The page probes `GET /api/blabla/sync`.
 4. If Cloudflare reports a configured service session, sync is ready.
 5. First successful public-profile sync saves only the public profile URL/server locally.
-6. Later visits automatically re-sync once per browser session (toggle is available and defaults ON).
+6. Later visits automatically re-sync on the Thursday 11:00 / 19:00 KST slots (with safe catch-up when the page or APK resumes); a manual refresh button is also available.
 7. The service token remains server-side only.
 
 `index.html` mirrors `public/index.html` for inspection. Cloudflare Pages should serve `public/index.html`.
