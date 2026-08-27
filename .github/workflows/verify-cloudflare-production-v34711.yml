@@ -1,0 +1,46 @@
+name: Verify Cloudflare production V34.7.11
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - index.html
+      - public/index.html
+      - functions/api/blabla/sync.js
+      - scripts/v34711-linked-roster-refresh.js
+      - tests/verify-cloudflare-production-v34710.mjs
+      - .github/workflows/verify-cloudflare-production-v34711.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-production-v34711
+  cancel-in-progress: true
+
+env:
+  PRODUCTION_URL: https://nikke-growth-calculator.breezy-mum.workers.dev
+  PUBLIC_PROFILE_URL: https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTczODk5ODEwMzMzMTgwOTYwMDc=
+
+jobs:
+  verify-production:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Wait for Cloudflare automatic deployment and verify V34.7.11
+        env:
+          CLOUDFLARE_PRODUCTION_URL: ${{ env.PRODUCTION_URL }}
+          BLABLA_PUBLIC_PROFILE: ${{ env.PUBLIC_PROFILE_URL }}
+          CLOUDFLARE_LIVE_REPORT: V34711_CLOUDFLARE_RESULTS.json
+        run: node tests/verify-cloudflare-production-v34710.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v34711-cloudflare-production-verification
+          path: V34711_CLOUDFLARE_RESULTS.json
+          if-no-files-found: error
