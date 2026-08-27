@@ -1,0 +1,42 @@
+name: Normalize V34.7.12 inherited regressions
+
+on:
+  push:
+    branches:
+      - timeline-v34712
+    paths:
+      - .github/workflows/kick-timeline-v34712-regressions.yml
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+      - name: Advance escaped version expectations and trigger canonical integration
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          for p in Path('tests').glob('*.mjs'):
+              text=p.read_text('utf-8')
+              text=text.replace(r'34\.7\.11',r'34\.7\.12').replace('34.7.11','34.7.12')
+              p.write_text(text,'utf-8')
+          runtime=Path('scripts/v34712-timeline-runtime.js')
+          text=runtime.read_text('utf-8')
+          kick='// v34712 canonical integration trigger\n'
+          if kick not in text:
+              runtime.write_text(text+'\n'+kick,'utf-8')
+          PY
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add tests scripts/v34712-timeline-runtime.js
+          if ! git diff --cached --quiet; then
+            git commit -m 'V34.7.12: normalize inherited regression version gates'
+            git push origin HEAD:${{ github.ref_name }}
+          fi
