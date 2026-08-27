@@ -1,6 +1,6 @@
 {
   "version": "34.7.13",
-  "verifiedAtUtc": "2026-08-27T16:27:10.853Z",
+  "verifiedAtUtc": "2026-08-27T16:41:46.722Z",
   "environment": {
     "viewport": "412x915 + 1440x900 visual QA",
     "deviceMemoryGb": 4,
@@ -11879,7 +11879,7 @@
   },
   "fiveDeck": {
     "first": {
-      "elapsed": 22294.59999999404,
+      "elapsed": 23760.80000001192,
       "status": "ok",
       "teams": 5,
       "totalScore": 29718098673.734066,
@@ -11930,7 +11930,7 @@
         "fixedRequirementsMissing": [],
         "fixedRulesSelectedBy": "v34713-constrained-timeline-exact",
         "engine": "v34713-v34-authoritative-timeline",
-        "checkedAt": "2026-08-27T16:27:09.371Z"
+        "checkedAt": "2026-08-27T16:41:45.176Z"
       },
       "diagnostics": {
         "receivedCount": 193,
@@ -11944,7 +11944,7 @@
         "b3Count": 40,
         "flexCount": 58,
         "baseTeamCount": 5,
-        "elapsedMs": 22210.20000001788,
+        "elapsedMs": 23676.40000000596,
         "catalogCount": 107,
         "generatedCandidates": 2473,
         "augmentedCandidates": 3623,
@@ -12012,8 +12012,8 @@
         },
         "cooperativeYields": 472,
         "timelineStep": 0.5,
-        "generationMs": 2036.300000011921,
-        "selectionMs": 76.10000002384186,
+        "generationMs": 2200.699999988079,
+        "selectionMs": 56,
         "selectedCount": 5,
         "emergencyUsed": false,
         "emergencyCandidates": 0,
@@ -12041,7 +12041,7 @@
         "fineWinnerTotal": 29718098673.734066,
         "fineWinnerCoarseRank": 1,
         "rerankChanged": false,
-        "rerankMs": 1154.5,
+        "rerankMs": 1369.5,
         "fineOptimalWithinContenders": true,
         "fineGlobalProven": false,
         "fineContenderSummaries": [
@@ -12546,7 +12546,7 @@
           "fineWinnerTotal": 29718098673.734066,
           "fineWinnerCoarseRank": 1,
           "rerankChanged": false,
-          "rerankMs": 1154.5,
+          "rerankMs": 1369.5,
           "fineOptimalWithinContenders": true,
           "fineGlobalProven": false,
           "fineContenderSummaries": [
@@ -13087,7 +13087,7 @@
           "fineWinnerTotal": 29718098673.734066,
           "fineWinnerCoarseRank": 1,
           "rerankChanged": false,
-          "rerankMs": 1154.5,
+          "rerankMs": 1369.5,
           "fineOptimalWithinContenders": true,
           "fineGlobalProven": false,
           "fineContenderSummaries": [
@@ -13556,7 +13556,7 @@
       "error": null
     },
     "second": {
-      "elapsed": 79.40000000596046,
+      "elapsed": 73,
       "status": "ok",
       "teams": 5,
       "totalScore": 29718098673.734066,
@@ -13607,7 +13607,7 @@
         "fixedRequirementsMissing": [],
         "fixedRulesSelectedBy": "v34713-constrained-timeline-exact",
         "engine": "v34713-v34-authoritative-timeline",
-        "checkedAt": "2026-08-27T16:27:09.371Z"
+        "checkedAt": "2026-08-27T16:41:45.176Z"
       },
       "diagnostics": {
         "receivedCount": 193,
@@ -13621,7 +13621,7 @@
         "b3Count": 40,
         "flexCount": 58,
         "baseTeamCount": 5,
-        "elapsedMs": 22210.20000001788,
+        "elapsedMs": 23676.40000000596,
         "catalogCount": 107,
         "generatedCandidates": 2473,
         "augmentedCandidates": 3623,
@@ -13689,8 +13689,8 @@
         },
         "cooperativeYields": 472,
         "timelineStep": 0.5,
-        "generationMs": 2036.300000011921,
-        "selectionMs": 76.10000002384186,
+        "generationMs": 2200.699999988079,
+        "selectionMs": 56,
         "selectedCount": 5,
         "emergencyUsed": false,
         "emergencyCandidates": 0,
@@ -13718,7 +13718,7 @@
         "fineWinnerTotal": 29718098673.734066,
         "fineWinnerCoarseRank": 1,
         "rerankChanged": false,
-        "rerankMs": 1154.5,
+        "rerankMs": 1369.5,
         "fineOptimalWithinContenders": true,
         "fineGlobalProven": false,
         "fineContenderSummaries": [
@@ -14223,7 +14223,7 @@
           "fineWinnerTotal": 29718098673.734066,
           "fineWinnerCoarseRank": 1,
           "rerankChanged": false,
-          "rerankMs": 1154.5,
+          "rerankMs": 1369.5,
           "fineOptimalWithinContenders": true,
           "fineGlobalProven": false,
           "fineContenderSummaries": [
@@ -14764,7 +14764,7 @@
           "fineWinnerTotal": 29718098673.734066,
           "fineWinnerCoarseRank": 1,
           "rerankChanged": false,
-          "rerankMs": 1154.5,
+          "rerankMs": 1369.5,
           "fineOptimalWithinContenders": true,
           "fineGlobalProven": false,
           "fineContenderSummaries": [
@@ -15232,12 +15232,12 @@
       "uiStatus": "완료 · 연동 193명 / 보유 저장 106명 / 계산 프로필 106명 · 5팀 25명 · 중복 0 · 자체검증 PASS",
       "error": null
     },
-    "heartbeats": 341,
+    "heartbeats": 339,
     "postGcHeap": {
-      "usedSize": 16689708,
-      "totalSize": 20234240,
-      "embedderHeapUsedSize": 9996480,
-      "backingStorageSize": 6695190
+      "usedSize": 16692284,
+      "totalSize": 19185664,
+      "embedderHeapUsedSize": 10372992,
+      "backingStorageSize": 6695371
     }
   },
   "pass": true

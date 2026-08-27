@@ -1,6 +1,6 @@
 {
   "version": "34.7.13",
-  "verifiedAtUtc": "2026-08-27T16:26:39.560Z",
+  "verifiedAtUtc": "2026-08-27T16:41:13.685Z",
   "environment": {
     "viewport": "412x915",
     "deviceMemoryGb": 4,
@@ -37,10 +37,10 @@
   },
   "fiveDeck": {
     "first": {
-      "buildMs": 7682.5,
-      "optimizeMs": 204.59999999403954,
+      "buildMs": 8395.09999999404,
+      "optimizeMs": 208.19999998807907,
       "candidates": 896,
-      "candidateJsonBytes": 47599541,
+      "candidateJsonBytes": 47597471,
       "totalScore": 23575005.966773845,
       "teams": 5,
       "unique": 25,
@@ -256,8 +256,8 @@
       }
     },
     "second": {
-      "buildMs": 6779.300000011921,
-      "optimizeMs": 197,
+      "buildMs": 7365.5,
+      "optimizeMs": 205.09999999403954,
       "candidates": 896,
       "candidateJsonBytes": 47597271,
       "totalScore": 23575005.966773845,
@@ -476,10 +476,10 @@
     },
     "deterministic": true,
     "postGcHeap": {
-      "usedSize": 15059576,
-      "totalSize": 17735680,
-      "embedderHeapUsedSize": 10333976,
-      "backingStorageSize": 6601417
+      "usedSize": 17198408,
+      "totalSize": 21667840,
+      "embedderHeapUsedSize": 10547448,
+      "backingStorageSize": 6601360
     }
   },
   "pass": true
