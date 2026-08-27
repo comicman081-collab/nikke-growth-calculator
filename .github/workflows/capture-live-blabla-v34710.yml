@@ -33,15 +33,16 @@ jobs:
       - name: Capture current ENIKK character master
         run: |
           set -euo pipefail
-          jq -nc '{query:"query V34710Characters { characters { id name_code name_localkey resource_id original_rare class element_id use_burst_skill corporation slug } }",variables:{}}' > enikk-query.json
+          jq -nc '{query:"query V34710Characters { characters { name_code name_localkey resource_id original_rare class element_id use_burst_skill corporation } }",variables:{}}' > enikk-query.json
           curl -L --fail --retry 5 --max-time 120 \
             -H 'content-type: application/json' \
             --data-binary @enikk-query.json \
             https://enikk.app/api/graphql > enikk-character-master-response.json
+          cat enikk-character-master-response.json
           jq -e '.data.characters | length > 100' enikk-character-master-response.json >/dev/null
           jq '.data.characters' enikk-character-master-response.json > enikk-character-master.json
-          jq '{rosterVersion:input.version, rosterAreas:[input.areas[]|{area,characterCount:(.characters|length),detailCount:(.details|length)}], masterCount:($master|length)}' \
-            --argfile input live-blabla-roster.json --argfile master enikk-character-master.json -n
+          jq -n --argfile roster live-blabla-roster.json --argfile master enikk-character-master.json \
+            '{rosterVersion:$roster.version, rosterAreas:[$roster.areas[]|{area,characterCount:(.characters|length),detailCount:(.details|length)}], masterCount:($master|length)}'
 
       - uses: actions/upload-artifact@v4
         with:
