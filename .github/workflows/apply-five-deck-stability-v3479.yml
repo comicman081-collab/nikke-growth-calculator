@@ -1,0 +1,121 @@
+name: Apply V34.7.9 five-deck stability
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - fix-five-deck-stability-v3479
+    paths:
+      - .github/workflows/apply-five-deck-stability-v3479.yml
+      - scripts/v3479-github-bundle.tar.xz
+
+concurrency:
+  group: apply-five-deck-v3479-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  apply-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Expand the audited V34.7.9 patch bundle
+        run: |
+          set -euo pipefail
+          echo 'a2ebca34365483d37186d957d9ad0154ad795a3d7956e95e7c1256681c070978  scripts/v3479-github-bundle.tar.xz' | sha256sum -c -
+          tar -xJf scripts/v3479-github-bundle.tar.xz -C .
+          git apply --check scripts/v3479-index.patch
+          git apply scripts/v3479-index.patch
+          cp index.html public/index.html
+          rm scripts/v3479-index.patch
+          git rm scripts/v3479-github-bundle.tar.xz
+          echo '330e8f898a728fbce49a64f71bb396d99c80da9753a66fa1ec84c2bfbc12d23c  index.html' | sha256sum -c -
+          cmp --silent index.html public/index.html
+
+      - name: Install pinned dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: Run static and calculation regressions
+        run: |
+          set -euo pipefail
+          : > V3479_RELEASE_RESULTS.txt
+          npm run check | tee -a V3479_RELEASE_RESULTS.txt
+
+      - name: Build Cloudflare assets
+        run: |
+          set -euo pipefail
+          npm run build | tee -a V3479_RELEASE_RESULTS.txt
+
+      - name: Run real Chromium BlaBla and low-memory repeated five-deck regressions
+        env:
+          CHROME_BIN: /usr/bin/google-chrome
+        run: |
+          set -euo pipefail
+          google-chrome --version | tee -a V3479_RELEASE_RESULTS.txt
+          node tests/verify-blabla-propagation-browser-v3478.mjs | tee -a V3479_RELEASE_RESULTS.txt
+          node tests/verify-five-deck-stability-browser-v3479.mjs | tee -a V3479_RELEASE_RESULTS.txt
+
+      - name: Parse every executable inline script
+        run: |
+          set -euo pipefail
+          node tests/verify-inline-v3479.mjs | tee -a V3479_RELEASE_RESULTS.txt
+
+      - name: Record release integrity hashes
+        run: |
+          set -euo pipefail
+          sha256sum \
+            index.html public/index.html package.json package-lock.json \
+            functions/api/blabla/sync.js \
+            tests/verify-five-deck-stability-v3479.mjs \
+            tests/verify-five-deck-stability-browser-v3479.mjs \
+            docs/V34.7.9_FIVE_DECK_STABILITY.md \
+            > SHA256SUMS.txt
+          grep -F 'id="v3479-five-deck-stability"' index.html
+          grep -F "const VERSION = '34.7.9';" functions/api/blabla/sync.js
+
+      - name: Commit canonical V34.7.9 source
+        run: |
+          set -euo pipefail
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add \
+            index.html public/index.html package.json package-lock.json \
+            functions/api/blabla/sync.js GITHUB_DEPLOY_STATUS.md SHA256SUMS.txt \
+            tests/verify-blabla-propagation-browser-v3478.mjs \
+            tests/verify-five-deck-stability-v3479.mjs \
+            tests/verify-five-deck-stability-browser-v3479.mjs \
+            tests/verify-inline-v3479.mjs \
+            tests/verify-cloudflare-production-v3479.mjs \
+            docs/V34.7.9_FIVE_DECK_STABILITY.md \
+            V3479_RELEASE_RESULTS.txt V3479_FIVE_DECK_BROWSER_RESULTS.json V3479_INLINE_RESULTS.json
+          if git diff --cached --quiet; then
+            echo 'Canonical V34.7.9 output is unchanged'
+          else
+            git commit -m 'V34.7.9: stabilize BlaBla owned-roster five-deck calculation'
+            git push origin HEAD:${{ github.ref_name }}
+          fi
+
+      - name: Upload verified release candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: nikke-v3479-five-deck-stability-verified
+          path: |
+            index.html
+            public/index.html
+            dist-cloudflare/index.html
+            V3479_RELEASE_RESULTS.txt
+            V3479_FIVE_DECK_BROWSER_RESULTS.json
+            V3479_INLINE_RESULTS.json
+            SHA256SUMS.txt
+          if-no-files-found: error
