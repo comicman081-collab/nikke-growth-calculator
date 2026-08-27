@@ -1,0 +1,50 @@
+name: Fix V34.7.12 timeline combo harness
+
+on:
+  push:
+    branches:
+      - timeline-v34712
+    paths:
+      - .github/workflows/fix-timeline-combo-harness-v34712.yml
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  patch-and-dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: timeline-v34712
+          fetch-depth: 0
+      - name: Use the authoritative Precision entry point and make browser failures fatal
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('.github/workflows/apply-timeline-v34712.yml')
+          text=p.read_text('utf-8')
+          old='''                precisionCalcV21();\n                const snapshot=window.__precisionSnapshot;'''
+          new='''                precisionCalc();\n                const snapshot=window.__precisionSnapshot;'''
+          assert old in text, 'combo Precision call not found'
+          text=text.replace(old,new,1)
+          text=text.replace('''              precisionCalcV21();\n            }''','''              precisionCalc();\n            }''',1)
+          oldrun='''        run: npm run check:browser | tee -a V34712_RELEASE_RESULTS.txt'''
+          newrun='''        run: |\n          set -euo pipefail\n          npm run check:browser | tee -a V34712_RELEASE_RESULTS.txt'''
+          if oldrun in text:
+              text=text.replace(oldrun,newrun,1)
+          assert 'precisionCalcV21();' not in text
+          assert 'set -euo pipefail\n          npm run check:browser' in text
+          p.write_text(text,'utf-8')
+          PY
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add .github/workflows/apply-timeline-v34712.yml
+          git commit -m 'V34.7.12: use authoritative Precision entry point in combo timeline gate'
+          git push origin HEAD:timeline-v34712
+      - name: Dispatch complete V34.7.12 gate
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run apply-timeline-v34712.yml --ref timeline-v34712
