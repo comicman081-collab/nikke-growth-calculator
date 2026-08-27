@@ -1,0 +1,37 @@
+name: Capture live BlaBla roster V34.7.10
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - fix-owned-roster-zero-v34710
+    paths:
+      - .github/workflows/capture-live-blabla-v34710.yml
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Capture public live roster through production Worker
+        env:
+          ORIGIN: https://nikke-growth-calculator.breezy-mum.workers.dev
+          PROFILE: https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTczODk5ODEwMzMzMTgwOTYwMDc=
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 5 --max-time 120 \
+            -H 'content-type: application/json' \
+            -H "Origin: $ORIGIN" \
+            -H "Referer: $ORIGIN/" \
+            --data "$(jq -nc --arg profile "$PROFILE" '{profileUrl:$profile,serverHint:"GLOBAL"}')" \
+            "$ORIGIN/api/blabla/sync" > live-blabla-roster.json
+          jq -e '.ok == true' live-blabla-roster.json >/dev/null
+          jq '{version, profile, areas: [.areas[] | {area, characterCount:(.characters|length), detailCount:(.details|length), effectCount:(.stateEffects|length)}]}' live-blabla-roster.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: live-blabla-roster-v34710
+          path: live-blabla-roster.json
+          if-no-files-found: error
