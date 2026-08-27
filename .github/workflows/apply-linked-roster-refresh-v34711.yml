@@ -1,0 +1,152 @@
+name: Apply V34.7.11 linked roster refresh
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - linked-roster-refresh-v34711
+    paths:
+      - .github/workflows/apply-linked-roster-refresh-v34711.yml
+      - scripts/v34711-index.patch.xz
+      - scripts/v34711-support.tar.xz
+
+concurrency:
+  group: apply-v34711-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  apply-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Verify and expand audited V34.7.11 source payloads
+        run: |
+          set -euo pipefail
+
+          echo '302a1c8f9b6b8fff9817edc009359aaedc9d7195356516ce59d5d9140e708290  scripts/v34711-index.patch.xz' | sha256sum -c -
+          xz --test scripts/v34711-index.patch.xz
+          xz --decompress --stdout scripts/v34711-index.patch.xz > /tmp/v34711-index.patch
+          echo '552c5aabc1cc0a0d224a71d2b45ffe25dbd46084207b81fd74a78a870e1048c0  /tmp/v34711-index.patch' | sha256sum -c -
+
+          echo '9addbe2d6787b2101b5781432661e28b84708b7114e81e2928c01d0a2537c391  scripts/v34711-support.tar.xz' | sha256sum -c -
+          xz --test scripts/v34711-support.tar.xz
+          tar -xJf scripts/v34711-support.tar.xz -C .
+
+          git apply --check /tmp/v34711-index.patch
+          git apply /tmp/v34711-index.patch
+          cp index.html public/index.html
+
+          echo 'd574f3510f431c2a4acda9f5b4b3ba253d121f2836e46d1ac40e4e4912162468  index.html' | sha256sum -c -
+          echo 'd574f3510f431c2a4acda9f5b4b3ba253d121f2836e46d1ac40e4e4912162468  public/index.html' | sha256sum -c -
+          cmp --silent index.html public/index.html
+
+          grep -F 'id="v34711-linked-roster-policy"' index.html
+          grep -F 'dynamic-current-app-profiles' index.html
+          grep -F 'v34711BlaRefresh' index.html
+          grep -F "const VERSION = '34.7.11';" functions/api/blabla/sync.js
+
+      - name: Install pinned dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: Run static calculation and integration regressions
+        run: |
+          set -euo pipefail
+          : > V34711_RELEASE_RESULTS.txt
+          npm run check | tee -a V34711_RELEASE_RESULTS.txt
+
+      - name: Build Cloudflare deployment assets
+        run: |
+          set -euo pipefail
+          npm run build | tee -a V34711_RELEASE_RESULTS.txt
+          cmp --silent index.html public/index.html
+          test -f dist-cloudflare/index.html
+
+      - name: Run real Chromium four-surface and 193-row refresh regressions
+        run: |
+          set -euo pipefail
+          CHROME_BIN=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
+          test -n "$CHROME_BIN"
+          export CHROME_BIN
+          "$CHROME_BIN" --version | tee -a V34711_RELEASE_RESULTS.txt
+          npm run check:browser | tee -a V34711_RELEASE_RESULTS.txt
+
+      - name: Verify linked-row and calculation-pool policy in browser evidence
+        run: |
+          set -euo pipefail
+          node --input-type=module <<'NODE' | tee -a V34711_RELEASE_RESULTS.txt
+          import fs from 'node:fs';
+          const report=JSON.parse(fs.readFileSync('V34711_LINKED_ROSTER_193_BROWSER_RESULTS.json','utf8'));
+          if(report.sync?.raw!==193) throw new Error(`expected 193 raw rows, got ${report.sync?.raw}`);
+          if(!(report.sync?.importedCurrentApp>0)) throw new Error('no current-app rows imported');
+          if(!(report.sync?.calculationParticipants>0)) throw new Error('no calculation participants');
+          if(!(report.sync?.unmatchedRawOnly>0)) throw new Error('future/unregistered rows were not retained raw-only');
+          if(report.fiveDeck?.teams!==5||report.fiveDeck?.unique!==25) throw new Error('five-deck regression did not finish 5 teams / 25 unique');
+          if(report.refresh?.manualPostIssued!==true||report.refresh?.scheduled11!==true||report.refresh?.scheduled19!==true) throw new Error('manual or Thursday scheduled refresh did not issue real refresh POSTs');
+          console.log(JSON.stringify({sync:report.sync,refresh:report.refresh,fiveDeck:report.fiveDeck},null,2));
+          console.log('V34.7.11 dynamic current-app calculation pool + full raw linked storage + manual/Thursday refresh browser gate: PASS');
+          NODE
+
+      - name: Record canonical integrity hashes
+        run: |
+          set -euo pipefail
+          sha256sum \
+            index.html public/index.html package.json package-lock.json \
+            functions/api/blabla/sync.js \
+            scripts/v34710-owned-roster-repair.js \
+            tests/verify-linked-refresh-v34711.mjs \
+            tests/verify-linked-roster-193-browser-v34711.mjs \
+            tests/verify-cloudflare-production-v34711.mjs \
+            docs/V34.7.11_LINKED_ROSTER_REFRESH.md \
+            > SHA256SUMS.txt
+
+      - name: Remove transfer-only payloads and commit canonical source
+        run: |
+          set -euo pipefail
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git rm -f scripts/v34711-index.patch.xz scripts/v34711-support.tar.xz
+          git rm -r -f --ignore-unmatch scripts/v34711-upload
+          git add \
+            index.html public/index.html package.json package-lock.json \
+            functions/api/blabla/sync.js scripts/v34710-owned-roster-repair.js \
+            tests/verify-deploy-autosync.mjs tests/verify-favorite-phase-v3477.mjs \
+            tests/verify-blabla-propagation-v3478.mjs tests/verify-blabla-propagation-browser-v3478.mjs \
+            tests/verify-five-deck-stability-v3479.mjs tests/verify-five-deck-stability-browser-v3479.mjs \
+            tests/verify-linked-refresh-v34711.mjs tests/verify-inline-v34711.mjs \
+            tests/verify-linked-roster-193-browser-v34711.mjs tests/verify-cloudflare-production-v34711.mjs \
+            docs/V34.7.11_LINKED_ROSTER_REFRESH.md GITHUB_DEPLOY_STATUS.md SHA256SUMS.txt \
+            V34711_RELEASE_RESULTS.txt V34711_LINKED_ROSTER_193_BROWSER_RESULTS.json V34711_INLINE_RESULTS.json \
+            V3479_FIVE_DECK_BROWSER_RESULTS.json
+          if git diff --cached --quiet; then
+            echo 'Canonical V34.7.11 output unchanged'
+          else
+            git commit -m 'V34.7.11: refresh full linked data and calculate current app profiles only'
+            git push origin HEAD:${{ github.ref_name }}
+          fi
+
+      - name: Upload verified V34.7.11 release candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: nikke-v34711-linked-roster-refresh-verified
+          path: |
+            index.html
+            public/index.html
+            dist-cloudflare/index.html
+            V34711_RELEASE_RESULTS.txt
+            V34711_LINKED_ROSTER_193_BROWSER_RESULTS.json
+            V34711_INLINE_RESULTS.json
+            V3479_FIVE_DECK_BROWSER_RESULTS.json
+            SHA256SUMS.txt
+          if-no-files-found: error

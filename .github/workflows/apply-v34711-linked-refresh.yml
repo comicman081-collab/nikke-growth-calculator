@@ -1,0 +1,83 @@
+name: Apply V34.7.11 linked roster refresh
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - linked-roster-refresh-v34711
+    paths:
+      - .github/workflows/apply-v34711-linked-refresh.yml
+      - scripts/apply-v34711-linked-refresh.mjs
+      - scripts/v34711-linked-roster-refresh.js
+
+concurrency:
+  group: apply-v34711-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  apply-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Apply deterministic V34.7.11 patch
+        run: |
+          set -euo pipefail
+          node scripts/apply-v34711-linked-refresh.mjs
+          sha256sum index.html
+          cmp --silent index.html public/index.html
+          rm -rf scripts/v34711-upload
+      - name: Install and run static regressions
+        run: |
+          set -euo pipefail
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm run check
+      - name: Build Cloudflare assets
+        run: npm run build
+      - name: Verify 193-row raw sync and dynamic calculation registry in low-memory Chromium
+        env:
+          CHROME_BIN: /usr/bin/google-chrome
+        run: |
+          set -euo pipefail
+          node tests/verify-owned-roster-186-browser-v34710.mjs
+      - name: Verify existing four-surface propagation remains intact
+        env:
+          CHROME_BIN: /usr/bin/google-chrome
+        run: node tests/verify-blabla-propagation-browser-v3478.mjs
+      - name: Commit canonical V34.7.11 source
+        run: |
+          set -euo pipefail
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -A
+          if git diff --cached --quiet; then
+            echo 'V34.7.11 canonical output unchanged'
+          else
+            git commit -m 'V34.7.11: use dynamic app registry and scheduled linked refresh'
+            git push origin HEAD:${{ github.ref_name }}
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nikke-v34711-verified
+          path: |
+            index.html
+            public/index.html
+            dist-cloudflare
+            V34711_LINKED_ROSTER_193_BROWSER_RESULTS.json
+            GITHUB_DEPLOY_STATUS.md
+            package.json
+            package-lock.json
+            functions/api/blabla/sync.js
+            scripts/v34711-linked-roster-refresh.js
+            tests/verify-linked-roster-refresh-v34711.mjs
+            tests/verify-cloudflare-production-v34710.mjs
+          if-no-files-found: error
