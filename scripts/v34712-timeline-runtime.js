@@ -117,3 +117,5 @@ root.addEventListener?.('resize',()=>{for(const d of root.document.querySelector
 root.addEventListener?.('nikke:v26-roster-updated',()=>cache.clear());
 root.NIKKEV34712UnifiedTimeline=Object.freeze({version:VERSION,compactName,compactDamage,normalizeTrace,traceAudit,syntheticFromSnapshot,simulateTeam,decorateFiveDeck,verify,cacheSize:()=>cache.size,clearCache:()=>cache.clear()});
 })(window);
+
+// v34712 canonical integration trigger
