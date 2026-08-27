@@ -1,0 +1,39 @@
+name: Export V34.7.12 current source
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - timeline-damage-v34712
+    paths:
+      - .github/workflows/export-v34712-current-main.yml
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nikke-v34712-current-source
+          path: |
+            .github
+            audit
+            docs
+            functions
+            public
+            scripts
+            tests
+            index.html
+            package.json
+            package-lock.json
+            wrangler.worker.jsonc
+            worker-entry.js
+            GITHUB_DEPLOY_STATUS.md
+            SHA256SUMS.txt
+          if-no-files-found: warn
