@@ -1,0 +1,159 @@
+name: Apply V34.7.9 five-deck stability
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - fix-five-deck-stability-v3479
+    paths:
+      - .github/workflows/apply-five-deck-stability-v3479.yml
+      - scripts/v3479-upload/**
+
+concurrency:
+  group: apply-five-deck-v3479-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  apply-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Reconstruct and verify the audited V34.7.9 source payloads
+        run: |
+          set -euo pipefail
+
+          cat scripts/v3479-upload/patch-*.b64 | base64 --decode > /tmp/v3479-index.patch.xz
+          echo '946e8164f665be2394efdc3d49c4daf3c8ca417ac97315b941ff7acc330c19fe  /tmp/v3479-index.patch.xz' | sha256sum -c -
+          xz --test /tmp/v3479-index.patch.xz
+          xz --decompress --stdout /tmp/v3479-index.patch.xz > scripts/v3479-index.patch
+          echo 'ecc5467802495c706ce89b368da6b82ef8546da3d6bc712d6b880b7bc2d05362  scripts/v3479-index.patch' | sha256sum -c -
+
+          cat scripts/v3479-upload/support-*.b64 | base64 --decode > /tmp/v3479-support.tar.xz
+          echo '8a32dbe1adfa69b2d0f564e6956fc3bfcb4542b4ec60c846a25040282e823a80  /tmp/v3479-support.tar.xz' | sha256sum -c -
+          xz --test /tmp/v3479-support.tar.xz
+          tar -xJf /tmp/v3479-support.tar.xz -C .
+
+          python3 - <<'PY'
+          from pathlib import Path
+          files = [
+              Path('tests/verify-deploy-autosync.mjs'),
+              Path('tests/verify-favorite-phase-v3477.mjs'),
+              Path('tests/verify-blabla-propagation-v3478.mjs'),
+              Path('tests/verify-blabla-propagation-browser-v3478.mjs'),
+          ]
+          for path in files:
+              text = path.read_text('utf-8')
+              text = text.replace(r'34\.7\.8', r'34\.7\.9').replace('34.7.8', '34.7.9')
+              path.write_text(text, 'utf-8')
+          PY
+          grep -F "assert.equal(api.version,'34.7.9');" tests/verify-favorite-phase-v3477.mjs
+          grep -F "V34\\.7\\.9" tests/verify-blabla-propagation-v3478.mjs
+          grep -F "const VERSION='34.7.9';" tests/verify-blabla-propagation-browser-v3478.mjs
+
+          git apply --check scripts/v3479-index.patch
+          git apply scripts/v3479-index.patch
+          cp index.html public/index.html
+
+          rm scripts/v3479-index.patch
+          git rm -r scripts/v3479-upload
+          git rm -f --ignore-unmatch scripts/v3479-github-bundle.tar.xz scripts/v3479-index.patch.xz.b64
+
+          echo '330e8f898a728fbce49a64f71bb396d99c80da9753a66fa1ec84c2bfbc12d23c  index.html' | sha256sum -c -
+          echo '330e8f898a728fbce49a64f71bb396d99c80da9753a66fa1ec84c2bfbc12d23c  public/index.html' | sha256sum -c -
+          cmp --silent index.html public/index.html
+
+      - name: Install pinned dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: Run static and calculation regressions
+        run: |
+          set -euo pipefail
+          : > V3479_RELEASE_RESULTS.txt
+          npm run check | tee -a V3479_RELEASE_RESULTS.txt
+
+      - name: Build Cloudflare assets
+        run: |
+          set -euo pipefail
+          npm run build | tee -a V3479_RELEASE_RESULTS.txt
+
+      - name: Run real Chromium BlaBla and low-memory repeated five-deck regressions
+        env:
+          CHROME_BIN: /usr/bin/google-chrome
+        run: |
+          set -euo pipefail
+          google-chrome --version | tee -a V3479_RELEASE_RESULTS.txt
+          node tests/verify-blabla-propagation-browser-v3478.mjs | tee -a V3479_RELEASE_RESULTS.txt
+          node tests/verify-five-deck-stability-browser-v3479.mjs | tee -a V3479_RELEASE_RESULTS.txt
+
+      - name: Parse every executable inline script
+        run: |
+          set -euo pipefail
+          node tests/verify-inline-v3479.mjs | tee -a V3479_RELEASE_RESULTS.txt
+
+      - name: Record release integrity hashes
+        run: |
+          set -euo pipefail
+          sha256sum \
+            index.html public/index.html package.json package-lock.json \
+            functions/api/blabla/sync.js \
+            tests/verify-deploy-autosync.mjs \
+            tests/verify-favorite-phase-v3477.mjs \
+            tests/verify-blabla-propagation-v3478.mjs \
+            tests/verify-blabla-propagation-browser-v3478.mjs \
+            tests/verify-five-deck-stability-v3479.mjs \
+            tests/verify-five-deck-stability-browser-v3479.mjs \
+            docs/V34.7.9_FIVE_DECK_STABILITY.md \
+            > SHA256SUMS.txt
+          grep -F 'id="v3479-five-deck-stability"' index.html
+          grep -F "const VERSION = '34.7.9';" functions/api/blabla/sync.js
+
+      - name: Commit canonical V34.7.9 source
+        run: |
+          set -euo pipefail
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add \
+            index.html public/index.html package.json package-lock.json \
+            functions/api/blabla/sync.js GITHUB_DEPLOY_STATUS.md SHA256SUMS.txt \
+            tests/verify-deploy-autosync.mjs \
+            tests/verify-favorite-phase-v3477.mjs \
+            tests/verify-blabla-propagation-v3478.mjs \
+            tests/verify-blabla-propagation-browser-v3478.mjs \
+            tests/verify-five-deck-stability-v3479.mjs \
+            tests/verify-five-deck-stability-browser-v3479.mjs \
+            tests/verify-inline-v3479.mjs \
+            tests/verify-cloudflare-production-v3479.mjs \
+            docs/V34.7.9_FIVE_DECK_STABILITY.md \
+            V3479_RELEASE_RESULTS.txt V3479_FIVE_DECK_BROWSER_RESULTS.json V3479_INLINE_RESULTS.json
+          if git diff --cached --quiet; then
+            echo 'Canonical V34.7.9 output is unchanged'
+          else
+            git commit -m 'V34.7.9: stabilize BlaBla owned-roster five-deck calculation'
+            git push origin HEAD:${{ github.ref_name }}
+          fi
+
+      - name: Upload verified release candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: nikke-v3479-five-deck-stability-verified
+          path: |
+            index.html
+            public/index.html
+            dist-cloudflare/index.html
+            V3479_RELEASE_RESULTS.txt
+            V3479_FIVE_DECK_BROWSER_RESULTS.json
+            V3479_INLINE_RESULTS.json
+            SHA256SUMS.txt
+          if-no-files-found: error

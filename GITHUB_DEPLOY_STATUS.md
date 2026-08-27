@@ -1,6 +1,6 @@
 # GitHub / Cloudflare deploy status
 
-Current production build: **V34.7.8 BlaBla four-surface calculation propagation**
+Current production build: **V34.7.9 BlaBla Five-Deck Stability**
 
 ## Ready
 
@@ -23,6 +23,14 @@ Current production build: **V34.7.8 BlaBla four-surface calculation propagation*
 - BlaBla four-surface propagation is verified from one central roster into Precision, My Roster, Simulation, and 5-deck calculation contexts.
 - The 5-deck optimizer now preserves favorite phase and observed equipment ATK/HP/DEF instead of overwriting the rich central context.
 - Live Cloudflare verification checks the deployed HTML and same-origin /api/blabla/sync bridge.
+
+
+- Large synchronized owned rosters use a mobile-only bounded search mode: compact B3/flex pre-rank caches, a 180 exact-pair safety budget, cooperative yielding, and immediate cache release after candidate generation.
+- Final five-team selections remain full exact recalculations; only repeated pre-ranking work is reused or bounded.
+- The stability browser regression imports a 100+ character BlaBla-shaped roster on a 412×915 / 4 GB profile and requires five teams, 25 unique members, bounded candidate memory, and no crash.
+
+- BlaBla-owned-roster five-deck composition uses the bounded yielding optimizer path; candidate scoring returns UI control in batches and releases the heavy candidate pool after selection.
+- Android/WebView runs use pair/flex limits 8/3 with deterministic 10/4 fallback, preventing unbounded V34 recursive exact-cover memory growth.
 
 ## Automatic deployment
 

@@ -1,0 +1,446 @@
+{
+  "version": "34.7.9",
+  "verifiedAtUtc": "2026-08-27T00:40:27.336Z",
+  "environment": {
+    "viewport": "412x915",
+    "deviceMemoryGb": 4,
+    "v8OldSpaceMb": 96,
+    "heapLimit": 201326592
+  },
+  "bridge": {
+    "imported": 107,
+    "area": 84
+  },
+  "roster": {
+    "id": "sugarTreasure",
+    "level": 450,
+    "skills": {
+      "skill1": 2,
+      "skill2": 7,
+      "burst": 9
+    },
+    "phase": 3,
+    "cube": "diffusion",
+    "equipmentAttack": 8818,
+    "equipmentHp": 198316,
+    "equipmentDefense": 1318,
+    "slots": 4
+  },
+  "precision": {
+    "total": 339226.3757679811,
+    "pass": true
+  },
+  "simulation": {
+    "phase0": 1160323297.1090527,
+    "phase3": 1488118761.903383,
+    "gearAttack": 8818
+  },
+  "fiveDeck": {
+    "first": {
+      "buildMs": 10921.200000000012,
+      "optimizeMs": 26.89999999999418,
+      "candidates": 191,
+      "candidateJsonBytes": 1603723,
+      "totalScore": 28716617.009975065,
+      "teams": 5,
+      "unique": 25,
+      "diagnostics": {
+        "bossId": "annihilio",
+        "objective": "firepower",
+        "ownedOnly": true,
+        "rosterCharacters": 107,
+        "b3Characters": 53,
+        "blueprints": 18,
+        "bossCompatibleBlueprints": 13,
+        "bossCompatibleBlueprintIds": [
+          "literGravePierce",
+          "dwifeAdePierce",
+          "emmaEunhwaTrue",
+          "dorothyMariParts",
+          "rougeTakinaTrue",
+          "literCrownPrivatyGeneral",
+          "volumeCrownHelmGeneral",
+          "anisMaidPiratesGeneral",
+          "anisMaidPiratesWindParts",
+          "volumeMaidPiratesWind",
+          "anisCrownRoleAwareGeneral",
+          "sirenNayutaRoleAwareGeneral",
+          "sirenCrownAsukaReiPrivatyWind"
+        ],
+        "rosterCompatibleBlueprints": 13,
+        "rosterCompatibleBlueprintIds": [
+          "literGravePierce",
+          "dwifeAdePierce",
+          "emmaEunhwaTrue",
+          "dorothyMariParts",
+          "rougeTakinaTrue",
+          "literCrownPrivatyGeneral",
+          "volumeCrownHelmGeneral",
+          "anisMaidPiratesGeneral",
+          "anisMaidPiratesWindParts",
+          "volumeMaidPiratesWind",
+          "anisCrownRoleAwareGeneral",
+          "sirenNayutaRoleAwareGeneral",
+          "sirenCrownAsukaReiPrivatyWind"
+        ],
+        "priorityCharacters": [
+          {
+            "id": "snowWhiteHeavyArms",
+            "name": "스노우 화이트 : 헤비암즈",
+            "registered": true,
+            "owned": true,
+            "available": true,
+            "candidateCount": 31,
+            "state": "evaluated"
+          },
+          {
+            "id": "cinderellaCrystalWave",
+            "name": "신데렐라 : 크리스탈 웨이브",
+            "registered": true,
+            "owned": true,
+            "available": true,
+            "candidateCount": 19,
+            "state": "evaluated"
+          },
+          {
+            "id": "neonVisionEye",
+            "name": "네온 : 비전 아이",
+            "registered": true,
+            "owned": true,
+            "available": true,
+            "candidateCount": 9,
+            "state": "evaluated"
+          },
+          {
+            "id": "rapiRedHood",
+            "name": "라피 : 레드 후드",
+            "registered": true,
+            "owned": true,
+            "available": true,
+            "candidateCount": 5,
+            "state": "evaluated"
+          },
+          {
+            "id": "scarletBlackShadow",
+            "name": "홍련 : 흑영",
+            "registered": true,
+            "owned": true,
+            "available": true,
+            "candidateCount": 34,
+            "state": "evaluated"
+          },
+          {
+            "id": "helmTreasure",
+            "name": "Helm · 애장품",
+            "registered": true,
+            "owned": true,
+            "available": true,
+            "candidateCount": 67,
+            "state": "evaluated"
+          },
+          {
+            "id": "privatyTreasure",
+            "name": "Privaty · 애장품",
+            "registered": true,
+            "owned": true,
+            "available": true,
+            "candidateCount": 51,
+            "state": "evaluated"
+          },
+          {
+            "id": "asukaWille",
+            "name": "아스카 시키나미 랑그레이 : WILLE",
+            "registered": true,
+            "owned": true,
+            "available": true,
+            "candidateCount": 24,
+            "state": "evaluated"
+          },
+          {
+            "id": "reiAyanamiTentative",
+            "name": "레이 아야나미(가칭)",
+            "registered": true,
+            "owned": true,
+            "available": true,
+            "candidateCount": 80,
+            "state": "evaluated"
+          },
+          {
+            "id": "crown",
+            "name": "크라운",
+            "registered": true,
+            "owned": true,
+            "available": true,
+            "candidateCount": 29,
+            "state": "evaluated"
+          },
+          {
+            "id": "naga",
+            "name": "나가",
+            "registered": true,
+            "owned": true,
+            "available": true,
+            "candidateCount": 0,
+            "state": "noCompatibleCandidate"
+          },
+          {
+            "id": "mastRomanticMaid",
+            "name": "마스트 : 로망틱 메이드",
+            "registered": true,
+            "owned": true,
+            "available": true,
+            "candidateCount": 5,
+            "state": "evaluated"
+          }
+        ],
+        "candidates": 191,
+        "exactPairScores": 149,
+        "calibrationEnabled": true,
+        "calibrationEligibleGroups": 0,
+        "calibrationResolvedContexts": 0,
+        "calibrationCachedContexts": 191,
+        "directMemberScores": 172,
+        "pairAwareDirectMemberScores": 259,
+        "b3PreRankLimit": 18,
+        "b3PreRankCharacters": 49,
+        "b3PreRankReused": true,
+        "flexPreRankLimit": 12,
+        "flexPreRankGroups": 2,
+        "flexPreRankReuseCount": 58,
+        "b3TemplateCache": 49,
+        "flexRankCache": 95,
+        "retainedPairSnapshots": 0,
+        "pairLimit": 6,
+        "flexLimit": 3,
+        "constrainedDevice": true,
+        "largeSyncedRoster": true,
+        "stabilityMode": true,
+        "priorityPairCoverage": [
+          "scarletBlackShadow",
+          "privatyTreasure",
+          "helmTreasure",
+          "reiAyanamiTentative",
+          "asukaWille",
+          "snowWhiteHeavyArms",
+          "cinderellaCrystalWave",
+          "neonVisionEye",
+          "rapiRedHood",
+          "crown",
+          "mastRomanticMaid"
+        ],
+        "pairComputationBudget": 180,
+        "pairBudgetReached": false,
+        "cacheReleased": true,
+        "approximateCandidates": true,
+        "approximation": "대규모 동기화 로스터 안전 모드 · 우선 조합 중복 억제 + B3 pair 6개·flex 3개·정확 계산 최대 180회"
+      }
+    },
+    "second": {
+      "buildMs": 9511.899999999994,
+      "optimizeMs": 29.79999999998836,
+      "candidates": 191,
+      "candidateJsonBytes": 1603723,
+      "totalScore": 28716617.009975065,
+      "teams": 5,
+      "unique": 25,
+      "diagnostics": {
+        "bossId": "annihilio",
+        "objective": "firepower",
+        "ownedOnly": true,
+        "rosterCharacters": 107,
+        "b3Characters": 53,
+        "blueprints": 18,
+        "bossCompatibleBlueprints": 13,
+        "bossCompatibleBlueprintIds": [
+          "literGravePierce",
+          "dwifeAdePierce",
+          "emmaEunhwaTrue",
+          "dorothyMariParts",
+          "rougeTakinaTrue",
+          "literCrownPrivatyGeneral",
+          "volumeCrownHelmGeneral",
+          "anisMaidPiratesGeneral",
+          "anisMaidPiratesWindParts",
+          "volumeMaidPiratesWind",
+          "anisCrownRoleAwareGeneral",
+          "sirenNayutaRoleAwareGeneral",
+          "sirenCrownAsukaReiPrivatyWind"
+        ],
+        "rosterCompatibleBlueprints": 13,
+        "rosterCompatibleBlueprintIds": [
+          "literGravePierce",
+          "dwifeAdePierce",
+          "emmaEunhwaTrue",
+          "dorothyMariParts",
+          "rougeTakinaTrue",
+          "literCrownPrivatyGeneral",
+          "volumeCrownHelmGeneral",
+          "anisMaidPiratesGeneral",
+          "anisMaidPiratesWindParts",
+          "volumeMaidPiratesWind",
+          "anisCrownRoleAwareGeneral",
+          "sirenNayutaRoleAwareGeneral",
+          "sirenCrownAsukaReiPrivatyWind"
+        ],
+        "priorityCharacters": [
+          {
+            "id": "snowWhiteHeavyArms",
+            "name": "스노우 화이트 : 헤비암즈",
+            "registered": true,
+            "owned": true,
+            "available": true,
+            "candidateCount": 31,
+            "state": "evaluated"
+          },
+          {
+            "id": "cinderellaCrystalWave",
+            "name": "신데렐라 : 크리스탈 웨이브",
+            "registered": true,
+            "owned": true,
+            "available": true,
+            "candidateCount": 19,
+            "state": "evaluated"
+          },
+          {
+            "id": "neonVisionEye",
+            "name": "네온 : 비전 아이",
+            "registered": true,
+            "owned": true,
+            "available": true,
+            "candidateCount": 9,
+            "state": "evaluated"
+          },
+          {
+            "id": "rapiRedHood",
+            "name": "라피 : 레드 후드",
+            "registered": true,
+            "owned": true,
+            "available": true,
+            "candidateCount": 5,
+            "state": "evaluated"
+          },
+          {
+            "id": "scarletBlackShadow",
+            "name": "홍련 : 흑영",
+            "registered": true,
+            "owned": true,
+            "available": true,
+            "candidateCount": 34,
+            "state": "evaluated"
+          },
+          {
+            "id": "helmTreasure",
+            "name": "Helm · 애장품",
+            "registered": true,
+            "owned": true,
+            "available": true,
+            "candidateCount": 67,
+            "state": "evaluated"
+          },
+          {
+            "id": "privatyTreasure",
+            "name": "Privaty · 애장품",
+            "registered": true,
+            "owned": true,
+            "available": true,
+            "candidateCount": 51,
+            "state": "evaluated"
+          },
+          {
+            "id": "asukaWille",
+            "name": "아스카 시키나미 랑그레이 : WILLE",
+            "registered": true,
+            "owned": true,
+            "available": true,
+            "candidateCount": 24,
+            "state": "evaluated"
+          },
+          {
+            "id": "reiAyanamiTentative",
+            "name": "레이 아야나미(가칭)",
+            "registered": true,
+            "owned": true,
+            "available": true,
+            "candidateCount": 80,
+            "state": "evaluated"
+          },
+          {
+            "id": "crown",
+            "name": "크라운",
+            "registered": true,
+            "owned": true,
+            "available": true,
+            "candidateCount": 29,
+            "state": "evaluated"
+          },
+          {
+            "id": "naga",
+            "name": "나가",
+            "registered": true,
+            "owned": true,
+            "available": true,
+            "candidateCount": 0,
+            "state": "noCompatibleCandidate"
+          },
+          {
+            "id": "mastRomanticMaid",
+            "name": "마스트 : 로망틱 메이드",
+            "registered": true,
+            "owned": true,
+            "available": true,
+            "candidateCount": 5,
+            "state": "evaluated"
+          }
+        ],
+        "candidates": 191,
+        "exactPairScores": 149,
+        "calibrationEnabled": true,
+        "calibrationEligibleGroups": 0,
+        "calibrationResolvedContexts": 0,
+        "calibrationCachedContexts": 191,
+        "directMemberScores": 172,
+        "pairAwareDirectMemberScores": 259,
+        "b3PreRankLimit": 18,
+        "b3PreRankCharacters": 49,
+        "b3PreRankReused": true,
+        "flexPreRankLimit": 12,
+        "flexPreRankGroups": 2,
+        "flexPreRankReuseCount": 58,
+        "b3TemplateCache": 49,
+        "flexRankCache": 95,
+        "retainedPairSnapshots": 0,
+        "pairLimit": 6,
+        "flexLimit": 3,
+        "constrainedDevice": true,
+        "largeSyncedRoster": true,
+        "stabilityMode": true,
+        "priorityPairCoverage": [
+          "scarletBlackShadow",
+          "privatyTreasure",
+          "helmTreasure",
+          "reiAyanamiTentative",
+          "asukaWille",
+          "snowWhiteHeavyArms",
+          "cinderellaCrystalWave",
+          "neonVisionEye",
+          "rapiRedHood",
+          "crown",
+          "mastRomanticMaid"
+        ],
+        "pairComputationBudget": 180,
+        "pairBudgetReached": false,
+        "cacheReleased": true,
+        "approximateCandidates": true,
+        "approximation": "대규모 동기화 로스터 안전 모드 · 우선 조합 중복 억제 + B3 pair 6개·flex 3개·정확 계산 최대 180회"
+      }
+    },
+    "deterministic": true,
+    "postGcHeap": {
+      "usedSize": 12208680,
+      "totalSize": 14065664,
+      "embedderHeapUsedSize": 9836592,
+      "backingStorageSize": 6438583
+    }
+  },
+  "pass": true
+}
