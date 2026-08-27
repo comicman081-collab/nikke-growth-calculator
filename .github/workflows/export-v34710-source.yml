@@ -1,0 +1,39 @@
+name: Export V34.7.10 source
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - fix-owned-roster-zero-v34710
+    paths:
+      - .github/workflows/export-v34710-source.yml
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nikke-v34710-source
+          path: |
+            .github
+            audit
+            docs
+            functions
+            public
+            scripts
+            tests
+            index.html
+            package.json
+            package-lock.json
+            wrangler.worker.jsonc
+            worker-entry.js
+            GITHUB_DEPLOY_STATUS.md
+            SHA256SUMS.txt
+          if-no-files-found: warn
