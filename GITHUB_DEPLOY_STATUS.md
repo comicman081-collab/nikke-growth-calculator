@@ -1,6 +1,6 @@
 # GitHub / Cloudflare deploy status
 
-Release candidate: **V34.7.10 BlaBla Full Linked-Roster Repair**
+Release candidate: **V34.7.13 Solo Raid Five-Deck MVP**
 
 ## Deployment configuration
 
@@ -36,10 +36,24 @@ Release candidate: **V34.7.10 BlaBla Full Linked-Roster Repair**
 - 186-character linked-roster mobile regression: 186 stored/owned, five teams, 25 unique members, unsupported supplementals selected 0, PASS.
 - Current production Cloudflare origin and live same-origin BlaBla bridge preflight: PASS.
 
-The main-only Cloudflare workflow verifies the deployed V34.7.10 HTML marker, Worker version, configured bridge and a real nonempty profile response after merge.
+The main-only Cloudflare workflow verifies the deployed V34.7.13 HTML marker, Worker version, configured bridge and a real nonempty profile response after merge.
 
 ## V34.7.11 linked roster policy
 
 - Linked external rows are retained in an account-scoped raw snapshot, while calculations use the current app registry and current calculation profiles dynamically.
 - No 100-character hardcode exists; future app-supported characters automatically join calculation after app update.
 - Thursday BlaBla refresh: 11:00 and 19:00 KST while running, with missed latest slot catch-up on next launch and a manual refresh button.
+
+## V34.7.13 Solo Raid five-deck MVP
+
+- All three composition modes (`auto`, `owned`, `allEqual`) normalize Solo Raid combat to level 400 and require five complete, disjoint teams.
+- The production selector preserves Crown family alternatives, Maid Mast + Anchor, Pri -> Mint, Makoto + Yukiko, and boss-specific packages without forcing mutually exclusive alternatives simultaneously.
+- Modernia is globally FLEX/off-burst in Solo Raid and can never occupy either active B3 slot.
+- Favorite-item Phase 0 Moran, Flora, Privaty, Helm, Sugar, Centi, Zwei, Miranda and Rosanna are excluded from raid candidates; Phantom is the sole Phase 0 exception.
+- Elemental shotgun shells are optional score competitors. The shotgun Soline slot means Soline: Frost Ticket, never base Soline.
+- Christmas Brid is a preferred Fire B2 candidate, not a mandatory shotgun or five-deck lock. Arcana can win when healing is unnecessary; Nayuta or Naga can win for survival and mechanics.
+- The exact coarse candidate-pool optimum is followed by deterministic high-resolution contender reranking, so the displayed 0.05-second timeline score—not a lower-resolution proxy—decides among realistic one- and two-team cover exchanges.
+- Precision, Solo Raid, five-deck and battle-simulation timelines share the same growth, favorite item, overload, equipment and cube context. Five-deck timelines are collapsed per team and expand into a wide chart plus a five-row character damage rail.
+- Linked raw roster snapshots keep every received row, while optimizer participation is restricted to app-supported calculation profiles. Character search is available at selection surfaces.
+
+Release gates include static integration, all three production modes, multi-boss optimality, special-combination coverage, shotgun policy, favorite-item gating, linked-roster propagation, cancellation/cache, low-memory browser crash resistance, timeline browser layout, signed APK badging/signature/embedded-HTML hash, and live Cloudflare verification.

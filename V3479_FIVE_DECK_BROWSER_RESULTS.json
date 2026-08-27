@@ -1,6 +1,6 @@
 {
-  "version": "34.7.12",
-  "verifiedAtUtc": "2026-08-27T13:23:06.204Z",
+  "version": "34.7.13",
+  "verifiedAtUtc": "2026-08-27T16:26:39.560Z",
   "environment": {
     "viewport": "412x915",
     "deviceMemoryGb": 4,
@@ -37,11 +37,11 @@
   },
   "fiveDeck": {
     "first": {
-      "buildMs": 5236,
-      "optimizeMs": 11.199999988079071,
-      "candidates": 191,
-      "candidateJsonBytes": 1603723,
-      "totalScore": 28716617.009975065,
+      "buildMs": 7682.5,
+      "optimizeMs": 204.59999999403954,
+      "candidates": 896,
+      "candidateJsonBytes": 47599541,
+      "totalScore": 23575005.966773845,
       "teams": 5,
       "unique": 25,
       "diagnostics": {
@@ -99,7 +99,7 @@
             "registered": true,
             "owned": true,
             "available": true,
-            "candidateCount": 19,
+            "candidateCount": 21,
             "state": "evaluated"
           },
           {
@@ -117,7 +117,7 @@
             "registered": true,
             "owned": true,
             "available": true,
-            "candidateCount": 5,
+            "candidateCount": 4,
             "state": "evaluated"
           },
           {
@@ -144,7 +144,7 @@
             "registered": true,
             "owned": true,
             "available": true,
-            "candidateCount": 51,
+            "candidateCount": 52,
             "state": "evaluated"
           },
           {
@@ -162,7 +162,7 @@
             "registered": true,
             "owned": true,
             "available": true,
-            "candidateCount": 80,
+            "candidateCount": 82,
             "state": "evaluated"
           },
           {
@@ -171,7 +171,7 @@
             "registered": true,
             "owned": true,
             "available": true,
-            "candidateCount": 29,
+            "candidateCount": 30,
             "state": "evaluated"
           },
           {
@@ -193,21 +193,21 @@
             "state": "evaluated"
           }
         ],
-        "candidates": 191,
-        "exactPairScores": 149,
+        "candidates": 192,
+        "exactPairScores": 150,
         "calibrationEnabled": true,
         "calibrationEligibleGroups": 0,
         "calibrationResolvedContexts": 0,
-        "calibrationCachedContexts": 191,
+        "calibrationCachedContexts": 192,
         "directMemberScores": 172,
-        "pairAwareDirectMemberScores": 259,
+        "pairAwareDirectMemberScores": 265,
         "b3PreRankLimit": 18,
-        "b3PreRankCharacters": 49,
+        "b3PreRankCharacters": 48,
         "b3PreRankReused": true,
         "flexPreRankLimit": 12,
         "flexPreRankGroups": 2,
         "flexPreRankReuseCount": 58,
-        "b3TemplateCache": 49,
+        "b3TemplateCache": 48,
         "flexRankCache": 95,
         "retainedPairSnapshots": 0,
         "pairLimit": 6,
@@ -232,15 +232,35 @@
         "pairBudgetReached": false,
         "cacheReleased": true,
         "approximateCandidates": true,
-        "approximation": "대규모 동기화 로스터 안전 모드 · 우선 조합 중복 억제 + B3 pair 6개·flex 3개·정확 계산 최대 180회"
+        "approximation": "대규모 동기화 로스터 안전 모드 · 우선 조합 중복 억제 + B3 pair 6개·flex 3개·정확 계산 최대 180회",
+        "v34713OriginalCandidates": 192,
+        "v34713FilteredCandidates": 168,
+        "v34713AugmentedCandidates": 126,
+        "v34713AuthoritativeCandidates": 620,
+        "v34713Candidates": 896,
+        "v34713IllegalCandidatesRemoved": 24,
+        "v34713FavoriteLockedCandidatesRemoved": 0,
+        "v34713FavoriteLockedIds": [],
+        "v34713FamilyCounts": {
+          "crown-privaty-locked": 18,
+          "modernia-offburst": 32,
+          "crown-naga-locked": 20,
+          "crown-solo-family": 24,
+          "crown-helm-locked": 20,
+          "crown-mast-locked": 5,
+          "maid-mast-anchor-locked": 5
+        },
+        "v34713FixedRoutesPreserved": false,
+        "v34713PersonaAugmented": false,
+        "v34713ModerniaOffBurstAugmented": true
       }
     },
     "second": {
-      "buildMs": 4394,
-      "optimizeMs": 11.5,
-      "candidates": 191,
-      "candidateJsonBytes": 1603723,
-      "totalScore": 28716617.009975065,
+      "buildMs": 6779.300000011921,
+      "optimizeMs": 197,
+      "candidates": 896,
+      "candidateJsonBytes": 47597271,
+      "totalScore": 23575005.966773845,
       "teams": 5,
       "unique": 25,
       "diagnostics": {
@@ -298,7 +318,7 @@
             "registered": true,
             "owned": true,
             "available": true,
-            "candidateCount": 19,
+            "candidateCount": 21,
             "state": "evaluated"
           },
           {
@@ -316,7 +336,7 @@
             "registered": true,
             "owned": true,
             "available": true,
-            "candidateCount": 5,
+            "candidateCount": 4,
             "state": "evaluated"
           },
           {
@@ -343,7 +363,7 @@
             "registered": true,
             "owned": true,
             "available": true,
-            "candidateCount": 51,
+            "candidateCount": 52,
             "state": "evaluated"
           },
           {
@@ -361,7 +381,7 @@
             "registered": true,
             "owned": true,
             "available": true,
-            "candidateCount": 80,
+            "candidateCount": 82,
             "state": "evaluated"
           },
           {
@@ -370,7 +390,7 @@
             "registered": true,
             "owned": true,
             "available": true,
-            "candidateCount": 29,
+            "candidateCount": 30,
             "state": "evaluated"
           },
           {
@@ -392,21 +412,21 @@
             "state": "evaluated"
           }
         ],
-        "candidates": 191,
-        "exactPairScores": 149,
+        "candidates": 192,
+        "exactPairScores": 150,
         "calibrationEnabled": true,
         "calibrationEligibleGroups": 0,
         "calibrationResolvedContexts": 0,
-        "calibrationCachedContexts": 191,
+        "calibrationCachedContexts": 192,
         "directMemberScores": 172,
-        "pairAwareDirectMemberScores": 259,
+        "pairAwareDirectMemberScores": 265,
         "b3PreRankLimit": 18,
-        "b3PreRankCharacters": 49,
+        "b3PreRankCharacters": 48,
         "b3PreRankReused": true,
         "flexPreRankLimit": 12,
         "flexPreRankGroups": 2,
         "flexPreRankReuseCount": 58,
-        "b3TemplateCache": 49,
+        "b3TemplateCache": 48,
         "flexRankCache": 95,
         "retainedPairSnapshots": 0,
         "pairLimit": 6,
@@ -431,15 +451,35 @@
         "pairBudgetReached": false,
         "cacheReleased": true,
         "approximateCandidates": true,
-        "approximation": "대규모 동기화 로스터 안전 모드 · 우선 조합 중복 억제 + B3 pair 6개·flex 3개·정확 계산 최대 180회"
+        "approximation": "대규모 동기화 로스터 안전 모드 · 우선 조합 중복 억제 + B3 pair 6개·flex 3개·정확 계산 최대 180회",
+        "v34713OriginalCandidates": 192,
+        "v34713FilteredCandidates": 168,
+        "v34713AugmentedCandidates": 126,
+        "v34713AuthoritativeCandidates": 620,
+        "v34713Candidates": 896,
+        "v34713IllegalCandidatesRemoved": 24,
+        "v34713FavoriteLockedCandidatesRemoved": 0,
+        "v34713FavoriteLockedIds": [],
+        "v34713FamilyCounts": {
+          "crown-privaty-locked": 20,
+          "modernia-offburst": 32,
+          "crown-naga-locked": 20,
+          "crown-solo-family": 24,
+          "crown-helm-locked": 20,
+          "crown-mast-locked": 5,
+          "maid-mast-anchor-locked": 5
+        },
+        "v34713FixedRoutesPreserved": false,
+        "v34713PersonaAugmented": false,
+        "v34713ModerniaOffBurstAugmented": true
       }
     },
     "deterministic": true,
     "postGcHeap": {
-      "usedSize": 12409952,
-      "totalSize": 14852096,
-      "embedderHeapUsedSize": 10071512,
-      "backingStorageSize": 6521967
+      "usedSize": 15059576,
+      "totalSize": 17735680,
+      "embedderHeapUsedSize": 10333976,
+      "backingStorageSize": 6601417
     }
   },
   "pass": true

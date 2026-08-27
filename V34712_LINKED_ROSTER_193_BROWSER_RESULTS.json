@@ -1,6 +1,6 @@
 {
-  "version": "34.7.12",
-  "verifiedAtUtc": "2026-08-27T13:26:33.877Z",
+  "version": "34.7.13",
+  "verifiedAtUtc": "2026-08-27T16:27:10.853Z",
   "rawLinkedRows": 193,
   "storedRegisteredRows": 107,
   "calculationEligibleRows": 107,
@@ -18,9 +18,9 @@
     },
     "manualReceived": 193,
     "snapshotRows": 193,
-    "lastSuccess": "2026-08-27T13:26:24.896Z",
+    "lastSuccess": "2026-08-27T16:26:45.719Z",
     "verification": {
-      "version": "34.7.12",
+      "version": "34.7.13",
       "registered": 107,
       "calculationEligible": 106,
       "rawLinkedRows": 193,

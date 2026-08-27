@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const DIST=path.join(ROOT,'dist-cloudflare');
 const HTML=fs.readFileSync(path.join(ROOT,'public/index.html'),'utf8');
-const VERSION='34.7.12';
+const VERSION='34.7.13';
 const PROFILE='https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTczODk5ODEwMzMzMTgwOTYwMDc=';
 
 function parseJsonLiteral(regex,label){const match=HTML.match(regex);assert.ok(match,`${label} missing`);return JSON.parse(match[1]);}
@@ -83,7 +83,8 @@ async function startServer(){
 }
 function freePort(){return new Promise((resolve,reject)=>{const s=net.createServer();s.once('error',reject);s.listen(0,'127.0.0.1',()=>{const port=s.address().port;s.close(()=>resolve(port));});});}
 function chromeBinary(){
-  for(const candidate of [process.env.CHROME_BIN,process.env.GOOGLE_CHROME_BIN,'/usr/bin/google-chrome','/usr/bin/google-chrome-stable','/usr/bin/chromium','/usr/bin/chromium-browser'])if(candidate&&fs.existsSync(candidate))return candidate;
+  const local=process.env.LOCALAPPDATA||'';
+  for(const candidate of [process.env.CHROME_BIN,process.env.GOOGLE_CHROME_BIN,local&&path.join(local,'Google','Chrome','Application','chrome.exe'),local&&path.join(local,'Microsoft','Edge','Application','msedge.exe'),'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe','C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe','C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe','/usr/bin/google-chrome','/usr/bin/google-chrome-stable','/usr/bin/chromium','/usr/bin/chromium-browser'])if(candidate&&fs.existsSync(candidate))return candidate;
   throw new Error('Chrome/Chromium executable not found. Set CHROME_BIN.');
 }
 async function waitForJson(url,timeout=30000){const started=Date.now();let last;while(Date.now()-started<timeout){try{const r=await fetch(url);if(r.ok)return await r.json();last=`HTTP ${r.status}`;}catch(error){last=error;}await new Promise(r=>setTimeout(r,100));}throw new Error(`timeout waiting for ${url}: ${last}`);}
@@ -251,7 +252,7 @@ try{
   fs.writeFileSync(path.join(ROOT,'V34712_DAMAGE_SURFACES_BROWSER_RESULTS.json'),JSON.stringify(verification,null,2)+'\n');
   fs.writeFileSync(path.join(ROOT,'V34712_LINKED_ROSTER_193_BROWSER_RESULTS.json'),JSON.stringify(linkedEvidence,null,2)+'\n');
   console.log(JSON.stringify(verification,null,2));
-  console.log('V34.7.12 BlaBla 193 raw rows -> all favorite phases / special combos -> Precision -> Solo Raid -> Simulation -> 5-deck timelines browser verification: PASS');
+  console.log('V34.7.13 BlaBla 193 raw rows -> all favorite phases / special combos -> Precision -> Solo Raid -> Simulation -> 5-deck timelines browser verification: PASS');
 }finally{
   cdp?.close();
   if(chrome.exitCode===null){

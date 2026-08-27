@@ -1,14 +1,15 @@
 {
   "name": "nikke-growth-calculator",
   "private": true,
-  "version": "34.7.12",
+  "version": "34.7.13",
   "description": "NIKKE Growth Calculator web deployment with BlaBlaLink Cloudflare Worker bridge",
   "scripts": {
-    "check": "node --check functions/api/blabla/sync.js && node tests/verify-deploy-autosync.mjs && node tests/verify-favorite-phase-v3477.mjs && node tests/verify-blabla-propagation-v3478.mjs && node tests/verify-five-deck-stability-v3479.mjs && node tests/verify-owned-roster-v34710.mjs && node tests/verify-inline-v34710.mjs && node tests/verify-linked-roster-refresh-v34711.mjs && node tests/verify-damage-surfaces-v34712.mjs",
+    "check": "node --check functions/api/blabla/sync.js && node --check scripts/v34713-optimality-runtime.js && node tests/verify-deploy-autosync.mjs && node tests/verify-favorite-phase-v3477.mjs && node tests/verify-favorite-raid-gate-v34713.mjs && node tests/verify-blabla-propagation-v3478.mjs && node tests/verify-five-deck-stability-v3479.mjs && node tests/verify-owned-roster-v34710.mjs && node tests/verify-inline-v34710.mjs && node tests/verify-linked-roster-refresh-v34711.mjs && node tests/verify-damage-surfaces-v34712.mjs",
     "build": "npm run check && node scripts/build-cloudflare.mjs",
     "deploy": "npx wrangler deploy --config wrangler.worker.jsonc",
-    "check:browser": "node tests/verify-blabla-propagation-browser-v3478.mjs && node tests/verify-five-deck-stability-browser-v3479.mjs && node tests/verify-owned-roster-186-browser-v34710.mjs",
-    "apply:v34712": "node scripts/apply-v34712-timelines.mjs"
+    "check:browser": "node tests/verify-blabla-propagation-browser-v3478.mjs && node tests/verify-five-deck-stability-browser-v3479.mjs && node tests/verify-owned-roster-186-browser-v34710.mjs && node tests/verify-five-deck-optimality-v34713.mjs && node tests/verify-five-deck-fine-rerank-v34713.mjs && node tests/verify-five-deck-performance-v34713.mjs && node tests/verify-five-deck-three-modes-v34713.mjs && node tests/verify-moran-favorite-cooldown-v34713.mjs && node tests/verify-special-combos-v34713.mjs && node tests/verify-shotgun-conditional-rules-v34713.mjs && node tests/verify-v34713-ui-timeline-browser.mjs",
+    "apply:v34712": "node scripts/apply-v34712-timelines.mjs",
+    "apply:v34713": "node scripts/apply-v34713-optimality.mjs"
   },
   "devDependencies": {
     "wrangler": "4.126.0"

@@ -1,6 +1,6 @@
 # NIKKE Growth Calculator
 
-Current web deployment build: **V34.7.12 Unified Damage Timeline & Linked Roster Refresh**
+Current web deployment build: **V34.7.13 Unified Damage Timeline & Linked Roster Refresh**
 
 ## What is automatic in the deployed build
 
