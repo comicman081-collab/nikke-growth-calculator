@@ -56,8 +56,8 @@ jobs:
 
           for p in (root/'tests').glob('*.mjs'):
               text=p.read_text('utf-8')
-              if '34.7.11' in text:
-                  p.write_text(text.replace('34.7.11','34.7.12'),'utf-8')
+              text=text.replace(r'34\.7\.11',r'34\.7\.12').replace('34.7.11','34.7.12')
+              p.write_text(text,'utf-8')
 
           browser=root/'tests/verify-owned-roster-186-browser-v34710.mjs'
           text=browser.read_text('utf-8')
@@ -79,14 +79,14 @@ jobs:
             if(comboSel){
               for(const option of [...comboSel.options]){
                 comboSel.value=option.value;
-                precisionCalcV21();
+                precisionCalc();
                 const snapshot=window.__precisionSnapshot;
                 const sim=api.syntheticFromSnapshot(snapshot);
                 const audit=api.traceAudit(sim,api.normalizeTrace(sim));
-                comboChecks.push({id:option.value,total:Number(snapshot?.totals?.combo||0),audit:!!audit.pass,finite:Number.isFinite(Number(snapshot?.totals?.combo))});
+                comboChecks.push({id:option.value,total:Number(snapshot?.totals?.combo||0),audit:!!audit.pass,finite:Number.isFinite(Number(snapshot?.totals?.combo))&&Number(snapshot?.totals?.combo)>0});
               }
               comboSel.value=originalCombo;
-              precisionCalcV21();
+              precisionCalc();
             }
 
             document.querySelector('.tab[data-page="precision"]')?.click();
@@ -219,12 +219,16 @@ jobs:
           npm run check | tee -a V34712_RELEASE_RESULTS.txt
 
       - name: Build Cloudflare assets
-        run: npm run build | tee -a V34712_RELEASE_RESULTS.txt
+        run: |
+          set -euo pipefail
+          npm run build | tee -a V34712_RELEASE_RESULTS.txt
 
       - name: Run all browser regressions including 193-row linked roster and timelines
         env:
           CHROME_BIN: /usr/bin/google-chrome
-        run: npm run check:browser | tee -a V34712_RELEASE_RESULTS.txt
+        run: |
+          set -euo pipefail
+          npm run check:browser | tee -a V34712_RELEASE_RESULTS.txt
 
       - name: Parse every executable inline script
         run: |
