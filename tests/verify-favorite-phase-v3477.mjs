@@ -67,7 +67,7 @@ const registry=window.NIKKE_V3477_FAVORITE_REGISTRY;
 const byTid=window.NIKKE_V3477_FAVORITE_TID_TO_APP_ID;
 const api=window.NIKKE_V3477_FAVORITE_PHASE_API;
 assert.ok(api,'favorite phase API missing');
-assert.equal(api.version,'34.7.11');
+assert.equal(api.version,'34.7.12');
 assert.equal(Object.keys(registry).length,21,'runtime registry count');
 assert.equal(Object.keys(byTid).length,21,'runtime TID count');
 assert.equal(byTid['200501'],'viperTreasure');
@@ -129,6 +129,14 @@ const calculationFingerprint=(cycle,model)=>JSON.stringify({
 });
 
 const noDifference=[];
+const numericCycleFields=['ammoPct','reload','chargeSpeed','attackSpeed','noReloadUptime','refund','magazineRefillPct','fixedCharge','ignoreChargeSpeed','olOnlyChargeSpeed'];
+const numericModelFields=['normal','skill','burst','trueUnits','atk','dmg','damageTaken','critRate','normalCritRate','critDmg','trueDamageDmg','chargeDmg','coreDmg','partsDmg','pierceDmg','distributedDmg','projectileDmg','projectileDmgFullBurst','strongElementDmg'];
+const assertFiniteFields=(value,fields,label)=>{
+  for(const field of fields){
+    if(value[field]===undefined)continue;
+    assert.equal(Number.isFinite(Number(value[field])),true,`${label}.${field} must be finite`);
+  }
+};
 for(const [id,record] of Object.entries(registry)){
   roster[id]={favoriteItemPhase:0,skills:{...levels}};
   const p=record.weaponPreset,prof=record.skillProfile,sim=simFor(record);
@@ -141,6 +149,10 @@ for(const [id,record] of Object.entries(registry)){
   assert.equal(normalModel.favoriteItemSkillResolution.phase,0,`${id} model P0`);
   assert.equal(favoriteModel.favoriteItemSkillResolution.phase,3,`${id} model P3`);
   assert.deepEqual({...favoriteModel.favoriteItemSkillResolution.skillLevels},levels,`${id} calculation levels preserved`);
+  assertFiniteFields(normalCycle,numericCycleFields,`${id} cycle P0`);
+  assertFiniteFields(favoriteCycle,numericCycleFields,`${id} cycle P3`);
+  assertFiniteFields(normalModel,numericModelFields,`${id} model P0`);
+  assertFiniteFields(favoriteModel,numericModelFields,`${id} model P3`);
   if(calculationFingerprint(normalCycle,normalModel)===calculationFingerprint(favoriteCycle,favoriteModel))noDifference.push(id);
 }
 assert.deepEqual(noDifference,[],'every favorite character must change a calculation field or explicit proc between Phase 0 and Phase 3');
@@ -189,4 +201,4 @@ assert.equal(context.v23BurstCycleMeta('moranTreasure').b1Cooldown,20,'Moran fav
 assert.equal(context.v23BurstCycleMeta('moranTreasure').cdr,7.48,'Moran favorite CDR');
 
 assert.equal(window.NIKKE_V3477_FAVORITE_VERIFY.pass,true,'runtime self-verification');
-console.log('V34.7.11 ENIKK 21 favorite characters / 21 TIDs / 63 phase cards / base skills / level preservation / calculation regression: PASS');
+console.log('V34.7.12 ENIKK 21 favorite characters / 21 TIDs / 63 phase cards / base skills / level preservation / calculation regression: PASS');

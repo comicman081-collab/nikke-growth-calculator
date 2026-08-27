@@ -1,0 +1,66 @@
+{
+  "version": "34.7.12",
+  "verifiedAtUtc": "2026-08-27T13:26:33.877Z",
+  "rawLinkedRows": 193,
+  "storedRegisteredRows": 107,
+  "calculationEligibleRows": 107,
+  "externalOnlyRows": 86,
+  "refreshPolicy": {
+    "button": true,
+    "panel": true,
+    "slotNoon": {
+      "hour": 11,
+      "next": 19
+    },
+    "slotNight": {
+      "hour": 19,
+      "next": 11
+    },
+    "manualReceived": 193,
+    "snapshotRows": 193,
+    "lastSuccess": "2026-08-27T13:26:24.896Z",
+    "verification": {
+      "version": "34.7.12",
+      "registered": 107,
+      "calculationEligible": 106,
+      "rawLinkedRows": 193,
+      "hardcoded100": false,
+      "dynamicRegistration": true,
+      "manualRefresh": true,
+      "weeklySlots": [
+        11,
+        19
+      ],
+      "timezone": "Asia/Seoul",
+      "importerWrapped": true,
+      "optimizerFiltered": true,
+      "pass": true
+    }
+  },
+  "characterSearch": {
+    "present": true,
+    "resultCount": 1,
+    "selected": "sugarTreasure",
+    "label": "슈가 · 애장품",
+    "closed": true,
+    "totalSearches": 9
+  },
+  "propagatedCharacter": {
+    "id": "sugarTreasure",
+    "level": 450,
+    "skills": {
+      "skill1": 2,
+      "skill2": 7,
+      "burst": 9
+    },
+    "favoriteItemPhase": 3,
+    "cube": "diffusion",
+    "equipmentAttack": 8818
+  },
+  "fiveDeck": {
+    "teams": 5,
+    "unique": 25,
+    "validationPass": true
+  },
+  "pass": true
+}

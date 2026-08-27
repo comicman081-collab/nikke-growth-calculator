@@ -1,4 +1,4 @@
-name: Verify Cloudflare production V34.7.11
+name: Verify Cloudflare production V34.7.12
 
 on:
   workflow_dispatch:
@@ -10,6 +10,8 @@ on:
       - public/index.html
       - functions/api/blabla/sync.js
       - scripts/v34711-linked-roster-refresh.js
+      - scripts/v34712-timeline-runtime.js
+      - scripts/apply-v34712-timelines.mjs
       - tests/verify-cloudflare-production-v34710.mjs
       - .github/workflows/verify-cloudflare-production-v34711.yml
 
@@ -17,7 +19,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: cloudflare-production-v34711
+  group: cloudflare-production-v34712
   cancel-in-progress: true
 
 env:
@@ -33,14 +35,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Wait for Cloudflare automatic deployment and verify V34.7.11
+      - name: Wait for Cloudflare automatic deployment and verify V34.7.12
         env:
           CLOUDFLARE_PRODUCTION_URL: ${{ env.PRODUCTION_URL }}
           BLABLA_PUBLIC_PROFILE: ${{ env.PUBLIC_PROFILE_URL }}
-          CLOUDFLARE_LIVE_REPORT: V34711_CLOUDFLARE_RESULTS.json
+          CLOUDFLARE_LIVE_REPORT: V34712_CLOUDFLARE_RESULTS.json
         run: node tests/verify-cloudflare-production-v34710.mjs
       - uses: actions/upload-artifact@v4
         with:
-          name: v34711-cloudflare-production-verification
-          path: V34711_CLOUDFLARE_RESULTS.json
+          name: v34712-cloudflare-production-verification
+          path: V34712_CLOUDFLARE_RESULTS.json
           if-no-files-found: error
