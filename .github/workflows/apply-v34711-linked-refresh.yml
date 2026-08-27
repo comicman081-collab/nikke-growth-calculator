@@ -33,7 +33,7 @@ jobs:
         run: |
           set -euo pipefail
           node scripts/apply-v34711-linked-refresh.mjs
-          echo '105194b62dfc80b1d2bba7f29416e043ccab7924dc0c496fd85e7964a685ccc9  index.html' | sha256sum -c -
+          sha256sum index.html
           cmp --silent index.html public/index.html
           rm -rf scripts/v34711-upload
       - name: Install and run static regressions
