@@ -4,7 +4,7 @@ import fs from 'node:fs';
 const VERSION='34.7.9';
 const BASE=String(process.env.CLOUDFLARE_PRODUCTION_URL||'https://nikke-growth-calculator.breezy-mum.workers.dev').replace(/\/+$/,'');
 const PROFILE=process.env.BLABLA_PUBLIC_PROFILE||'https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTczODk5ODEwMzMzMTgwOTYwMDc=';
-const REPORT=process.env.CLOUDFLARE_LIVE_REPORT||'V3478_CLOUDFLARE_LIVE_RESULTS.json';
+const REPORT=process.env.CLOUDFLARE_LIVE_REPORT||'V3479_CLOUDFLARE_LIVE_RESULTS.json';
 const delay=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 
 async function request(url,options={},timeout=30000){
@@ -31,7 +31,7 @@ let htmlHeaders={};
 let lastError='';
 for(let attempt=1;attempt<=90;attempt+=1){
   try{
-    const result=await textResponse(`${BASE}/?_v3478=${encodeURIComponent(process.env.GITHUB_SHA||'manual')}-${attempt}`,{headers:{'cache-control':'no-cache','user-agent':'nikke-v3478-live-verifier/1.0'}});
+    const result=await textResponse(`${BASE}/?_v3479=${encodeURIComponent(process.env.GITHUB_SHA||'manual')}-${attempt}`,{headers:{'cache-control':'no-cache','user-agent':'nikke-v3479-live-verifier/1.0'}});
     htmlStatus=result.response.status;
     htmlHeaders=Object.fromEntries(result.response.headers.entries());
     deployedHtml=result.text;
@@ -40,12 +40,13 @@ for(let attempt=1;attempt<=90;attempt+=1){
   }catch(error){lastError=`attempt ${attempt}: ${error.message}`;}
   if(attempt<90)await delay(8000);
 }
-assert.ok(deployedHtml.includes('V34.7.9'),`Cloudflare production did not expose V34.7.8: ${lastError}`);
+assert.ok(deployedHtml.includes('V34.7.9'),`Cloudflare production did not expose V34.7.9: ${lastError}`);
+assert.ok(deployedHtml.includes('id="v3479-five-deck-stability"'),`Cloudflare production V34.7.9 stability marker missing: ${lastError}`);
 assert.ok(deployedHtml.includes('id="v3478-blabla-propagation"'),`Cloudflare production propagation marker missing: ${lastError}`);
 assert.ok(deployedHtml.includes('정밀/내 로스터/시뮬레이션/5덱 자동')||deployedHtml.includes('정밀·내 로스터·시뮬레이션·5덱 자동'),'four-surface production message missing');
 
-const commonHeaders={Origin:BASE,'cache-control':'no-cache','user-agent':'nikke-v3478-live-verifier/1.0'};
-const probe=await jsonResponse(`${BASE}/api/blabla/sync?_v3478=${Date.now()}`,{headers:commonHeaders});
+const commonHeaders={Origin:BASE,'cache-control':'no-cache','user-agent':'nikke-v3479-live-verifier/1.0'};
+const probe=await jsonResponse(`${BASE}/api/blabla/sync?_v3479=${Date.now()}`,{headers:commonHeaders});
 assert.equal(probe.response.status,200,`bridge probe HTTP ${probe.response.status}`);
 assert.equal(probe.json.ok,true,'bridge probe ok');
 assert.equal(probe.json.version,VERSION,'bridge deployed version');
@@ -75,7 +76,7 @@ const report={
   verifiedAtUtc:new Date().toISOString(),
   githubSha:process.env.GITHUB_SHA||null,
   productionUrl:BASE,
-  html:{status:htmlStatus,bytes:Buffer.byteLength(deployedHtml),versionMarker:true,propagationMarker:true,cfRay:htmlHeaders['cf-ray']||null,server:htmlHeaders.server||null},
+  html:{status:htmlStatus,bytes:Buffer.byteLength(deployedHtml),versionMarker:true,stabilityMarker:true,propagationMarker:true,cfRay:htmlHeaders['cf-ray']||null,server:htmlHeaders.server||null},
   bridgeProbe:{status:probe.response.status,configured:probe.json.configured,games:probe.json.games},
   liveSync:{status:live.response.status,maskedOpenId:live.json.profile?.maskedOpenId||null,areas:live.json.areas.map(area=>({area:area.area,characters:area.characters?.length||0,details:area.details?.length||0,stateEffects:area.stateEffects?.length||0})),returnedAreas,characterCount,detailCount,effectCount,attempts:live.json.diagnostics?.attempts||[]}
 };
