@@ -7,7 +7,8 @@ on:
       - linked-roster-refresh-v34711
     paths:
       - .github/workflows/apply-linked-roster-refresh-v34711.yml
-      - scripts/v34711-upload/**
+      - scripts/v34711-index.patch.xz
+      - scripts/v34711-support.tar.xz
 
 concurrency:
   group: apply-v34711-${{ github.ref }}
@@ -30,20 +31,18 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Reconstruct audited V34.7.11 source payloads
+      - name: Verify and expand audited V34.7.11 source payloads
         run: |
           set -euo pipefail
 
-          cat scripts/v34711-upload/index-00.b64 scripts/v34711-upload/index-rest.b64 | base64 --decode > /tmp/v34711-index.patch.xz
-          echo '302a1c8f9b6b8fff9817edc009359aaedc9d7195356516ce59d5d9140e708290  /tmp/v34711-index.patch.xz' | sha256sum -c -
-          xz --test /tmp/v34711-index.patch.xz
-          xz --decompress --stdout /tmp/v34711-index.patch.xz > /tmp/v34711-index.patch
+          echo '302a1c8f9b6b8fff9817edc009359aaedc9d7195356516ce59d5d9140e708290  scripts/v34711-index.patch.xz' | sha256sum -c -
+          xz --test scripts/v34711-index.patch.xz
+          xz --decompress --stdout scripts/v34711-index.patch.xz > /tmp/v34711-index.patch
           echo '552c5aabc1cc0a0d224a71d2b45ffe25dbd46084207b81fd74a78a870e1048c0  /tmp/v34711-index.patch' | sha256sum -c -
 
-          base64 --decode scripts/v34711-upload/support.b64 > /tmp/v34711-support.tar.xz
-          echo '9addbe2d6787b2101b5781432661e28b84708b7114e81e2928c01d0a2537c391  /tmp/v34711-support.tar.xz' | sha256sum -c -
-          xz --test /tmp/v34711-support.tar.xz
-          tar -xJf /tmp/v34711-support.tar.xz -C .
+          echo '9addbe2d6787b2101b5781432661e28b84708b7114e81e2928c01d0a2537c391  scripts/v34711-support.tar.xz' | sha256sum -c -
+          xz --test scripts/v34711-support.tar.xz
+          tar -xJf scripts/v34711-support.tar.xz -C .
 
           git apply --check /tmp/v34711-index.patch
           git apply /tmp/v34711-index.patch
@@ -117,7 +116,8 @@ jobs:
           set -euo pipefail
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git rm -r scripts/v34711-upload
+          git rm -f scripts/v34711-index.patch.xz scripts/v34711-support.tar.xz
+          git rm -r -f --ignore-unmatch scripts/v34711-upload
           git add \
             index.html public/index.html package.json package-lock.json \
             functions/api/blabla/sync.js scripts/v34710-owned-roster-repair.js \
