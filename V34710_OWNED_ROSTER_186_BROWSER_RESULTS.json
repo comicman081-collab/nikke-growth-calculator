@@ -1,0 +1,174 @@
+{
+  "version": "34.7.10",
+  "verifiedAtUtc": "2026-08-27T03:35:16.856Z",
+  "environment": {
+    "viewport": "412x915",
+    "deviceMemoryGb": 4,
+    "v8OldSpaceMb": 96
+  },
+  "bridge": {
+    "received": 186,
+    "imported": 186,
+    "area": 84
+  },
+  "roster": {
+    "registered": 186,
+    "owned": 186,
+    "id": "sugarTreasure",
+    "level": 450,
+    "skills": {
+      "skill1": 2,
+      "skill2": 7,
+      "burst": 9
+    },
+    "phase": 3,
+    "cube": "diffusion",
+    "equipmentAttack": 8818,
+    "equipmentHp": 198316,
+    "equipmentDefense": 1318,
+    "slots": 4
+  },
+  "precision": {
+    "total": 339226.3757679811,
+    "pass": true
+  },
+  "simulation": {
+    "phase0": 1160323297.1090527,
+    "phase3": 1488118761.903383,
+    "gearAttack": 8818
+  },
+  "fiveDeck": {
+    "first": {
+      "elapsed": 6988.200000000012,
+      "status": "ok",
+      "teams": 5,
+      "totalScore": 28716617.009975065,
+      "ids": [
+        "anisStar",
+        "mastRomanticMaid",
+        "cinderella",
+        "reiAyanamiTentative",
+        "anchorInnocentMaid",
+        "littleMermaid",
+        "nayuta",
+        "liberalio",
+        "scarletBlackShadow",
+        "eve",
+        "liter",
+        "grave",
+        "snowWhiteHeavyArms",
+        "privatyTreasure",
+        "pepper",
+        "volume",
+        "crown",
+        "rapiRedHood",
+        "modernia",
+        "helmTreasure",
+        "dorothy",
+        "mariMakinami",
+        "raven",
+        "asukaShikinamiLangley",
+        "dieselTreasure"
+      ],
+      "unique": 25,
+      "validation": {
+        "pass": true,
+        "errors": [],
+        "teamCount": 5,
+        "slotCount": 25,
+        "uniqueCount": 25,
+        "engine": "v34710-owned-roster-repair",
+        "checkedAt": "2026-08-27T03:35:16.702Z"
+      },
+      "diagnostics": {
+        "receivedCount": 186,
+        "ownedCount": 186,
+        "profileCount": 106,
+        "b1Count": 18,
+        "b2Count": 28,
+        "b3Count": 40,
+        "flexCount": 58,
+        "candidateCount": 191,
+        "baseTeamCount": 5,
+        "repairChecks": 0,
+        "repairCandidates": 0,
+        "repairMode": "base",
+        "elapsedMs": 6856.099999999977,
+        "catalogCount": 107,
+        "cacheHit": true
+      },
+      "uiStatus": "완료 · 연동 186명 / 보유 저장 186명 / 계산 프로필 106명 · 5팀 25명 · 중복 0 · 자체검증 PASS",
+      "error": null
+    },
+    "second": {
+      "elapsed": 74.90000000002328,
+      "status": "ok",
+      "teams": 5,
+      "totalScore": 28716617.009975065,
+      "ids": [
+        "anisStar",
+        "mastRomanticMaid",
+        "cinderella",
+        "reiAyanamiTentative",
+        "anchorInnocentMaid",
+        "littleMermaid",
+        "nayuta",
+        "liberalio",
+        "scarletBlackShadow",
+        "eve",
+        "liter",
+        "grave",
+        "snowWhiteHeavyArms",
+        "privatyTreasure",
+        "pepper",
+        "volume",
+        "crown",
+        "rapiRedHood",
+        "modernia",
+        "helmTreasure",
+        "dorothy",
+        "mariMakinami",
+        "raven",
+        "asukaShikinamiLangley",
+        "dieselTreasure"
+      ],
+      "unique": 25,
+      "validation": {
+        "pass": true,
+        "errors": [],
+        "teamCount": 5,
+        "slotCount": 25,
+        "uniqueCount": 25,
+        "engine": "v34710-owned-roster-repair",
+        "checkedAt": "2026-08-27T03:35:16.702Z"
+      },
+      "diagnostics": {
+        "receivedCount": 186,
+        "ownedCount": 186,
+        "profileCount": 106,
+        "b1Count": 18,
+        "b2Count": 28,
+        "b3Count": 40,
+        "flexCount": 58,
+        "candidateCount": 191,
+        "baseTeamCount": 5,
+        "repairChecks": 0,
+        "repairCandidates": 0,
+        "repairMode": "base",
+        "elapsedMs": 6856.099999999977,
+        "catalogCount": 107,
+        "cacheHit": true
+      },
+      "uiStatus": "완료 · 연동 186명 / 보유 저장 186명 / 계산 프로필 106명 · 5팀 25명 · 중복 0 · 자체검증 PASS",
+      "error": null
+    },
+    "heartbeats": 125,
+    "postGcHeap": {
+      "usedSize": 12977732,
+      "totalSize": 14434304,
+      "embedderHeapUsedSize": 12362936,
+      "backingStorageSize": 6554647
+    }
+  },
+  "pass": true
+}

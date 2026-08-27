@@ -1,0 +1,147 @@
+name: Apply V34.7.10 full linked-roster repair
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - fix-owned-roster-zero-v34710
+    paths:
+      - .github/workflows/apply-owned-roster-v34710.yml
+      - scripts/v34710-release/**
+      - scripts/apply-v34710-owned-roster-repair.mjs
+      - tests/verify-owned-roster-v34710.mjs
+      - tests/verify-inline-v34710.mjs
+      - docs/V34.7.10_OWNED_ROSTER_REPAIR.md
+
+concurrency:
+  group: apply-owned-roster-v34710-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+env:
+  PRODUCTION_URL: https://nikke-growth-calculator.breezy-mum.workers.dev
+  PUBLIC_PROFILE_URL: https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTczODk5ODEwMzMzMTgwOTYwMDc=
+
+jobs:
+  apply-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Reconstruct audited V34.7.10 runtime and 186-row browser regression
+        run: |
+          set -euo pipefail
+          echo 'f23a1cc6323b77447be02891a59a432b7ecebea663b2e64a56ef029eace77b95  scripts/v34710-release/runtime.xz' | sha256sum -c -
+          echo 'aacd339e34bdd4d1c1f405c08b5b3bfe2ae53e376ebd910809fa5608e4a82529  scripts/v34710-release/test186.xz' | sha256sum -c -
+          xz --test scripts/v34710-release/runtime.xz
+          xz --test scripts/v34710-release/test186.xz
+          xz -dc scripts/v34710-release/runtime.xz > scripts/v34710-owned-roster-repair.js
+          xz -dc scripts/v34710-release/test186.xz > tests/verify-owned-roster-186-browser-v34710.mjs
+          echo '0b60decc72ee7ed48fcb5bf5a8957a5aa6fb734f21e65433c70b7606c1822eeb  scripts/v34710-owned-roster-repair.js' | sha256sum -c -
+          echo '4708d8b70ef61d8e8b745ee3d6ace9bffd42569f6aeb2ce01f1a09c6adeb00a0  tests/verify-owned-roster-186-browser-v34710.mjs' | sha256sum -c -
+
+      - name: Apply canonical V34.7.10 source patch
+        run: |
+          set -euo pipefail
+          : > V34710_RELEASE_RESULTS.txt
+          node scripts/apply-v34710-owned-roster-repair.mjs | tee -a V34710_RELEASE_RESULTS.txt
+          cmp --silent index.html public/index.html
+          grep -F 'id="v34710-owned-roster-repair"' index.html >/dev/null
+          grep -F "const VERSION = '34.7.10';" functions/api/blabla/sync.js >/dev/null
+
+      - name: Install pinned dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: Run static, favorite, propagation and inline regressions
+        run: |
+          set -euo pipefail
+          npm run check | tee -a V34710_RELEASE_RESULTS.txt
+
+      - name: Build Cloudflare deployment assets
+        run: |
+          set -euo pipefail
+          npm run build | tee -a V34710_RELEASE_RESULTS.txt
+          test -f dist-cloudflare/index.html
+          grep -F 'id="v34710-owned-roster-repair"' dist-cloudflare/index.html >/dev/null
+
+      - name: Run real Chromium four-surface and low-memory regressions
+        env:
+          CHROME_BIN: /usr/bin/google-chrome
+        run: |
+          set -euo pipefail
+          google-chrome --version | tee -a V34710_RELEASE_RESULTS.txt
+          node tests/verify-blabla-propagation-browser-v3478.mjs | tee -a V34710_RELEASE_RESULTS.txt
+          node tests/verify-five-deck-stability-browser-v3479.mjs | tee -a V34710_RELEASE_RESULTS.txt
+          node tests/verify-owned-roster-186-browser-v34710.mjs | tee -a V34710_RELEASE_RESULTS.txt
+
+      - name: Verify current live Cloudflare BlaBla bridge before merge
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 5 --max-time 120 \
+            -H 'content-type: application/json' \
+            -H "Origin: $PRODUCTION_URL" \
+            -H "Referer: $PRODUCTION_URL/" \
+            --data "$(jq -nc --arg profile "$PUBLIC_PROFILE_URL" '{profileUrl:$profile,serverHint:"GLOBAL"}')" \
+            "$PRODUCTION_URL/api/blabla/sync" > V34710_LIVE_BRIDGE_PREFLIGHT.json
+          jq -e '.ok == true' V34710_LIVE_BRIDGE_PREFLIGHT.json >/dev/null
+          jq -e '[.areas[].characters | length] | add > 0' V34710_LIVE_BRIDGE_PREFLIGHT.json >/dev/null
+          jq -e '[.areas[].details | length] | add > 0' V34710_LIVE_BRIDGE_PREFLIGHT.json >/dev/null
+          jq '{version, profile, areas:[.areas[]|{area,characters:(.characters|length),details:(.details|length),stateEffects:(.stateEffects|length)}]}' V34710_LIVE_BRIDGE_PREFLIGHT.json | tee -a V34710_RELEASE_RESULTS.txt
+
+      - name: Record integrity hashes and remove transport payloads
+        run: |
+          set -euo pipefail
+          rm -rf scripts/v34710-release
+          sha256sum \
+            index.html public/index.html package.json package-lock.json \
+            functions/api/blabla/sync.js \
+            scripts/v34710-owned-roster-repair.js \
+            tests/verify-owned-roster-v34710.mjs \
+            tests/verify-owned-roster-186-browser-v34710.mjs \
+            tests/verify-inline-v34710.mjs \
+            docs/V34.7.10_OWNED_ROSTER_REPAIR.md \
+            > SHA256SUMS.txt
+
+      - name: Commit canonical V34.7.10 source and evidence
+        run: |
+          set -euo pipefail
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -A
+          if git diff --cached --quiet; then
+            echo 'Canonical V34.7.10 output is unchanged'
+          else
+            git commit -m 'V34.7.10: retain all linked roster rows and repair five-deck completion'
+            git push origin HEAD:${{ github.ref_name }}
+          fi
+
+      - name: Upload verified V34.7.10 release candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: nikke-v34710-full-linked-roster-verified
+          path: |
+            index.html
+            public/index.html
+            dist-cloudflare/index.html
+            scripts/v34710-owned-roster-repair.js
+            tests/verify-owned-roster-v34710.mjs
+            tests/verify-owned-roster-186-browser-v34710.mjs
+            tests/verify-inline-v34710.mjs
+            docs/V34.7.10_OWNED_ROSTER_REPAIR.md
+            V34710_RELEASE_RESULTS.txt
+            V34710_OWNED_ROSTER_186_BROWSER_RESULTS.json
+            V3479_FIVE_DECK_BROWSER_RESULTS.json
+            V34710_LIVE_BRIDGE_PREFLIGHT.json
+            SHA256SUMS.txt
+          if-no-files-found: error

@@ -1,5 +1,97 @@
 {
   "version": "34.7.10",
+  "indexBytes": 9410932,
+  "indexSha256": "ee56f0976565b2e6661431c7a51a1817a0d075e82c477d7cdbc66b97289a8a3a",
+  "runtimeSha256": "bc340d107add2a1c7a09e5ccbfca2d99e526556537758fd30719520af8854ef3"
+}
+
+> nikke-growth-calculator@34.7.10 check
+> node --check functions/api/blabla/sync.js && node tests/verify-deploy-autosync.mjs && node tests/verify-favorite-phase-v3477.mjs && node tests/verify-blabla-propagation-v3478.mjs && node tests/verify-five-deck-stability-v3479.mjs && node tests/verify-owned-roster-v34710.mjs && node tests/verify-inline-v34710.mjs
+
+V34.7.10 deploy autosync + TID/nameCode authority verification: PASS
+V34.7.10 ENIKK 21 favorite characters / 21 TIDs / 63 phase cards / base skills / level preservation / calculation regression: PASS
+V34.7.10 BlaBla bridge + four-surface propagation static verification: PASS
+V34.7.10 five-deck large synced roster static stability verification: PASS
+V34.7.10 dynamic 186-row roster retention + truthful five-deck repair static verification: PASS
+V34.7.10 inline scripts: tags=103, executable=102, failures=0
+
+> nikke-growth-calculator@34.7.10 build
+> npm run check && node scripts/build-cloudflare.mjs
+
+
+> nikke-growth-calculator@34.7.10 check
+> node --check functions/api/blabla/sync.js && node tests/verify-deploy-autosync.mjs && node tests/verify-favorite-phase-v3477.mjs && node tests/verify-blabla-propagation-v3478.mjs && node tests/verify-five-deck-stability-v3479.mjs && node tests/verify-owned-roster-v34710.mjs && node tests/verify-inline-v34710.mjs
+
+V34.7.10 deploy autosync + TID/nameCode authority verification: PASS
+V34.7.10 ENIKK 21 favorite characters / 21 TIDs / 63 phase cards / base skills / level preservation / calculation regression: PASS
+V34.7.10 BlaBla bridge + four-surface propagation static verification: PASS
+V34.7.10 five-deck large synced roster static stability verification: PASS
+V34.7.10 dynamic 186-row roster retention + truthful five-deck repair static verification: PASS
+V34.7.10 inline scripts: tags=103, executable=102, failures=0
+image/webp -> /assets/embedded-d06f53a6a32f681c.webp (298672 bytes)
+image/png -> /assets/embedded-09c0b4e4111442bc.png (485638 bytes)
+audio/mp4 -> /assets/embedded-1589970c503504f5.m4a (2639405 bytes)
+Cloudflare build ready: index=4049583 bytes, extracted assets=3
+Google Chrome 151.0.7922.173 
+{
+  "version": "34.7.10",
+  "bridge": {
+    "imported": 107,
+    "area": 84
+  },
+  "roster": {
+    "id": "sugarTreasure",
+    "level": 450,
+    "skills": {
+      "skill1": 2,
+      "skill2": 7,
+      "burst": 9
+    },
+    "phase": 3,
+    "cube": "diffusion",
+    "equipmentAttack": 8818,
+    "equipmentHp": 198316,
+    "equipmentDefense": 1318,
+    "slots": 4
+  },
+  "precision": {
+    "total": 339226.3757679811,
+    "pass": true
+  },
+  "simulation": {
+    "phase0": 1160323297.1090527,
+    "phase3": 1488118761.903383,
+    "gearAttack": 8818
+  },
+  "fiveDeck": {
+    "candidates": 191,
+    "teams": 5,
+    "unique": 25,
+    "totalScore": 28716617.009975065,
+    "capturedPhase": 3,
+    "elapsedMs": 3981.5,
+    "heartbeat": 150,
+    "diagnostics": {
+      "receivedCount": 107,
+      "ownedCount": 107,
+      "profileCount": 106,
+      "b1Count": 18,
+      "b2Count": 28,
+      "b3Count": 40,
+      "flexCount": 58,
+      "candidateCount": 191,
+      "baseTeamCount": 5,
+      "repairChecks": 0,
+      "repairCandidates": 0,
+      "repairMode": "base",
+      "elapsedMs": 3915.5,
+      "catalogCount": 107
+    }
+  }
+}
+V34.7.10 BlaBla -> My Roster -> Precision -> Simulation -> 5-deck browser verification: PASS
+{
+  "version": "34.7.10",
   "verifiedAtUtc": "2026-08-27T03:35:06.467Z",
   "environment": {
     "viewport": "412x915",
@@ -443,4 +535,195 @@
     }
   },
   "pass": true
+}
+V34.7.10 BlaBla large roster -> My Roster -> Precision -> Simulation -> stable repeated 5-deck browser verification: PASS
+{
+  "version": "34.7.10",
+  "verifiedAtUtc": "2026-08-27T03:35:16.856Z",
+  "environment": {
+    "viewport": "412x915",
+    "deviceMemoryGb": 4,
+    "v8OldSpaceMb": 96
+  },
+  "bridge": {
+    "received": 186,
+    "imported": 186,
+    "area": 84
+  },
+  "roster": {
+    "registered": 186,
+    "owned": 186,
+    "id": "sugarTreasure",
+    "level": 450,
+    "skills": {
+      "skill1": 2,
+      "skill2": 7,
+      "burst": 9
+    },
+    "phase": 3,
+    "cube": "diffusion",
+    "equipmentAttack": 8818,
+    "equipmentHp": 198316,
+    "equipmentDefense": 1318,
+    "slots": 4
+  },
+  "precision": {
+    "total": 339226.3757679811,
+    "pass": true
+  },
+  "simulation": {
+    "phase0": 1160323297.1090527,
+    "phase3": 1488118761.903383,
+    "gearAttack": 8818
+  },
+  "fiveDeck": {
+    "first": {
+      "elapsed": 6988.200000000012,
+      "status": "ok",
+      "teams": 5,
+      "totalScore": 28716617.009975065,
+      "ids": [
+        "anisStar",
+        "mastRomanticMaid",
+        "cinderella",
+        "reiAyanamiTentative",
+        "anchorInnocentMaid",
+        "littleMermaid",
+        "nayuta",
+        "liberalio",
+        "scarletBlackShadow",
+        "eve",
+        "liter",
+        "grave",
+        "snowWhiteHeavyArms",
+        "privatyTreasure",
+        "pepper",
+        "volume",
+        "crown",
+        "rapiRedHood",
+        "modernia",
+        "helmTreasure",
+        "dorothy",
+        "mariMakinami",
+        "raven",
+        "asukaShikinamiLangley",
+        "dieselTreasure"
+      ],
+      "unique": 25,
+      "validation": {
+        "pass": true,
+        "errors": [],
+        "teamCount": 5,
+        "slotCount": 25,
+        "uniqueCount": 25,
+        "engine": "v34710-owned-roster-repair",
+        "checkedAt": "2026-08-27T03:35:16.702Z"
+      },
+      "diagnostics": {
+        "receivedCount": 186,
+        "ownedCount": 186,
+        "profileCount": 106,
+        "b1Count": 18,
+        "b2Count": 28,
+        "b3Count": 40,
+        "flexCount": 58,
+        "candidateCount": 191,
+        "baseTeamCount": 5,
+        "repairChecks": 0,
+        "repairCandidates": 0,
+        "repairMode": "base",
+        "elapsedMs": 6856.099999999977,
+        "catalogCount": 107,
+        "cacheHit": true
+      },
+      "uiStatus": "완료 · 연동 186명 / 보유 저장 186명 / 계산 프로필 106명 · 5팀 25명 · 중복 0 · 자체검증 PASS",
+      "error": null
+    },
+    "second": {
+      "elapsed": 74.90000000002328,
+      "status": "ok",
+      "teams": 5,
+      "totalScore": 28716617.009975065,
+      "ids": [
+        "anisStar",
+        "mastRomanticMaid",
+        "cinderella",
+        "reiAyanamiTentative",
+        "anchorInnocentMaid",
+        "littleMermaid",
+        "nayuta",
+        "liberalio",
+        "scarletBlackShadow",
+        "eve",
+        "liter",
+        "grave",
+        "snowWhiteHeavyArms",
+        "privatyTreasure",
+        "pepper",
+        "volume",
+        "crown",
+        "rapiRedHood",
+        "modernia",
+        "helmTreasure",
+        "dorothy",
+        "mariMakinami",
+        "raven",
+        "asukaShikinamiLangley",
+        "dieselTreasure"
+      ],
+      "unique": 25,
+      "validation": {
+        "pass": true,
+        "errors": [],
+        "teamCount": 5,
+        "slotCount": 25,
+        "uniqueCount": 25,
+        "engine": "v34710-owned-roster-repair",
+        "checkedAt": "2026-08-27T03:35:16.702Z"
+      },
+      "diagnostics": {
+        "receivedCount": 186,
+        "ownedCount": 186,
+        "profileCount": 106,
+        "b1Count": 18,
+        "b2Count": 28,
+        "b3Count": 40,
+        "flexCount": 58,
+        "candidateCount": 191,
+        "baseTeamCount": 5,
+        "repairChecks": 0,
+        "repairCandidates": 0,
+        "repairMode": "base",
+        "elapsedMs": 6856.099999999977,
+        "catalogCount": 107,
+        "cacheHit": true
+      },
+      "uiStatus": "완료 · 연동 186명 / 보유 저장 186명 / 계산 프로필 106명 · 5팀 25명 · 중복 0 · 자체검증 PASS",
+      "error": null
+    },
+    "heartbeats": 125,
+    "postGcHeap": {
+      "usedSize": 12977732,
+      "totalSize": 14434304,
+      "embedderHeapUsedSize": 12362936,
+      "backingStorageSize": 6554647
+    }
+  },
+  "pass": true
+}
+V34.7.10 BlaBla 186 linked roster -> My Roster -> Precision -> Simulation -> repaired repeated 5-deck browser verification: PASS
+{
+  "version": "34.7.9",
+  "profile": {
+    "intlGameId": "29080",
+    "maskedOpenId": "1738…6007"
+  },
+  "areas": [
+    {
+      "area": 82,
+      "characters": 168,
+      "details": 168,
+      "stateEffects": 112
+    }
+  ]
 }

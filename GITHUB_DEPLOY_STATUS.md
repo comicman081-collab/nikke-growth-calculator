@@ -1,39 +1,39 @@
 # GitHub / Cloudflare deploy status
 
-Current production build: **V34.7.9 BlaBla Five-Deck Stability**
+Release candidate: **V34.7.10 BlaBla Full Linked-Roster Repair**
 
-## Ready
+## Deployment configuration
 
-- GitHub repository content is prepared and `main` is the production branch.
-- Cloudflare Workers Builds is connected to `comicman081-collab/nikke-growth-calculator`.
-- Build command: `npm run build`.
-- Deploy command: `npm run deploy`.
-- `public/index.html` and root `index.html` are kept identical.
-- Production web build forces the same-origin `/api/blabla/sync` bridge.
-- BlaBla service secrets are stored only as encrypted Cloudflare runtime secrets.
-- Runtime variables are preserved across Wrangler deploys.
-- First successful profile/server pair is stored locally and later page visits can auto-refresh once per browser session.
-- Central roster remains the single sink for external data, so Precision / My Roster / cubes / 5-team auto composition consume the same imported values.
-- BlaBla/ENIKK `nameCode` is the authority key for character identity; BlaBla master names remain display metadata, so duplicate names such as Rei/Asuka variants cannot overwrite each other.
+- `main` is the production branch and Cloudflare Workers Builds is connected to `comicman081-collab/nikke-growth-calculator`.
+- Build command: `npm run build`; deploy command: `npm run deploy`.
+- Root `index.html` and `public/index.html` are required to remain byte-identical.
+- Production uses the same-origin `/api/blabla/sync` Worker bridge; its credentials remain encrypted Cloudflare runtime secrets.
+- Browser-local account storage remains the single central roster sink used by My Roster, Precision, Simulation, cubes and five-deck composition.
 
-- 21-character ENIKK favorite-item registry is TID-authoritative; Phase 0 uses base skills and Phases 1-3 replace only the audited slot.
-- Viper TID 200501 and Sugar TID 202101 are permanently regression-tested.
-- Imported skill levels are preserved independently of favorite-item phase.
+## Preserved authority and calculations
 
-- BlaBla four-surface propagation is verified from one central roster into Precision, My Roster, Simulation, and 5-deck calculation contexts.
-- The 5-deck optimizer now preserves favorite phase and observed equipment ATK/HP/DEF instead of overwriting the rich central context.
-- Live Cloudflare verification checks the deployed HTML and same-origin /api/blabla/sync bridge.
+- Character identity is imported by favorite-item TID first and BlaBla/ENIKK `nameCode` second, preventing duplicate display names from overwriting one another.
+- The 21-character favorite-item registry is TID-authoritative; imported skill levels are independent of favorite phase.
+- Level, limit/core, bond, skill 1/2/burst, favorite phase, cube, overload totals and observed equipment ATK/HP/DEF are propagated from one linked roster into My Roster, Precision, Simulation and five-deck calculation contexts.
 
+## V34.7.10 linked-roster repair
 
-- Large synchronized owned rosters use a mobile-only bounded search mode: compact B3/flex pre-rank caches, a 180 exact-pair safety budget, cooperative yielding, and immediate cache release after candidate generation.
-- Final five-team selections remain full exact recalculations; only repeated pre-ranking work is reused or bounded.
-- The stability browser regression imports a 100+ character BlaBla-shaped roster on a 412×915 / 4 GB profile and requires five teams, 25 unique members, bounded candidate memory, and no crash.
+- An inherited fixed-catalog `getOwned()` wrapper could expose only built-in calculation rows even after BlaBla had stored 186 owned characters. This produced the false `insufficientRoster / team count 0 / slot count 0 / duplicate members` result.
+- V34.7.10 merges the dynamic catalog with the saved central document, so all 186 linked characters remain owned and visible in My Roster.
+- Supplemental rows without an audited damage model remain stored and visible but are not assigned fabricated Precision, Simulation or optimizer coefficients.
+- Supported linked profiles retain their imported growth values in all calculation surfaces.
+- Repeated cube IDs from the linked account are preserved instead of being silently removed by the optimizer.
+- If bounded low-memory search returns fewer than five disjoint teams, a bounded remaining-roster repair fills the missing team; only a validated 5-team / 25-slot / 25-unique-member result is rendered.
+- Real shortages now report supported unique, B1, B2, active B3 and FLEX counts. The old combined zero-team message is removed.
+- Successful results are cached by linked-roster fingerprint and invalidated on roster mutation.
 
-- BlaBla-owned-roster five-deck composition uses the bounded yielding optimizer path; candidate scoring returns UI control in batches and releases the heavy candidate pool after selection.
-- Android/WebView runs use pair/flex limits 8/3 with deterministic 10/4 fallback, preventing unbounded V34 recursive exact-cover memory growth.
+## Release gates passed on the branch
 
-## Automatic deployment
+- Static, favorite-item and four-surface propagation regressions: PASS.
+- Cloudflare asset build and root/public mirror: PASS.
+- 107-character representative mobile regression: PASS.
+- 107-character repeated 96 MB low-memory regression: PASS.
+- 186-character linked-roster mobile regression: 186 stored/owned, five teams, 25 unique members, unsupported supplementals selected 0, PASS.
+- Current production Cloudflare origin and live same-origin BlaBla bridge preflight: PASS.
 
-Any future commit pushed to `main` is expected to trigger Cloudflare Workers Builds automatically. Non-production branch builds are disabled.
-
-This documentation-only commit is intentionally used as the first production auto-deploy trigger after the Git integration was connected.
+The main-only Cloudflare workflow verifies the deployed V34.7.10 HTML marker, Worker version, configured bridge and a real nonempty profile response after merge.
