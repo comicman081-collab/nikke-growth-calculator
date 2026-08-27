@@ -1,10 +1,10 @@
 # GitHub deployment status
 
-Current production build: **V34.7.9 BlaBla-linked five-deck stability**
+Current production build: **V34.7.10 BlaBla-linked five-deck stability**
 
 ## V34.7.10 linked-roster repair staging
 
-- The production V34.7.9 build can receive and store a large BlaBla roster, but an inherited fixed-catalog `getOwned()` wrapper may expose only built-in calculation rows to downstream consumers.
+- The production V34.7.10 build can receive and store a large BlaBla roster, but an inherited fixed-catalog `getOwned()` wrapper may expose only built-in calculation rows to downstream consumers.
 - This caused a real 186-character linked roster to be misreported as `insufficientRoster`, sometimes with `team count 0 / slot count 0 / duplicate members` even though the saved roster and role capacity were sufficient.
 - V34.7.10 reconstructs ownership from the dynamic catalog plus the central saved document, keeps all 186 linked rows visible in My Roster, and uses only audited calculation profiles in Precision, Simulation and five-deck scoring.
 - It preserves linked level, skills, favorite phase, cube, overload and observed equipment values across the four calculation surfaces.
