@@ -20,6 +20,8 @@ assert.match(html,/NIKKEV34716PresentationStability/);
 assert.match(html,/function stabilizeRosterApi\(api\)/);
 assert.match(html,/__v34716StableRender:true/);
 assert.match(html,/rosterRenderSkipped/);
+assert.match(html,/__NIKKE_V34716_LEGACY_REGISTRY_HEARTBEAT_DISABLED__=true/);
+assert.doesNotMatch(html,/const brandTimer=setInterval\(\(\)=>\{verify\(\);brand\(\);\},750\)/,'legacy registry audit must not compete with five-deck calculations');
 assert.match(html,/localStorageOnly:true/);
 assert.match(html,/scopedObservers:true/);
 assert.match(html,/observe\(root\.document\.body,\{childList:true\}\)/);

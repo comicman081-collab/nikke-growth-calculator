@@ -154,6 +154,9 @@ function replaceScript(html,id,block){
 let html=read('index.html').replaceAll(OLD_VERSION,VERSION);
 html=replaceScript(html,PLACEMENT_ID,PLACEMENT_RUNTIME);
 html=html.replace(new RegExp(`<script id=["']${GUARD_ID}["'][^>]*>[\\s\\S]*?<\\/script>\\s*`,'g'),'');
+const legacyRegistryHeartbeat="verify();brand();for(const ms of [0,150,350,700,1200,2200,4000,7000,12000,18000,26000,36000])setTimeout(()=>{verify();brand();},ms);const brandTimer=setInterval(()=>{verify();brand();},750);setTimeout(()=>clearInterval(brandTimer),45000);";
+if(html.includes(legacyRegistryHeartbeat))html=html.replace(legacyRegistryHeartbeat,"verify();brand();root.__NIKKE_V34716_LEGACY_REGISTRY_HEARTBEAT_DISABLED__=true;");
+assert.match(html,/__NIKKE_V34716_LEGACY_REGISTRY_HEARTBEAT_DISABLED__=true/,'legacy registry heartbeat disabled');
 const title='<title>니케 성장 계산기 V34.7.16 · 로스터·탭 화면 안정화</title>';
 assert.match(html,/<title>[\s\S]*?<\/title>/i,'document title anchor');
 html=html.replace(/<title>[\s\S]*?<\/title>/i,`${title}\n${GUARD}`);
