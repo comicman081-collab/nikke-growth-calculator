@@ -1,6 +1,6 @@
 # NIKKE Growth Calculator
 
-Current web deployment build: **V34.7.18 Presentation Stability**
+Current web deployment build: **V34.7.19 Instant Five-Deck Timeline**
 
 ## What is automatic in the deployed build
 
@@ -47,7 +47,7 @@ For the normal same-origin production deployment, leave `BLABLA_SYNC_KEY` empty.
 
 `index.html` mirrors `public/index.html` for inspection. Cloudflare Pages should serve `public/index.html`.
 
-## V34.7.18 presentation stability
+## V34.7.19 instant five-deck timeline and presentation stability
 
 - The page title, runtime status and footer now have one authoritative release value; legacy compatibility timers can no longer alternate them.
 - Unchanged legacy roster refreshes are ignored, while real imports, roster edits and cube changes still redraw immediately.
@@ -55,6 +55,7 @@ For the normal same-origin production deployment, leave `BLABLA_SYNC_KEY` empty.
 - Precision cycle/firepower output spans the same full content width as the other Precision cards, and every input/select/textarea shares the application font and field treatment.
 - The deployed auto-sync description and toggle use the available horizontal space; the status remains a full-width row below them.
 - The five-deck optimizer shows a compact notice above its controls that a run can take roughly 30 seconds to several minutes depending on system performance and roster size.
+- A completed five-deck run immediately displays all five deck totals, the five character damage rows per deck and the completed timeline charts. The timeline summaries now only collapse or reopen the already-calculated result.
 - Manual Precision edits and BlaBla imports are regression-tested through the central roster, My Roster, Precision, Solo Raid, single-party simulation and all three five-deck modes.
 - A 193-row linked snapshot keeps all raw rows for future refreshes while only the 107 registered app characters (106 calculation-eligible profiles) can enter damage calculations.
 - Bottom-note/search placement observes only its own direct containers instead of the full document subtree.

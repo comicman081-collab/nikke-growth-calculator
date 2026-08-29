@@ -16,7 +16,9 @@ assert.match(runtime,/CACHE_LIMIT=2/,'bounded five-deck simulation cache');
 assert.match(runtime,/minmax\(760px,1fr\) 180px/,'desktop graph dominates damage totals');
 assert.match(runtime,/minmax\(690px,1fr\) 165px/,'mobile graph dominates damage totals');
 assert.match(runtime,/v34712-damage-row\{[^}]*display:flex;justify-content:space-between;align-items:center/s,'five vertical rows align name left and damage right');
-assert.match(runtime,/details\.open=false|d\.open=false/,'timeline panels default collapsed');
+assert.match(runtime,/d\.open=true;renderFiveDeckPanel/,'five-deck timelines render and open immediately after optimization');
+assert.doesNotMatch(runtime,/if\(!d\.open\)\{cacheDrop\(key\)/,'collapsing a completed deck must not discard its calculated timeline');
+assert.match(runtime,/instantFiveDeckResults:true/,'instant five-deck result contract');
 assert.match(runtime,/NIKKESinglePartyTimelineSimulator/,'five-deck timeline reuses authoritative battle simulator');
 assert.match(runtime,/\.nikke-kit-team,\.v26-optimizer-team/,'current and fallback five-deck result cards supported');
 assert.match(runtime,/NIKKESoloRaidLastResult/,'Solo Raid timeline reads the exposed authoritative result');
@@ -54,7 +56,7 @@ vm.runInContext(runtime,context,{filename:'v34712-timeline-runtime.js'});
 
 const api=window.NIKKEV34712UnifiedTimeline;
 assert.ok(api,'timeline runtime API');
-assert.equal(api.version,'34.7.18');
+assert.equal(api.version,'34.7.19');
 assert.equal(api.compactName('신데렐라'),'신데렐...','three-glyph compact name');
 assert.equal(api.compactDamage(2e8),'2억');
 assert.equal(api.compactDamage(12e8),'12억');
@@ -85,4 +87,4 @@ for(const total of [238_765_432,1_987_654_321,6_012_345_678]){
   assertFiniteTree(trace,'trace');
 }
 
-console.log('V34.7.18 Precision / Solo Raid / five-deck / battle timeline arithmetic and integration contract: PASS');
+console.log('V34.7.19 Precision / Solo Raid / instant five-deck / battle timeline arithmetic and integration contract: PASS');

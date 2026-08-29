@@ -1,6 +1,6 @@
 # GitHub / Cloudflare deploy status
 
-Release candidate: **V34.7.18 Presentation Stability**
+Release candidate: **V34.7.19 Instant Five-Deck Timeline**
 
 ## Deployment configuration
 
@@ -36,7 +36,7 @@ Release candidate: **V34.7.18 Presentation Stability**
 - 186-character linked-roster mobile regression: 186 stored/owned, five teams, 25 unique members, unsupported supplementals selected 0, PASS.
 - Current production Cloudflare origin and live same-origin BlaBla bridge preflight: PASS.
 
-The main-only Cloudflare workflow verifies the deployed V34.7.18 HTML marker, Worker version, configured bridge and a real nonempty profile response after merge.
+The main-only Cloudflare workflow verifies the deployed V34.7.19 HTML marker, Worker version, configured bridge and a real nonempty profile response after merge.
 
 ## V34.7.11 linked roster policy
 
@@ -53,17 +53,18 @@ The main-only Cloudflare workflow verifies the deployed V34.7.18 HTML marker, Wo
 - Elemental shotgun shells are optional score competitors. The shotgun Soline slot means Soline: Frost Ticket, never base Soline.
 - Christmas Brid is a preferred Fire B2 candidate, not a mandatory shotgun or five-deck lock. Arcana can win when healing is unnecessary; Nayuta or Naga can win for survival and mechanics.
 - The exact coarse candidate-pool optimum is followed by deterministic high-resolution contender reranking, so the displayed 0.05-second timeline score—not a lower-resolution proxy—decides among realistic one- and two-team cover exchanges.
-- Precision, Solo Raid, five-deck and battle-simulation timelines share the same growth, favorite item, overload, equipment and cube context. Five-deck timelines are collapsed per team and expand into a wide chart plus a five-row character damage rail.
+- Precision, Solo Raid, five-deck and battle-simulation timelines share the same growth, favorite item, overload, equipment and cube context. Completed five-deck results immediately open each team's wide chart and five-row character damage rail; collapsing and reopening only changes visibility and does not recalculate the result.
 - Linked raw roster snapshots keep every received row, while optimizer participation is restricted to app-supported calculation profiles. Character search is available at selection surfaces.
 
 Release gates include static integration, all three production modes, multi-boss optimality, special-combination coverage, shotgun policy, favorite-item gating, linked-roster propagation, cancellation/cache, low-memory browser crash resistance, timeline browser layout, signed APK badging/signature/embedded-HTML hash, and live Cloudflare verification.
 
-## V34.7.18 presentation stability and privacy gate
+## V34.7.19 instant five-deck timeline, presentation stability and privacy gate
 
 - All legacy title/status/footer writers are neutralized behind one release presentation value.
 - Identical scheduled roster renders are skipped by an account-storage and catalog fingerprint; actual data changes still render.
 - S40 roster diagnostics are readable, Precision cycle output is full width, memo/form typography is unified, and the deployed auto-sync toggle no longer wraps into the copy column.
 - The five-deck calculation card now states the expected 30-seconds-to-minutes runtime before the user starts a heavy optimization pass.
+- After optimization, every deck total, five member damage values and timeline chart render automatically without the former first-click calculation gate.
 - Manual and BlaBla-linked growth fields are verified across My Roster, Precision, Solo Raid, single-party simulation and the five-deck optimizer.
 - The 193-row bridge fixture imports 107 registered rows, keeps 86 unsupported rows snapshot-only, and proves that unsupported rows never receive invented calculation scores.
 - S40 `auto`, `owned` and `allEqual` production modes each return five validated teams, 25 unique slots, level-400 raid inputs, deterministic cache hits and no page crashes.

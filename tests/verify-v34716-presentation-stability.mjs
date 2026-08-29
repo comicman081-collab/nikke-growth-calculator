@@ -10,7 +10,7 @@ const pkg=JSON.parse(fs.readFileSync(path.join(root,'package.json'),'utf8'));
 const privateUid=String(process.env.NIKKE_PRIVATE_UID||'').trim();
 
 assert.equal(html,publicHtml,'root/public HTML mirror');
-assert.equal(pkg.version,'34.7.18');
+assert.equal(pkg.version,'34.7.19');
 assert.equal((html.match(/id="v34716-presentation-stability-guard"/g)||[]).length,1,'one early presentation guard');
 assert.match(html,/function lockProperty\(node,property,value\)/);
 assert.match(html,/lockProperty\(root\.document,'title',TITLE\)/);
@@ -32,4 +32,4 @@ const worker=fs.readFileSync(path.join(root,'functions/api/blabla/sync.js'),'utf
 assert.doesNotMatch(html,/shiftyspad\/nikke-list\?uid=[A-Za-z0-9%+/=]{24,}/i,'a concrete user BlaBla profile URL must never ship in public HTML');
 assert.doesNotMatch(worker,/shiftyspad\/nikke-list\?uid=[A-Za-z0-9%+/=]{24,}/i,'a concrete user BlaBla profile URL must never ship in Worker');
 if(privateUid){assert.ok(!html.includes(privateUid),'provided private UID must not ship in public HTML');assert.ok(!worker.includes(privateUid),'provided private UID must not ship in Worker');}
-console.log('V34.7.18 title/footer/runtime lock, scoped observer, and private UID exclusion verification: PASS');
+console.log('V34.7.19 title/footer/runtime lock, scoped observer, and private UID exclusion verification: PASS');

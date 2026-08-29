@@ -216,8 +216,8 @@ try {
   assert.equal(pageCrashes.length, 0, pageCrashes.join('\n'));
   assert.equal(runtimeExceptions.length, 0, runtimeExceptions.join('\n'));
   assert.equal(fatalConsole.length, 0, fatalConsole.join('\n'));
-  console.log(JSON.stringify({version:'34.7.18',boss:'luxuriousSpiderS40',modes:report,runtimeExceptions,fatalConsole,pageCrashes,pass:true},null,2));
-  console.log('V34.7.18 S40 auto/owned/allEqual production-mode verification: PASS');
+  console.log(JSON.stringify({version:'34.7.19',boss:'luxuriousSpiderS40',modes:report,runtimeExceptions,fatalConsole,pageCrashes,pass:true},null,2));
+  console.log('V34.7.19 S40 auto/owned/allEqual production-mode verification: PASS');
 } finally {
   cdp?.close();
   if (chrome.exitCode === null) chrome.kill('SIGTERM');

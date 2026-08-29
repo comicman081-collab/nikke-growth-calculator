@@ -7,7 +7,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 /*
- * V34.7.18 real-browser UI audit
+ * V34.7.19 real-browser UI audit
  *
  * The test opens the current production HTML in headless Chrome/Edge and uses
  * the same summary-click interaction as a user.  It checks default collapse,
@@ -18,7 +18,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const HTML = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 const PUBLIC_HTML = fs.readFileSync(path.join(ROOT, 'public', 'index.html'), 'utf8');
-const VERSION = '34.7.18';
+const VERSION = '34.7.19';
 
 assert.equal(HTML, PUBLIC_HTML, 'root/public production HTML mirror');
 
@@ -285,6 +285,37 @@ try {
         dimensions: size
       };
     };
+    const inspectInstantFiveDeckPanel = async (details, expectedRows) => {
+      const defaultOpen = details.open === true;
+      const summaryBeforeWait = details.querySelector('.v34712-summary-total')?.textContent?.trim() || '';
+      await waitPanel(details);
+      const rows = [...details.querySelectorAll('.v34712-damage-row')].map(row => ({
+        title: row.getAttribute('title') || '',
+        name: row.querySelector('.v34712-damage-name')?.textContent?.trim() || '',
+        damage: row.querySelector('.v34712-damage-value')?.textContent?.trim() || ''
+      }));
+      const total = Number(details.dataset.total || 0);
+      const summaryAfterWait = details.querySelector('.v34712-summary-total')?.textContent?.trim() || '';
+      const size = dimensions(details);
+      details.querySelector('summary').click();
+      await wait(25);
+      const collapsed = details.open === false;
+      details.querySelector('summary').click();
+      await waitPanel(details);
+      return {
+        id: details.id,
+        defaultOpen,
+        summaryBeforeWait,
+        summaryAfterWait,
+        renderedWithoutClick: details.dataset.auditPass === 'true' && !!details.querySelector('canvas'),
+        collapsed,
+        reopened: details.open === true,
+        rows,
+        expectedRows,
+        total,
+        dimensions: size
+      };
+    };
 
     const catalog = [...new Map((window.NIKKE_V26_7_CHARACTER_CATALOG || [])
       .filter(row => row?.id)
@@ -391,7 +422,7 @@ try {
     for (let index = 0; index < panels.length; index += 1) {
       const team = result.teams[index];
       const sim = api.simulateTeam(team, result, index);
-      const ui = await clickPanel(panels[index], 5);
+      const ui = await inspectInstantFiveDeckPanel(panels[index], 5);
       decks.push({
         ...ui,
         index: index + 1,
@@ -479,7 +510,7 @@ try {
   assert.equal(audit.cleanPrivacy.profileInput, '', 'clean browser profile URL is empty');
   assert.equal(audit.cleanPrivacy.rawLinkedRows, 0, 'clean browser receives no other user roster');
   assert.equal(audit.motionStability.present, true, 'roster stability probe mounted');
-  assert.equal(audit.motionStability.startTitle, '니케 성장 계산기 V34.7.18 · 로스터·탭 화면 안정화', 'stable title baseline');
+  assert.equal(audit.motionStability.startTitle, '니케 성장 계산기 V34.7.19 · 로스터·탭 화면 안정화', 'stable title baseline');
   assert.equal(audit.motionStability.endTitle, audit.motionStability.startTitle, 'tab title remains fixed');
   assert.equal(audit.motionStability.titleMutations, 0, 'legacy brand timers cannot rewrite the tab title');
   assert.equal(audit.motionStability.listMutations, 0, `idle roster list is not repeatedly rendered: ${JSON.stringify(audit.motionStability.listMutationSamples)}`);
@@ -540,7 +571,14 @@ try {
   let sawTruncatedName = false;
   let sawEokDamage = false;
   for (const deck of audit.fiveDeck.decks) {
-    checkPanel(deck, `deck ${deck.index} timeline`, 5, deck.simulationTotal);
+    assert.equal(deck.defaultOpen, true, `deck ${deck.index} timeline opens automatically`);
+    assert.notEqual(deck.summaryBeforeWait, '계산 전', `deck ${deck.index} summary never waits for a click`);
+    assert.match(deck.summaryAfterWait, /^총\s/, `deck ${deck.index} summary shows total immediately`);
+    assert.equal(deck.renderedWithoutClick, true, `deck ${deck.index} timeline renders without a click`);
+    assert.equal(deck.collapsed, true, `deck ${deck.index} timeline can still collapse`);
+    assert.equal(deck.reopened, true, `deck ${deck.index} timeline reopens without recalculation`);
+    assert.equal(deck.rows.length, 5, `deck ${deck.index} timeline vertical damage rows`);
+    assert.equal(deck.total, deck.simulationTotal, `deck ${deck.index} timeline authoritative total`);
     assert.equal(deck.memberCount, 5, `deck ${deck.index} simulation members`);
     assert.equal(deck.traceAudit, true, `deck ${deck.index} timeline sum audit`);
     assert.ok(Math.abs(deck.memberSum - deck.simulationTotal) <= Math.max(1, deck.simulationTotal * 1e-6), `deck ${deck.index} member sum`);
@@ -584,7 +622,7 @@ try {
     pass: true
   };
   console.log(JSON.stringify(summary, null, 2));
-  console.log('V34.7.18 Precision / Solo Raid / battle / automatic five-deck collapsible timeline UI browser verification: PASS');
+  console.log('V34.7.19 Precision / Solo Raid / battle / automatic five-deck collapsible timeline UI browser verification: PASS');
 } finally {
   cdp?.close();
   if (chrome.exitCode === null) {

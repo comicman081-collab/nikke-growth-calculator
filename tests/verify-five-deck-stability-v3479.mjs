@@ -7,9 +7,9 @@ const pkg=JSON.parse(fs.readFileSync(new URL('../package.json',import.meta.url),
 const sync=fs.readFileSync(new URL('../functions/api/blabla/sync.js',import.meta.url),'utf8');
 
 assert.equal(html,publicHtml,'root/public HTML mirror');
-assert.equal(pkg.version,'34.7.18','package version');
-assert.match(sync,/const VERSION = '34\.7\.18';/,'Worker bridge version');
-assert.match(html,/V34\.7\.18/,'visible V34.7.18 marker');
+assert.equal(pkg.version,'34.7.19','package version');
+assert.match(sync,/const VERSION = '34\.7\.19';/,'Worker bridge version');
+assert.match(html,/V34\.7\.19/,'visible V34.7.19 marker');
 assert.match(html,/id="v3479-five-deck-stability-marker"/,'release marker');
 assert.match(html,/NIKKE_V3479_FIVE_DECK_STABILITY/,'runtime release contract');
 
@@ -54,4 +54,4 @@ assert.match(html,/stabilityMode:true,pairComputationBudget:180,priorityPairExtr
 assert.match(html,/built\.candidates\.length=0/,'visible route releases heavy candidate pool');
 assert.match(html,/root\.NIKKEV3420Run=run/,'visible button route overridden');
 
-console.log('V34.7.18 five-deck large synced roster static stability verification: PASS');
+console.log('V34.7.19 five-deck large synced roster static stability verification: PASS');

@@ -7,7 +7,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 /*
- * V34.7.18 special-combination browser regression
+ * V34.7.19 special-combination browser regression
  *
  * Runs the real Precision and Solo Raid calculation path for every option in
  * #precisionBufferCombo (none + 33 presets).  The audit deliberately avoids a
@@ -18,7 +18,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const HTML = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
-const VERSION = '34.7.18';
+const VERSION = '34.7.19';
 
 function freePort() {
   return new Promise((resolve, reject) => {
@@ -395,7 +395,7 @@ try {
     pass: true
   };
   console.log(JSON.stringify(summary, null, 2));
-  console.log('V34.7.18 none + 33 special presets / Sugar favorite common-engine browser verification: PASS');
+  console.log('V34.7.19 none + 33 special presets / Sugar favorite common-engine browser verification: PASS');
 } finally {
   cdp?.close();
   if (chrome.exitCode === null) {
