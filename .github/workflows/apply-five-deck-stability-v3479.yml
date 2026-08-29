@@ -2,12 +2,6 @@ name: Apply V34.7.9 five-deck stability
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - fix-five-deck-stability-v3479
-    paths:
-      - .github/workflows/apply-five-deck-stability-v3479.yml
-      - scripts/v3479-upload/**
 
 concurrency:
   group: apply-five-deck-v3479-${{ github.ref }}
