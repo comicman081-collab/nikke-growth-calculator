@@ -1,11 +1,6 @@
 name: Export V34.7.11 source snapshot
 
 on:
-  push:
-    branches:
-      - linked-roster-refresh-v34711
-    paths:
-      - .github/workflows/export-v34711-source.yml
   workflow_dispatch:
 
 permissions:

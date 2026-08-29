@@ -2,11 +2,6 @@ name: Capture live BlaBla roster V34.7.10
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - fix-owned-roster-zero-v34710
-    paths:
-      - .github/workflows/capture-live-blabla-v34710.yml
 
 permissions:
   contents: read
