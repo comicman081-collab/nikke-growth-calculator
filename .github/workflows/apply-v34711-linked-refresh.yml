@@ -2,13 +2,6 @@ name: Apply V34.7.11 linked roster refresh
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - linked-roster-refresh-v34711
-    paths:
-      - .github/workflows/apply-v34711-linked-refresh.yml
-      - scripts/apply-v34711-linked-refresh.mjs
-      - scripts/v34711-linked-roster-refresh.js
 
 concurrency:
   group: apply-v34711-${{ github.ref }}

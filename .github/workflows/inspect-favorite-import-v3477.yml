@@ -2,18 +2,6 @@ name: Inspect favorite item import V34.7.7
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - fix-blabla-skill-signature-favorite-v3477
-    paths:
-      - .github/workflows/inspect-favorite-import-v3477.yml
-      - scripts/audit_favorite_v3477.py
-      - scripts/extract_enikk_favorite_master_v3477.mjs
-      - scripts/extract_app_favorite_consumer_v3477.mjs
-      - scripts/crawl_enikk_favorite_phase_v3477.mjs
-      - scripts/scrape_enikk_favorite_characters_v3477.mjs
-      - scripts/enrich_enikk_favorite_pages_v3477.mjs
-      - scripts/enrich_enikk_base_details_v3477.mjs
 
 concurrency:
   group: favorite-audit-${{ github.ref }}
