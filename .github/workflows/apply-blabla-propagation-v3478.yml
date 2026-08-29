@@ -1,0 +1,130 @@
+name: Apply V34.7.8 BlaBla four-surface propagation
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: apply-v3478-blabla-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  apply-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Decode V34.7.8 patch bundle
+        run: |
+          set -euo pipefail
+          cat scripts/v3478-patch-bundle.b64.part* | base64 --decode | tar -xz
+          test -f scripts/apply-v3478-blabla-propagation.mjs
+          test -f tests/verify-blabla-propagation-browser-v3478.mjs
+          test -f .github/workflows/verify-cloudflare-production-v3478.yml
+
+      - name: Install pinned dependencies
+        run: npm ci
+
+      - name: Apply V34.7.8 propagation patch
+        run: |
+          set -euo pipefail
+          : > V3478_PROPAGATION_RESULTS.txt
+          node scripts/apply-v3478-blabla-propagation.mjs | tee -a V3478_PROPAGATION_RESULTS.txt
+          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+
+      - name: Run static and calculation regressions
+        run: |
+          set -euo pipefail
+          npm run check | tee -a V3478_PROPAGATION_RESULTS.txt
+
+      - name: Build Cloudflare output
+        run: |
+          set -euo pipefail
+          npm run build | tee -a V3478_PROPAGATION_RESULTS.txt
+
+      - name: Run Chromium four-surface integration
+        run: |
+          set -euo pipefail
+          CHROME_BIN="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          test -n "$CHROME_BIN"
+          CHROME_BIN="$CHROME_BIN" npm run check:browser | tee -a V3478_PROPAGATION_RESULTS.txt
+
+      - name: Parse every executable inline script
+        run: |
+          set -euo pipefail
+          node --input-type=module <<'NODE' | tee -a V3478_PROPAGATION_RESULTS.txt
+          import fs from 'node:fs';
+          import os from 'node:os';
+          import path from 'node:path';
+          import { execFileSync } from 'node:child_process';
+          const html=fs.readFileSync('index.html','utf8');
+          const scripts=[...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)];
+          let checked=0;
+          for(let index=0;index<scripts.length;index+=1){
+            const attrs=scripts[index][1]||'';
+            const body=scripts[index][2]||'';
+            if(/\bsrc\s*=/.test(attrs)||!body.trim())continue;
+            const type=attrs.match(/\btype=["']([^"']+)["']/i)?.[1]?.toLowerCase()||'';
+            if(type&&!['module','text/javascript','application/javascript'].includes(type))continue;
+            const file=path.join(os.tmpdir(),`v3478-inline-${index}.${type==='module'?'mjs':'js'}`);
+            fs.writeFileSync(file,body);
+            execFileSync(process.execPath,['--check',file],{stdio:'pipe'});
+            checked+=1;
+          }
+          console.log(`V34.7.8 inline executable scripts checked: ${checked}; failures: 0`);
+          NODE
+
+      - name: Verify canonical mirrors
+        run: |
+          set -euo pipefail
+          cmp --silent index.html public/index.html
+          grep -q '"version": "34.7.8"' package.json
+          grep -q 'v3478-blabla-propagation' index.html
+          grep -q 'v3478-optimizer-central-roster' index.html
+
+      - name: Commit canonical V34.7.8 source
+        run: |
+          set -euo pipefail
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- \
+            index.html public/index.html package.json package-lock.json \
+            functions/api/blabla/sync.js \
+            tests/verify-deploy-autosync.mjs tests/verify-favorite-phase-v3477.mjs \
+            tests/verify-blabla-propagation-v3478.mjs tests/verify-blabla-propagation-browser-v3478.mjs \
+            tests/verify-cloudflare-production-v3478.mjs \
+            scripts/apply-v3478-blabla-propagation.mjs \
+            docs/V34.7.8_BLABLA_PROPAGATION.md \
+            GITHUB_DEPLOY_STATUS.md SHA256SUMS.txt V3478_PROPAGATION_RESULTS.txt
+          if git diff --cached --quiet; then
+            echo 'Canonical V34.7.8 output is unchanged'
+          else
+            git commit -m 'V34.7.8: propagate BlaBla data through all calculations'
+            git push origin HEAD:${{ github.ref_name }}
+          fi
+
+      - name: Upload verified V34.7.8 result
+        uses: actions/upload-artifact@v4
+        with:
+          name: nikke-v3478-blabla-four-surface-verified
+          path: |
+            index.html
+            public/index.html
+            tests/verify-blabla-propagation-v3478.mjs
+            tests/verify-blabla-propagation-browser-v3478.mjs
+            tests/verify-cloudflare-production-v3478.mjs
+            docs/V34.7.8_BLABLA_PROPAGATION.md
+            V3478_PROPAGATION_RESULTS.txt
+            SHA256SUMS.txt
+          if-no-files-found: error
