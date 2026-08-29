@@ -2,11 +2,6 @@ name: V34.7.8 source snapshot
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - verify-blabla-propagation-v3478
-    paths:
-      - .github/workflows/source-snapshot-v3478.yml
 
 permissions:
   contents: read

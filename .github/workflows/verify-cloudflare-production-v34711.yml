@@ -2,18 +2,6 @@ name: Verify Cloudflare production V34.7.12
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - index.html
-      - public/index.html
-      - functions/api/blabla/sync.js
-      - scripts/v34711-linked-roster-refresh.js
-      - scripts/v34712-timeline-runtime.js
-      - scripts/apply-v34712-timelines.mjs
-      - tests/verify-cloudflare-production-v34710.mjs
-      - .github/workflows/verify-cloudflare-production-v34711.yml
 
 permissions:
   contents: read
