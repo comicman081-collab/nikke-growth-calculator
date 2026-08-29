@@ -1,0 +1,36 @@
+name: Verify Cloudflare production V34.7.12
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-production-v34712
+  cancel-in-progress: true
+
+env:
+  PRODUCTION_URL: https://nikke-growth-calculator.breezy-mum.workers.dev
+  PUBLIC_PROFILE_URL: https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTczODk5ODEwMzMzMTgwOTYwMDc=
+
+jobs:
+  verify-production:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Wait for Cloudflare automatic deployment and verify V34.7.12
+        env:
+          CLOUDFLARE_PRODUCTION_URL: ${{ env.PRODUCTION_URL }}
+          BLABLA_PUBLIC_PROFILE: ${{ env.PUBLIC_PROFILE_URL }}
+          CLOUDFLARE_LIVE_REPORT: V34712_CLOUDFLARE_RESULTS.json
+        run: node tests/verify-cloudflare-production-v34710.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v34712-cloudflare-production-verification
+          path: V34712_CLOUDFLARE_RESULTS.json
+          if-no-files-found: error
