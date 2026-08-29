@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION='34.7.15';
+const VERSION='34.7.16';
 const BASE=String(process.env.CLOUDFLARE_PRODUCTION_URL||'https://nikke-growth-calculator.breezy-mum.workers.dev').replace(/\/+$/,'');
 const PROFILE=process.env.BLABLA_PUBLIC_PROFILE||'https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTczODk5ODEwMzMzMTgwOTYwMDc=';
 const REPORT=process.env.CLOUDFLARE_LIVE_REPORT||'V34712_CLOUDFLARE_RESULTS.json';
@@ -11,8 +11,8 @@ async function textResponse(url,options){const response=await request(url,option
 async function jsonResponse(url,options){const {response,text}=await textResponse(url,options);let json;try{json=JSON.parse(text);}catch{throw new Error(`${url} returned non-JSON HTTP ${response.status}: ${text.slice(0,300)}`);}return{response,json};}
 
 let html='',status=0,headers={},last='';
-for(let attempt=1;attempt<=90;attempt+=1){try{const result=await textResponse(`${BASE}/?_v34712=${encodeURIComponent(process.env.GITHUB_SHA||'manual')}-${attempt}`,{headers:{'cache-control':'no-cache','user-agent':'nikke-v34712-live-verifier/1.0'}});status=result.response.status;headers=Object.fromEntries(result.response.headers.entries());html=result.text;if(result.response.ok&&html.includes('V34.7.15')&&html.includes('id="v34711-linked-roster-refresh"'))break;last=`attempt ${attempt}: HTTP ${result.response.status}; version=${html.includes('V34.7.15')}; marker=${html.includes('id="v34711-linked-roster-refresh"')}`;}catch(error){last=`attempt ${attempt}: ${error.message}`;}if(attempt<90)await delay(8000);}
-assert.ok(html.includes('V34.7.15'),`Cloudflare production did not expose V34.7.15: ${last}`);
+for(let attempt=1;attempt<=90;attempt+=1){try{const result=await textResponse(`${BASE}/?_v34712=${encodeURIComponent(process.env.GITHUB_SHA||'manual')}-${attempt}`,{headers:{'cache-control':'no-cache','user-agent':'nikke-v34712-live-verifier/1.0'}});status=result.response.status;headers=Object.fromEntries(result.response.headers.entries());html=result.text;if(result.response.ok&&html.includes('V34.7.16')&&html.includes('id="v34711-linked-roster-refresh"'))break;last=`attempt ${attempt}: HTTP ${result.response.status}; version=${html.includes('V34.7.16')}; marker=${html.includes('id="v34711-linked-roster-refresh"')}`;}catch(error){last=`attempt ${attempt}: ${error.message}`;}if(attempt<90)await delay(8000);}
+assert.ok(html.includes('V34.7.16'),`Cloudflare production did not expose V34.7.16: ${last}`);
 assert.ok(html.includes('id="v34711-linked-roster-refresh"'),`linked-roster refresh marker missing: ${last}`);
 assert.ok(html.includes('id="v3478-blabla-propagation"'),'four-surface propagation marker missing');
 assert.ok(html.includes('연동 데이터 새로고침'),'manual refresh UI missing');
@@ -28,4 +28,4 @@ for(let attempt=1;attempt<=3;attempt+=1){try{live=await jsonResponse(`${BASE}/ap
 if(live?.response.status===200&&live.json?.ok===true){assert.equal(live.json.version,VERSION,'live response version');const areas=Array.isArray(live.json.areas)?live.json.areas:[],characterCount=areas.reduce((s,a)=>s+(Array.isArray(a.characters)?a.characters.length:0),0),detailCount=areas.reduce((s,a)=>s+(Array.isArray(a.details)?a.details.length:0),0),effectCount=areas.reduce((s,a)=>s+(Array.isArray(a.stateEffects)?a.stateEffects.length:0),0),returned=areas.map(a=>Number(a.area)).filter(Number.isFinite),supported=new Set([81,82,83,84,85,91]);assert.ok(characterCount>=25,'live roster must contain at least 25 characters');assert.ok(detailCount>=25,'live roster details must contain at least 25 characters');assert.ok(returned.length&&returned.every(a=>supported.has(a)),`unsupported area: ${returned.join(',')}`);liveFixture={status:'pass',httpStatus:200,code:null,error:null,characterCount,detailCount,effectCount,areas:areas.map(a=>({area:a.area,characters:a.characters?.length||0,details:a.details?.length||0,stateEffects:a.stateEffects?.length||0}))};}
 
 const report={version:VERSION,verifiedAtUtc:new Date().toISOString(),githubSha:process.env.GITHUB_SHA||null,productionUrl:BASE,html:{status,bytes:Buffer.byteLength(html),server:headers.server||null,cfRay:headers['cf-ray']||null,versionMarker:true,refreshMarker:true,propagationMarker:true},bridgeProbe:{status:probe.response.status,version:probe.json.version,configured:probe.json.configured,games:probe.json.games},liveFixture,pass:true};
-fs.writeFileSync(REPORT,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));console.log(`V34.7.15 Cloudflare production HTML + Worker bridge probe + refresh UI verification: PASS; live fixture=${liveFixture.status}`);
+fs.writeFileSync(REPORT,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));console.log(`V34.7.16 Cloudflare production HTML + Worker bridge probe + refresh UI verification: PASS; live fixture=${liveFixture.status}`);

@@ -1,6 +1,6 @@
 # GitHub / Cloudflare deploy status
 
-Release candidate: **V34.7.15 Bottom Notices & Search Clarity**
+Release candidate: **V34.7.16 Presentation Stability**
 
 ## Deployment configuration
 
@@ -36,7 +36,7 @@ Release candidate: **V34.7.15 Bottom Notices & Search Clarity**
 - 186-character linked-roster mobile regression: 186 stored/owned, five teams, 25 unique members, unsupported supplementals selected 0, PASS.
 - Current production Cloudflare origin and live same-origin BlaBla bridge preflight: PASS.
 
-The main-only Cloudflare workflow verifies the deployed V34.7.13 HTML marker, Worker version, configured bridge and a real nonempty profile response after merge.
+The main-only Cloudflare workflow verifies the deployed V34.7.16 HTML marker, Worker version, configured bridge and a real nonempty profile response after merge.
 
 ## V34.7.11 linked roster policy
 
@@ -57,3 +57,11 @@ The main-only Cloudflare workflow verifies the deployed V34.7.13 HTML marker, Wo
 - Linked raw roster snapshots keep every received row, while optimizer participation is restricted to app-supported calculation profiles. Character search is available at selection surfaces.
 
 Release gates include static integration, all three production modes, multi-boss optimality, special-combination coverage, shotgun policy, favorite-item gating, linked-roster propagation, cancellation/cache, low-memory browser crash resistance, timeline browser layout, signed APK badging/signature/embedded-HTML hash, and live Cloudflare verification.
+
+## V34.7.16 presentation stability and privacy gate
+
+- All legacy title/status/footer writers are neutralized behind one release presentation value.
+- Identical scheduled roster renders are skipped by an account-storage and catalog fingerprint; actual data changes still render.
+- The placement/search observer no longer watches the full document subtree.
+- Real-browser idle sampling requires zero title mutations, zero roster-list mutations and zero scroll drift.
+- The public HTML and Worker are checked for exclusion of the test user's UID, and a fresh browser must contain no linked snapshot or saved profile.

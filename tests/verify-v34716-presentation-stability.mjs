@@ -1,0 +1,31 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const publicHtml=fs.readFileSync(path.join(root,'public/index.html'),'utf8');
+const pkg=JSON.parse(fs.readFileSync(path.join(root,'package.json'),'utf8'));
+const privateUid='MjkwODAtMTI4NjM5MjQ4Nzk1NTQzMTgxNTQ=';
+
+assert.equal(html,publicHtml,'root/public HTML mirror');
+assert.equal(pkg.version,'34.7.16');
+assert.equal((html.match(/id="v34716-presentation-stability-guard"/g)||[]).length,1,'one early presentation guard');
+assert.match(html,/function lockProperty\(node,property,value\)/);
+assert.match(html,/lockProperty\(root\.document,'title',TITLE\)/);
+assert.match(html,/lockProperty\(root\.document\.getElementById\('runtimeStatus'\),'innerHTML',STATUS\)/);
+assert.match(html,/lockProperty\(node,'textContent',FOOTER\)/);
+assert.match(html,/NIKKEV34716PresentationStability/);
+assert.match(html,/function stabilizeRosterApi\(api\)/);
+assert.match(html,/__v34716StableRender:true/);
+assert.match(html,/rosterRenderSkipped/);
+assert.match(html,/localStorageOnly:true/);
+assert.match(html,/scopedObservers:true/);
+assert.match(html,/observe\(root\.document\.body,\{childList:true\}\)/);
+assert.doesNotMatch(html,/installV34716UiPlacementSearch[\s\S]*?observe\(root\.document\.documentElement,\{childList:true,subtree:true\}\)/);
+const guardIndex=html.indexOf('<script id="v34716-presentation-stability-guard"');
+assert.equal(guardIndex,html.indexOf('<script'),'presentation guard is the first script and runs before every legacy brand timer');
+assert.ok(!html.includes(privateUid),'user BlaBla UID must never ship in public HTML');
+assert.ok(!fs.readFileSync(path.join(root,'functions/api/blabla/sync.js'),'utf8').includes(privateUid),'user BlaBla UID must never ship in Worker');
+console.log('V34.7.16 title/footer/runtime lock, scoped observer, and private UID exclusion verification: PASS');

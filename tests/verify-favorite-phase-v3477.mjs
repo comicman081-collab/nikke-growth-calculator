@@ -67,7 +67,7 @@ const registry=window.NIKKE_V3477_FAVORITE_REGISTRY;
 const byTid=window.NIKKE_V3477_FAVORITE_TID_TO_APP_ID;
 const api=window.NIKKE_V3477_FAVORITE_PHASE_API;
 assert.ok(api,'favorite phase API missing');
-assert.equal(api.version,'34.7.15');
+assert.equal(api.version,'34.7.16');
 assert.equal(Object.keys(registry).length,21,'runtime registry count');
 assert.equal(Object.keys(byTid).length,21,'runtime TID count');
 assert.equal(byTid['200501'],'viperTreasure');
@@ -201,4 +201,4 @@ assert.equal(context.v23BurstCycleMeta('moranTreasure').b1Cooldown,20,'Moran fav
 assert.equal(context.v23BurstCycleMeta('moranTreasure').cdr,7.48,'Moran favorite CDR');
 
 assert.equal(window.NIKKE_V3477_FAVORITE_VERIFY.pass,true,'runtime self-verification');
-console.log('V34.7.15 ENIKK 21 favorite characters / 21 TIDs / 63 phase cards / base skills / level preservation / calculation regression: PASS');
+console.log('V34.7.16 ENIKK 21 favorite characters / 21 TIDs / 63 phase cards / base skills / level preservation / calculation regression: PASS');

@@ -7,7 +7,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 /*
- * V34.7.15 real-browser UI audit
+ * V34.7.16 real-browser UI audit
  *
  * The test opens the current production HTML in headless Chrome/Edge and uses
  * the same summary-click interaction as a user.  It checks default collapse,
@@ -18,7 +18,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const HTML = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 const PUBLIC_HTML = fs.readFileSync(path.join(ROOT, 'public', 'index.html'), 'utf8');
-const VERSION = '34.7.15';
+const VERSION = '34.7.16';
 
 assert.equal(HTML, PUBLIC_HTML, 'root/public production HTML mirror');
 
@@ -290,6 +290,15 @@ try {
       .filter(row => row?.id)
       .map(row => [String(row.id), row])).values()];
     const favoriteIds = new Set(Object.keys(window.NIKKE_V3477_FAVORITE_REGISTRY || {}));
+    const cleanPrivacy = (() => {
+      const keys = Array.from({ length: localStorage.length }, (_, index) => localStorage.key(index)).filter(Boolean);
+      return {
+        linkedSnapshotKeys: keys.filter(key => key.includes('nikke_v34711_linked_roster_snapshot_v1')),
+        savedProfileKeys: keys.filter(key => key.includes('nikke_v3474_deploy_blablalink_profile')),
+        profileInput: document.getElementById('v34610BlaUrl')?.value || '',
+        rawLinkedRows: window.NIKKEV34711LinkedRosterRefresh?.getSnapshot?.()?.characters?.length || 0
+      };
+    })();
     const roster = rosterApi.load();
     roster.characters ||= {};
     for (const row of catalog) {
@@ -401,9 +410,29 @@ try {
     }
 
     const ids = (result?.teams || []).flatMap(team => team.memberIds || team.members?.map(member => member.id) || []);
+    const motionStability = await (async () => {
+      const tab=document.querySelector('.tab[data-page="v26Roster"]');
+      window.switchTab?.('v26Roster',tab);
+      await wait(80);
+      const list=document.getElementById('v26RosterList'),titleNode=document.querySelector('title');
+      if(!list||!titleNode)return{present:false};
+      list.scrollTop=Math.min(420,Math.max(0,list.scrollHeight-list.clientHeight));
+      const startScroll=list.scrollTop,startTop=list.getBoundingClientRect().top,startTitle=document.title;
+      let titleMutations=0,listMutations=0;const listMutationSamples=[];
+      const titleObserver=new MutationObserver(records=>titleMutations+=records.length);
+      const listObserver=new MutationObserver(records=>{listMutations+=records.length;for(const record of records.slice(0,3)){if(listMutationSamples.length>=18)break;listMutationSamples.push({type:record.type,target:record.target?.id||record.target?.className||record.target?.nodeName,added:record.addedNodes?.length||0,removed:record.removedNodes?.length||0,addedNames:[...(record.addedNodes||[])].slice(0,2).map(node=>node.nodeName+':'+String(node.className||node.textContent||'').slice(0,50)),removedNames:[...(record.removedNodes||[])].slice(0,2).map(node=>node.nodeName+':'+String(node.className||node.textContent||'').slice(0,50))});}});
+      titleObserver.observe(titleNode,{childList:true,characterData:true,subtree:true});
+      listObserver.observe(list,{childList:true,characterData:true,subtree:true});
+      const scrollSamples=[],topSamples=[];
+      for(let index=0;index<45;index+=1){await wait(40);scrollSamples.push(list.scrollTop);topSamples.push(list.getBoundingClientRect().top);}
+      titleObserver.disconnect();listObserver.disconnect();
+      return{present:true,startTitle,endTitle:document.title,titleMutations,listMutations,listMutationSamples,startScroll,scrollRange:Math.max(...scrollSamples)-Math.min(...scrollSamples),topRange:Math.max(...topSamples)-Math.min(...topSamples),guard:window.NIKKEV34716PresentationStability||null};
+    })();
     return {
       version: api.version,
       catalogCount: catalog.length,
+      cleanPrivacy,
+      motionStability,
       simulationNotices: {
         total: document.querySelectorAll('[data-v34714-calculation-notice]').length,
         precision: document.querySelectorAll('#precision [data-v34714-calculation-notice]').length,
@@ -445,6 +474,18 @@ try {
 
   assert.equal(audit.version, VERSION);
   assert.ok(audit.catalogCount >= 100, `catalog unexpectedly small: ${audit.catalogCount}`);
+  assert.deepEqual(audit.cleanPrivacy.linkedSnapshotKeys, [], 'clean browser has no linked roster snapshot');
+  assert.deepEqual(audit.cleanPrivacy.savedProfileKeys, [], 'clean browser has no saved BlaBla profile');
+  assert.equal(audit.cleanPrivacy.profileInput, '', 'clean browser profile URL is empty');
+  assert.equal(audit.cleanPrivacy.rawLinkedRows, 0, 'clean browser receives no other user roster');
+  assert.equal(audit.motionStability.present, true, 'roster stability probe mounted');
+  assert.equal(audit.motionStability.startTitle, '니케 성장 계산기 V34.7.16 · 로스터·탭 화면 안정화', 'stable title baseline');
+  assert.equal(audit.motionStability.endTitle, audit.motionStability.startTitle, 'tab title remains fixed');
+  assert.equal(audit.motionStability.titleMutations, 0, 'legacy brand timers cannot rewrite the tab title');
+  assert.equal(audit.motionStability.listMutations, 0, `idle roster list is not repeatedly rendered: ${JSON.stringify(audit.motionStability.listMutationSamples)}`);
+  assert.equal(audit.motionStability.scrollRange, 0, 'idle roster scroll position is stable');
+  assert.ok(audit.motionStability.topRange <= 0.01, `idle roster top position is stable: ${audit.motionStability.topRange}`);
+  assert.equal(audit.motionStability.guard?.titleLocked, true, 'title property lock installed');
   assert.ok(audit.simulationNotices.total >= 4, 'simulation notices mounted');
   assert.equal(audit.simulationNotices.precision, 1, 'Precision simulation notice');
   assert.equal(audit.simulationNotices.soloRaid, 1, 'Solo Raid simulation notice');
@@ -543,7 +584,7 @@ try {
     pass: true
   };
   console.log(JSON.stringify(summary, null, 2));
-  console.log('V34.7.15 Precision / Solo Raid / battle / automatic five-deck collapsible timeline UI browser verification: PASS');
+  console.log('V34.7.16 Precision / Solo Raid / battle / automatic five-deck collapsible timeline UI browser verification: PASS');
 } finally {
   cdp?.close();
   if (chrome.exitCode === null) {

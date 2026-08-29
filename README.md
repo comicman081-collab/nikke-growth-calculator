@@ -1,6 +1,6 @@
 # NIKKE Growth Calculator
 
-Current web deployment build: **V34.7.15 Bottom Notices & Search Clarity**
+Current web deployment build: **V34.7.16 Presentation Stability**
 
 ## What is automatic in the deployed build
 
@@ -46,3 +46,10 @@ For the normal same-origin production deployment, leave `BLABLA_SYNC_KEY` empty.
 7. The service token remains server-side only.
 
 `index.html` mirrors `public/index.html` for inspection. Cloudflare Pages should serve `public/index.html`.
+
+## V34.7.16 presentation stability
+
+- The page title, runtime status and footer now have one authoritative release value; legacy compatibility timers can no longer alternate them.
+- Unchanged legacy roster refreshes are ignored, while real imports, roster edits and cube changes still redraw immediately.
+- Bottom-note/search placement observes only its own direct containers instead of the full document subtree.
+- A clean browser starts without any saved BlaBla profile or linked-roster snapshot. Each linked roster remains in that browser or APK account's scoped local storage.
