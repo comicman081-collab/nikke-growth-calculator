@@ -1,11 +1,6 @@
-name: Export V34.7.8 APK source snapshot
+name: Export V34.7.10 source
 
 on:
-  push:
-    branches:
-      - apk-v3478-source-snapshot
-    paths:
-      - .github/workflows/apk-v3478-source-snapshot.yml
   workflow_dispatch:
 
 permissions:
@@ -20,7 +15,7 @@ jobs:
           ref: ${{ github.ref_name }}
       - uses: actions/upload-artifact@v4
         with:
-          name: nikke-v3478-apk-source
+          name: nikke-v34710-source
           path: |
             .github
             audit
@@ -32,8 +27,8 @@ jobs:
             index.html
             package.json
             package-lock.json
-            worker-entry.js
             wrangler.worker.jsonc
+            worker-entry.js
             GITHUB_DEPLOY_STATUS.md
             SHA256SUMS.txt
-          if-no-files-found: error
+          if-no-files-found: warn
