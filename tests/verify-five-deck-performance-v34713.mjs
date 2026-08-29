@@ -7,7 +7,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 /*
- * Production-route performance/cancellation audit for V34.7.16.
+ * Production-route performance/cancellation audit for V34.7.17.
  *
  * Unlike the candidate-optimality test, this invokes the same NIKKEV3420Run
  * function as the visible "5팀 계산" button.  It deliberately runs with a
@@ -291,8 +291,8 @@ try {
   })()`);
   assert.ok(setup.catalog >= 100, `calculation catalog ${setup.catalog}`);
   assert.ok(setup.owned >= 100, `owned roster ${setup.owned}`);
-  assert.equal(setup.version, '34.7.16');
-  assert.equal(setup.optimalityVersion, '34.7.16');
+  assert.equal(setup.version, '34.7.17');
+  assert.equal(setup.optimalityVersion, '34.7.17');
 
   const heapBefore = await cdp.send('Runtime.getHeapUsage');
 
@@ -349,7 +349,7 @@ try {
   assert.ok(cancelled.cancelLatencyMs <= MAX_CANCEL_LATENCY_MS, `cancel latency ${cancelled.cancelLatencyMs}ms`);
   assert.equal(cancelled.error?.code, 'E34713-CANCEL', JSON.stringify(cancelled.error));
   assert.equal(cancelled.buttonDisabled, false, 'button remains disabled after cancellation');
-  assert.match(cancelled.buttonText, /V34\.7\.16 5팀 계산/);
+  assert.match(cancelled.buttonText, /V34\.7\.17 5팀 계산/);
   assert.equal(cancelled.ariaBusy, 'false');
   assert.match(cancelled.status, /계산 중지/);
   assert.match(cancelled.resultText, /계산을 중지/);
@@ -418,7 +418,7 @@ try {
     assert.ok(row.maxGapMs < 5000, `${label} UI heartbeat gap ${row.maxGapMs}ms`);
     assert.equal(row.activeModernia, false, `${label} Modernia used as active B3`);
     assert.equal(row.buttonDisabled, false, `${label} button disabled`);
-    assert.match(row.buttonText, /V34\.7\.16 5팀 계산/);
+    assert.match(row.buttonText, /V34\.7\.17 5팀 계산/);
     assert.equal(row.ariaBusy, 'false');
     assert.equal(row.validation?.pass, true, `${label} validation ${JSON.stringify(row.validation)}`);
   }
@@ -452,7 +452,7 @@ try {
   assert.equal(fatalConsole.length, 0, `fatal console entries:\n${fatalConsole.join('\n')}`);
 
   const report = {
-    version: '34.7.16',
+    version: '34.7.17',
     environment: {
       viewport: '412x915',
       deviceMemoryGb: 4,
@@ -484,7 +484,7 @@ try {
     pass: true
   };
   console.log(JSON.stringify(report, null, 2));
-  console.log('V34.7.16 production five-deck mobile performance/cancel/cache/crash verification: PASS');
+  console.log('V34.7.17 production five-deck mobile performance/cancel/cache/crash verification: PASS');
 } finally {
   cdp?.close();
   if (chrome.exitCode === null) {

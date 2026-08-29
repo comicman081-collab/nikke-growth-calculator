@@ -1,6 +1,6 @@
 (function installV34713OptimalityRuntime(root){
 'use strict';
-const VERSION='34.7.16';
+const VERSION='34.7.17';
 const arr=value=>Array.isArray(value)?value:[];
 const finite=(value,fallback=0)=>Number.isFinite(Number(value))?Number(value):fallback;
 const delay=ms=>new Promise(resolve=>root.setTimeout(resolve,ms));

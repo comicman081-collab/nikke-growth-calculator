@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const publicHtml=fs.readFileSync(path.join(root,'public/index.html'),'utf8');
+const pkg=JSON.parse(fs.readFileSync(path.join(root,'package.json'),'utf8'));
+
+assert.equal(html,publicHtml,'root/public HTML mirror');
+assert.equal(pkg.version,'34.7.17');
+assert.equal((html.match(/id="v34717-roster-cube-layout-style"/g)||[]).length,1,'one layout style');
+assert.equal((html.match(/id="v34717-roster-cube-layout"/g)||[]).length,1,'one verification runtime');
+assert.match(html,/container-type:inline-size/,'cube form responds to its own card width');
+assert.match(html,/@container \(max-width:540px\)/,'narrow cube card wraps its action');
+assert.match(html,/\.v32-bulk-cube-grid button\{grid-column:1\/-1\}/,'cube apply button stays inside narrow card');
+assert.match(html,/#v26RosterList \.v26-roster-pick:hover/,'roster information hover reset');
+assert.match(html,/pointer-events:none/,'roster information area is non-interactive');
+assert.match(html,/scrollbar-gutter:stable/,'roster width is stable when its scrollbar appears');
+assert.match(html,/list\.dataset\.v34717Fingerprint === listFingerprint/,'unchanged roster DOM is not rebuilt');
+assert.match(html,/list\.scrollTop = listScrollTop/,'roster scroll position survives a real update');
+assert.doesNotMatch(html,/<button type="button" class="v26-roster-pick" data-roster-action="select"/,'character information box is no longer a button');
+assert.match(html,/<div class="v26-roster-pick" data-character-id="\$\{html\(entry\.id\)\}" aria-readonly="true">/,'read-only character information markup');
+assert.match(html,/NIKKEV34717RosterCubeLayout/,'runtime verification API');
+assert.match(html,/sharedStatePreserved:true/,'cross-tab roster state contract retained');
+assert.match(html,/global\.dispatchEvent\(new CustomEvent\('nikke:v26-roster-updated'/,'shared roster update event retained');
+assert.match(html,/syncCharacterToPrecision\(selectedCharacterId\)/,'precision propagation retained');
+assert.match(html,/installCalculationFilter\(\)/,'five-deck roster propagation retained');
+console.log('V34.7.17 cube containment, non-interactive white roster rows, stable rendering, and shared-state preservation: PASS');

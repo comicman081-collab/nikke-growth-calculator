@@ -10,7 +10,7 @@ const timeline=fs.readFileSync(path.join(root,'scripts/v34712-timeline-runtime.j
 const pkg=JSON.parse(fs.readFileSync(path.join(root,'package.json'),'utf8'));
 
 assert.equal(html,publicHtml,'root/public HTML must remain identical');
-assert.equal(pkg.version,'34.7.16');
+assert.equal(pkg.version,'34.7.17');
 assert.equal((html.match(/id="legalDisclaimer"/g)||[]).length,1,'one legal notice');
 assert.match(html,/id="v34715-ui-placement-search-style"/);
 assert.match(html,/id="v34715-ui-placement-search"/);
@@ -27,4 +27,4 @@ assert.doesNotMatch(timeline,/input\.placeholder=`\$\{label\} 이름 검색`/);
 assert.match(timeline,/color:#687386!important/);
 assert.match(timeline,/\.v34712-character-search-input::placeholder\{color:#8a94a6!important/);
 assert.match(html,/NIKKEV34715UiPlacementSearch/);
-console.log('V34.7.16 bottom notices, audit contrast, and search clarity verification: PASS');
+console.log('V34.7.17 bottom notices, audit contrast, and search clarity verification: PASS');

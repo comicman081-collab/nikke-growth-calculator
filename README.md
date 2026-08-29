@@ -1,6 +1,6 @@
 # NIKKE Growth Calculator
 
-Current web deployment build: **V34.7.16 Presentation Stability**
+Current web deployment build: **V34.7.17 Presentation Stability**
 
 ## What is automatic in the deployed build
 
@@ -47,7 +47,7 @@ For the normal same-origin production deployment, leave `BLABLA_SYNC_KEY` empty.
 
 `index.html` mirrors `public/index.html` for inspection. Cloudflare Pages should serve `public/index.html`.
 
-## V34.7.16 presentation stability
+## V34.7.17 presentation stability
 
 - The page title, runtime status and footer now have one authoritative release value; legacy compatibility timers can no longer alternate them.
 - Unchanged legacy roster refreshes are ignored, while real imports, roster edits and cube changes still redraw immediately.
