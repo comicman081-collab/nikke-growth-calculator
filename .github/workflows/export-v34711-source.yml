@@ -1,4 +1,4 @@
-name: V34.7.8 source snapshot
+name: Export V34.7.11 source snapshot
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ permissions:
   contents: read
 
 jobs:
-  snapshot:
+  export:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -15,7 +15,7 @@ jobs:
           ref: ${{ github.ref_name }}
       - uses: actions/upload-artifact@v4
         with:
-          name: nikke-v3478-source-snapshot
+          name: nikke-v34711-source
           path: |
             .github
             audit
@@ -28,7 +28,7 @@ jobs:
             package.json
             package-lock.json
             wrangler.worker.jsonc
-            README.md
+            worker-entry.js
             GITHUB_DEPLOY_STATUS.md
             SHA256SUMS.txt
-          if-no-files-found: error
+          if-no-files-found: warn

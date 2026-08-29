@@ -2,16 +2,6 @@ name: Apply V34.7.8 BlaBla four-surface propagation
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - verify-blabla-propagation-v3478
-    paths:
-      - .github/workflows/apply-blabla-propagation-v3478.yml
-      - scripts/v3478-patch-bundle.b64.part00
-      - scripts/v3478-patch-bundle.b64.part01
-      - scripts/v3478-patch-bundle.b64.part02
-      - scripts/v3478-patch-bundle.b64.part03
-      - scripts/v3478-patch-bundle.b64.part04
 
 concurrency:
   group: apply-v3478-blabla-${{ github.ref }}
