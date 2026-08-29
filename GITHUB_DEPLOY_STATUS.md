@@ -1,6 +1,6 @@
 # GitHub / Cloudflare deploy status
 
-Release candidate: **V34.7.13 Solo Raid Five-Deck MVP**
+Release candidate: **V34.7.14 Simulation Notice & Surface Theme**
 
 ## Deployment configuration
 

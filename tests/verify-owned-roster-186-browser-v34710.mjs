@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const DIST=path.join(ROOT,'dist-cloudflare');
 const HTML=fs.readFileSync(path.join(ROOT,'public/index.html'),'utf8');
-const VERSION='34.7.13';
+const VERSION='34.7.14';
 const PROFILE='https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTczODk5ODEwMzMzMTgwOTYwMDc=';
 
 function parseJsonLiteral(regex,label){const match=HTML.match(regex);assert.ok(match,`${label} missing`);return JSON.parse(match[1]);}
@@ -252,7 +252,7 @@ try{
   fs.writeFileSync(path.join(ROOT,'V34712_DAMAGE_SURFACES_BROWSER_RESULTS.json'),JSON.stringify(verification,null,2)+'\n');
   fs.writeFileSync(path.join(ROOT,'V34712_LINKED_ROSTER_193_BROWSER_RESULTS.json'),JSON.stringify(linkedEvidence,null,2)+'\n');
   console.log(JSON.stringify(verification,null,2));
-  console.log('V34.7.13 BlaBla 193 raw rows -> all favorite phases / special combos -> Precision -> Solo Raid -> Simulation -> 5-deck timelines browser verification: PASS');
+  console.log('V34.7.14 BlaBla 193 raw rows -> all favorite phases / special combos -> Precision -> Solo Raid -> Simulation -> 5-deck timelines browser verification: PASS');
 }finally{
   cdp?.close();
   if(chrome.exitCode===null){

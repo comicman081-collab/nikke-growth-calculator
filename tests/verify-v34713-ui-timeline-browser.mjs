@@ -7,7 +7,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 /*
- * V34.7.13 real-browser UI audit
+ * V34.7.14 real-browser UI audit
  *
  * The test opens the current production HTML in headless Chrome/Edge and uses
  * the same summary-click interaction as a user.  It checks default collapse,
@@ -18,7 +18,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const HTML = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 const PUBLIC_HTML = fs.readFileSync(path.join(ROOT, 'public', 'index.html'), 'utf8');
-const VERSION = '34.7.13';
+const VERSION = '34.7.14';
 
 assert.equal(HTML, PUBLIC_HTML, 'root/public production HTML mirror');
 
@@ -229,7 +229,8 @@ try {
     && document.getElementById('v34712PrecisionTimeline')
     && document.getElementById('v34712SoloTimeline')
     && document.getElementById('v34712BattleTimeline')
-    && document.querySelectorAll('.v34712-character-search').length >= 8`, 120000);
+    && document.querySelectorAll('.v34712-character-search').length >= 8
+    && document.querySelectorAll('[data-v34714-calculation-notice]').length >= 4`, 120000);
   browserExceptions.length = 0;
 
   const audit = await evaluate(cdp, `(async () => {
@@ -401,6 +402,15 @@ try {
     return {
       version: api.version,
       catalogCount: catalog.length,
+      simulationNotices: {
+        total: document.querySelectorAll('[data-v34714-calculation-notice]').length,
+        precision: document.querySelectorAll('#precision [data-v34714-calculation-notice]').length,
+        soloRaid: document.querySelectorAll('#soloRaid [data-v34714-calculation-notice]').length,
+        battle: document.querySelectorAll('#battleTimelineSim [data-v34714-calculation-notice]').length,
+        currentOptimizer: document.querySelectorAll('#nikke-kit-aware-optimizer-panel [data-v34714-calculation-notice]').length,
+        legacyOptimizer: document.querySelectorAll('#v26Optimizer [data-v34714-calculation-notice]').length,
+        text: document.querySelector('[data-v34714-calculation-notice]')?.textContent?.trim() || ''
+      },
       search,
       precision,
       solo,
@@ -429,6 +439,13 @@ try {
 
   assert.equal(audit.version, VERSION);
   assert.ok(audit.catalogCount >= 100, `catalog unexpectedly small: ${audit.catalogCount}`);
+  assert.ok(audit.simulationNotices.total >= 4, 'simulation notices mounted');
+  assert.equal(audit.simulationNotices.precision, 1, 'Precision simulation notice');
+  assert.equal(audit.simulationNotices.soloRaid, 1, 'Solo Raid simulation notice');
+  assert.equal(audit.simulationNotices.battle, 1, 'battle simulation notice');
+  assert.equal(audit.simulationNotices.currentOptimizer, 1, 'current five-deck simulation notice');
+  assert.equal(audit.simulationNotices.legacyOptimizer, 1, 'legacy five-deck simulation notice');
+  assert.match(audit.simulationNotices.text, /시뮬레이션 추정값/, 'simulation notice wording');
 
   assert.ok(audit.search.count >= 8, `character-search coverage: ${audit.search.count}`);
   assert.ok(audit.search.targets.includes('precisionChar'), 'Precision search target');
@@ -511,7 +528,7 @@ try {
     pass: true
   };
   console.log(JSON.stringify(summary, null, 2));
-  console.log('V34.7.13 Precision / Solo Raid / battle / automatic five-deck collapsible timeline UI browser verification: PASS');
+  console.log('V34.7.14 Precision / Solo Raid / battle / automatic five-deck collapsible timeline UI browser verification: PASS');
 } finally {
   cdp?.close();
   if (chrome.exitCode === null) {

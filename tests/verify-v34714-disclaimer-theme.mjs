@@ -1,0 +1,27 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const publicHtml=fs.readFileSync(path.join(root,'public/index.html'),'utf8');
+const pkg=JSON.parse(fs.readFileSync(path.join(root,'package.json'),'utf8'));
+assert.equal(html,publicHtml,'root/public HTML must remain identical');
+assert.equal(pkg.version,'34.7.14');
+assert.match(html,/비공식 팬 제작 분석·시뮬레이션 도구/);
+assert.match(html,/SHIFT UP, Level Infinite 및 게임·콜라보 콘텐츠의 각 권리자/);
+assert.match(html,/권리 또는 공식성을 주장하지 않습니다/);
+assert.match(html,/법률 자문이나 이용 허락을 뜻하지 않습니다/);
+assert.match(html,/id="v34714-disclaimer-and-surface-theme"/);
+assert.match(html,/id="v34714-disclaimer-and-surface-theme-style"/);
+assert.match(html,/표시되는 딜량·DPS·추천 편성·타임라인은 입력값, 보스 패턴 및 모델 가정에 따른/);
+assert.match(html,/실제 전투 결과는 조작, 명중·크리티컬, 패턴 대응, 서버·게임 업데이트 및 파티 운용에 따라 달라질 수 있습니다/);
+assert.match(html,/addNotice\(root\.document\.querySelector\('#precision>\.grid'\)\)/);
+assert.match(html,/addNotice\(root\.document\.querySelector\('#soloRaid>\.grid'\)\)/);
+assert.match(html,/addNotice\(root\.document\.querySelector\('#battleTimelineSim>\.grid'\)\)/);
+assert.match(html,/nikke-kit-aware-optimizer-panel/);
+assert.match(html,/--v34714-surface/);
+assert.match(html,/#precision input,#precision select,#battleTimelineSim input,#battleTimelineSim select,#v26Optimizer input,#v26Optimizer select/);
+assert.match(html,/니케 성장 계산기 V34\.7\.14 · 시뮬레이션 안내·표기 통일/);
+console.log('V34.7.14 legal disclaimer, simulation notice, and shared calculation-surface theme verification: PASS');

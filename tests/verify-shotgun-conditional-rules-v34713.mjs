@@ -7,7 +7,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 /*
- * V34.7.13 conditional shotgun-family regression audit.
+ * V34.7.14 conditional shotgun-family regression audit.
  *
  * Contract under test:
  *   - Iron  : Tove / B2 / Dorothy + Bunny Soda / Sugar FLEX
@@ -573,7 +573,7 @@ try {
     `allowShotgun:false invalid total score ${audit.fiveDeck.totalScore}`);
 
   const summary = {
-    version: '34.7.13-shotgun-conditional-audit',
+    version: '34.7.14-shotgun-conditional-audit',
     staticContracts: {
       explicitForceSwitchOnly: true,
       normalPoolExcludesShotgun: true,
@@ -597,7 +597,7 @@ try {
   };
   console.log(JSON.stringify(summary, null, 2));
   assert.equal(failures.length, 0, failures.join('\n'));
-  console.log('V34.7.13 water/iron/fire conditional shotgun role and optional five-deck verification: PASS');
+  console.log('V34.7.14 water/iron/fire conditional shotgun role and optional five-deck verification: PASS');
 } finally {
   cdp?.close();
   if (chrome.exitCode === null) {

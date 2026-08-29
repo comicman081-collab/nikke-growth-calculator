@@ -1,6 +1,6 @@
 (function installV34712UnifiedDamageTimeline(root){
 'use strict';
-const VERSION='34.7.13';
+const VERSION='34.7.14';
 const SCRIPT_ID='v34712-unified-damage-timeline';
 const STYLE_ID='v34712-unified-damage-timeline-style';
 const COLORS=['#67e8d2','#8ab4ff','#ffca66','#c8a8ff','#ff8f9b'];
@@ -146,7 +146,7 @@ function decorateCharacterSearch(select,label){
   const sync=()=>{if(root.document.activeElement!==input)input.value=String(select.selectedOptions?.[0]?.textContent||'').trim();};sync();input.addEventListener('focus',()=>{input.select();renderCharacterSearch(wrap,select);});input.addEventListener('input',()=>renderCharacterSearch(wrap,select));input.addEventListener('keydown',event=>{if(event.key==='Escape'){closeCharacterSearch(wrap);select.focus();}else if(event.key==='Enter'){event.preventDefault();menu.querySelector('.v34712-character-search-option')?.click();}else if(event.key==='ArrowDown'){event.preventDefault();menu.querySelector('.v34712-character-search-option')?.focus();}});select.addEventListener('change',sync);return true;
 }
 function decorateCharacterSearches(){let count=0;for(const [id,label] of CHARACTER_SEARCH_TARGETS)if(decorateCharacterSearch($(id),label))count++;if(!searchOutsideBound){searchOutsideBound=true;root.document.addEventListener('pointerdown',event=>{for(const wrap of root.document.querySelectorAll('.v34712-character-search.is-open'))if(!wrap.contains(event.target))closeCharacterSearch(wrap);});}return count;}
-function updateBrand(){try{root.document.title=root.document.title.replace(/V34\.7\.(?:11|12)/g,'V34.7.13');for(const node of root.document.querySelectorAll('.footer,.footer-version'))node.textContent=String(node.textContent||'').replace(/V34\.7\.(?:11|12)/g,'V34.7.13');}catch(_){}}
+function updateBrand(){try{root.document.title=root.document.title.replace(/V34\.7\.(?:11|12)/g,'V34.7.14');for(const node of root.document.querySelectorAll('.footer,.footer-version'))node.textContent=String(node.textContent||'').replace(/V34\.7\.(?:11|12)/g,'V34.7.14');}catch(_){}}
 function refreshOpenPanels(){const precision=$('v34712PrecisionTimeline'),solo=$('v34712SoloTimeline'),battle=$('v34712BattleTimeline');if(precision?.open)renderPrecisionDetails(precision);if(solo?.open)renderSoloDetails(solo,false);if(battle?.open)renderBattleDetails(battle);}
 function verify(){const result={version:VERSION,precision:!!$('v34712PrecisionTimeline'),soloRaid:!!$('v34712SoloTimeline'),battle:!!$('v34712BattleTimeline'),fiveDeckPanels:root.document.querySelectorAll('.v34712-five-deck-timeline').length,characterSearches:root.document.querySelectorAll('.v34712-character-search').length,precisionSearch:!!root.document.querySelector('.v34712-character-search[data-search-for="precisionChar"]'),compactNameProbe:compactName('신데렐라'),damageProbe:compactDamage(1200000000),dynamicFiveDeck:true,usesExistingDamageResults:true,equalHeightBoxSizing:true,collapsedByDefault:true};result.pass=result.precision&&result.soloRaid&&result.battle&&result.precisionSearch&&result.compactNameProbe==='신데렐...'&&result.damageProbe.startsWith('12');root.NIKKEV34712TimelineVerification=Object.freeze(result);return result;}
 function install(){ensureStyle();decorateCharacterSearches();precisionDetails();soloDetails();battleDetails();decorateFiveDeck();updateBrand();verify();}

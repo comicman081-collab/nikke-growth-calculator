@@ -54,7 +54,7 @@ vm.runInContext(runtime,context,{filename:'v34712-timeline-runtime.js'});
 
 const api=window.NIKKEV34712UnifiedTimeline;
 assert.ok(api,'timeline runtime API');
-assert.equal(api.version,'34.7.13');
+assert.equal(api.version,'34.7.14');
 assert.equal(api.compactName('신데렐라'),'신데렐...','three-glyph compact name');
 assert.equal(api.compactDamage(2e8),'2억');
 assert.equal(api.compactDamage(12e8),'12억');
@@ -85,4 +85,4 @@ for(const total of [238_765_432,1_987_654_321,6_012_345_678]){
   assertFiniteTree(trace,'trace');
 }
 
-console.log('V34.7.13 Precision / Solo Raid / five-deck / battle timeline arithmetic and integration contract: PASS');
+console.log('V34.7.14 Precision / Solo Raid / five-deck / battle timeline arithmetic and integration contract: PASS');
