@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const publicHtml=fs.readFileSync(path.join(root,'public/index.html'),'utf8');
+const timeline=fs.readFileSync(path.join(root,'scripts/v34712-timeline-runtime.js'),'utf8');
+const pkg=JSON.parse(fs.readFileSync(path.join(root,'package.json'),'utf8'));
+
+assert.equal(html,publicHtml,'root/public HTML must remain identical');
+assert.equal(pkg.version,'34.7.15');
+assert.equal((html.match(/id="legalDisclaimer"/g)||[]).length,1,'one legal notice');
+assert.match(html,/id="v34715-ui-placement-search-style"/);
+assert.match(html,/id="v34715-ui-placement-search"/);
+assert.match(html,/#precision \.notice\.v26-audit-ok,#precision \.notice\.v26-audit-warn\{background:#edf3fb!important;color:#263b55!important/);
+assert.match(html,/input\[type="search"\]::placeholder\{color:#8a94a6!important/);
+assert.match(html,/function moveLegalToBottom\(\)/);
+assert.match(html,/parent\.appendChild\(legal\)/);
+assert.match(html,/function moveCalculationNoticesToBottom\(\)/);
+assert.match(html,/parent\.appendChild\(notice\)/);
+assert.match(html,/input\.placeholder='검색'/);
+assert.match(timeline,/input\.placeholder='검색'/);
+assert.match(timeline,/input\.value='';closeCharacterSearch\(wrap\)/);
+assert.doesNotMatch(timeline,/input\.placeholder=`\$\{label\} 이름 검색`/);
+assert.match(timeline,/color:#687386!important/);
+assert.match(timeline,/\.v34712-character-search-input::placeholder\{color:#8a94a6!important/);
+assert.match(html,/NIKKEV34715UiPlacementSearch/);
+console.log('V34.7.15 bottom notices, audit contrast, and search clarity verification: PASS');

@@ -1,6 +1,6 @@
 # NIKKE Growth Calculator
 
-Current web deployment build: **V34.7.14 Simulation Notice & Surface Theme**
+Current web deployment build: **V34.7.15 Bottom Notices & Search Clarity**
 
 ## What is automatic in the deployed build
 

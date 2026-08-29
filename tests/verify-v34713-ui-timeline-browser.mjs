@@ -7,7 +7,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 /*
- * V34.7.14 real-browser UI audit
+ * V34.7.15 real-browser UI audit
  *
  * The test opens the current production HTML in headless Chrome/Edge and uses
  * the same summary-click interaction as a user.  It checks default collapse,
@@ -18,7 +18,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const HTML = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 const PUBLIC_HTML = fs.readFileSync(path.join(ROOT, 'public', 'index.html'), 'utf8');
-const VERSION = '34.7.14';
+const VERSION = '34.7.15';
 
 assert.equal(HTML, PUBLIC_HTML, 'root/public production HTML mirror');
 
@@ -334,6 +334,8 @@ try {
       targets: searchTargets,
       resultCount,
       selected: document.getElementById('precisionChar')?.value || '',
+      value: searchInput.value,
+      placeholder: searchInput.placeholder,
       closed: precisionSearch.querySelector('.v34712-character-search-menu')?.hidden === true
     };
 
@@ -409,8 +411,12 @@ try {
         battle: document.querySelectorAll('#battleTimelineSim [data-v34714-calculation-notice]').length,
         currentOptimizer: document.querySelectorAll('#nikke-kit-aware-optimizer-panel [data-v34714-calculation-notice]').length,
         legacyOptimizer: document.querySelectorAll('#v26Optimizer [data-v34714-calculation-notice]').length,
-        text: document.querySelector('[data-v34714-calculation-notice]')?.textContent?.trim() || ''
+        text: document.querySelector('[data-v34714-calculation-notice]')?.textContent?.trim() || '',
+        allLast: [...document.querySelectorAll('[data-v34714-calculation-notice]')].every(node => node.parentElement?.lastElementChild === node)
       },
+      legalLast: document.getElementById('legalDisclaimer')?.parentElement?.lastElementChild?.id === 'legalDisclaimer',
+      auditSurface: (() => { const node=document.querySelector('#precision .v26-audit-ok,#precision .v26-audit-warn'); if(!node)return null; const style=getComputedStyle(node); return {background:style.backgroundColor,color:style.color}; })(),
+      searchPlaceholders: [...document.querySelectorAll('input[type="search"]')].map(input => input.placeholder),
       search,
       precision,
       solo,
@@ -446,6 +452,11 @@ try {
   assert.equal(audit.simulationNotices.currentOptimizer, 1, 'current five-deck simulation notice');
   assert.equal(audit.simulationNotices.legacyOptimizer, 1, 'legacy five-deck simulation notice');
   assert.match(audit.simulationNotices.text, /시뮬레이션 추정값/, 'simulation notice wording');
+  assert.equal(audit.simulationNotices.allLast, true, 'every calculation notice stays at its calculation surface bottom');
+  assert.equal(audit.legalLast, true, 'legal notice is the final app body element after every dynamic tab');
+  assert.ok(audit.auditSurface, 'Precision rotation audit notice is rendered');
+  assert.ok(['rgb(237, 243, 251)','rgb(248, 241, 229)'].includes(audit.auditSurface.background), `Precision audit light surface: ${audit.auditSurface.background}`);
+  assert.equal(audit.auditSurface.color, 'rgb(38, 59, 85)', 'Precision audit readable text color');
 
   assert.ok(audit.search.count >= 8, `character-search coverage: ${audit.search.count}`);
   assert.ok(audit.search.targets.includes('precisionChar'), 'Precision search target');
@@ -454,7 +465,11 @@ try {
   assert.ok(audit.search.targets.includes('v26CalibrationCharacter'), 'calibration search target');
   assert.ok(audit.search.resultCount >= 1, 'Sugar search result');
   assert.equal(audit.search.selected, 'sugarTreasure', 'Sugar search selection');
+  assert.equal(audit.search.value, '', 'search input clears redundant selected character text');
+  assert.equal(audit.search.placeholder, '검색', 'search input neutral placeholder');
   assert.equal(audit.search.closed, true, 'search menu closes after selection');
+  assert.ok(audit.searchPlaceholders.length >= audit.search.count, 'search placeholders discovered');
+  assert.ok(audit.searchPlaceholders.every(value => value === '검색'), 'all search placeholders are normalized to 검색');
 
   const checkPanel = (panel, label, expectedRows, expectedTotal = null) => {
     assert.equal(panel.defaultClosed, true, `${label} default collapsed`);
@@ -528,7 +543,7 @@ try {
     pass: true
   };
   console.log(JSON.stringify(summary, null, 2));
-  console.log('V34.7.14 Precision / Solo Raid / battle / automatic five-deck collapsible timeline UI browser verification: PASS');
+  console.log('V34.7.15 Precision / Solo Raid / battle / automatic five-deck collapsible timeline UI browser verification: PASS');
 } finally {
   cdp?.close();
   if (chrome.exitCode === null) {
