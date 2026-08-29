@@ -1,0 +1,4 @@
+# Explicit Cloudflare redeployment marker
+# Do not change during normal coding.
+# ChatGPT or Codex may update this only when the user explicitly requests a production redeploy.
+request=initialized
