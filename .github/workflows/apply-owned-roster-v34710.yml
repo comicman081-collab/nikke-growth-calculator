@@ -2,16 +2,6 @@ name: Apply V34.7.10 full linked-roster repair
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - fix-owned-roster-zero-v34710
-    paths:
-      - .github/workflows/apply-owned-roster-v34710.yml
-      - scripts/v34710-release/**
-      - scripts/apply-v34710-owned-roster-repair.mjs
-      - tests/verify-owned-roster-v34710.mjs
-      - tests/verify-inline-v34710.mjs
-      - docs/V34.7.10_OWNED_ROSTER_REPAIR.md
 
 concurrency:
   group: apply-owned-roster-v34710-${{ github.ref }}
