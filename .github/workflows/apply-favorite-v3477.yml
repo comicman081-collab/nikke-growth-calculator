@@ -2,16 +2,6 @@ name: Apply V34.7.7 all favorite phases
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - fix-blabla-skill-signature-favorite-v3477
-    paths:
-      - .github/workflows/apply-favorite-v3477.yml
-      - scripts/generate-v3477-favorite-registry.mjs
-      - scripts/v3477-favorite-phase-runtime.js
-      - scripts/apply-v3477-favorite-phase.mjs
-      - tests/verify-favorite-phase-v3477.mjs
-      - docs/V34.7.7_FAVORITE_AUDIT.md
 
 concurrency:
   group: apply-v3477-favorite-${{ github.ref }}
