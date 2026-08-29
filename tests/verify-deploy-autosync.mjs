@@ -49,4 +49,4 @@ assert.equal(synced.ok,true);
 assert.equal(synced.areas.length,1);
 assert.equal(synced.areas[0].area,84);
 assert.equal(synced.areas[0].details[0].skill1_lv,10);
-console.log('V34.7.17 deploy autosync + TID/nameCode authority verification: PASS');
+console.log('V34.7.18 deploy autosync + TID/nameCode authority verification: PASS');

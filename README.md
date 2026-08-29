@@ -1,6 +1,6 @@
 # NIKKE Growth Calculator
 
-Current web deployment build: **V34.7.17 Presentation Stability**
+Current web deployment build: **V34.7.18 Presentation Stability**
 
 ## What is automatic in the deployed build
 
@@ -47,9 +47,15 @@ For the normal same-origin production deployment, leave `BLABLA_SYNC_KEY` empty.
 
 `index.html` mirrors `public/index.html` for inspection. Cloudflare Pages should serve `public/index.html`.
 
-## V34.7.17 presentation stability
+## V34.7.18 presentation stability
 
 - The page title, runtime status and footer now have one authoritative release value; legacy compatibility timers can no longer alternate them.
 - Unchanged legacy roster refreshes are ignored, while real imports, roster edits and cube changes still redraw immediately.
+- S40 diagnostic badges use a high-contrast foreground, border and background instead of dark-on-dark text.
+- Precision cycle/firepower output spans the same full content width as the other Precision cards, and every input/select/textarea shares the application font and field treatment.
+- The deployed auto-sync description and toggle use the available horizontal space; the status remains a full-width row below them.
+- The five-deck optimizer shows a compact notice above its controls that a run can take roughly 30 seconds to several minutes depending on system performance and roster size.
+- Manual Precision edits and BlaBla imports are regression-tested through the central roster, My Roster, Precision, Solo Raid, single-party simulation and all three five-deck modes.
+- A 193-row linked snapshot keeps all raw rows for future refreshes while only the 107 registered app characters (106 calculation-eligible profiles) can enter damage calculations.
 - Bottom-note/search placement observes only its own direct containers instead of the full document subtree.
 - A clean browser starts without any saved BlaBla profile or linked-roster snapshot. Each linked roster remains in that browser or APK account's scoped local storage.

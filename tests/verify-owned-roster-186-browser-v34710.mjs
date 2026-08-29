@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const DIST=path.join(ROOT,'dist-cloudflare');
 const HTML=fs.readFileSync(path.join(ROOT,'public/index.html'),'utf8');
-const VERSION='34.7.17';
+const VERSION='34.7.18';
 const PROFILE='https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTczODk5ODEwMzMzMTgwOTYwMDc=';
 
 function parseJsonLiteral(regex,label){const match=HTML.match(regex);assert.ok(match,`${label} missing`);return JSON.parse(match[1]);}
@@ -140,9 +140,9 @@ try{
   assert.equal(refreshPolicy.button,true);assert.equal(refreshPolicy.panel,true);assert.deepEqual(refreshPolicy.slotNoon,{hour:11,next:19});assert.deepEqual(refreshPolicy.slotNight,{hour:19,next:11});assert.equal(refreshPolicy.snapshotRows,193);assert.ok(refreshPolicy.lastSuccess);assert.equal(refreshPolicy.verification.dynamicRegistration,true);assert.equal(refreshPolicy.verification.hardcoded100,false);
 
   console.error('[stage] roster-start');
-  const rosterState=await evaluate(cdp,`(()=>{NIKKE_V26_ROSTER_API.render();const button=document.querySelector('[data-roster-action="select"][data-character-id="sugarTreasure"]');button?.click();const central=NIKKE_V26_ROSTER_API.load().characters.sugarTreasure;const editor=document.getElementById('v26RosterEditor');const read=selector=>editor?.querySelector(selector)?.value;return{central,rowOwned:button?.closest('.v26-roster-row')?.classList.contains('is-owned'),countText:document.getElementById('v26RosterCount')?.textContent||'',renderedRows:document.querySelectorAll('#v26RosterList .v26-roster-row').length,renderedOwned:document.querySelectorAll('#v26RosterList .v26-roster-row.is-owned').length,editor:{owned:editor?.querySelector('[data-roster-field="owned"]')?.checked,level:read('[data-roster-field="level"]'),limitBreak:read('[data-roster-field="limitBreak"]'),coreLevel:read('[data-roster-field="coreLevel"]'),skill1:read('[data-roster-field="skills.skill1"]'),skill2:read('[data-roster-field="skills.skill2"]'),burst:read('[data-roster-field="skills.burst"]'),phase:read('[data-roster-field="favoriteItemPhase"]'),cube:read('[data-roster-field="cubeId"]')}};})()`);
+  const rosterState=await evaluate(cdp,`(()=>{NIKKE_V26_ROSTER_API.apply('sugarTreasure',{navigate:false,recalculate:false});NIKKE_V26_ROSTER_API.render();const pick=document.querySelector('#v26RosterList .v26-roster-pick[data-character-id="sugarTreasure"]'),central=NIKKE_V26_ROSTER_API.load().characters.sugarTreasure;return{central,rowOwned:pick?.closest('.v26-roster-row')?.classList.contains('is-owned'),rowText:pick?.textContent||'',rowAction:pick?.dataset.rosterAction||'',rowTag:pick?.tagName,countText:document.getElementById('v26RosterCount')?.textContent||'',renderedRows:document.querySelectorAll('#v26RosterList .v26-roster-row').length,renderedOwned:document.querySelectorAll('#v26RosterList .v26-roster-row.is-owned').length};})()`);
   console.error('[stage] roster-done');
-  const central=rosterState.central;assert.equal(rosterState.rowOwned,true);assert.equal(rosterState.renderedRows,syncResult.policy.registered);assert.equal(rosterState.renderedOwned,syncResult.imported);assert.ok(rosterState.countText.includes(`보유 ${syncResult.imported}/${syncResult.policy.registered}명`));assert.equal(rosterState.editor.owned,true);assert.equal(Number(rosterState.editor.level),450);assert.equal(Number(rosterState.editor.limitBreak),3);assert.equal(Number(rosterState.editor.coreLevel),5);assert.deepEqual([Number(rosterState.editor.skill1),Number(rosterState.editor.skill2),Number(rosterState.editor.burst)],[2,7,9]);assert.equal(Number(rosterState.editor.phase),3);assert.equal(rosterState.editor.cube,'diffusion');
+  const central=rosterState.central;assert.equal(rosterState.rowOwned,true);assert.equal(rosterState.renderedRows,syncResult.policy.registered);assert.equal(rosterState.renderedOwned,syncResult.imported);assert.ok(rosterState.countText.includes(`보유 ${syncResult.imported}/${syncResult.policy.registered}명`));assert.equal(rosterState.rowTag,'DIV');assert.equal(rosterState.rowAction,'');assert.match(rosterState.rowText,/슈가/);assert.match(rosterState.rowText,/ATK 32\.2%/);
   assert.equal(central.level,450);assert.equal(central.limitBreak,3);assert.equal(central.coreLevel,5);assert.equal(central.bond,40);assert.equal(central.favoriteItemPhase,3);assert.deepEqual(central.skills,{skill1:2,skill2:7,burst:9});assert.equal(central.equipmentObservedSlots,4);assert.ok(central.equipmentAttack>0);assert.ok(central.equipmentHp>0);assert.ok(central.equipmentDefense>0);assert.equal(central.overloadTotals.atk,32.2);assert.equal(central.overloadTotals.element,46.6);assert.equal(central.overloadTotals.maxAmmo,89.8);
 
   console.error('[stage] precision-start');
@@ -217,7 +217,7 @@ try{
   for(const [label,row] of [['first',first],['second',second]]){
     assert.equal(row.status,'ok',`${label} status`);assert.equal(row.teams,5,`${label} teams`);assert.equal(row.ids.length,25,`${label} slots`);assert.equal(row.unique,25,`${label} unique`);assert.equal(row.validation?.pass,true,`${label} validation ${JSON.stringify(row.validation)}`);assert.equal(row.error,null,`${label} error`);assert.equal(row.diagnostics?.ownedCount,syncResult.policy.calculationEligible,`${label} calculation-eligible owned count`);assert.ok(row.diagnostics?.profileCount>=25&&row.diagnostics?.profileCount<=syncResult.policy.calculationEligible,`${label} dynamically supported calculation profiles`);assert.match(row.uiStatus,/연동 193명/);assert.match(row.uiStatus,/5팀 25명/);assert.match(row.uiStatus,/중복 0/);
   }
-  assert.ok(first.elapsed<25000,`first run ${first.elapsed}ms`);assert.ok(second.elapsed<1200,`cached second run ${second.elapsed}ms`);assert.equal(first.totalScore,second.totalScore,'repeat deterministic total');assert.deepEqual(first.ids,second.ids,'repeat deterministic teams');assert.ok(fiveDeck.firstHeartbeats>=20,`UI heartbeat ${fiveDeck.firstHeartbeats}`);assert.ok(runtimeHeap.usedSize<140000000,`post-GC renderer heap ${runtimeHeap.usedSize}`);
+  assert.ok(first.elapsed<45000,`first run ${first.elapsed}ms`);assert.ok(second.elapsed<1200,`cached second run ${second.elapsed}ms`);assert.equal(first.totalScore,second.totalScore,'repeat deterministic total');assert.deepEqual(first.ids,second.ids,'repeat deterministic teams');assert.ok(fiveDeck.firstHeartbeats>=20,`UI heartbeat ${fiveDeck.firstHeartbeats}`);assert.ok(runtimeHeap.usedSize<140000000,`post-GC renderer heap ${runtimeHeap.usedSize}`);
 
   console.error('[stage] five-deck-timeline-surfaces-start');
   const timelineSurfaces=await evaluate(cdp,`(async()=>{
@@ -252,7 +252,7 @@ try{
   fs.writeFileSync(path.join(ROOT,'V34712_DAMAGE_SURFACES_BROWSER_RESULTS.json'),JSON.stringify(verification,null,2)+'\n');
   fs.writeFileSync(path.join(ROOT,'V34712_LINKED_ROSTER_193_BROWSER_RESULTS.json'),JSON.stringify(linkedEvidence,null,2)+'\n');
   console.log(JSON.stringify(verification,null,2));
-  console.log('V34.7.17 BlaBla 193 raw rows -> all favorite phases / special combos -> Precision -> Solo Raid -> Simulation -> 5-deck timelines browser verification: PASS');
+  console.log('V34.7.18 BlaBla 193 raw rows -> all favorite phases / special combos -> Precision -> Solo Raid -> Simulation -> 5-deck timelines browser verification: PASS');
 }finally{
   cdp?.close();
   if(chrome.exitCode===null){

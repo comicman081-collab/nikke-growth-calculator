@@ -19,4 +19,4 @@ for(let index=0;index<scripts.length;index+=1){
 }
 assert.ok(scripts.length>=100,`script tags ${scripts.length}`);
 assert.ok(executable>=99,`executable scripts ${executable}`);
-console.log(`V34.7.17 inline scripts: tags=${scripts.length}, executable=${executable}, failures=0`);
+console.log(`V34.7.18 inline scripts: tags=${scripts.length}, executable=${executable}, failures=0`);

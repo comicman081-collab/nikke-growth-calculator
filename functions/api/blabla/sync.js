@@ -2,7 +2,7 @@ const API_BASE = 'https://api.blablalink.com';
 const GLOBAL_GAME_ID = '29080';
 const HMT_GAME_ID = '29157';
 const SESSION_INVALID_CODE = 300001;
-const VERSION = '34.7.17';
+const VERSION = '34.7.18';
 
 const REGION_MAP = Object.freeze({
   [GLOBAL_GAME_ID]: Object.freeze({ JP: 81, NA: 82, KR: 83, GLOBAL: 84, SEA: 85 }),
