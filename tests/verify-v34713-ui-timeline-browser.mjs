@@ -7,7 +7,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 /*
- * V34.7.19 real-browser UI audit
+ * V34.7.20 real-browser UI audit
  *
  * The test opens the current production HTML in headless Chrome/Edge and uses
  * the same summary-click interaction as a user.  It checks default collapse,
@@ -18,7 +18,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const HTML = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 const PUBLIC_HTML = fs.readFileSync(path.join(ROOT, 'public', 'index.html'), 'utf8');
-const VERSION = '34.7.19';
+const VERSION = '34.7.20';
 
 assert.equal(HTML, PUBLIC_HTML, 'root/public production HTML mirror');
 
@@ -510,7 +510,7 @@ try {
   assert.equal(audit.cleanPrivacy.profileInput, '', 'clean browser profile URL is empty');
   assert.equal(audit.cleanPrivacy.rawLinkedRows, 0, 'clean browser receives no other user roster');
   assert.equal(audit.motionStability.present, true, 'roster stability probe mounted');
-  assert.equal(audit.motionStability.startTitle, '니케 성장 계산기 V34.7.19 · 로스터·탭 화면 안정화', 'stable title baseline');
+  assert.equal(audit.motionStability.startTitle, '니케 성장 계산기 V34.7.20 · 로스터·탭 화면 안정화', 'stable title baseline');
   assert.equal(audit.motionStability.endTitle, audit.motionStability.startTitle, 'tab title remains fixed');
   assert.equal(audit.motionStability.titleMutations, 0, 'legacy brand timers cannot rewrite the tab title');
   assert.equal(audit.motionStability.listMutations, 0, `idle roster list is not repeatedly rendered: ${JSON.stringify(audit.motionStability.listMutationSamples)}`);
@@ -622,7 +622,7 @@ try {
     pass: true
   };
   console.log(JSON.stringify(summary, null, 2));
-  console.log('V34.7.19 Precision / Solo Raid / battle / automatic five-deck collapsible timeline UI browser verification: PASS');
+  console.log('V34.7.20 Precision / Solo Raid / battle / automatic five-deck collapsible timeline UI browser verification: PASS');
 } finally {
   cdp?.close();
   if (chrome.exitCode === null) {

@@ -1,6 +1,6 @@
 # GitHub / Cloudflare deploy status
 
-Release candidate: **V34.7.19 Instant Five-Deck Timeline**
+Release candidate: **V34.7.20 Instant Five-Deck Timeline**
 
 ## Deployment configuration
 
@@ -36,7 +36,7 @@ Release candidate: **V34.7.19 Instant Five-Deck Timeline**
 - 186-character linked-roster mobile regression: 186 stored/owned, five teams, 25 unique members, unsupported supplementals selected 0, PASS.
 - Current production Cloudflare origin and live same-origin BlaBla bridge preflight: PASS.
 
-The main-only Cloudflare workflow verifies the deployed V34.7.19 HTML marker, Worker version, configured bridge and a real nonempty profile response after merge.
+The main-only Cloudflare workflow verifies the deployed V34.7.20 HTML marker, Worker version, configured bridge and a real nonempty profile response after merge.
 
 ## V34.7.11 linked roster policy
 
@@ -58,7 +58,7 @@ The main-only Cloudflare workflow verifies the deployed V34.7.19 HTML marker, Wo
 
 Release gates include static integration, all three production modes, multi-boss optimality, special-combination coverage, shotgun policy, favorite-item gating, linked-roster propagation, cancellation/cache, low-memory browser crash resistance, timeline browser layout, signed APK badging/signature/embedded-HTML hash, and live Cloudflare verification.
 
-## V34.7.19 instant five-deck timeline, presentation stability and privacy gate
+## V34.7.20 instant five-deck timeline, presentation stability and privacy gate
 
 - All legacy title/status/footer writers are neutralized behind one release presentation value.
 - Identical scheduled roster renders are skipped by an account-storage and catalog fingerprint; actual data changes still render.

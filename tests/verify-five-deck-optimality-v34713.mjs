@@ -7,7 +7,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 /*
- * V34.7.19 independent five-deck optimality audit
+ * V34.7.20 independent five-deck optimality audit
  *
  * This deliberately treats candidate generation and candidate selection as two
  * separate contracts.  It uses the real browser runtime to build candidates,
@@ -567,7 +567,7 @@ try {
   const reports = browserResult.rows.map(auditBoss);
   const failed = reports.filter((report) => report.failures.length);
   const summary = {
-    version: '34.7.19-audit',
+    version: '34.7.20-audit',
     catalogCount: browserResult.catalogCount,
     exactSearchLimitMs: EXACT_SEARCH_LIMIT_MS,
     bosses: reports,
@@ -575,7 +575,7 @@ try {
   };
   console.log(JSON.stringify(summary, null, 2));
   assert.equal(failed.length, 0, failed.map((report) => `${report.bossId}:\n- ${report.failures.join('\n- ')}`).join('\n'));
-  console.log('V34.7.19 multi-boss five-deck candidate/role/global-optimality/local-swap verification: PASS');
+  console.log('V34.7.20 multi-boss five-deck candidate/role/global-optimality/local-swap verification: PASS');
 } finally {
   cdp?.close();
   if (chrome.exitCode === null) {

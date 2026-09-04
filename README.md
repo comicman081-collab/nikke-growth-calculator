@@ -1,6 +1,6 @@
 # NIKKE Growth Calculator
 
-Current web deployment build: **V34.7.19 Instant Five-Deck Timeline**
+Current web deployment build: **V34.7.20 Instant Five-Deck Timeline**
 
 ## What is automatic in the deployed build
 
@@ -47,7 +47,7 @@ For the normal same-origin production deployment, leave `BLABLA_SYNC_KEY` empty.
 
 `index.html` mirrors `public/index.html` for inspection. Cloudflare Pages should serve `public/index.html`.
 
-## V34.7.19 instant five-deck timeline and presentation stability
+## V34.7.20 instant five-deck timeline and presentation stability
 
 - The page title, runtime status and footer now have one authoritative release value; legacy compatibility timers can no longer alternate them.
 - Unchanged legacy roster refreshes are ignored, while real imports, roster edits and cube changes still redraw immediately.

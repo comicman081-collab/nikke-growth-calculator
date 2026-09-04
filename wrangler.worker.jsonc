@@ -4,6 +4,9 @@
   "main": "./worker-entry.js",
   "compatibility_date": "2026-08-26",
   "keep_vars": true,
+  "vars": {
+    "BLABLA_PUBLIC_SYNC_ENABLED": "false"
+  },
   "secrets": {
     "required": [
       "BLABLA_29080_GAME_TOKEN",

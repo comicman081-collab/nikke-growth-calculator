@@ -9,7 +9,7 @@ const publicHtml=fs.readFileSync(path.join(root,'public/index.html'),'utf8');
 const pkg=JSON.parse(fs.readFileSync(path.join(root,'package.json'),'utf8'));
 
 assert.equal(html,publicHtml,'root/public HTML mirror');
-assert.equal(pkg.version,'34.7.19');
+assert.equal(pkg.version,'34.7.20');
 assert.equal((html.match(/id="v34718-s40-badge-contrast-style"/g)||[]).length,1,'one badge contrast style');
 assert.match(html,/#f4fbff!important/,'bright S40 badge foreground');
 assert.match(html,/#0b3a50!important/,'stable dark S40 badge background');
@@ -26,4 +26,4 @@ assert.match(html,/v34718-five-deck-wait-note/,'five-deck wait notice is install
 assert.match(html,/약 30초에서 수분까지 걸릴 수 있습니다/,'five-deck wait notice states the expected duration range');
 assert.match(html,/id="v34717-roster-cube-layout-style"/,'previous containment and roster stability retained');
 assert.doesNotMatch(html,/<button type="button" class="v26-roster-pick" data-roster-action="select"/,'roster information remains non-interactive');
-console.log('V34.7.19 S40 contrast + full-width precision output + shared form typography: PASS');
+console.log('V34.7.20 S40 contrast + full-width precision output + shared form typography: PASS');

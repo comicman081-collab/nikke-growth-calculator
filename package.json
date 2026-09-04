@@ -1,7 +1,7 @@
 {
   "name": "nikke-growth-calculator",
   "private": true,
-  "version": "34.7.19",
+  "version": "34.7.20",
   "description": "NIKKE Growth Calculator web deployment with BlaBlaLink Cloudflare Worker bridge",
   "scripts": {
     "check": "node --check functions/api/blabla/sync.js && node --check scripts/v34713-optimality-runtime.js && node tests/verify-deploy-autosync.mjs && node tests/verify-favorite-phase-v3477.mjs && node tests/verify-favorite-raid-gate-v34713.mjs && node tests/verify-blabla-propagation-v3478.mjs && node tests/verify-five-deck-stability-v3479.mjs && node tests/verify-owned-roster-v34710.mjs && node tests/verify-inline-v34710.mjs && node tests/verify-linked-roster-refresh-v34711.mjs && node tests/verify-damage-surfaces-v34712.mjs && node tests/verify-v34714-disclaimer-theme.mjs && node tests/verify-v34715-ui-placement-search.mjs && node tests/verify-v34716-presentation-stability.mjs && node tests/verify-v34717-roster-cube-layout.mjs && node tests/verify-v34718-s40-badge-contrast.mjs",
@@ -15,7 +15,8 @@
     "apply:v34716": "node scripts/apply-v34716-presentation-stability.mjs",
     "apply:v34717": "node scripts/apply-v34717-roster-cube-layout.mjs",
     "apply:v34718": "node scripts/apply-v34718-s40-badge-contrast.mjs",
-    "apply:v34719": "node scripts/apply-v34719-instant-five-deck-timeline.mjs"
+    "apply:v34719": "node scripts/apply-v34719-instant-five-deck-timeline.mjs",
+    "apply:v34720": "node scripts/apply-v34720-public-blabla-pause.mjs"
   },
   "devDependencies": {
     "wrangler": "4.126.0"

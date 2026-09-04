@@ -2,7 +2,10 @@ const API_BASE = 'https://api.blablalink.com';
 const GLOBAL_GAME_ID = '29080';
 const HMT_GAME_ID = '29157';
 const SESSION_INVALID_CODE = 300001;
-const VERSION = '34.7.19';
+const VERSION = '34.7.20';
+// Privacy switch for the shared web deployment.  Keep the importer below intact so
+// it can be deliberately reopened later by setting this Worker variable to true.
+const PUBLIC_SYNC_ENABLE_VALUE = 'true';
 
 const REGION_MAP = Object.freeze({
   [GLOBAL_GAME_ID]: Object.freeze({ JP: 81, NA: 82, KR: 83, GLOBAL: 84, SEA: 85 }),
@@ -21,6 +24,18 @@ export class SyncError extends Error {
 
 function cleanText(value) {
   return String(value ?? '').trim();
+}
+
+export function publicSyncEnabled(env) {
+  return cleanText(env?.BLABLA_PUBLIC_SYNC_ENABLED).toLowerCase() === PUBLIC_SYNC_ENABLE_VALUE;
+}
+
+function publicSyncPausedError() {
+  return new SyncError(
+    'BLABLA_PUBLIC_SYNC_DISABLED',
+    '공유 웹 버전의 BlaBlaLink 공개 URL 동기화는 현재 일시 중지되어 있습니다. 이 브라우저에 이미 저장된 로스터는 계속 사용할 수 있습니다.',
+    403
+  );
 }
 
 function decodeUrlSafeBase64(value) {
@@ -380,8 +395,18 @@ export async function onRequestGet(context) {
   const { request, env } = context;
   try {
     assertRequestAccess(request, env);
+    if (!publicSyncEnabled(env)) {
+      return jsonResponse({
+        ok: true,
+        version: VERSION,
+        enabled: false,
+        configured: false,
+        games: [],
+        code: 'BLABLA_PUBLIC_SYNC_DISABLED',
+      }, 200, request, env);
+    }
     const games = configuredGames(env);
-    return jsonResponse({ ok: true, version: VERSION, configured: games.length > 0, games }, 200, request, env);
+    return jsonResponse({ ok: true, version: VERSION, enabled: true, configured: games.length > 0, games }, 200, request, env);
   } catch (error) {
     const syncError = error instanceof SyncError ? error : new SyncError('INTERNAL_ERROR', cleanText(error?.message || error), 500);
     return jsonResponse({ ok: false, code: syncError.code, error: syncError.message }, syncError.status, request, env);
@@ -392,6 +417,10 @@ export async function onRequestPost(context) {
   const { request, env } = context;
   try {
     assertRequestAccess(request, env);
+    // This guard intentionally precedes JSON parsing and every upstream request.
+    // A shared-site visitor therefore cannot use this endpoint to fetch skills,
+    // cubes, equipment, or other roster-growth data while the public switch is off.
+    if (!publicSyncEnabled(env)) throw publicSyncPausedError();
     const length = Number(request.headers.get('Content-Length') || 0);
     if (length > 8192) throw new SyncError('PAYLOAD_TOO_LARGE', '요청이 너무 큽니다.', 413);
     const payload = await request.json().catch(() => null);

@@ -9,7 +9,7 @@ const publicHtml=fs.readFileSync(path.join(root,'public/index.html'),'utf8');
 const pkg=JSON.parse(fs.readFileSync(path.join(root,'package.json'),'utf8'));
 
 assert.equal(html,publicHtml,'root/public HTML mirror');
-assert.equal(pkg.version,'34.7.19');
+assert.equal(pkg.version,'34.7.20');
 assert.equal((html.match(/id="v34717-roster-cube-layout-style"/g)||[]).length,1,'one layout style');
 assert.equal((html.match(/id="v34717-roster-cube-layout"/g)||[]).length,1,'one verification runtime');
 assert.match(html,/container-type:inline-size/,'cube form responds to its own card width');
@@ -27,4 +27,4 @@ assert.match(html,/sharedStatePreserved:true/,'cross-tab roster state contract r
 assert.match(html,/global\.dispatchEvent\(new CustomEvent\('nikke:v26-roster-updated'/,'shared roster update event retained');
 assert.match(html,/syncCharacterToPrecision\(selectedCharacterId\)/,'precision propagation retained');
 assert.match(html,/installCalculationFilter\(\)/,'five-deck roster propagation retained');
-console.log('V34.7.19 cube containment, non-interactive white roster rows, stable rendering, and shared-state preservation: PASS');
+console.log('V34.7.20 cube containment, non-interactive white roster rows, stable rendering, and shared-state preservation: PASS');

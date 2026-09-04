@@ -5,7 +5,7 @@ import { parseProfileInput, areaCandidates, syncPublicRoster } from '../function
 const rootHtml=fs.readFileSync(new URL('../index.html',import.meta.url),'utf8');
 const publicHtml=fs.readFileSync(new URL('../public/index.html',import.meta.url),'utf8');
 assert.equal(rootHtml,publicHtml,'root/public index mismatch');
-assert.match(rootHtml,/V34\.7\.19/,'V34.7.19 branding');
+assert.match(rootHtml,/V34\.7\.20/,'V34.7.20 branding');
 assert.match(rootHtml,/id="v3478-blabla-propagation"/,'propagation diagnostics');
 assert.match(rootHtml,/source: 'v3478-optimizer-central-roster'/,'5-deck context source');
 assert.match(rootHtml,/favoriteItemPhase: finite\(growth\.favoriteItemPhase, 0\)/,'5-deck favorite phase');
@@ -42,7 +42,7 @@ const fakeFetch=async(url,init)=>{
 };
 const synced=await syncPublicRoster({profileInput:'29080-17389981033318096007',serverHint:'GLOBAL',env,fetchImpl:fakeFetch});
 assert.equal(synced.ok,true);
-assert.equal(synced.version,'34.7.19');
+assert.equal(synced.version,'34.7.20');
 assert.equal(synced.areas.length,1);
 assert.equal(synced.areas[0].area,84);
 assert.deepEqual(synced.areas[0].characters,summaries);
@@ -50,4 +50,4 @@ assert.deepEqual(synced.areas[0].details,details);
 assert.deepEqual(synced.areas[0].stateEffects,stateEffects);
 assert.equal(calls.filter(call=>call.url.endsWith('/GetUserCharacters')).length,5,'all official areas audited');
 assert.equal(calls.filter(call=>call.url.endsWith('/GetUserCharacterDetails')).length,1,'one detail batch for populated area');
-console.log('V34.7.19 BlaBla bridge + four-surface propagation static verification: PASS');
+console.log('V34.7.20 BlaBla bridge + four-surface propagation static verification: PASS');
