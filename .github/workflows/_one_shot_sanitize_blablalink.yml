@@ -1,0 +1,87 @@
+name: One-shot sanitize BlaBla test fixtures
+
+on:
+  push:
+    paths:
+      - '.github/workflows/_one_shot_sanitize_blablalink.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  sanitize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Replace personal BlaBla fixtures with synthetic values
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import pathlib, subprocess
+
+          replacements = {
+              b'https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTczODk5ODEwMzMzMTgwOTYwMDc=':
+                  b'https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTExMTIyMjIzMzMzNDQ0NDU1NTU=',
+              b'MjkwODAtMTczODk5ODEwMzMzMTgwOTYwMDc=':
+                  b'MjkwODAtMTExMTIyMjIzMzMzNDQ0NDU1NTU=',
+              b'29080-17389981033318096007':
+                  b'29080-11112222333344445555',
+              b'17389981033318096007':
+                  b'11112222333344445555',
+              '1738…6007'.encode('utf-8'):
+                  '1111…5555'.encode('utf-8'),
+          }
+
+          tracked = subprocess.check_output(['git', 'ls-files', '-z']).split(b'\0')
+          changed = []
+          for raw in tracked:
+              if not raw:
+                  continue
+              path = pathlib.Path(raw.decode('utf-8'))
+              if not path.is_file():
+                  continue
+              data = path.read_bytes()
+              new = data
+              for old, replacement in replacements.items():
+                  new = new.replace(old, replacement)
+              if new != data:
+                  path.write_bytes(new)
+                  changed.append(str(path))
+
+          print('Sanitized files:')
+          for path in changed:
+              print(' -', path)
+          if not changed:
+              raise SystemExit('No matching personal fixtures found; refusing empty sanitizer commit')
+          PY
+
+      - name: Verify old personal fixtures are absent from current branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git grep -nF 'MjkwODAtMTczODk5ODEwMzMzMTgwOTYwMDc=' -- . ':!.github/workflows/_one_shot_sanitize_blablalink.yml'; then
+            echo 'Old encoded OpenID remains' >&2
+            exit 1
+          fi
+          if git grep -nF '17389981033318096007' -- . ':!.github/workflows/_one_shot_sanitize_blablalink.yml'; then
+            echo 'Old decoded OpenID remains' >&2
+            exit 1
+          fi
+          git grep -nF 'MjkwODAtMTExMTIyMjIzMzMzNDQ0NDU1NTU=' -- . || true
+
+      - name: Commit sanitized fixtures and remove one-shot workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm -f .github/workflows/_one_shot_sanitize_blablalink.yml
+          git add -A
+          git commit -m 'privacy: replace personal BlaBla fixtures with synthetic values [skip actions]'
+          git push origin HEAD:main
