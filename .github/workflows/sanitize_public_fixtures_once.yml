@@ -1,0 +1,68 @@
+name: Sanitize known public BlaBla fixtures once
+
+on:
+  push:
+    paths:
+      - '.github/workflows/sanitize_public_fixtures_once.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  sanitize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Replace known fixture values
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          files = [
+            'V34710_LIVE_BRIDGE_PREFLIGHT.json',
+            'V34710_RELEASE_RESULTS.txt',
+            'tests/verify-blabla-propagation-browser-v3478.mjs',
+            'tests/verify-blabla-propagation-v3478.mjs',
+            'tests/verify-cloudflare-production-v3478.mjs',
+            'tests/verify-cloudflare-production-v3479.mjs',
+            'tests/verify-deploy-autosync.mjs',
+            'tests/verify-five-deck-stability-browser-v3479.mjs',
+            'tests/verify-owned-roster-186-browser-v34710.mjs',
+          ]
+          replacements = [
+            ('https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTczODk5ODEwMzMzMTgwOTYwMDc=', 'https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTExMTIyMjIzMzMzNDQ0NDU1NTU='),
+            ('MjkwODAtMTczODk5ODEwMzMzMTgwOTYwMDc=', 'MjkwODAtMTExMTIyMjIzMzMzNDQ0NDU1NTU='),
+            ('29080-17389981033318096007', '29080-11112222333344445555'),
+            ('17389981033318096007', '11112222333344445555'),
+            ('1738…6007', '1111…5555'),
+          ]
+          changed=[]
+          for name in files:
+            p=Path(name)
+            if not p.exists():
+              continue
+            text=p.read_text(encoding='utf-8')
+            new=text
+            for old,repl in replacements:
+              new=new.replace(old,repl)
+            if new!=text:
+              p.write_text(new,encoding='utf-8')
+              changed.append(name)
+          if not changed:
+            raise SystemExit('No known fixtures changed')
+          print('\n'.join(changed))
+          for name in files:
+            p=Path(name)
+            if p.exists():
+              text=p.read_text(encoding='utf-8')
+              assert '17389981033318096007' not in text
+              assert 'MjkwODAtMTczODk5ODEwMzMzMTgwOTYwMDc=' not in text
+          PY
+      - name: Commit sanitized files
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add V34710_LIVE_BRIDGE_PREFLIGHT.json V34710_RELEASE_RESULTS.txt tests
+          git commit -m 'privacy: replace personal BlaBla fixtures with synthetic values [skip actions]'
+          git push origin HEAD:main
