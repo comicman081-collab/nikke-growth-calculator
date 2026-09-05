@@ -14,7 +14,7 @@ jobs:
       - name: Capture public live roster through production Worker
         env:
           ORIGIN: https://nikke-growth-calculator.breezy-mum.workers.dev
-          PROFILE: https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTczODk5ODEwMzMzMTgwOTYwMDc=
+          PROFILE: https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTExMTIyMjIzMzMzNDQ0NDU1NTU=
         run: |
           set -euo pipefail
           curl -L --fail --retry 5 --max-time 120 \
