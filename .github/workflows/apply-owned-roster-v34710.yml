@@ -12,7 +12,7 @@ permissions:
 
 env:
   PRODUCTION_URL: https://nikke-growth-calculator.breezy-mum.workers.dev
-  PUBLIC_PROFILE_URL: https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTczODk5ODEwMzMzMTgwOTYwMDc=
+  PUBLIC_PROFILE_URL: https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTExMTIyMjIzMzMzNDQ0NDU1NTU=
 
 jobs:
   apply-and-verify:
