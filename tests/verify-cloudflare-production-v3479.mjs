@@ -3,7 +3,7 @@ import fs from 'node:fs';
 
 const VERSION='34.7.9';
 const BASE=String(process.env.CLOUDFLARE_PRODUCTION_URL||'https://nikke-growth-calculator.breezy-mum.workers.dev').replace(/\/+$/,'');
-const PROFILE=process.env.BLABLA_PUBLIC_PROFILE||'https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTczODk5ODEwMzMzMTgwOTYwMDc=';
+const PROFILE=process.env.BLABLA_PUBLIC_PROFILE||'https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTExMTIyMjIzMzMzNDQ0NDU1NTU=';
 const REPORT=process.env.CLOUDFLARE_LIVE_REPORT||'V3479_CLOUDFLARE_LIVE_RESULTS.json';
 const delay=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 

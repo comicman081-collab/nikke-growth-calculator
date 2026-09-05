@@ -10,7 +10,7 @@ const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const DIST=path.join(ROOT,'dist-cloudflare');
 const HTML=fs.readFileSync(path.join(ROOT,'public/index.html'),'utf8');
 const VERSION='34.7.20';
-const PROFILE='https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTczODk5ODEwMzMzMTgwOTYwMDc=';
+const PROFILE='https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTExMTIyMjIzMzMzNDQ0NDU1NTU=';
 
 function parseJsonLiteral(regex,label){const match=HTML.match(regex);assert.ok(match,`${label} missing`);return JSON.parse(match[1]);}
 const nameCodeMap=parseJsonLiteral(/const V3476_NAMECODE_TO_APP_ID=Object\.freeze\((\{[^\n]+\})\);/,'nameCode map');
@@ -46,7 +46,7 @@ for(const [index,code] of codes.entries()){
   }
   details.push(detail);
 }
-const bridgePayload={ok:true,version:VERSION,observedAt:'2026-08-27T00:00:00.000Z',profile:{intlGameId:'29080',maskedOpenId:'1738…6007'},areas:[{area:84,characters:summaries,details,stateEffects}],diagnostics:{attempts:[{area:84,code:0,count:summaries.length,message:''}]}};
+const bridgePayload={ok:true,version:VERSION,observedAt:'2026-08-27T00:00:00.000Z',profile:{intlGameId:'29080',maskedOpenId:'1111…5555'},areas:[{area:84,characters:summaries,details,stateEffects}],diagnostics:{attempts:[{area:84,code:0,count:summaries.length,message:''}]}};
 
 const mime={'.html':'text/html; charset=utf-8','.js':'application/javascript; charset=utf-8','.json':'application/json; charset=utf-8','.png':'image/png','.webp':'image/webp','.m4a':'audio/mp4','.txt':'text/plain; charset=utf-8'};
 function readBody(req){return new Promise((resolve,reject)=>{const chunks=[];req.on('data',chunk=>chunks.push(chunk));req.on('end',()=>resolve(Buffer.concat(chunks).toString('utf8')));req.on('error',reject);});}

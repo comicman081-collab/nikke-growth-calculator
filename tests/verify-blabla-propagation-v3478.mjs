@@ -19,8 +19,8 @@ assert.match(rootHtml,/equipmentDefense:g\.equipmentDefense!=null\?finite\(g\.eq
 assert.match(rootHtml,/정밀\/내 로스터\/시뮬레이션\/5덱 자동/,'four-surface sync status');
 assert.match(rootHtml,/정밀·내 로스터·시뮬레이션·5덱 자동/,'four-surface sync result');
 
-const parsed=parseProfileInput('https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTczODk5ODEwMzMzMTgwOTYwMDc=');
-assert.deepEqual(parsed,{intlGameId:'29080',intlOpenId:'17389981033318096007',encodedValue:'29080-17389981033318096007'});
+const parsed=parseProfileInput('https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTExMTIyMjIzMzMzNDQ0NDU1NTU=');
+assert.deepEqual(parsed,{intlGameId:'29080',intlOpenId:'11112222333344445555',encodedValue:'29080-11112222333344445555'});
 assert.deepEqual(areaCandidates('29080','GLOBAL'),[84,81,82,83,85]);
 
 const env={BLABLA_29080_GAME_TOKEN:'token',BLABLA_29080_GAME_OPENID:'service-openid'};
@@ -40,7 +40,7 @@ const fakeFetch=async(url,init)=>{
   if(url.endsWith('/GetUserCharacterDetails'))return new Response(JSON.stringify({code:0,data:{character_details:details,state_effects:stateEffects}}),{status:200,headers:{'content-type':'application/json'}});
   throw new Error(`unexpected URL ${url}`);
 };
-const synced=await syncPublicRoster({profileInput:'29080-17389981033318096007',serverHint:'GLOBAL',env,fetchImpl:fakeFetch});
+const synced=await syncPublicRoster({profileInput:'29080-11112222333344445555',serverHint:'GLOBAL',env,fetchImpl:fakeFetch});
 assert.equal(synced.ok,true);
 assert.equal(synced.version,'34.7.20');
 assert.equal(synced.areas.length,1);

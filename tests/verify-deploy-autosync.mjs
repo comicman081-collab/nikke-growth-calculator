@@ -29,9 +29,9 @@ assert.match(html, /"5122":"phantomTreasure"/);
 assert.match(html, /"5153":"jillValentine"/);
 assert.doesNotMatch(html, /"5069":"reiAyanami"/);
 
-const parsed = parseProfileInput('https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTczODk5ODEwMzMzMTgwOTYwMDc=');
+const parsed = parseProfileInput('https://www.blablalink.com/shiftyspad/nikke-list?openid=MjkwODAtMTExMTIyMjIzMzMzNDQ0NDU1NTU=');
 assert.equal(parsed.intlGameId, '29080');
-assert.equal(parsed.intlOpenId, '17389981033318096007');
+assert.equal(parsed.intlOpenId, '11112222333344445555');
 assert.deepEqual(areaCandidates('29080','GLOBAL'), [84,81,82,83,85]);
 
 // Shared deployments start closed: the POST guard must run before payload parsing
@@ -43,7 +43,7 @@ const pausedEnv={__TEST_FETCH:async()=>{throw new Error('disabled public sync mu
 const pausedGet=await onRequestGet({request:new Request('https://shared.example/api/blabla/sync',{headers:{Origin:'https://shared.example'}}),env:pausedEnv});
 assert.equal(pausedGet.status,200);
 assert.deepEqual(await pausedGet.json(),{ok:true,version:'34.7.20',enabled:false,configured:false,games:[],code:'BLABLA_PUBLIC_SYNC_DISABLED'});
-const pausedPost=await onRequestPost({request:new Request('https://shared.example/api/blabla/sync',{method:'POST',headers:{Origin:'https://shared.example','content-type':'application/json'},body:JSON.stringify({profileUrl:'29080-17389981033318096007'})}),env:pausedEnv});
+const pausedPost=await onRequestPost({request:new Request('https://shared.example/api/blabla/sync',{method:'POST',headers:{Origin:'https://shared.example','content-type':'application/json'},body:JSON.stringify({profileUrl:'29080-11112222333344445555'})}),env:pausedEnv});
 assert.equal(pausedPost.status,403);
 const pausedBody=await pausedPost.json();
 assert.equal(pausedBody.ok,false);
@@ -62,7 +62,7 @@ const fakeFetch=async (url,init)=>{
   }
   throw new Error(`unexpected ${url}`);
 };
-const synced=await syncPublicRoster({profileInput:'29080-17389981033318096007',serverHint:'GLOBAL',env,fetchImpl:fakeFetch});
+const synced=await syncPublicRoster({profileInput:'29080-11112222333344445555',serverHint:'GLOBAL',env,fetchImpl:fakeFetch});
 assert.equal(synced.ok,true);
 assert.equal(synced.areas.length,1);
 assert.equal(synced.areas[0].area,84);
